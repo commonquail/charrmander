@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Areas>
+  <Area>
+    <Name>Black Citadel</Name>
+    <Hearts>0</Hearts>
+    <Waypoints>11</Waypoints>
+    <PoIs>17</PoIs>
+    <Skills>0</Skills>
+    <Vistas>5</Vistas>
+  </Area>
+  <Area>
+    <Name>Blazeridge Steppes</Name>
+    <Hearts>15</Hearts>
+    <Waypoints>18</Waypoints>
+    <PoIs>10</PoIs>
+    <Skills>5</Skills>
+    <Vistas>5</Vistas>
+  </Area>
+  <Area>
+    <Name>Bloodtide Coast</Name>
+    <Hearts>13</Hearts>
+    <Waypoints>15</Waypoints>
+    <PoIs>18</PoIs>
+    <Skills>6</Skills>
+    <Vistas>7</Vistas>
+  </Area>
+  <Area>
+    <Name>Brisban Wildlands</Name>
+    <Hearts>16</Hearts>
+    <Waypoints>12</Waypoints>
+    <PoIs>19</PoIs>
+    <Skills>8</Skills>
+    <Vistas>7</Vistas>
+  </Area>
+  <Area>
+    <Name>Caledon Forest</Name>
+    <Hearts>18</Hearts>
+    <Waypoints>18</Waypoints>
+    <PoIs>20</PoIs>
+    <Skills>7</Skills>
+    <Vistas>8</Vistas>
+  </Area>
+  <Area>
+    <Name>Cursed Shore</Name>
+    <Hearts>0</Hearts>
+    <Waypoints>12</Waypoints>
+    <PoIs>28</PoIs>
+    <Skills>17</Skills>
+    <Vistas>5</Vistas>
+  </Area>
+  <Area>
+    <Name>Dedgehaunt Cliffs</Name>
+    <Hearts>11</Hearts>
+    <Waypoints>18</Waypoints>
+    <PoIs>24</PoIs>
+    <Skills>6</Skills>
+    <Vistas>8</Vistas>
+  </Area>
+  <Area>
+    <Name>Diessa Plateau</Name>
+    <Hearts>15</Hearts>
+    <Waypoints>19</Waypoints>
+    <PoIs>16</PoIs>
+    <Skills>8</Skills>
+    <Vistas>10</Vistas>
+  </Area>
+  <Area>
+    <Name>Divinity's Reach</Name>
+    <Hearts>0</Hearts>
+    <Waypoints>13</Waypoints>
+    <PoIs>20</PoIs>
+    <Skills>0</Skills>
+    <Vistas>6</Vistas>
+  </Area>
+  <Area>
+    <Name>Fields of Ruin</Name>
+    <Hearts>13</Hearts>
+    <Waypoints>17</Waypoints>
+    <PoIs>20</PoIs>
+    <Skills>5</Skills>
+    <Vistas>6</Vistas>
+  </Area>
+  <Area>
+    <Name>Fireheart Rise</Name>
+    <Hearts>12</Hearts>
+    <Waypoints>18</Waypoints>
+    <PoIs>16</PoIs>
+    <Skills>7</Skills>
+    <Vistas>8</Vistas>
+  </Area>
+  <Area>
+    <Name>Frostgorge Sound</Name>
+    <Hearts>11</Hearts>
+    <Waypoints>16</Waypoints>
+    <PoIs>20</PoIs>
+    <Skills>7</Skills>
+    <Vistas>8</Vistas>
+  </Area>
+  <Area>
+    <Name>Gendarran Fields</Name>
+    <Hearts>11</Hearts>
+    <Waypoints>22</Waypoints>
+    <PoIs>16</PoIs>
+    <Skills>7</Skills>
+    <Vistas>8</Vistas>
+  </Area>
+  <Area>
+    <Name>Harathi Hinterlands</Name>
+    <Hearts>11</Hearts>
+    <Waypoints>15</Waypoints>
+    <PoIs>15</PoIs>
+    <Skills>6</Skills>
+    <Vistas>8</Vistas>
+  </Area>
+  <Area>
+    <Name>Hoelbrak</Name>
+    <Hearts>0</Hearts>
+    <Waypoints>14</Waypoints>
+    <PoIs>24</PoIs>
+    <Skills>0</Skills>
+    <Vistas>5</Vistas>
+  </Area>
+  <Area>
+    <Name>Iron Marches</Name>
+    <Hearts>13</Hearts>
+    <Waypoints>14</Waypoints>
+    <PoIs>14</PoIs>
+    <Skills>6</Skills>
+    <Vistas>8</Vistas>
+  </Area>
+  <Area>
+    <Name>Kessex Hills</Name>
+    <Hearts>17</Hearts>
+    <Waypoints>18</Waypoints>
+    <PoIs>18</PoIs>
+    <Skills>5</Skills>
+    <Vistas>9</Vistas>
+  </Area>
+  <Area>
+    <Name>Lion's Arch</Name>
+    <Hearts>0</Hearts>
+    <Waypoints>13</Waypoints>
+    <PoIs>223</PoIs>
+    <Skills>0</Skills>
+    <Vistas>11</Vistas>
+  </Area>
+  <Area>
+    <Name>Lornar's Pass</Name>
+    <Hearts>15</Hearts>
+    <Waypoints>16</Waypoints>
+    <PoIs>43</PoIs>
+    <Skills>9</Skills>
+    <Vistas>10</Vistas>
+  </Area>
+  <Area>
+    <Name>Malchor's Leap</Name>
+    <Hearts>0</Hearts>
+    <Waypoints>13</Waypoints>
+    <PoIs>37</PoIs>
+    <Skills>15</Skills>
+    <Vistas>5</Vistas>
+  </Area>
+  <Area>
+    <Name>Metrica Province</Name>
+    <Hearts>16</Hearts>
+    <Waypoints>16</Waypoints>
+    <PoIs>23</PoIs>
+    <Skills>8</Skills>
+    <Vistas>9</Vistas>
+  </Area>
+  <Area>
+    <Name>Mount Maelstrom</Name>
+    <Hearts>11</Hearts>
+    <Waypoints>17</Waypoints>
+    <PoIs>32</PoIs>
+    <Skills>7</Skills>
+    <Vistas>7</Vistas>
+  </Area>
+  <Area>
+    <Name>Plains of Ashford</Name>
+    <Hearts>16</Hearts>
+    <Waypoints>18</Waypoints>
+    <PoIs>17</PoIs>
+    <Skills>6</Skills>
+    <Vistas>10</Vistas>
+  </Area>
+  <Area>
+    <Name>Queensdale</Name>
+    <Hearts>17</Hearts>
+    <Waypoints>16</Waypoints>
+    <PoIs>21</PoIs>
+    <Skills>7</Skills>
+    <Vistas>9</Vistas>
+  </Area>
+  <Area>
+    <Name>Rata Sum</Name>
+    <Hearts>0</Hearts>
+    <Waypoints>9</Waypoints>
+    <PoIs>19</PoIs>
+    <Skills>0</Skills>
+    <Vistas>5</Vistas>
+  </Area>
+  <Area>
+    <Name>Snowden Difts</Name>
+    <Hearts>13</Hearts>
+    <Waypoints>18</Waypoints>
+    <PoIs>11</PoIs>
+    <Skills>6</Skills>
+    <Vistas>6</Vistas>
+  </Area>
+  <Area>
+    <Name>Southsun Cove</Name>
+    <Hearts>0</Hearts>
+    <Waypoints>6</Waypoints>
+    <PoIs>5</PoIs>
+    <Skills>0</Skills>
+    <Vistas>0</Vistas>
+  </Area>
+  <Area>
+    <Name>Sparkfly Fen</Name>
+    <Hearts>13</Hearts>
+    <Waypoints>17</Waypoints>
+    <PoIs>20</PoIs>
+    <Skills>6</Skills>
+    <Vistas>5</Vistas>
+  </Area>
+  <Area>
+    <Name>Straits of Devastation</Name>
+    <Hearts>0</Hearts>
+    <Waypoints>19</Waypoints>
+    <PoIs>30</PoIs>
+    <Skills>12</Skills>
+    <Vistas>6</Vistas>
+  </Area>
+  <Area>
+    <Name>The Grove</Name>
+    <Hearts>0</Hearts>
+    <Waypoints>4</Waypoints>
+    <PoIs>19</PoIs>
+    <Skills>0</Skills>
+    <Vistas>6</Vistas>
+  </Area>
+  <Area>
+    <Name>Timberline Falls</Name>
+    <Hearts>11</Hearts>
+    <Waypoints>19</Waypoints>
+    <PoIs>13</PoIs>
+    <Skills>5</Skills>
+    <Vistas>6</Vistas>
+  </Area>
+  <Area>
+    <Name>Wayfarer Foothills</Name>
+    <Hearts>16</Hearts>
+    <Waypoints>17</Waypoints>
+    <PoIs>19</PoIs>
+    <Skills>8</Skills>
+    <Vistas>10</Vistas>
+  </Area>
+</Areas>

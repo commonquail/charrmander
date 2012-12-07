@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace Charrmander
 {
@@ -22,6 +23,14 @@ namespace Charrmander
         public MainWindow()
         {
             InitializeComponent();
+            /*
+            XDocument doc = XDocument.Load("Resources/Professions.xml");
+            professionList.ItemsSource = doc.Root.Descendants("Profession").Select(x => new
+            {
+                Name = x.Value
+            })
+            .ToList();//convert to list
+            */
         }
     }
 }

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Professions>
+  <Profession>
+    <Name>Elementalist</Name>
+  </Profession>
+  <Profession>
+    <Name>Engineer</Name>
+  </Profession>
+  <Profession>
+    <Name>Guardian</Name>
+  </Profession>
+  <Profession>
+    <Name>Mesmer</Name>
+  </Profession>
+  <Profession>
+    <Name>Necromancer</Name>
+  </Profession>
+  <Profession>
+    <Name>Ranger</Name>
+  </Profession>
+  <Profession>
+    <Name>Thief</Name>
+  </Profession>
+  <Profession>
+    <Name>Warrior</Name>
+  </Profession>
+</Professions>

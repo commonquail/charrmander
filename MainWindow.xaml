@@ -21,10 +21,36 @@
             </ListBox>
             <TabControl Name="tabControl1">
                 <TabItem Header="Personal" Name="personal">
-                    <Grid />
+                    <Grid>
+                        <Grid.Resources>
+                            <XmlDataProvider x:Key="ProfessionsXml" XPath="Professions/Profession" Source="Resources/Professions.xml"/>
+                        </Grid.Resources>
+                        <Label HorizontalAlignment="Left" VerticalAlignment="Top">Name:</Label>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="80,0,0,0"></TextBox>
+                        <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,23">Profession:</Label>
+                        <ComboBox Name="professionList" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="80,23,0,0"
+                                  ItemsSource="{Binding Source={StaticResource ProfessionsXml}}" DisplayMemberPath="Name"/>
+                    </Grid>
                 </TabItem>
                 <TabItem Header="Areas" Name="areas">
-                    <Grid />
+                    <Grid>
+                        <Grid.Resources>
+                            <XmlDataProvider x:Key="AreasXml" XPath="Areas/Area" Source="Resources/Areas.xml"/>
+                        </Grid.Resources>
+                        <DataGrid
+                            ItemsSource="{Binding Source={StaticResource AreasXml}}"
+                            AutoGenerateColumns="False">
+                            
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name" Binding="{Binding XPath=./Name}"/>
+                                <DataGridTextColumn Header="Hearts" Binding="{Binding XPath=./Hearts}"/>
+                                <DataGridTextColumn Header="Waypoints" Binding="{Binding XPath=./Waypoints}"/>
+                                <DataGridTextColumn Header="PoIs" Binding="{Binding XPath=./PoIs}"/>
+                                <DataGridTextColumn Header="Skills" Binding="{Binding XPath=./Skills}"/>
+                                <DataGridTextColumn Header="Vistas" Binding="{Binding XPath=./Vistas}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
                 </TabItem>
             </TabControl>
         </DockPanel>
