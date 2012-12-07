@@ -3,6 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Menu Height="23" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open" Command="Open"/>
+                <Separator/>
+                <MenuItem Header="_Save" Command="Save"/>
+                <MenuItem Header="Save As" Command="SaveAs"/>
+                <Separator/>
+                <MenuItem Header="_Exit"/>
+            </MenuItem>
+            <MenuItem Header="_About">
+                <MenuItem Header="Check for updates"/>
+            </MenuItem>
+        </Menu>
+        <ListBox Name="stackPanel1" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,23" Width="150">
+        </ListBox>
+        <TabControl Name="tabControl1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="150,23,0,23">
+            <TabItem Header="Personal" Name="personal">
+                <Grid />
+            </TabItem>
+            <TabItem Header="Areas" Name="areas">
+                <Grid />
+            </TabItem>
+        </TabControl>
+        <StatusBar Height="23" HorizontalAlignment="Stretch" Name="statusBar1" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>
