@@ -16,16 +16,18 @@
                 <MenuItem Header="Check for updates"/>
             </MenuItem>
         </Menu>
-        <ListBox Name="stackPanel1" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,23" Width="150">
-        </ListBox>
-        <TabControl Name="tabControl1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="150,23,0,23">
-            <TabItem Header="Personal" Name="personal">
-                <Grid />
-            </TabItem>
-            <TabItem Header="Areas" Name="areas">
-                <Grid />
-            </TabItem>
-        </TabControl>
+        <DockPanel Margin="0,23">
+            <ListBox Name="characterList" Width="150">
+            </ListBox>
+            <TabControl Name="tabControl1">
+                <TabItem Header="Personal" Name="personal">
+                    <Grid />
+                </TabItem>
+                <TabItem Header="Areas" Name="areas">
+                    <Grid />
+                </TabItem>
+            </TabControl>
+        </DockPanel>
         <StatusBar Height="23" HorizontalAlignment="Stretch" Name="statusBar1" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>
