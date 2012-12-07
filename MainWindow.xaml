@@ -37,10 +37,19 @@
                         <Grid.Resources>
                             <XmlDataProvider x:Key="AreasXml" XPath="Areas/Area" Source="Resources/Areas.xml"/>
                         </Grid.Resources>
-                        <DataGrid
+                        <ListBox Name="areaList" HorizontalAlignment="Left" 
+                                    ItemsSource="{Binding Source={StaticResource AreasXml}, XPath=//Name}"/>
+                        <Label HorizontalAlignment="Right" VerticalAlignment="Top"
+                               Content="{Binding ElementName=areaList, Path=SelectedValue}"/>
+                        <Label HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,50"
+                               Content="{Binding Source={StaticResource AreasXml}, XPath=//Name}"/>
+                        <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Margin="80,0" Width="30"/>
+                        <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Margin="80,50" Width="30"/>
+
+                        <DataGrid Margin="300,0"
                             ItemsSource="{Binding Source={StaticResource AreasXml}}"
                             AutoGenerateColumns="False">
-                            
+
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Binding="{Binding XPath=./Name}"/>
                                 <DataGridTextColumn Header="Hearts" Binding="{Binding XPath=./Hearts}"/>
