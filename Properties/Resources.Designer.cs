@@ -59,5 +59,60 @@ namespace Charrmander.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://cs.au.dk/~miguel/charrmander/VersionHistory.xml.
+        /// </summary>
+        internal static string cfgUpdateCheckUri {
+            get {
+                return ResourceManager.GetString("cfgUpdateCheckUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsaved changes. Are you sure you wish to discard and exit?.
+        /// </summary>
+        internal static string msgUnsavedExitBody {
+            get {
+                return ResourceManager.GetString("msgUnsavedExitBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discard changes and exit?.
+        /// </summary>
+        internal static string msgUnsavedExitTitle {
+            get {
+                return ResourceManager.GetString("msgUnsavedExitTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to connect to {0}:
+        ///{1}.
+        /// </summary>
+        internal static string msgUpdateCheckFailedBody404 {
+            get {
+                return ResourceManager.GetString("msgUpdateCheckFailedBody404", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unexpected error: {0}.
+        /// </summary>
+        internal static string msgUpdateCheckFailedBodyUnknown {
+            get {
+                return ResourceManager.GetString("msgUpdateCheckFailedBodyUnknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Check Failed.
+        /// </summary>
+        internal static string msgUpdateCheckFailedTitle {
+            get {
+                return ResourceManager.GetString("msgUpdateCheckFailedTitle", resourceCulture);
+            }
+        }
     }
 }
