@@ -38,11 +38,27 @@
                             <XmlDataProvider x:Key="AreasXml" XPath="Areas/Area" Source="Resources/Areas.xml"/>
                         </Grid.Resources>
                         <ListBox Name="areaList" HorizontalAlignment="Left" 
-                                    ItemsSource="{Binding Source={StaticResource AreasXml}, XPath=//Name}"/>
+                                    ItemsSource="{Binding Source={StaticResource AreasXml}}"
+                                 DisplayMemberPath="Name"/>
                         <Label HorizontalAlignment="Right" VerticalAlignment="Top"
-                               Content="{Binding ElementName=areaList, Path=SelectedValue}"/>
-                        <Label HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,50"
-                               Content="{Binding Source={StaticResource AreasXml}, XPath=//Name}"/>
+                               DataContext="{Binding SelectedItem, ElementName=areaList}"
+                               Content="{Binding XPath=Hearts}"/>
+                        <Label HorizontalAlignment="Right" VerticalAlignment="Top"
+                               Margin="0,20"
+                               DataContext="{Binding SelectedItem, ElementName=areaList}"
+                               Content="{Binding XPath=Waypoints}"/>
+                        <Label HorizontalAlignment="Right" VerticalAlignment="Top"
+                               Margin="0,40"
+                               DataContext="{Binding SelectedItem, ElementName=areaList}"
+                               Content="{Binding XPath=PoIs}"/>
+                        <Label HorizontalAlignment="Right" VerticalAlignment="Top"
+                               Margin="0,60"
+                               DataContext="{Binding SelectedItem, ElementName=areaList}"
+                               Content="{Binding XPath=Skills}"/>
+                        <Label HorizontalAlignment="Right" VerticalAlignment="Top"
+                               Margin="0,80"
+                               DataContext="{Binding SelectedItem, ElementName=areaList}"
+                               Content="{Binding XPath=Vistas}"/>
                         <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Margin="80,0" Width="30"/>
                         <TextBox HorizontalAlignment="Right" VerticalAlignment="Top" Margin="80,50" Width="30"/>
 
