@@ -104,6 +104,18 @@
     <Resource Include="Icons\Open.bmp" />
     <Resource Include="Icons\Save.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Game\HeartDone.png" />
+    <Resource Include="Icons\Game\Heart.png" />
+    <Resource Include="Icons\Game\Waypoint.png" />
+    <Resource Include="Icons\Game\PoIDone.png" />
+    <Resource Include="Icons\Game\PoI.png" />
+    <Resource Include="Icons\Game\SkillDone.png" />
+    <Resource Include="Icons\Game\Skill.png" />
+    <Resource Include="Icons\Game\VistaDone.png" />
+    <Resource Include="Icons\Game\Vista.png" />
+    <Resource Include="Icons\Game\WaypointDone.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
