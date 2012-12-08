@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Xml.Linq;
 using Charrmander.Extensions;
+using System.Collections.ObjectModel;
 
 namespace Charrmander
 {
@@ -15,6 +16,8 @@ namespace Charrmander
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ObservableCollection<Character> _characters = new ObservableCollection<Character>();
+
         private BackgroundWorker _bgUpdater = new BackgroundWorker();
 
         private bool _unsavedChanges = false;
@@ -25,6 +28,9 @@ namespace Charrmander
 
             _bgUpdater.DoWork += UpdateWorker_DoWork;
             _bgUpdater.RunWorkerCompleted += UpdateWorker_RunWorkerCompleted;
+
+            lstCharacters.ItemsSource = _characters;
+            _characters.Add(new Character() { Name = "Bob", Profession = "Necromancer" });
         }
 
         private void Click_CheckUpdates(object sender, RoutedEventArgs e)
@@ -92,6 +98,7 @@ namespace Charrmander
         private void Command_New(object sender, ExecutedRoutedEventArgs e)
         {
             Debug.WriteLine("New");
+            _characters.Add(new Character() { Name = new Guid().ToString() });
         }
 
         private void Command_Open(object sender, ExecutedRoutedEventArgs e)

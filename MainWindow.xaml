@@ -14,7 +14,7 @@
     <Grid>
         <Menu Height="23" HorizontalAlignment="Stretch" VerticalAlignment="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_New" Command="New"/>
+                <MenuItem Header="_New Character" Command="New"/>
                 <Separator/>
                 <MenuItem Header="_Open" Command="Open">
                     <MenuItem.Icon>
@@ -37,7 +37,7 @@
         </Menu>
         
         <DockPanel Margin="0,23">
-            <ListBox Name="characterList" Width="150">
+            <ListBox Name="lstCharacters" Width="150" DisplayMemberPath="Name" >
             </ListBox>
             <TabControl Name="tabControl1">
                 <TabItem Header="Personal" Name="personal">
@@ -46,10 +46,12 @@
                             <XmlDataProvider x:Key="ProfessionsXml" XPath="Professions/Profession" Source="Resources/Professions.xml"/>
                         </Grid.Resources>
                         <Label HorizontalAlignment="Left" VerticalAlignment="Top">Name:</Label>
-                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="80,0,0,0"></TextBox>
+                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="80,0,0,0"
+                                 DataContext="{Binding SelectedItem, ElementName=lstCharacters}" Text="{Binding Path=Name}"/>
                         <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,23">Profession:</Label>
-                        <ComboBox Name="professionList" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="80,23,0,0"
-                                  ItemsSource="{Binding Source={StaticResource ProfessionsXml}}" DisplayMemberPath="Name"/>
+                        <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="80,23,0,0"
+                                  ItemsSource="{Binding Source={StaticResource ProfessionsXml}}" DisplayMemberPath="Name"
+                                  SelectedValue="{Binding SelectedItem.Profession, ElementName=lstCharacters}"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Areas" Name="areas">
