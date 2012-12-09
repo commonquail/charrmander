@@ -8,9 +8,28 @@ using System.Windows.Input;
 using System.Xml.Linq;
 using Charrmander.Extensions;
 using System.Collections.ObjectModel;
+using System.Windows.Data;
 
 namespace Charrmander
 {
+    public class CompletionImageConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            System.Xml.XmlElement totalHearts = values[1] as System.Xml.XmlElement;
+            if (totalHearts != null)
+            {
+                return ((string)values[0]) == totalHearts.InnerText;
+            }
+            return false;
+        }
+
+        public object[] ConvertBack(object value, Type[] targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
+    }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
