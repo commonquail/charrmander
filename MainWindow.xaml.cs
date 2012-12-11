@@ -16,12 +16,7 @@ namespace Charrmander
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            System.Xml.XmlElement totalHearts = values[1] as System.Xml.XmlElement;
-            if (totalHearts != null)
-            {
-                return ((string)values[0]) == totalHearts.InnerText;
-            }
-            return false;
+            return values[0].Equals(values[1]);
         }
 
         public object[] ConvertBack(object value, Type[] targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -47,9 +42,10 @@ namespace Charrmander
 
             _bgUpdater.DoWork += UpdateWorker_DoWork;
             _bgUpdater.RunWorkerCompleted += UpdateWorker_RunWorkerCompleted;
-
+            /*
             lstCharacters.ItemsSource = _characters;
             _characters.Add(new Character() { Name = "Bob", Profession = "Necromancer" });
+             * */
         }
 
         private void Click_CheckUpdates(object sender, RoutedEventArgs e)
