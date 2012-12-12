@@ -40,7 +40,7 @@ namespace Charrmander.ViewModel
                 {
                     _selectedCharacter = value;
                     IsCharacterDetailEnabled = value != null;
-                    OnPropertyChanged("SelectedCharacter");
+                    RaisePropertyChanged("SelectedCharacter");
                 }
             }
         }
@@ -75,13 +75,13 @@ namespace Charrmander.ViewModel
                         PoIsCompleted = SelectedAreaReference.PoIs == SelectedAreaCharacter.PoIs;
                         SkillsCompleted = SelectedAreaReference.Skills == SelectedAreaCharacter.Skills;
                         VistasCompleted = SelectedAreaReference.Vistas == SelectedAreaCharacter.Vistas;
-                        OnPropertyChanged("Hearts");
-                        OnPropertyChanged("Waypoints");
-                        OnPropertyChanged("PoIs");
-                        OnPropertyChanged("Skills");
-                        OnPropertyChanged("Vistas");
+                        RaisePropertyChanged("Hearts");
+                        RaisePropertyChanged("Waypoints");
+                        RaisePropertyChanged("PoIs");
+                        RaisePropertyChanged("Skills");
+                        RaisePropertyChanged("Vistas");
                     }
-                    OnPropertyChanged("SelectedAreaReference");
+                    RaisePropertyChanged("SelectedAreaReference");
                 }
             }
         }
@@ -94,7 +94,7 @@ namespace Charrmander.ViewModel
                 if (value != _selectedAreaCharacter)
                 {
                     _selectedAreaCharacter = value;
-                    OnPropertyChanged("SelectedAreaCharacter");
+                    RaisePropertyChanged("SelectedAreaCharacter");
                 }
             }
         }
@@ -108,7 +108,7 @@ namespace Charrmander.ViewModel
                 if (value != _isCharacterDetailEnabled)
                 {
                     _isCharacterDetailEnabled = value;
-                    OnPropertyChanged("IsCharacterDetailEnabled");
+                    RaisePropertyChanged("IsCharacterDetailEnabled");
                 }
             }
         }
@@ -130,7 +130,7 @@ namespace Charrmander.ViewModel
                 {
                     SelectedAreaCharacter.Hearts = value;
                     HeartsCompleted = SelectedAreaReference.Hearts == SelectedAreaCharacter.Hearts;
-                    OnPropertyChanged("Hearts");
+                    RaisePropertyChanged("Hearts");
                 }
             }
         }
@@ -151,7 +151,7 @@ namespace Charrmander.ViewModel
                 {
                     SelectedAreaCharacter.Waypoints = value;
                     WaypointsCompleted = SelectedAreaReference.Waypoints == SelectedAreaCharacter.Waypoints;
-                    OnPropertyChanged("Waypoints");
+                    RaisePropertyChanged("Waypoints");
                 }
             }
         }
@@ -172,7 +172,7 @@ namespace Charrmander.ViewModel
                 {
                     SelectedAreaCharacter.PoIs = value;
                     PoIsCompleted = SelectedAreaReference.PoIs == SelectedAreaCharacter.PoIs;
-                    OnPropertyChanged("PoIs");
+                    RaisePropertyChanged("PoIs");
                 }
             }
         }
@@ -193,7 +193,7 @@ namespace Charrmander.ViewModel
                 {
                     SelectedAreaCharacter.Skills = value;
                     SkillsCompleted = SelectedAreaReference.Skills == SelectedAreaCharacter.Skills;
-                    OnPropertyChanged("Skills");
+                    RaisePropertyChanged("Skills");
                 }
             }
         }
@@ -214,7 +214,7 @@ namespace Charrmander.ViewModel
                 {
                     SelectedAreaCharacter.Vistas = value;
                     VistasCompleted = SelectedAreaReference.Vistas == SelectedAreaCharacter.Vistas;
-                    OnPropertyChanged("Vistas");
+                    RaisePropertyChanged("Vistas");
                 }
             }
         }
@@ -227,7 +227,7 @@ namespace Charrmander.ViewModel
                 if (value != _heartsCompleted)
                 {
                     _heartsCompleted = value;
-                    OnPropertyChanged("HeartsCompleted");
+                    RaisePropertyChanged("HeartsCompleted");
                 }
             }
         }
@@ -240,7 +240,7 @@ namespace Charrmander.ViewModel
                 if (value != _waypointsCompleted)
                 {
                     _waypointsCompleted = value;
-                    OnPropertyChanged("WaypointsCompleted");
+                    RaisePropertyChanged("WaypointsCompleted");
                 }
             }
         }
@@ -253,7 +253,7 @@ namespace Charrmander.ViewModel
                 if (value != _poisCompleted)
                 {
                     _poisCompleted = value;
-                    OnPropertyChanged("PoIsCompleted");
+                    RaisePropertyChanged("PoIsCompleted");
                 }
             }
         }
@@ -266,7 +266,7 @@ namespace Charrmander.ViewModel
                 if (value != _skillsCompleted)
                 {
                     _skillsCompleted = value;
-                    OnPropertyChanged("SkillsCompleted");
+                    RaisePropertyChanged("SkillsCompleted");
                 }
             }
         }
@@ -279,7 +279,7 @@ namespace Charrmander.ViewModel
                 if (value != _vistasCompleted)
                 {
                     _vistasCompleted = value;
-                    OnPropertyChanged("VistasCompleted");
+                    RaisePropertyChanged("VistasCompleted");
                 }
             }
         }

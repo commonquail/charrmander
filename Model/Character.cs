@@ -22,7 +22,7 @@ namespace Charrmander.Model
                 if (value != _name)
                 {
                     _name = value;
-                    OnPropertyChanged("Name");
+                    RaisePropertyChanged("Name");
                 }
             }
         }
@@ -35,7 +35,7 @@ namespace Charrmander.Model
                 if (value != _profession)
                 {
                     _profession = value;
-                    OnPropertyChanged("Profession");
+                    RaisePropertyChanged("Profession");
                 }
             }
         }

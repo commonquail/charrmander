@@ -27,7 +27,7 @@ namespace Charrmander.Model
                 if (value != _heartsCompleted && !string.IsNullOrWhiteSpace(value))
                 {
                     _heartsCompleted = value.Trim();
-                    OnPropertyChanged("Hearts");
+                    RaisePropertyChanged("Hearts");
                 }
             }
         }
@@ -41,7 +41,7 @@ namespace Charrmander.Model
                 if (value != _waypointsCompleted && !string.IsNullOrWhiteSpace(value))
                 {
                     _waypointsCompleted = value.Trim();
-                    OnPropertyChanged("Waypoints");
+                    RaisePropertyChanged("Waypoints");
                 }
             }
         }
@@ -54,7 +54,7 @@ namespace Charrmander.Model
                 if (value != _poisCompleted && !string.IsNullOrWhiteSpace(value))
                 {
                     _poisCompleted = value.Trim();
-                    OnPropertyChanged("PoIs");
+                    RaisePropertyChanged("PoIs");
                 }
             }
         }
@@ -67,7 +67,7 @@ namespace Charrmander.Model
                 if (value != _skillsCompleted && !string.IsNullOrWhiteSpace(value))
                 {
                     _skillsCompleted = value.Trim();
-                    OnPropertyChanged("Skills");
+                    RaisePropertyChanged("Skills");
                 }
             }
         }
@@ -80,7 +80,7 @@ namespace Charrmander.Model
                 if (value != _vistasCompleted && !string.IsNullOrWhiteSpace(value))
                 {
                     _vistasCompleted = value.Trim();
-                    OnPropertyChanged("Vistas");
+                    RaisePropertyChanged("Vistas");
                 }
             }
         }
