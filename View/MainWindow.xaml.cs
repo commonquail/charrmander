@@ -10,22 +10,10 @@ using Charrmander.Util;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
 using Charrmander.Model;
+using System.Windows.Controls;
 
 namespace Charrmander.View
 {
-    public class CompletionImageConverter : IMultiValueConverter
-    {
-        public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            return values[0].Equals(values[1]);
-        }
-
-        public object[] ConvertBack(object value, Type[] targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            throw new NotSupportedException();
-        }
-    }
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -148,5 +136,48 @@ namespace Charrmander.View
         {
             e.CanExecute = !_unsavedChanges;
         }
+
+        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+
+        }
+
+        private void txtGotKeyboardFocus(object sender, RoutedEventArgs e)
+        {
+            var tb = sender as TextBox;
+            if (tb != null)
+            {
+                tb.SelectAll();
+            }
+            Debug.WriteLine(sender);
+            Debug.WriteLine(e);
+        }
+
+        private void txtPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var tb = sender as TextBox;
+            if (tb != null && !tb.IsKeyboardFocusWithin)
+            {
+                if (e.OriginalSource.GetType().Name == "TextBoxView")
+                {
+                    e.Handled = true;
+                    tb.Focus();
+                }
+            }
+        }
     }
+
+    public class CompletionImageConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return values[0].Equals(values[1]);
+        }
+
+        public object[] ConvertBack(object value, Type[] targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
+    }
+
 }
