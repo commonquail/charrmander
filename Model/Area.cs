@@ -1,14 +1,17 @@
 ﻿using Charrmander.Util;
+using System.Text.RegularExpressions;
 
 namespace Charrmander.Model
 {
     class Area : AbstractNotifier
     {
-        private string _hearts;
-        private string _waypoints;
-        private string _pois;
-        private string _skills;
-        private string _vistas;
+        private Regex _NaNMatch;
+
+        private string _hearts = string.Empty;
+        private string _waypoints = string.Empty;
+        private string _pois = string.Empty;
+        private string _skills = string.Empty;
+        private string _vistas = string.Empty;
 
         public string Name { get; set; }
 
@@ -45,6 +48,7 @@ namespace Charrmander.Model
         public Area(string name)
         {
             Name = name;
+            _NaNMatch = new Regex("[^0-9]");
         }
 
         private string GetCompletionItem(string item)
@@ -58,9 +62,10 @@ namespace Charrmander.Model
 
         private void SetCompletionItem(ref string item, string value, string property)
         {
-            if (value != item && !string.IsNullOrWhiteSpace(value))
+            value = value.Trim();
+            if (value != item && !_NaNMatch.IsMatch(value))
             {
-                item = value.Trim();
+                item = value;
                 RaisePropertyChanged(property);
             }
         }
