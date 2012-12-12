@@ -1,88 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Diagnostics;
-using System.ComponentModel;
-using Charrmander.Util;
+﻿using Charrmander.Util;
 
 namespace Charrmander.Model
 {
     class Area : AbstractNotifier
     {
-        private string _heartsCompleted;
-        private string _waypointsCompleted;
-        private string _poisCompleted;
-        private string _skillsCompleted;
-        private string _vistasCompleted;
+        private string _hearts;
+        private string _waypoints;
+        private string _pois;
+        private string _skills;
+        private string _vistas;
 
         public string Name { get; set; }
 
         public string Hearts
         {
-            get { return GetCompletionItem(_heartsCompleted); }
-
-            set
-            {
-                if (value != _heartsCompleted && !string.IsNullOrWhiteSpace(value))
-                {
-                    _heartsCompleted = value.Trim();
-                    RaisePropertyChanged("Hearts");
-                }
-            }
+            get { return GetCompletionItem(_hearts); }
+            set { SetCompletionItem(ref _hearts, value, "Hearts"); }
         }
 
         public string Waypoints
         {
-            get { return GetCompletionItem(_waypointsCompleted); }
-
-            set
-            {
-                if (value != _waypointsCompleted && !string.IsNullOrWhiteSpace(value))
-                {
-                    _waypointsCompleted = value.Trim();
-                    RaisePropertyChanged("Waypoints");
-                }
-            }
+            get { return GetCompletionItem(_waypoints); }
+            set { SetCompletionItem(ref _waypoints, value, "Waypoints"); }
         }
 
         public string PoIs
         {
-            get { return GetCompletionItem(_poisCompleted); }
-            set
-            {
-                if (value != _poisCompleted && !string.IsNullOrWhiteSpace(value))
-                {
-                    _poisCompleted = value.Trim();
-                    RaisePropertyChanged("PoIs");
-                }
-            }
+            get { return GetCompletionItem(_pois); }
+            set { SetCompletionItem(ref _pois, value, "PoIs"); }
         }
 
         public string Skills
         {
-            get { return GetCompletionItem(_skillsCompleted); }
-            set
-            {
-                if (value != _skillsCompleted && !string.IsNullOrWhiteSpace(value))
-                {
-                    _skillsCompleted = value.Trim();
-                    RaisePropertyChanged("Skills");
-                }
-            }
+            get { return GetCompletionItem(_skills); }
+            set { SetCompletionItem(ref _skills, value, "Skills"); }
         }
 
         public string Vistas
         {
-            get { return GetCompletionItem(_vistasCompleted); }
-            set
-            {
-                if (value != _vistasCompleted && !string.IsNullOrWhiteSpace(value))
-                {
-                    _vistasCompleted = value.Trim();
-                    RaisePropertyChanged("Vistas");
-                }
-            }
+            get { return GetCompletionItem(_vistas); }
+            set { SetCompletionItem(ref _vistas, value, "Vistas"); }
         }
 
         public Area(string name)
@@ -97,6 +54,15 @@ namespace Charrmander.Model
                 return string.Empty;
             }
             return item;
+        }
+
+        private void SetCompletionItem(ref string item, string value, string property)
+        {
+            if (value != item && !string.IsNullOrWhiteSpace(value))
+            {
+                item = value.Trim();
+                RaisePropertyChanged(property);
+            }
         }
     }
 }
