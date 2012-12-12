@@ -60,7 +60,7 @@
             <ListBox Width="150" ItemsSource="{Binding Path=CharacterList}" DisplayMemberPath="Name"
                      SelectedItem="{Binding SelectedCharacter}">
             </ListBox>
-            <TabControl Name="tabControl1">
+            <TabControl Name="tabControl1" IsEnabled="{Binding IsCharacterDetailEnabled}">
                 <TabItem Header="Personal" Name="personal">
                     <Grid>
                         <Label HorizontalAlignment="Left" VerticalAlignment="Top">Name:</Label>
@@ -74,10 +74,9 @@
                 </TabItem>
                 <TabItem Header="Areas" Name="areas">
                     <DockPanel>
-                        <ListBox IsEnabled="{Binding ShowAreaReferenceList}"
+                        <ListBox SelectedItem="{Binding SelectedAreaReference}"
                             ItemsSource="{Binding Path=AreaReferenceList}"
-                            DisplayMemberPath="Name"
-                            SelectedItem="{Binding SelectedAreaReference}"/>
+                            DisplayMemberPath="Name"/>
                         <Grid xmlns:local="clr-namespace:Charrmander"
                               xmlns:view="clr-namespace:Charrmander.View">
                             <Grid.RowDefinitions>

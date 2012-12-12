@@ -38,7 +38,7 @@ namespace Charrmander.ViewModel
                 if (value != _selectedCharacter)
                 {
                     _selectedCharacter = value;
-                    ShowAreaReferenceList = value != null;
+                    IsCharacterDetailEnabled = value != null;
                     OnPropertyChanged("SelectedCharacter");
                 }
             }
@@ -98,21 +98,21 @@ namespace Charrmander.ViewModel
             }
         }
 
-        #region Area Completion
-        private bool _showAreaReferenceList = false;
-        public bool ShowAreaReferenceList
+        private bool _isCharacterDetailEnabled = false;
+        public bool IsCharacterDetailEnabled
         {
-            get { return _showAreaReferenceList; }
+            get { return _isCharacterDetailEnabled; }
             set
             {
-                if (value != _showAreaReferenceList)
+                if (value != _isCharacterDetailEnabled)
                 {
-                    _showAreaReferenceList = value;
-                    OnPropertyChanged("ShowAreaReferenceList");
+                    _isCharacterDetailEnabled = value;
+                    OnPropertyChanged("IsCharacterDetailEnabled");
                 }
             }
         }
 
+        #region Area Completion
         public string Hearts
         {
             get
