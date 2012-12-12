@@ -57,6 +57,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\Area.cs" />
+    <Compile Include="Util\AbstractNotifier.cs" />
     <Compile Include="ViewModel\ViewModelMain.cs" />
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
