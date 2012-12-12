@@ -6,11 +6,12 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Xml.Linq;
-using Charrmander.Extensions;
+using Charrmander.Util;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
+using Charrmander.Model;
 
-namespace Charrmander
+namespace Charrmander.View
 {
     public class CompletionImageConverter : IMultiValueConverter
     {

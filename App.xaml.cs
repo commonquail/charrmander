@@ -4,6 +4,8 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Windows;
+using Charrmander.ViewModel;
+using Charrmander.View;
 
 namespace Charrmander
 {
@@ -17,7 +19,7 @@ namespace Charrmander
             base.OnStartup(e);
 
             var window = new MainWindow();
-            window.DataContext = new ViewModel();
+            window.DataContext = new ViewModelMain();
             window.Show();
         }
     }

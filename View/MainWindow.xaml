@@ -1,4 +1,4 @@
-﻿<Window x:Class="Charrmander.MainWindow"
+﻿<Window x:Class="Charrmander.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
@@ -10,6 +10,25 @@
         <CommandBinding Command="SaveAs" Executed="Command_SaveAs"/>
         <CommandBinding Command="Close" Executed="Command_Exit"/>
     </Window.CommandBindings>
+    <Window.Resources>
+        <BitmapImage x:Key="IconMenuOpen" UriSource="/Icons/Open.bmp"/>
+        <BitmapImage x:Key="IconMenuSave" UriSource="/Icons/Save.bmp"/>
+
+        <ImageSource x:Key="IconAreaHeart">/Icons/Game/Heart.png</ImageSource>
+        <ImageSource x:Key="IconAreaWaypoint">/Icons/Game/Waypoint.png</ImageSource>
+        <ImageSource x:Key="IconAreaPoI">/Icons/Game/PoI.png</ImageSource>
+        <ImageSource x:Key="IconAreaSkill">/Icons/Game/Skill.png</ImageSource>
+        <ImageSource x:Key="IconAreaVista">/Icons/Game/Vista.png</ImageSource>
+
+        <ImageSource x:Key="IconAreaHeartDone">/Icons/Game/HeartDone.png</ImageSource>
+        <ImageSource x:Key="IconAreaWaypointDone">/Icons/Game/WaypointDone.png</ImageSource>
+        <ImageSource x:Key="IconAreaPoIDone">/Icons/Game/PoIDone.png</ImageSource>
+        <ImageSource x:Key="IconAreaSkillDone">/Icons/Game/SkillDone.png</ImageSource>
+        <ImageSource x:Key="IconAreaVistaDone">/Icons/Game/VistaDone.png</ImageSource>
+
+        <XmlDataProvider x:Key="ProfessionsXml" XPath="Professions/Profession" Source="/Resources/Professions.xml"/>
+        <XmlDataProvider x:Key="AreasXml" XPath="Areas/Area" Source="/Resources/Areas.xml"/>
+    </Window.Resources>
 
     <Grid>
         <Menu Height="23" HorizontalAlignment="Stretch" VerticalAlignment="Top">
@@ -18,13 +37,13 @@
                 <Separator/>
                 <MenuItem Header="_Open" Command="Open">
                     <MenuItem.Icon>
-                        <Image Source="Icons/Open.bmp"/>
+                        <Image Source="{StaticResource IconMenuOpen}"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
                 <MenuItem Header="_Save" Command="Save">
                     <MenuItem.Icon>
-                        <Image Source="Icons/Save.bmp"/>
+                        <Image Source="{StaticResource IconMenuSave}"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="Save As" Command="SaveAs"/>
@@ -43,9 +62,6 @@
             <TabControl Name="tabControl1">
                 <TabItem Header="Personal" Name="personal">
                     <Grid>
-                        <Grid.Resources>
-                            <XmlDataProvider x:Key="ProfessionsXml" XPath="Professions/Profession" Source="Resources/Professions.xml"/>
-                        </Grid.Resources>
                         <Label HorizontalAlignment="Left" VerticalAlignment="Top">Name:</Label>
                         <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="80,0,0,0"
                                  Text="{Binding Path=SelectedCharacter.Name}"/>
@@ -57,14 +73,12 @@
                 </TabItem>
                 <TabItem Header="Areas" Name="areas">
                     <DockPanel>
-                        <DockPanel.Resources>
-                            <XmlDataProvider x:Key="AreasXml" XPath="Areas/Area" Source="Resources/Areas.xml"/>
-                        </DockPanel.Resources>
                         <ListBox IsEnabled="{Binding ShowAreaReferenceList}"
                             ItemsSource="{Binding Path=AreaReferenceList}"
                             DisplayMemberPath="Name"
                             SelectedItem="{Binding SelectedAreaReference}"/>
-                        <Grid xmlns:local="clr-namespace:Charrmander">
+                        <Grid xmlns:local="clr-namespace:Charrmander"
+                              xmlns:view="clr-namespace:Charrmander.View">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5*"/>
                                 <RowDefinition Height="5*"/>
@@ -81,16 +95,16 @@
                                 <Style x:Key="CompletionLabel" TargetType="Label">
                                     <Setter Property="ContentStringFormat" Value="{}/{0,3}"/>
                                 </Style>
-                                <local:CompletionImageConverter x:Key="CompletionImageConverter"/>
+                                <view:CompletionImageConverter x:Key="CompletionImageConverter"/>
                             </Grid.Resources>
 
                             <Image Grid.Column="0" Grid.Row="0">
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="Icons/Game/Heart.png"/>
+                                        <Setter Property="Source" Value="{StaticResource IconAreaHeart}"/>
                                         <Style.Triggers>
                                             <DataTrigger Value="True" Binding="{Binding Path=HeartsCompleted}">
-                                                <Setter Property="Source" Value="Icons/Game/HeartDone.png"/>
+                                                <Setter Property="Source" Value="{StaticResource IconAreaHeartDone}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
@@ -99,10 +113,10 @@
                             <Image Grid.Column="0" Grid.Row="1">
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="Icons/Game/Waypoint.png"/>
+                                        <Setter Property="Source" Value="{StaticResource IconAreaWaypoint}"/>
                                         <Style.Triggers>
                                             <DataTrigger Value="True" Binding="{Binding Path=WaypointsCompleted}">
-                                                <Setter Property="Source" Value="Icons/Game/WaypointDone.png"/>
+                                                <Setter Property="Source" Value="{StaticResource IconAreaWaypointDone}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
@@ -111,10 +125,10 @@
                             <Image Grid.Column="0" Grid.Row="2">
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="Icons/Game/PoI.png"/>
+                                        <Setter Property="Source" Value="{StaticResource IconAreaPoI}"/>
                                         <Style.Triggers>
                                             <DataTrigger Value="True" Binding="{Binding Path=PoIsCompleted}">
-                                                <Setter Property="Source" Value="Icons/Game/PoIDone.png"/>
+                                                <Setter Property="Source" Value="{StaticResource IconAreaPoIDone}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
@@ -123,10 +137,10 @@
                             <Image Grid.Column="0" Grid.Row="3">
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="Icons/Game/Skill.png"/>
+                                        <Setter Property="Source" Value="{StaticResource IconAreaSkill}"/>
                                         <Style.Triggers>
                                             <DataTrigger Value="True" Binding="{Binding Path=SkillsCompleted}">
-                                                <Setter Property="Source" Value="Icons/Game/SkillDone.png"/>
+                                                <Setter Property="Source" Value="{StaticResource IconAreaSkillDone}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
@@ -135,10 +149,10 @@
                             <Image Grid.Column="0" Grid.Row="4">
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="Icons/Game/Vista.png"/>
+                                        <Setter Property="Source" Value="{StaticResource IconAreaVista}"/>
                                         <Style.Triggers>
                                             <DataTrigger Value="True" Binding="{Binding Path=VistasCompleted}">
-                                                <Setter Property="Source" Value="Icons/Game/VistaDone.png"/>
+                                                <Setter Property="Source" Value="{StaticResource IconAreaVistaDone}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>

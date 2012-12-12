@@ -8,10 +8,11 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Xml;
 using System.Xml.Linq;
+using Charrmander.Model;
 
-namespace Charrmander
+namespace Charrmander.ViewModel
 {
-    class ViewModel : INotifyPropertyChanged
+    class ViewModelMain : INotifyPropertyChanged
     {
         private Character _selectedCharacter;
 
@@ -283,7 +284,7 @@ namespace Charrmander
         }
         #endregion // Area Completion
 
-        public ViewModel()
+        public ViewModelMain()
         {
             this.CharacterList = new ObservableCollection<Character>();
             CharacterList.Add(new Character() { Name = "Bob", Profession = "Necromancer" });

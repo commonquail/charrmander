@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 
-namespace Charrmander
+namespace Charrmander.Model
 {
     class Character : INotifyPropertyChanged
     {
