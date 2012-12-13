@@ -4,13 +4,11 @@
         Title="MainWindow" Height="350" Width="525"
         Icon="/Icons/Game/MainTitle.png">
 
-    <Window.CommandBindings>
-        <CommandBinding Command="New" Executed="Command_New"/>
-        <CommandBinding Command="Open" Executed="Command_Open"/>
-        <CommandBinding Command="Save" Executed="Command_Save" CanExecute="CanExecute_Save"/>
-        <CommandBinding Command="SaveAs" Executed="Command_SaveAs"/>
-        <CommandBinding Command="Close" Executed="Command_Exit"/>
-    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Gesture="Ctrl+N" Command="{Binding CommandNew}"/>
+        <KeyBinding Gesture="Ctrl+O" Command="{Binding CommandOpen}"/>
+        <KeyBinding Gesture="Ctrl+S" Command="{Binding CommandSave}"/>
+    </Window.InputBindings>
     <Window.Resources>
         <BitmapImage x:Key="IconMenuOpen" UriSource="/Icons/Open.bmp"/>
         <BitmapImage x:Key="IconMenuSave" UriSource="/Icons/Save.bmp"/>
@@ -34,25 +32,25 @@
     <Grid>
         <Menu Height="23" HorizontalAlignment="Stretch" VerticalAlignment="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_New Character" Command="New"/>
+                <MenuItem Header="_New Character" Command="{Binding Path=CommandNew}" InputGestureText="Ctrl+N"/>
                 <Separator/>
-                <MenuItem Header="_Open" Command="Open">
+                <MenuItem Header="_Open" Command="{Binding Path=CommandOpen}" InputGestureText="Ctrl+O">
                     <MenuItem.Icon>
                         <Image Source="{StaticResource IconMenuOpen}"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
-                <MenuItem Header="_Save" Command="Save">
+                <MenuItem Header="_Save" Command="{Binding Path=CommandSave}" InputGestureText="Ctrl+S">
                     <MenuItem.Icon>
                         <Image Source="{StaticResource IconMenuSave}"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Save As" Command="SaveAs"/>
+                <MenuItem Header="Save As" Command="{Binding Path=CommandSaveAs}"/>
                 <Separator/>
-                <MenuItem Header="_Exit" Command="Close"/>
+                <MenuItem Header="_Exit" Command="{Binding Path=CommandExit}" InputGestureText="Alt+F4"/>
             </MenuItem>
             <MenuItem Header="_About">
-                <MenuItem Header="Check for updates" Click="Click_CheckUpdates"/>
+                <MenuItem Header="Check for updates" Command="{Binding Path=CommandCheckUpdate}"/>
             </MenuItem>
         </Menu>
 

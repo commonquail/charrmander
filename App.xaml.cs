@@ -19,7 +19,12 @@ namespace Charrmander
             base.OnStartup(e);
 
             var window = new MainWindow();
-            window.DataContext = new ViewModelMain();
+            var viewModel = new ViewModelMain();
+            viewModel.RequestClose += delegate
+            {
+                window.Close();
+            };
+            window.DataContext = viewModel;
             window.Show();
         }
     }

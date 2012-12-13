@@ -21,14 +21,14 @@ namespace Charrmander.View
     {
         private ObservableCollection<Character> _characters = new ObservableCollection<Character>();
 
-        private BackgroundWorker _bgUpdater = new BackgroundWorker();
+//        private BackgroundWorker _bgUpdater = new BackgroundWorker();
 
-        private bool _unsavedChanges = false;
+//        private bool _unsavedChanges = false;
 
         public MainWindow()
         {
             InitializeComponent();
-
+            /*
             _bgUpdater.DoWork += UpdateWorker_DoWork;
             _bgUpdater.RunWorkerCompleted += UpdateWorker_RunWorkerCompleted;
             /*
@@ -37,6 +37,7 @@ namespace Charrmander.View
              * */
         }
 
+        /*
         private void Click_CheckUpdates(object sender, RoutedEventArgs e)
         {
             if (!_bgUpdater.IsBusy)
@@ -141,7 +142,7 @@ namespace Charrmander.View
         {
 
         }
-
+        */
         private void txtGotKeyboardFocus(object sender, RoutedEventArgs e)
         {
             var tb = sender as TextBox;
