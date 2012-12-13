@@ -122,11 +122,11 @@ namespace Charrmander.ViewModel
                             SelectedCharacter.Areas.Add(a);
                             SelectedAreaCharacter = a;
                         }
-                        HeartsCompleted = SelectedAreaReference.Hearts == SelectedAreaCharacter.Hearts;
-                        WaypointsCompleted = SelectedAreaReference.Waypoints == SelectedAreaCharacter.Waypoints;
-                        PoIsCompleted = SelectedAreaReference.PoIs == SelectedAreaCharacter.PoIs;
-                        SkillsCompleted = SelectedAreaReference.Skills == SelectedAreaCharacter.Skills;
-                        VistasCompleted = SelectedAreaReference.Vistas == SelectedAreaCharacter.Vistas;
+                        IsHeartsCompleted = SelectedAreaReference.Hearts == SelectedAreaCharacter.Hearts;
+                        IsWaypointsCompleted = SelectedAreaReference.Waypoints == SelectedAreaCharacter.Waypoints;
+                        IsPoIsCompleted = SelectedAreaReference.PoIs == SelectedAreaCharacter.PoIs;
+                        IsSkillsCompleted = SelectedAreaReference.Skills == SelectedAreaCharacter.Skills;
+                        IsVistasCompleted = SelectedAreaReference.Vistas == SelectedAreaCharacter.Vistas;
                         RaisePropertyChanged("Hearts");
                         RaisePropertyChanged("Waypoints");
                         RaisePropertyChanged("PoIs");
@@ -190,7 +190,7 @@ namespace Charrmander.ViewModel
                 if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Hearts && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Hearts = value;
-                    HeartsCompleted = SelectedAreaReference.Hearts == SelectedAreaCharacter.Hearts;
+                    IsHeartsCompleted = SelectedAreaReference.Hearts == SelectedAreaCharacter.Hearts;
                     RaisePropertyChanged("Hearts");
                 }
             }
@@ -214,7 +214,7 @@ namespace Charrmander.ViewModel
                 if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Waypoints && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Waypoints = value;
-                    WaypointsCompleted = SelectedAreaReference.Waypoints == SelectedAreaCharacter.Waypoints;
+                    IsWaypointsCompleted = SelectedAreaReference.Waypoints == SelectedAreaCharacter.Waypoints;
                     RaisePropertyChanged("Waypoints");
                 }
             }
@@ -238,7 +238,7 @@ namespace Charrmander.ViewModel
                 if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.PoIs && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.PoIs = value;
-                    PoIsCompleted = SelectedAreaReference.PoIs == SelectedAreaCharacter.PoIs;
+                    IsPoIsCompleted = SelectedAreaReference.PoIs == SelectedAreaCharacter.PoIs;
                     RaisePropertyChanged("PoIs");
                 }
             }
@@ -262,7 +262,7 @@ namespace Charrmander.ViewModel
                 if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Skills && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Skills = value;
-                    SkillsCompleted = SelectedAreaReference.Skills == SelectedAreaCharacter.Skills;
+                    IsSkillsCompleted = SelectedAreaReference.Skills == SelectedAreaCharacter.Skills;
                     RaisePropertyChanged("Skills");
                 }
             }
@@ -286,7 +286,7 @@ namespace Charrmander.ViewModel
                 if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Vistas && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Vistas = value;
-                    VistasCompleted = SelectedAreaReference.Vistas == SelectedAreaCharacter.Vistas;
+                    IsVistasCompleted = SelectedAreaReference.Vistas == SelectedAreaCharacter.Vistas;
                     RaisePropertyChanged("Vistas");
                 }
             }
@@ -295,7 +295,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// <c>True</c> if <see cref="SelectedCharacter"/> has completed all hearts in <see cref="SelectedArea"/>.
         /// </summary>
-        public bool HeartsCompleted
+        public bool IsHeartsCompleted
         {
             get { return _heartsCompleted; }
             set
@@ -303,7 +303,7 @@ namespace Charrmander.ViewModel
                 if (value != _heartsCompleted)
                 {
                     _heartsCompleted = value;
-                    RaisePropertyChanged("HeartsCompleted");
+                    RaisePropertyChanged("IsHeartsCompleted");
                 }
             }
         }
@@ -311,7 +311,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// <c>True</c> if <see cref="SelectedCharacter"/> has completed all waypoints in <see cref="SelectedArea"/>.
         /// </summary>
-        public bool WaypointsCompleted
+        public bool IsWaypointsCompleted
         {
             get { return _waypointsCompleted; }
             set
@@ -319,7 +319,7 @@ namespace Charrmander.ViewModel
                 if (value != _waypointsCompleted)
                 {
                     _waypointsCompleted = value;
-                    RaisePropertyChanged("WaypointsCompleted");
+                    RaisePropertyChanged("IsWaypointsCompleted");
                 }
             }
         }
@@ -327,7 +327,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// <c>True</c> if <see cref="SelectedCharacter"/> has completed all PoIs in <see cref="SelectedArea"/>.
         /// </summary>
-        public bool PoIsCompleted
+        public bool IsPoIsCompleted
         {
             get { return _poisCompleted; }
             set
@@ -335,7 +335,7 @@ namespace Charrmander.ViewModel
                 if (value != _poisCompleted)
                 {
                     _poisCompleted = value;
-                    RaisePropertyChanged("PoIsCompleted");
+                    RaisePropertyChanged("IsPoIsCompleted");
                 }
             }
         }
@@ -343,7 +343,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// <c>True</c> if <see cref="SelectedCharacter"/> has completed all skills in <see cref="SelectedArea"/>.
         /// </summary>
-        public bool SkillsCompleted
+        public bool IsSkillsCompleted
         {
             get { return _skillsCompleted; }
             set
@@ -351,7 +351,7 @@ namespace Charrmander.ViewModel
                 if (value != _skillsCompleted)
                 {
                     _skillsCompleted = value;
-                    RaisePropertyChanged("SkillsCompleted");
+                    RaisePropertyChanged("IsSkillsCompleted");
                 }
             }
         }
@@ -359,7 +359,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// <c>True</c> if <see cref="SelectedCharacter"/> has completed all vistas in <see cref="SelectedArea"/>.
         /// </summary>
-        public bool VistasCompleted
+        public bool IsVistasCompleted
         {
             get { return _vistasCompleted; }
             set
@@ -367,7 +367,7 @@ namespace Charrmander.ViewModel
                 if (value != _vistasCompleted)
                 {
                     _vistasCompleted = value;
-                    RaisePropertyChanged("VistasCompleted");
+                    RaisePropertyChanged("IsVistasCompleted");
                 }
             }
         }

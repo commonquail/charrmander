@@ -104,7 +104,7 @@
                                     <Style TargetType="{x:Type Image}">
                                         <Setter Property="Source" Value="{StaticResource IconAreaHeart}"/>
                                         <Style.Triggers>
-                                            <DataTrigger Value="True" Binding="{Binding Path=HeartsCompleted}">
+                                            <DataTrigger Value="True" Binding="{Binding Path=IsHeartsCompleted}">
                                                 <Setter Property="Source" Value="{StaticResource IconAreaHeartDone}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -116,7 +116,7 @@
                                     <Style TargetType="{x:Type Image}">
                                         <Setter Property="Source" Value="{StaticResource IconAreaWaypoint}"/>
                                         <Style.Triggers>
-                                            <DataTrigger Value="True" Binding="{Binding Path=WaypointsCompleted}">
+                                            <DataTrigger Value="True" Binding="{Binding Path=IsWaypointsCompleted}">
                                                 <Setter Property="Source" Value="{StaticResource IconAreaWaypointDone}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -128,7 +128,7 @@
                                     <Style TargetType="{x:Type Image}">
                                         <Setter Property="Source" Value="{StaticResource IconAreaPoI}"/>
                                         <Style.Triggers>
-                                            <DataTrigger Value="True" Binding="{Binding Path=PoIsCompleted}">
+                                            <DataTrigger Value="True" Binding="{Binding Path=IsPoIsCompleted}">
                                                 <Setter Property="Source" Value="{StaticResource IconAreaPoIDone}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -140,7 +140,7 @@
                                     <Style TargetType="{x:Type Image}">
                                         <Setter Property="Source" Value="{StaticResource IconAreaSkill}"/>
                                         <Style.Triggers>
-                                            <DataTrigger Value="True" Binding="{Binding Path=SkillsCompleted}">
+                                            <DataTrigger Value="True" Binding="{Binding Path=IsSkillsCompleted}">
                                                 <Setter Property="Source" Value="{StaticResource IconAreaSkillDone}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -152,7 +152,7 @@
                                     <Style TargetType="{x:Type Image}">
                                         <Setter Property="Source" Value="{StaticResource IconAreaVista}"/>
                                         <Style.Triggers>
-                                            <DataTrigger Value="True" Binding="{Binding Path=VistasCompleted}">
+                                            <DataTrigger Value="True" Binding="{Binding Path=IsVistasCompleted}">
                                                 <Setter Property="Source" Value="{StaticResource IconAreaVistaDone}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
