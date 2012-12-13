@@ -114,5 +114,14 @@ namespace Charrmander.Properties {
                 return ResourceManager.GetString("msgUpdateCheckFailedTitle", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://charr.org.
+        /// </summary>
+        internal static string xNamespace {
+            get {
+                return ResourceManager.GetString("xNamespace", resourceCulture);
+            }
+        }
     }
 }

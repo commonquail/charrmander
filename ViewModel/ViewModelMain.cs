@@ -8,6 +8,8 @@ using System.Xml;
 using System.Xml.Linq;
 using Charrmander.Model;
 using Charrmander.Util;
+using Microsoft.Win32;
+using System.IO;
 
 namespace Charrmander.ViewModel
 {
@@ -469,11 +471,54 @@ namespace Charrmander.ViewModel
             return !_unsavedChanges;
         }
 
+        private FileInfo _currentFile = null;
+
         private void SaveAs()
         {
             Debug.WriteLine("SaveAs");
+            Debug.WriteLine(SelectedCharacter.ToXML());
+            SaveFileDialog save = new SaveFileDialog();
+
+            if (_currentFile == null)
+            {
+                save.FileName = "GW2 Character List";
+            }
+            else
+            {
+                save.FileName = _currentFile.Name;
+            }
+            save.DefaultExt = ".charr";
+            save.Title = "Save GW2 Character List";
+            save.Filter += "Charrmander character file (.charr)|.charr";
+            if (save.ShowDialog().Value)
+            {
+                DoSave(save.FileName);
+            }
+
         }
 
+        private void DoSave(string fileName)
+        {
+            XmlWriterSettings xws = new XmlWriterSettings();
+            xws.OmitXmlDeclaration = false;
+            xws.Indent = true;
+
+            try
+            {
+                using (XmlWriter xw = XmlWriter.Create(fileName, xws))
+                {
+                    SelectedCharacter.ToXML().Save(xw);
+                    _currentFile = new FileInfo(fileName);
+//                    UpdateTitle();
+                    _unsavedChanges = false;
+                }
+            }
+            catch (Exception e)
+            {
+//                txtInfo.Text = String.Format(Properties.Resources.infErrSaveFailed, fileName);
+                Debug.WriteLine("Error saving: " + e.Message);
+            }
+        }
         private void OnRequestClose()
         {
             if (_unsavedChanges && MessageBox.Show(Properties.Resources.msgUnsavedExitBody,

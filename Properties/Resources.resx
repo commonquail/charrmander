@@ -136,4 +136,7 @@
   <data name="msgUpdateCheckFailedTitle" xml:space="preserve">
     <value>Update Check Failed</value>
   </data>
+  <data name="xNamespace" xml:space="preserve">
+    <value>http://charr.org</value>
+  </data>
 </root>
