@@ -61,12 +61,25 @@ namespace Charrmander.ViewModel
             _bgUpdater.RunWorkerCompleted += UpdateWorker_RunWorkerCompleted;
         }
 
+        /// <summary>
+        /// Perform this event when the view wishes to close. For instance, dispose the view.
+        /// </summary>
         public event EventHandler RequestClose;
 
+        /// <summary>
+        /// An <see cref="ObservableCollection"/> of <see cref="Character"/> objects loaded by the application.
+        /// </summary>
         public ObservableCollection<Character> CharacterList { get; set; }
 
+        /// <summary>
+        /// The master list of areas, generated at runtime from an embedded XML file.
+        /// Compare <see cref="Character.Areas"/> against this.
+        /// </summary>
         public ObservableCollection<Area> AreaReferenceList { get; set; }
 
+        /// <summary>
+        /// The <see cref="Character"/> in <see cref="CharacterList"/> that is currently selected.
+        /// </summary>
         public Character SelectedCharacter
         {
             get { return _selectedCharacter; }
@@ -81,6 +94,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// The <see cref="Area"/> in <see cref="AreaReferenceList"/> that is currently selected.
+        /// </summary>
         public Area SelectedAreaReference
         {
             get { return _selectedAreaReference; }
@@ -122,6 +138,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// The <see cref="Area"/> in <see cref="SelectedCharacter.Areas"/> that is currently selected.
+        /// </summary>
         public Area SelectedAreaCharacter
         {
             get { return _selectedAreaCharacter; }
@@ -135,6 +154,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// Returns <c>True</c> if the application should allow editing of character details.
+        /// </summary>
         public bool IsCharacterDetailEnabled
         {
             get { return _isCharacterDetailEnabled; }
@@ -149,6 +171,10 @@ namespace Charrmander.ViewModel
         }
 
         #region Area Completion
+
+        /// <summary>
+        /// The number of hearts completed by <see cref="SelectedCharacter"/>.
+        /// </summary>
         public string Hearts
         {
             get
@@ -170,6 +196,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// The number of waypoints completed by <see cref="SelectedCharacter"/>.
+        /// </summary>
         public string Waypoints
         {
             get
@@ -191,6 +220,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// The number of PoIs completed by <see cref="SelectedCharacter"/>.
+        /// </summary>
         public string PoIs
         {
             get
@@ -212,6 +244,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// The number of skills completed by <see cref="SelectedCharacter"/>.
+        /// </summary>
         public string Skills
         {
             get
@@ -233,6 +268,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// The number of vistas completed by <see cref="SelectedCharacter"/>.
+        /// </summary>
         public string Vistas
         {
             get
@@ -254,6 +292,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// <c>True</c> if <see cref="SelectedCharacter"/> has completed all hearts in <see cref="SelectedArea"/>.
+        /// </summary>
         public bool HeartsCompleted
         {
             get { return _heartsCompleted; }
@@ -267,6 +308,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// <c>True</c> if <see cref="SelectedCharacter"/> has completed all waypoints in <see cref="SelectedArea"/>.
+        /// </summary>
         public bool WaypointsCompleted
         {
             get { return _waypointsCompleted; }
@@ -280,6 +324,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// <c>True</c> if <see cref="SelectedCharacter"/> has completed all PoIs in <see cref="SelectedArea"/>.
+        /// </summary>
         public bool PoIsCompleted
         {
             get { return _poisCompleted; }
@@ -293,6 +340,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// <c>True</c> if <see cref="SelectedCharacter"/> has completed all skills in <see cref="SelectedArea"/>.
+        /// </summary>
         public bool SkillsCompleted
         {
             get { return _skillsCompleted; }
@@ -306,6 +356,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// <c>True</c> if <see cref="SelectedCharacter"/> has completed all vistas in <see cref="SelectedArea"/>.
+        /// </summary>
         public bool VistasCompleted
         {
             get { return _vistasCompleted; }
