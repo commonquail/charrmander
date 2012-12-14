@@ -31,11 +31,17 @@
   <xs:complexType name="AreaType">
     <xs:all>
       <xs:element name="Name" type="xs:string"/>
-      <xs:element name="Hearts" type="xs:string"/>
-      <xs:element name="Waypoints" type="xs:string"/>
-      <xs:element name="PoIs" type="xs:string"/>
-      <xs:element name="Skills" type="xs:string"/>
-      <xs:element name="Vistas" type="xs:string"/>
+      <xs:element name="Completion">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Hearts" type="xs:string"/>
+            <xs:element name="Waypoints" type="xs:string"/>
+            <xs:element name="PoIs" type="xs:string"/>
+            <xs:element name="Skills" type="xs:string"/>
+            <xs:element name="Vistas" type="xs:string"/>
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
     </xs:all>
   </xs:complexType>
 

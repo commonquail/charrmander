@@ -569,11 +569,11 @@ namespace Charrmander.ViewModel
                                 {
                                     Area a = new Area(area.Element(CharrElement.Charr + "Name").Value)
                                     {
-                                        Hearts = area.Element(CharrElement.Charr + "Hearts").Value,
-                                        Waypoints = area.Element(CharrElement.Charr + "Waypoints").Value,
-                                        PoIs = area.Element(CharrElement.Charr + "PoIs").Value,
-                                        Skills = area.Element(CharrElement.Charr + "Skills").Value,
-                                        Vistas = area.Element(CharrElement.Charr + "Vistas").Value
+                                        Hearts = area.Element(CharrElement.Charr + "Completion").Element(CharrElement.Charr + "Hearts").Value,
+                                        Waypoints = area.Element(CharrElement.Charr + "Completion").Element(CharrElement.Charr + "Waypoints").Value,
+                                        PoIs = area.Element(CharrElement.Charr + "Completion").Element(CharrElement.Charr + "PoIs").Value,
+                                        Skills = area.Element(CharrElement.Charr + "Completion").Element(CharrElement.Charr + "Skills").Value,
+                                        Vistas = area.Element(CharrElement.Charr + "Completion").Element(CharrElement.Charr + "Vistas").Value
                                     };
                                     a.PropertyChanged += MarkFileDirty;
                                     c.Areas.Add(a);

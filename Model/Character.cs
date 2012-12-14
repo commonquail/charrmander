@@ -61,11 +61,13 @@ namespace Charrmander.Model
                             from a in Areas
                             select new CharrElement("Area",
                                 new CharrElement("Name", a.Name),
-                                new CharrElement("Hearts", a.Hearts),
-                                new CharrElement("Waypoints", a.Waypoints),
-                                new CharrElement("PoIs", a.PoIs),
-                                new CharrElement("Skills", a.Skills),
-                                new CharrElement("Vistas", a.Vistas)
+                                new CharrElement("Completion",
+                                    new CharrElement("Hearts", a.Hearts),
+                                    new CharrElement("Waypoints", a.Waypoints),
+                                    new CharrElement("PoIs", a.PoIs),
+                                    new CharrElement("Skills", a.Skills),
+                                    new CharrElement("Vistas", a.Vistas)
+                                )
                             )
                         ) : null)
                     );
