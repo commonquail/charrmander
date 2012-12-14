@@ -150,8 +150,6 @@ namespace Charrmander.View
             {
                 tb.SelectAll();
             }
-            Debug.WriteLine(sender);
-            Debug.WriteLine(e);
         }
 
         private void txtPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
