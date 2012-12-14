@@ -482,7 +482,7 @@ namespace Charrmander.ViewModel
             }
 
             OpenFileDialog open = new OpenFileDialog();
-            open.Filter += "Charrmander Character File (.charr)|.charr";
+            open.Filter += "Charrmander Character File (.charr)|*.charr";
             if (open.ShowDialog().Value)
             {
                 if (_currentFile == null ||
@@ -591,7 +591,7 @@ namespace Charrmander.ViewModel
             }
             save.DefaultExt = ".charr";
             save.Title = "Save GW2 Character List";
-            save.Filter += "Charrmander Character File (.charr)|.charr";
+            save.Filter += "Charrmander Character File (.charr)|*.charr";
             if (save.ShowDialog().Value)
             {
                 DoSave(save.FileName);
