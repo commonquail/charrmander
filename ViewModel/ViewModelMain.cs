@@ -24,8 +24,11 @@ namespace Charrmander.ViewModel
         private RelayCommand _cmdSaveAs;
         private RelayCommand _cmdClose;
         private RelayCommand _cmdCheckUpdate;
+        private RelayCommand _cmdDeleteCharacter;
 
         private BackgroundWorker _bgUpdater = new BackgroundWorker();
+
+        private FileInfo _currentFile = null;
 
         private bool _unsavedChanges = false;
 
@@ -44,7 +47,6 @@ namespace Charrmander.ViewModel
 
         public ViewModelMain()
         {
-            this.CharacterList = new ObservableCollection<Character>();
             CharacterList.Add(new Character() { Name = "Bob", Profession = "Necromancer" });
 
             AreaReferenceList = new ObservableCollection<Area>();
@@ -77,12 +79,23 @@ namespace Charrmander.ViewModel
         /// </summary>
         public ObservableCollection<Character> CharacterList
         {
-            get { return _characterList; }
+            get
+            {
+                if (_characterList == null)
+                {
+                    CharacterList = new ObservableCollection<Character>();
+                }
+                return _characterList;
+            }
             set
             {
                 if (value != _characterList)
                 {
                     _characterList = value;
+                    _characterList.CollectionChanged += (o, err) =>
+                    {
+                        _unsavedChanges = true;
+                    };
                     RaisePropertyChanged("CharacterList");
                 }
             }
@@ -462,6 +475,20 @@ namespace Charrmander.ViewModel
                 return _cmdCheckUpdate;
             }
         }
+
+        public ICommand CommandDeleteCharacter
+        {
+            get
+            {
+                if (_cmdDeleteCharacter == null)
+                {
+                    _cmdDeleteCharacter = new RelayCommand(
+                        param => this.DeleteCharacter(),
+                        param => this.CanDeleteCharacter());
+                }
+                return _cmdDeleteCharacter;
+            }
+        }
         #endregion
 
         private void New()
@@ -574,8 +601,6 @@ namespace Charrmander.ViewModel
             return !_unsavedChanges;
         }
 
-        private FileInfo _currentFile = null;
-
         private void SaveAs()
         {
             Debug.WriteLine("SaveAs");
@@ -628,6 +653,7 @@ namespace Charrmander.ViewModel
                 Debug.WriteLine("Error saving: " + e.Message);
             }
         }
+
         private void OnRequestClose()
         {
             if (_unsavedChanges && MessageBox.Show(Properties.Resources.msgUnsavedExitBody,
@@ -652,6 +678,19 @@ namespace Charrmander.ViewModel
             }
         }
 
+        private void DeleteCharacter()
+        {
+            Character c = SelectedCharacter;
+            if (c != null)
+            {
+                CharacterList.Remove(c);
+            }
+        }
+
+        private bool CanDeleteCharacter()
+        {
+            return IsCharacterDetailEnabled;
+        }
 
         private void UpdateWorker_DoWork(object sender, DoWorkEventArgs e)
         {

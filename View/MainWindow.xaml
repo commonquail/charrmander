@@ -57,6 +57,13 @@
         <DockPanel Margin="0,23">
             <ListBox Width="150" ItemsSource="{Binding Path=CharacterList}" DisplayMemberPath="Name"
                      SelectedItem="{Binding SelectedCharacter}">
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="_New Character" Command="{Binding Path=CommandNew}" InputGestureText="Ctrl+N"/>
+                        <MenuItem Header="Delete Selected" Command="{Binding Path=CommandDeleteCharacter}"
+                                  IsEnabled="{Binding Path=IsCharacterDetailEnabled}"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
             </ListBox>
             <TabControl Name="tabControl1" IsEnabled="{Binding IsCharacterDetailEnabled}">
                 <TabItem Header="Personal" Name="personal">
