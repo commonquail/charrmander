@@ -75,6 +75,22 @@ namespace Charrmander.ViewModel
         public event EventHandler RequestClose;
 
         /// <summary>
+        /// Returns <c>True</c> if there are unsaved changes in <see cref="CharacterList"/>.
+        /// </summary>
+        public bool UnsavedChanges
+        {
+            get { return _unsavedChanges; }
+            set
+            {
+                if (value != _unsavedChanges)
+                {
+                    _unsavedChanges = value;
+                    RaisePropertyChanged("UnsavedChanges");
+                }
+            }
+        }
+
+        /// <summary>
         /// An <see cref="ObservableCollection"/> of <see cref="Character"/> objects loaded by the application.
         /// </summary>
         public ObservableCollection<Character> CharacterList
@@ -92,10 +108,7 @@ namespace Charrmander.ViewModel
                 if (value != _characterList)
                 {
                     _characterList = value;
-                    _characterList.CollectionChanged += (o, err) =>
-                    {
-                        _unsavedChanges = true;
-                    };
+                    _characterList.CollectionChanged += MarkFileDirty;
                     RaisePropertyChanged("CharacterList");
                 }
             }
@@ -118,6 +131,10 @@ namespace Charrmander.ViewModel
                 if (value != _selectedCharacter)
                 {
                     _selectedCharacter = value;
+                    if (_selectedCharacter != null)
+                    {
+                        _selectedCharacter.PropertyChanged += MarkFileDirty;
+                    }
                     IsCharacterDetailEnabled = value != null;
                     RaisePropertyChanged("SelectedCharacter");
                 }
@@ -149,6 +166,7 @@ namespace Charrmander.ViewModel
                             || SelectedAreaCharacter.Name != SelectedAreaReference.Name)
                         {
                             var a = new Area(SelectedAreaReference.Name);
+                            a.PropertyChanged += MarkFileDirty;
                             SelectedCharacter.Areas.Add(a);
                             SelectedAreaCharacter = a;
                         }
@@ -500,7 +518,7 @@ namespace Charrmander.ViewModel
         private void Open()
         {
             Debug.WriteLine("Open");
-            if (_unsavedChanges && MessageBox.Show("Unsaved changes. Discard and open?",
+            if (UnsavedChanges && MessageBox.Show("Unsaved changes. Discard and open?",
                     "Discard changes and open?",
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Warning) == MessageBoxResult.No)
@@ -557,6 +575,7 @@ namespace Charrmander.ViewModel
                                         Skills = area.Element(CharrElement.Charr + "Skills").Value,
                                         Vistas = area.Element(CharrElement.Charr + "Vistas").Value
                                     };
+                                    a.PropertyChanged += MarkFileDirty;
                                     c.Areas.Add(a);
                                 }
                             }
@@ -567,7 +586,7 @@ namespace Charrmander.ViewModel
                             newCharacterList.Add(c);
                         }
                         CharacterList = newCharacterList;
-                        _unsavedChanges = false;
+                        UnsavedChanges = false;
                         //txtInfo.Text = "Opened " + open.FileName;
                         _currentFile = new FileInfo(open.FileName);
                         //SetDataContexts();
@@ -598,7 +617,7 @@ namespace Charrmander.ViewModel
         private bool CanSave()
         {
             Debug.WriteLine("CanSave from VM");
-            return !_unsavedChanges;
+            return !UnsavedChanges;
         }
 
         private void SaveAs()
@@ -621,7 +640,6 @@ namespace Charrmander.ViewModel
             {
                 DoSave(save.FileName);
             }
-
         }
 
         private void DoSave(string fileName)
@@ -644,7 +662,7 @@ namespace Charrmander.ViewModel
                     //                    SelectedCharacter.ToXML().Save(xw);
                     _currentFile = new FileInfo(fileName);
                     //                    UpdateTitle();
-                    _unsavedChanges = false;
+                    UnsavedChanges = false;
                 }
             }
             catch (Exception e)
@@ -656,7 +674,7 @@ namespace Charrmander.ViewModel
 
         private void OnRequestClose()
         {
-            if (_unsavedChanges && MessageBox.Show(Properties.Resources.msgUnsavedExitBody,
+            if (UnsavedChanges && MessageBox.Show(Properties.Resources.msgUnsavedExitBody,
                 Properties.Resources.msgUnsavedExitTitle,
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Warning) == MessageBoxResult.No)
@@ -690,6 +708,11 @@ namespace Charrmander.ViewModel
         private bool CanDeleteCharacter()
         {
             return IsCharacterDetailEnabled;
+        }
+
+        private void MarkFileDirty(object o, EventArgs err)
+        {
+            UnsavedChanges = true;
         }
 
         private void UpdateWorker_DoWork(object sender, DoWorkEventArgs e)
