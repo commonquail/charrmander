@@ -58,6 +58,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\Area.cs" />
     <Compile Include="Util\AbstractNotifier.cs" />
+    <Compile Include="Util\CharrElement.cs" />
     <Compile Include="Util\RelayCommand.cs" />
     <Compile Include="ViewModel\ViewModelMain.cs" />
     <Page Include="View\MainWindow.xaml">
@@ -99,6 +100,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\charr.xsd">
+      <SubType>Designer</SubType>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Professions.xml" />

@@ -10,6 +10,9 @@ using Charrmander.Model;
 using Charrmander.Util;
 using Microsoft.Win32;
 using System.IO;
+using System.Xml.Schema;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Charrmander.ViewModel
 {
@@ -26,6 +29,7 @@ namespace Charrmander.ViewModel
 
         private bool _unsavedChanges = false;
 
+        private ObservableCollection<Character> _characterList;
         private Character _selectedCharacter;
         private Area _selectedAreaReference;
         private Area _selectedAreaCharacter;
@@ -71,7 +75,18 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// An <see cref="ObservableCollection"/> of <see cref="Character"/> objects loaded by the application.
         /// </summary>
-        public ObservableCollection<Character> CharacterList { get; set; }
+        public ObservableCollection<Character> CharacterList
+        {
+            get { return _characterList; }
+            set
+            {
+                if (value != _characterList)
+                {
+                    _characterList = value;
+                    RaisePropertyChanged("CharacterList");
+                }
+            }
+        }
 
         /// <summary>
         /// The master list of areas, generated at runtime from an embedded XML file.
@@ -447,7 +462,7 @@ namespace Charrmander.ViewModel
                 return _cmdCheckUpdate;
             }
         }
-#endregion
+        #endregion
 
         private void New()
         {
@@ -458,6 +473,94 @@ namespace Charrmander.ViewModel
         private void Open()
         {
             Debug.WriteLine("Open");
+            if (_unsavedChanges && MessageBox.Show("Unsaved changes. Discard and open?",
+                    "Discard changes and open?",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                return;
+            }
+
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter += "Charrmander Character File (.charr)|.charr";
+            if (open.ShowDialog().Value)
+            {
+                if (_currentFile == null ||
+                    _currentFile.FullName != open.FileName ||
+                    MessageBox.Show("File already open. Would you like to reload it?",
+                        "Reload file?",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        XmlReaderSettings settings = new XmlReaderSettings();
+                        settings.ValidationType = ValidationType.Schema;
+                        XmlSchemaSet xs = new XmlSchemaSet();
+                        xs.Add(Properties.Resources.xNamespace,
+                            XmlReader.Create(Application.GetResourceStream(
+                                new Uri("Resources/charr.xsd", UriKind.Relative)).Stream));
+                        settings.Schemas = xs;
+                        settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
+                        settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
+                        settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
+                        settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
+                        XmlReader r = XmlReader.Create(open.FileName, settings);
+                        XDocument doc = XDocument.Load(r);
+                        r.Close();
+                        var characters = doc.Root.Descendants(CharrElement.Charr + "Character");
+                        ObservableCollection<Character> newCharacterList = new ObservableCollection<Character>();
+                        foreach (var charr in characters)
+                        {
+                            Character c = new Character()
+                            {
+                                Name = charr.Element(CharrElement.Charr + "Name").Value,
+                                Profession = charr.Element(CharrElement.Charr + "Profession").Value
+                            };
+                            try
+                            {
+                                var areas = charr.Element(CharrElement.Charr + "Areas").Elements(CharrElement.Charr + "Area");
+                                foreach (var area in areas)
+                                {
+                                    Area a = new Area(area.Element(CharrElement.Charr + "Name").Value)
+                                    {
+                                        Hearts = area.Element(CharrElement.Charr + "Hearts").Value,
+                                        Waypoints = area.Element(CharrElement.Charr + "Waypoints").Value,
+                                        PoIs = area.Element(CharrElement.Charr + "PoIs").Value,
+                                        Skills = area.Element(CharrElement.Charr + "Skills").Value,
+                                        Vistas = area.Element(CharrElement.Charr + "Vistas").Value
+                                    };
+                                    c.Areas.Add(a);
+                                }
+                            }
+                            catch (NullReferenceException)
+                            {
+                                // This character didn't have any area data stored or it was malformed.
+                            }
+                            newCharacterList.Add(c);
+                        }
+                        CharacterList = newCharacterList;
+                        _unsavedChanges = false;
+                        //txtInfo.Text = "Opened " + open.FileName;
+                        _currentFile = new FileInfo(open.FileName);
+                        //SetDataContexts();
+                    }
+                    catch (XmlSchemaValidationException e)
+                    {
+                        Debug.WriteLine(e.Message);
+                        //txtInfo.Text = Properties.Resources.infErrDocValidation;
+                    }
+                    catch (Exception ex)
+                    {
+                        //txtInfo.Text = "Open failed: " + ex.Message;
+                    }
+                }
+            }
+        }
+
+        private static void ValidationCallBack(object sender, ValidationEventArgs e)
+        {
+            throw new XmlSchemaValidationException("Document not a GW2 Charrmander character file.", e.Exception);
         }
 
         private void Save()
@@ -476,7 +579,6 @@ namespace Charrmander.ViewModel
         private void SaveAs()
         {
             Debug.WriteLine("SaveAs");
-            Debug.WriteLine(SelectedCharacter.ToXML());
             SaveFileDialog save = new SaveFileDialog();
 
             if (_currentFile == null)
@@ -489,7 +591,7 @@ namespace Charrmander.ViewModel
             }
             save.DefaultExt = ".charr";
             save.Title = "Save GW2 Character List";
-            save.Filter += "Charrmander character file (.charr)|.charr";
+            save.Filter += "Charrmander Character File (.charr)|.charr";
             if (save.ShowDialog().Value)
             {
                 DoSave(save.FileName);
@@ -507,15 +609,22 @@ namespace Charrmander.ViewModel
             {
                 using (XmlWriter xw = XmlWriter.Create(fileName, xws))
                 {
-                    SelectedCharacter.ToXML().Save(xw);
+                    new XDocument(
+                        new CharrElement("Charrmander",
+                            (CharacterList.Count > 0 ?
+                            from c in CharacterList
+                            select c.ToXML() : null)
+                        )
+                    ).Save(xw);
+                    //                    SelectedCharacter.ToXML().Save(xw);
                     _currentFile = new FileInfo(fileName);
-//                    UpdateTitle();
+                    //                    UpdateTitle();
                     _unsavedChanges = false;
                 }
             }
             catch (Exception e)
             {
-//                txtInfo.Text = String.Format(Properties.Resources.infErrSaveFailed, fileName);
+                //                txtInfo.Text = String.Format(Properties.Resources.infErrSaveFailed, fileName);
                 Debug.WriteLine("Error saving: " + e.Message);
             }
         }
