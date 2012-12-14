@@ -30,6 +30,8 @@ namespace Charrmander.ViewModel
 
         private FileInfo _currentFile = null;
 
+        private string _windowTitle = "Charrmander";
+
         private bool _unsavedChanges = false;
 
         private ObservableCollection<Character> _characterList;
@@ -75,7 +77,24 @@ namespace Charrmander.ViewModel
         public event EventHandler RequestClose;
 
         /// <summary>
+        /// The title of the main window.
+        /// </summary>
+        public string WindowTitle
+        {
+            get { return _windowTitle; }
+            set
+            {
+                if (value != _windowTitle)
+                {
+                    _windowTitle = value;
+                    RaisePropertyChanged("WindowTitle");
+                }
+            }
+        }
+
+        /// <summary>
         /// Returns <c>True</c> if there are unsaved changes in <see cref="CharacterList"/>.
+        /// Also updates <see cref="WindowTitle"/>.
         /// </summary>
         public bool UnsavedChanges
         {
@@ -85,6 +104,9 @@ namespace Charrmander.ViewModel
                 if (value != _unsavedChanges)
                 {
                     _unsavedChanges = value;
+                    WindowTitle = String.Format("{0}{1} - Charrmander",
+                        _unsavedChanges ? "*" : string.Empty,
+                        _currentFile == null ? "Unnamed" : _currentFile.Name);
                     RaisePropertyChanged("UnsavedChanges");
                 }
             }
@@ -586,9 +608,9 @@ namespace Charrmander.ViewModel
                             newCharacterList.Add(c);
                         }
                         CharacterList = newCharacterList;
+                        _currentFile = new FileInfo(open.FileName);
                         UnsavedChanges = false;
                         //txtInfo.Text = "Opened " + open.FileName;
-                        _currentFile = new FileInfo(open.FileName);
                         //SetDataContexts();
                     }
                     catch (XmlSchemaValidationException e)
