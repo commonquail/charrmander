@@ -664,6 +664,14 @@ namespace Charrmander.ViewModel
         private void Save()
         {
             Debug.WriteLine("Save from VM");
+            if (_currentFile != null && _currentFile.Exists && !_currentFile.IsReadOnly)
+            {
+                DoSave(_currentFile.FullName);
+            }
+            else
+            {
+                SaveAs();
+            }
         }
 
         private bool CanSave()
@@ -711,15 +719,14 @@ namespace Charrmander.ViewModel
                             select c.ToXML() : null)
                         )
                     ).Save(xw);
-                    //                    SelectedCharacter.ToXML().Save(xw);
                     _currentFile = new FileInfo(fileName);
-                    //                    UpdateTitle();
+                    //UpdateTitle();
                     UnsavedChanges = false;
                 }
             }
             catch (Exception e)
             {
-                //                txtInfo.Text = String.Format(Properties.Resources.infErrSaveFailed, fileName);
+                //txtInfo.Text = String.Format(Properties.Resources.infErrSaveFailed, fileName);
                 Debug.WriteLine("Error saving: " + e.Message);
             }
         }
