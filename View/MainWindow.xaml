@@ -32,36 +32,36 @@
     <Grid>
         <Menu Height="23" HorizontalAlignment="Stretch" VerticalAlignment="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_New Character" Command="{Binding Path=CommandNew}" InputGestureText="Ctrl+N"/>
+                <MenuItem Header="_New Character" Command="{Binding CommandNew}" InputGestureText="Ctrl+N"/>
                 <Separator/>
-                <MenuItem Header="_Open" Command="{Binding Path=CommandOpen}" InputGestureText="Ctrl+O">
+                <MenuItem Header="_Open" Command="{Binding CommandOpen}" InputGestureText="Ctrl+O">
                     <MenuItem.Icon>
                         <Image Source="{StaticResource IconMenuOpen}"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
-                <MenuItem Header="_Save" Command="{Binding Path=CommandSave}" InputGestureText="Ctrl+S">
+                <MenuItem Header="_Save" Command="{Binding CommandSave}" InputGestureText="Ctrl+S">
                     <MenuItem.Icon>
                         <Image Source="{StaticResource IconMenuSave}"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Save As" Command="{Binding Path=CommandSaveAs}"/>
+                <MenuItem Header="Save As" Command="{Binding CommandSaveAs}"/>
                 <Separator/>
-                <MenuItem Header="_Exit" Command="{Binding Path=CommandExit}" InputGestureText="Alt+F4"/>
+                <MenuItem Header="_Exit" Command="{Binding CommandExit}" InputGestureText="Alt+F4"/>
             </MenuItem>
             <MenuItem Header="_About">
-                <MenuItem Header="Check for updates" Command="{Binding Path=CommandCheckUpdate}"/>
+                <MenuItem Header="Check for updates" Command="{Binding CommandCheckUpdate}"/>
             </MenuItem>
         </Menu>
 
         <DockPanel Margin="0,23">
-            <ListBox Width="150" ItemsSource="{Binding Path=CharacterList}" DisplayMemberPath="Name"
+            <ListBox Width="150" ItemsSource="{Binding CharacterList}" DisplayMemberPath="Name"
                      SelectedItem="{Binding SelectedCharacter}">
                 <ListBox.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="_New Character" Command="{Binding Path=CommandNew}" InputGestureText="Ctrl+N"/>
-                        <MenuItem Header="Delete Selected" Command="{Binding Path=CommandDeleteCharacter}"
-                                  IsEnabled="{Binding Path=IsCharacterDetailEnabled}"/>
+                        <MenuItem Header="_New Character" Command="{Binding CommandNew}" InputGestureText="Ctrl+N"/>
+                        <MenuItem Header="Delete Selected" Command="{Binding CommandDeleteCharacter}"
+                                  IsEnabled="{Binding IsCharacterDetailEnabled}"/>
                     </ContextMenu>
                 </ListBox.ContextMenu>
             </ListBox>
@@ -70,17 +70,17 @@
                     <Grid>
                         <Label HorizontalAlignment="Left" VerticalAlignment="Top">Name:</Label>
                         <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="80,0,0,0"
-                                 Text="{Binding Path=SelectedCharacter.Name}"/>
+                                 Text="{Binding SelectedCharacter.Name}"/>
                         <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,23">Profession:</Label>
                         <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="80,23,0,0"
                                   ItemsSource="{Binding Source={StaticResource ProfessionsXml}}" DisplayMemberPath="Name"
-                                  SelectedValue="{Binding Path=SelectedCharacter.Profession}"/>
+                                  SelectedValue="{Binding SelectedCharacter.Profession}"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Areas" Name="areas">
                     <DockPanel>
                         <ListBox SelectedItem="{Binding SelectedAreaReference}"
-                            ItemsSource="{Binding Path=AreaReferenceList}"
+                            ItemsSource="{Binding AreaReferenceList}"
                             DisplayMemberPath="Name"/>
                         <Grid xmlns:local="clr-namespace:Charrmander.View">
                             <Grid.RowDefinitions>
@@ -111,7 +111,7 @@
                                     <Style TargetType="{x:Type Image}">
                                         <Setter Property="Source" Value="{StaticResource IconAreaHeart}"/>
                                         <Style.Triggers>
-                                            <DataTrigger Value="True" Binding="{Binding Path=IsHeartsCompleted}">
+                                            <DataTrigger Value="True" Binding="{Binding IsHeartsCompleted}">
                                                 <Setter Property="Source" Value="{StaticResource IconAreaHeartDone}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -123,7 +123,7 @@
                                     <Style TargetType="{x:Type Image}">
                                         <Setter Property="Source" Value="{StaticResource IconAreaWaypoint}"/>
                                         <Style.Triggers>
-                                            <DataTrigger Value="True" Binding="{Binding Path=IsWaypointsCompleted}">
+                                            <DataTrigger Value="True" Binding="{Binding IsWaypointsCompleted}">
                                                 <Setter Property="Source" Value="{StaticResource IconAreaWaypointDone}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -135,7 +135,7 @@
                                     <Style TargetType="{x:Type Image}">
                                         <Setter Property="Source" Value="{StaticResource IconAreaPoI}"/>
                                         <Style.Triggers>
-                                            <DataTrigger Value="True" Binding="{Binding Path=IsPoIsCompleted}">
+                                            <DataTrigger Value="True" Binding="{Binding IsPoIsCompleted}">
                                                 <Setter Property="Source" Value="{StaticResource IconAreaPoIDone}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -147,7 +147,7 @@
                                     <Style TargetType="{x:Type Image}">
                                         <Setter Property="Source" Value="{StaticResource IconAreaSkill}"/>
                                         <Style.Triggers>
-                                            <DataTrigger Value="True" Binding="{Binding Path=IsSkillsCompleted}">
+                                            <DataTrigger Value="True" Binding="{Binding IsSkillsCompleted}">
                                                 <Setter Property="Source" Value="{StaticResource IconAreaSkillDone}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -159,7 +159,7 @@
                                     <Style TargetType="{x:Type Image}">
                                         <Setter Property="Source" Value="{StaticResource IconAreaVista}"/>
                                         <Style.Triggers>
-                                            <DataTrigger Value="True" Binding="{Binding Path=IsVistasCompleted}">
+                                            <DataTrigger Value="True" Binding="{Binding IsVistasCompleted}">
                                                 <Setter Property="Source" Value="{StaticResource IconAreaVistaDone}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -168,45 +168,45 @@
                             </Image>
 
                             <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
-                                     Name="txtHearts" Text="{Binding Path=Hearts}"/>
+                                     Name="txtHearts" Text="{Binding Hearts}"/>
                             <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"
-                                     Name="txtWaypoints" Text="{Binding Path=Waypoints}"/>
+                                     Name="txtWaypoints" Text="{Binding Waypoints}"/>
                             <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"
-                                     Name="txtPoIs" Text="{Binding Path=PoIs}"/>
+                                     Name="txtPoIs" Text="{Binding PoIs}"/>
                             <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"
-                                     Name="txtSkills" Text="{Binding Path=Skills}"/>
+                                     Name="txtSkills" Text="{Binding Skills}"/>
                             <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="4"
-                                     Name="txtVistas" Text="{Binding Path=Vistas}"/>
+                                     Name="txtVistas" Text="{Binding Vistas}"/>
 
                             <Label Name="lblHearts"
                                 DataContext="{Binding SelectedAreaReference}"
                                 Style="{StaticResource CompletionLabel}"
                                 VerticalAlignment="Center"
-                                Content="{Binding Path=Hearts}"
+                                Content="{Binding Hearts}"
                                 Grid.Column="2" Grid.Row="0"/>
                             <Label
                                 DataContext="{Binding SelectedAreaReference}"
                                 Style="{StaticResource CompletionLabel}"
                                 VerticalAlignment="Center"
-                                Content="{Binding Path=Waypoints}"
+                                Content="{Binding Waypoints}"
                                 Grid.Column="2" Grid.Row="1"/>
                             <Label
                                 DataContext="{Binding SelectedAreaReference}"
                                 Style="{StaticResource CompletionLabel}"
                                 VerticalAlignment="Center"
-                                Content="{Binding Path=PoIs}"
+                                Content="{Binding PoIs}"
                                 Grid.Column="2" Grid.Row="2"/>
                             <Label
                                 DataContext="{Binding SelectedAreaReference}"
                                 Style="{StaticResource CompletionLabel}"
                                 VerticalAlignment="Center"
-                                Content="{Binding Path=Skills}"
+                                Content="{Binding Skills}"
                                 Grid.Column="2" Grid.Row="3"/>
                             <Label
                                 DataContext="{Binding SelectedAreaReference}"
                                 Style="{StaticResource CompletionLabel}"
                                 VerticalAlignment="Center"
-                                Content="{Binding Path=Vistas}"
+                                Content="{Binding Vistas}"
                                 Grid.Column="2" Grid.Row="4"/>
                         </Grid>
 
