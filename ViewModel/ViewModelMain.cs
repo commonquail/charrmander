@@ -153,6 +153,36 @@ namespace Charrmander.ViewModel
                 if (value != _selectedCharacter)
                 {
                     _selectedCharacter = value;
+                    if (SelectedAreaReference != null && _selectedCharacter != null)
+                    {
+                        SelectedAreaCharacter = null;
+                        foreach (Area a in _selectedCharacter.Areas)
+                        {
+                            if (a.Name == SelectedAreaReference.Name)
+                            {
+                                SelectedAreaCharacter = a;
+                                break;
+                            }
+                        }
+                        if (SelectedAreaCharacter == null
+                            || SelectedAreaCharacter.Name != SelectedAreaReference.Name)
+                        {
+                            var a = new Area(SelectedAreaReference.Name);
+                            a.PropertyChanged += MarkFileDirty;
+                            SelectedCharacter.Areas.Add(a);
+                            SelectedAreaCharacter = a;
+                        }
+                        IsHeartsCompleted = SelectedAreaReference.Hearts == SelectedAreaCharacter.Hearts;
+                        IsWaypointsCompleted = SelectedAreaReference.Waypoints == SelectedAreaCharacter.Waypoints;
+                        IsPoIsCompleted = SelectedAreaReference.PoIs == SelectedAreaCharacter.PoIs;
+                        IsSkillsCompleted = SelectedAreaReference.Skills == SelectedAreaCharacter.Skills;
+                        IsVistasCompleted = SelectedAreaReference.Vistas == SelectedAreaCharacter.Vistas;
+                        RaisePropertyChanged("Hearts");
+                        RaisePropertyChanged("Waypoints");
+                        RaisePropertyChanged("PoIs");
+                        RaisePropertyChanged("Skills");
+                        RaisePropertyChanged("Vistas");
+                    }
                     IsCharacterDetailEnabled = value != null;
                     RaisePropertyChanged("SelectedCharacter");
                 }
