@@ -153,10 +153,6 @@ namespace Charrmander.ViewModel
                 if (value != _selectedCharacter)
                 {
                     _selectedCharacter = value;
-                    if (_selectedCharacter != null)
-                    {
-                        _selectedCharacter.PropertyChanged += MarkFileDirty;
-                    }
                     IsCharacterDetailEnabled = value != null;
                     RaisePropertyChanged("SelectedCharacter");
                 }
@@ -534,7 +530,9 @@ namespace Charrmander.ViewModel
         private void New()
         {
             Debug.WriteLine("New");
-            CharacterList.Add(new Character() { Name = new Guid().ToString() });
+            var c = new Character() { Name = new Guid().ToString() };
+            c.PropertyChanged += MarkFileDirty;
+            CharacterList.Add(c);
         }
 
         private void Open()
@@ -605,8 +603,10 @@ namespace Charrmander.ViewModel
                             {
                                 // This character didn't have any area data stored or it was malformed.
                             }
+                            c.PropertyChanged += MarkFileDirty;
                             newCharacterList.Add(c);
                         }
+                        CharacterList.CollectionChanged -= MarkFileDirty;
                         CharacterList = newCharacterList;
                         _currentFile = new FileInfo(open.FileName);
                         UnsavedChanges = false;
@@ -723,6 +723,11 @@ namespace Charrmander.ViewModel
             Character c = SelectedCharacter;
             if (c != null)
             {
+                c.PropertyChanged -= MarkFileDirty;
+                foreach (Area a in c.Areas)
+                {
+                    a.PropertyChanged -= MarkFileDirty;
+                }
                 CharacterList.Remove(c);
             }
         }
