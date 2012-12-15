@@ -559,7 +559,6 @@ namespace Charrmander.ViewModel
 
         private void New()
         {
-            Debug.WriteLine("New");
             var c = new Character() { Name = new Guid().ToString() };
             c.PropertyChanged += MarkFileDirty;
             CharacterList.Add(c);
@@ -567,7 +566,6 @@ namespace Charrmander.ViewModel
 
         private void Open()
         {
-            Debug.WriteLine("Open");
             if (UnsavedChanges && MessageBox.Show("Unsaved changes. Discard and open?",
                     "Discard changes and open?",
                     MessageBoxButton.YesNo,
@@ -663,7 +661,6 @@ namespace Charrmander.ViewModel
 
         private void Save()
         {
-            Debug.WriteLine("Save from VM");
             if (_currentFile != null && _currentFile.Exists && !_currentFile.IsReadOnly)
             {
                 DoSave(_currentFile.FullName);
@@ -676,13 +673,11 @@ namespace Charrmander.ViewModel
 
         private bool CanSave()
         {
-            Debug.WriteLine("CanSave from VM");
             return !UnsavedChanges;
         }
 
         private void SaveAs()
         {
-            Debug.WriteLine("SaveAs");
             SaveFileDialog save = new SaveFileDialog();
 
             if (_currentFile == null)
