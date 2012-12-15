@@ -110,7 +110,6 @@
                                     <EventSetter Event="GotKeyboardFocus" Handler="txtGotKeyboardFocus"/>
                                     <EventSetter Event="PreviewMouseLeftButtonDown" Handler="txtPreviewMouseLeftButtonDown"/>
                                 </Style>
-                                <local:CompletionImageConverter x:Key="CompletionImageConverter"/>
                             </Grid.Resources>
 
                             <Image Grid.Column="0" Grid.Row="0">

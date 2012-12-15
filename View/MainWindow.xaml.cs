@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Windows;
-using System.Windows.Input;
-using System.Xml.Linq;
-using Charrmander.Util;
 using System.Collections.ObjectModel;
-using System.Windows.Data;
-using Charrmander.Model;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Input;
+using Charrmander.Model;
 
 namespace Charrmander.View
 {
@@ -163,19 +157,6 @@ namespace Charrmander.View
                     tb.Focus();
                 }
             }
-        }
-    }
-
-    public class CompletionImageConverter : IMultiValueConverter
-    {
-        public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            return values[0].Equals(values[1]);
-        }
-
-        public object[] ConvertBack(object value, Type[] targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            throw new NotSupportedException();
         }
     }
 
