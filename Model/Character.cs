@@ -28,9 +28,9 @@ namespace Charrmander.Model
             get { return _name; }
             set
             {
-                if (value != _name)
+                if (value != _name && !string.IsNullOrWhiteSpace(value))
                 {
-                    _name = value;
+                    _name = value.Trim();
                     RaisePropertyChanged("Name");
                 }
             }
