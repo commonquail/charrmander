@@ -54,9 +54,16 @@
             </MenuItem>
         </Menu>
 
-        <DockPanel Margin="0,23">
-            <ListBox Width="150" ItemsSource="{Binding CharacterList}" DisplayMemberPath="Name"
-                     SelectedItem="{Binding SelectedCharacter}">
+        <DockPanel xmlns:local="clr-namespace:Charrmander.View" Margin="0,23">
+            <DockPanel.Resources>
+                <local:NamelessCharacterConverter x:Key="NamelessCharacterConverter"/>
+            </DockPanel.Resources>
+            <ListBox Width="150" ItemsSource="{Binding CharacterList}" SelectedItem="{Binding SelectedCharacter}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=Name, Converter={StaticResource NamelessCharacterConverter}}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
                 <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="_New Character" Command="{Binding CommandNew}" InputGestureText="Ctrl+N"/>

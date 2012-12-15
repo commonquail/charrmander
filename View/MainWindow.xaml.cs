@@ -179,4 +179,16 @@ namespace Charrmander.View
         }
     }
 
+    public class NamelessCharacterConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return string.IsNullOrWhiteSpace((value as string)) ? "[Unnamed]" : value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
+    }
 }
