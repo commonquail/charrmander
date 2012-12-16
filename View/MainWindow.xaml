@@ -26,7 +26,6 @@
         <ImageSource x:Key="IconAreaVistaDone">/Icons/Game/VistaDone.png</ImageSource>
 
         <XmlDataProvider x:Key="ProfessionsXml" XPath="Professions/Profession" Source="/Resources/Professions.xml"/>
-        <XmlDataProvider x:Key="AreasXml" XPath="Areas/Area" Source="/Resources/Areas.xml"/>
     </Window.Resources>
 
     <Grid>
