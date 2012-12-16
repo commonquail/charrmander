@@ -72,7 +72,7 @@ namespace Charrmander.ViewModel
 
             if (!string.IsNullOrWhiteSpace(filePath) && File.Exists(filePath))
             {
-                DoOpen(filePath);
+                DoOpen(Path.GetFullPath(filePath));
             }
         }
 
@@ -109,11 +109,11 @@ namespace Charrmander.ViewModel
                 if (value != _unsavedChanges)
                 {
                     _unsavedChanges = value;
-                    WindowTitle = String.Format("{0}{1} - Charrmander",
-                        _unsavedChanges ? "*" : string.Empty,
-                        _currentFile == null ? "Unnamed" : _currentFile.Name);
                     RaisePropertyChanged("UnsavedChanges");
                 }
+                WindowTitle = String.Format("{0}{1} - Charrmander",
+                    _unsavedChanges ? "*" : string.Empty,
+                    _currentFile == null ? "Unnamed" : Path.GetFileName(_currentFile.Name));
             }
         }
 
@@ -695,7 +695,7 @@ namespace Charrmander.ViewModel
 
         private bool CanSave()
         {
-            return !UnsavedChanges;
+            return UnsavedChanges;
         }
 
         private void SaveAs()
