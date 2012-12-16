@@ -50,6 +50,7 @@
             </MenuItem>
             <MenuItem Header="_About">
                 <MenuItem Header="Check for updates" Command="{Binding CommandCheckUpdate}"/>
+                <MenuItem Header="Register File Extension" Command="{Binding CommandRegisterExtension}"/>
             </MenuItem>
         </Menu>
 

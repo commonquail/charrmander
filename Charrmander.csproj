@@ -56,6 +56,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FileAssociation\AssociationManager.cs" />
+    <Compile Include="FileAssociation\FileAssociationInfo.cs" />
+    <Compile Include="FileAssociation\ProgramAssociationInfo.cs" />
+    <Compile Include="FileAssociation\ProgramIcon.cs" />
+    <Compile Include="FileAssociation\ProgramVerb.cs" />
+    <Compile Include="FileAssociation\RegistryException.cs" />
+    <Compile Include="FileAssociation\RegistryWrapper.cs" />
+    <Compile Include="FileAssociation\ShellNotification.cs" />
     <Compile Include="Model\Area.cs" />
     <Compile Include="Util\AbstractNotifier.cs" />
     <Compile Include="Util\CharrElement.cs" />

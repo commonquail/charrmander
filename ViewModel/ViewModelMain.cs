@@ -13,6 +13,7 @@ using System.IO;
 using System.Xml.Schema;
 using System.Collections.Generic;
 using System.Linq;
+using BrendanGrant.Helpers.FileAssociation;
 
 namespace Charrmander.ViewModel
 {
@@ -25,6 +26,7 @@ namespace Charrmander.ViewModel
         private RelayCommand _cmdClose;
         private RelayCommand _cmdCheckUpdate;
         private RelayCommand _cmdDeleteCharacter;
+        private RelayCommand _cmdRegisterExtensions;
 
         private BackgroundWorker _bgUpdater = new BackgroundWorker();
 
@@ -558,7 +560,38 @@ namespace Charrmander.ViewModel
                 return _cmdDeleteCharacter;
             }
         }
+
+        public ICommand CommandRegisterExtension
+        {
+            get
+            {
+                if (_cmdRegisterExtensions == null)
+                {
+                    _cmdRegisterExtensions = new RelayCommand(param => this.RegisterExtension());
+                }
+                return _cmdRegisterExtensions;
+            }
+        }
         #endregion
+
+        private void RegisterExtension()
+        {
+            string exePath = Environment.GetCommandLineArgs()[0];
+            FileAssociationInfo fai = new FileAssociationInfo(".charr");
+            if (fai.Exists)
+            {
+                fai.Delete();
+            }
+            fai.Create("Charrmander", PerceivedTypes.None, "text/xml", new string[] { "notepad.exe" });
+
+            ProgramAssociationInfo pai = new ProgramAssociationInfo(fai.ProgID);
+            if (pai.Exists)
+            {
+                pai.Delete();
+            }
+            pai.Create("Charrmander GW2 Character File.", new ProgramVerb("Open", exePath + " %1"));
+            pai.DefaultIcon = new ProgramIcon(exePath);
+        }
 
         private void New()
         {
