@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using Charrmander.ViewModel;
 
 namespace Charrmander.View
 {
@@ -34,6 +35,19 @@ namespace Charrmander.View
                 {
                     e.Handled = true;
                     tb.Focus();
+                }
+            }
+        }
+
+        private void Window_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                var viewModel = this.DataContext as ViewModelMain;
+                if (viewModel != null)
+                {
+                    viewModel.Open(files[0]);
                 }
             }
         }

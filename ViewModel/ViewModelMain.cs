@@ -581,7 +581,15 @@ namespace Charrmander.ViewModel
             CharacterList.Add(c);
         }
 
-        private void Open()
+        /// <summary>
+        /// Attempts to open the file specified by <c>filePath</c>. If <c>filePath</c>
+        /// is <c>null</c> an <see cref="OpenFileDialog"/> is displayed for the user
+        /// to select a file. If <see cref="UnsavedChanges"/> is <c>True</c> a
+        /// <see cref="MessageBox"/> asks if the user wants to proceed with loading
+        /// the file. The same thing happens if <c>filePath</c> is already open.
+        /// </summary>
+        /// <param name="filePath">The path to the file to open.</param>
+        public void Open(string filePath = null)
         {
             if (UnsavedChanges && MessageBox.Show("Unsaved changes. Discard and open?",
                     "Discard changes and open?",
@@ -591,19 +599,23 @@ namespace Charrmander.ViewModel
                 return;
             }
 
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter += "Charrmander Character File (.charr)|*.charr";
-            if (open.ShowDialog().Value)
+            if (filePath == null)
             {
-                if (_currentFile == null ||
-                    _currentFile.FullName != open.FileName ||
-                    MessageBox.Show("File already open. Would you like to reload it?",
-                        "Reload file?",
-                        MessageBoxButton.YesNo,
-                        MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                OpenFileDialog open = new OpenFileDialog();
+                open.Filter += "Charrmander Character File (.charr)|*.charr";
+                if (open.ShowDialog().Value)
                 {
-                    DoOpen(open.FileName);
+                    filePath = open.FileName;
                 }
+            }
+            if (_currentFile == null ||
+                _currentFile.FullName != filePath ||
+                MessageBox.Show("File already open. Would you like to reload it?",
+                    "Reload file?",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                DoOpen(filePath);
             }
         }
 
