@@ -559,7 +559,7 @@ namespace Charrmander.ViewModel
 
         private void New()
         {
-            var c = new Character() {};
+            var c = new Character();
             c.PropertyChanged += MarkFileDirty;
             CharacterList.Add(c);
         }
