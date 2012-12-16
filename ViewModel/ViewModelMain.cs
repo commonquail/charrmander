@@ -47,7 +47,7 @@ namespace Charrmander.ViewModel
         private bool _skillsCompleted = false;
         private bool _vistasCompleted = false;
 
-        public ViewModelMain()
+        public ViewModelMain(string filePath)
         {
             AreaReferenceList = new ObservableCollection<Area>();
 
@@ -67,6 +67,11 @@ namespace Charrmander.ViewModel
             }
             _bgUpdater.DoWork += UpdateWorker_DoWork;
             _bgUpdater.RunWorkerCompleted += UpdateWorker_RunWorkerCompleted;
+
+            if (!string.IsNullOrWhiteSpace(filePath) && File.Exists(filePath))
+            {
+                DoOpen(filePath);
+            }
         }
 
         /// <summary>
@@ -583,72 +588,77 @@ namespace Charrmander.ViewModel
                         MessageBoxButton.YesNo,
                         MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
+                    DoOpen(open.FileName);
+                }
+            }
+        }
+
+        private void DoOpen(string filePath)
+        {
+            try
+            {
+                XmlReaderSettings settings = new XmlReaderSettings();
+                settings.ValidationType = ValidationType.Schema;
+                XmlSchemaSet xs = new XmlSchemaSet();
+                xs.Add(Properties.Resources.xNamespace,
+                    XmlReader.Create(Application.GetResourceStream(
+                        new Uri("Resources/charr.xsd", UriKind.Relative)).Stream));
+                settings.Schemas = xs;
+                settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
+                settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
+                settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
+                settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
+                XmlReader r = XmlReader.Create(filePath, settings);
+                XDocument doc = XDocument.Load(r);
+                r.Close();
+                var characters = doc.Root.Descendants(CharrElement.Charr + "Character");
+                ObservableCollection<Character> newCharacterList = new ObservableCollection<Character>();
+                foreach (var charr in characters)
+                {
+                    Character c = new Character()
+                    {
+                        Name = charr.Element(CharrElement.Charr + "Name").Value,
+                        Profession = charr.Element(CharrElement.Charr + "Profession").Value
+                    };
                     try
                     {
-                        XmlReaderSettings settings = new XmlReaderSettings();
-                        settings.ValidationType = ValidationType.Schema;
-                        XmlSchemaSet xs = new XmlSchemaSet();
-                        xs.Add(Properties.Resources.xNamespace,
-                            XmlReader.Create(Application.GetResourceStream(
-                                new Uri("Resources/charr.xsd", UriKind.Relative)).Stream));
-                        settings.Schemas = xs;
-                        settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
-                        settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
-                        settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
-                        settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
-                        XmlReader r = XmlReader.Create(open.FileName, settings);
-                        XDocument doc = XDocument.Load(r);
-                        r.Close();
-                        var characters = doc.Root.Descendants(CharrElement.Charr + "Character");
-                        ObservableCollection<Character> newCharacterList = new ObservableCollection<Character>();
-                        foreach (var charr in characters)
+                        var areas = charr.Element(CharrElement.Charr + "Areas").Elements(CharrElement.Charr + "Area");
+                        foreach (var area in areas)
                         {
-                            Character c = new Character()
+                            Area a = new Area(area.Element(CharrElement.Charr + "Name").Value)
                             {
-                                Name = charr.Element(CharrElement.Charr + "Name").Value,
-                                Profession = charr.Element(CharrElement.Charr + "Profession").Value
+                                Hearts = area.Element(CharrElement.Charr + "Completion").Element(CharrElement.Charr + "Hearts").Value,
+                                Waypoints = area.Element(CharrElement.Charr + "Completion").Element(CharrElement.Charr + "Waypoints").Value,
+                                PoIs = area.Element(CharrElement.Charr + "Completion").Element(CharrElement.Charr + "PoIs").Value,
+                                Skills = area.Element(CharrElement.Charr + "Completion").Element(CharrElement.Charr + "Skills").Value,
+                                Vistas = area.Element(CharrElement.Charr + "Completion").Element(CharrElement.Charr + "Vistas").Value
                             };
-                            try
-                            {
-                                var areas = charr.Element(CharrElement.Charr + "Areas").Elements(CharrElement.Charr + "Area");
-                                foreach (var area in areas)
-                                {
-                                    Area a = new Area(area.Element(CharrElement.Charr + "Name").Value)
-                                    {
-                                        Hearts = area.Element(CharrElement.Charr + "Completion").Element(CharrElement.Charr + "Hearts").Value,
-                                        Waypoints = area.Element(CharrElement.Charr + "Completion").Element(CharrElement.Charr + "Waypoints").Value,
-                                        PoIs = area.Element(CharrElement.Charr + "Completion").Element(CharrElement.Charr + "PoIs").Value,
-                                        Skills = area.Element(CharrElement.Charr + "Completion").Element(CharrElement.Charr + "Skills").Value,
-                                        Vistas = area.Element(CharrElement.Charr + "Completion").Element(CharrElement.Charr + "Vistas").Value
-                                    };
-                                    a.PropertyChanged += MarkFileDirty;
-                                    c.Areas.Add(a);
-                                }
-                            }
-                            catch (NullReferenceException)
-                            {
-                                // This character didn't have any area data stored or it was malformed.
-                            }
-                            c.PropertyChanged += MarkFileDirty;
-                            newCharacterList.Add(c);
+                            a.PropertyChanged += MarkFileDirty;
+                            c.Areas.Add(a);
                         }
-                        CharacterList.CollectionChanged -= MarkFileDirty;
-                        CharacterList = newCharacterList;
-                        _currentFile = new FileInfo(open.FileName);
-                        UnsavedChanges = false;
-                        //txtInfo.Text = "Opened " + open.FileName;
-                        //SetDataContexts();
                     }
-                    catch (XmlSchemaValidationException e)
+                    catch (NullReferenceException)
                     {
-                        Debug.WriteLine(e.Message);
-                        //txtInfo.Text = Properties.Resources.infErrDocValidation;
+                        // This character didn't have any area data stored or it was malformed.
                     }
-                    catch (Exception ex)
-                    {
-                        //txtInfo.Text = "Open failed: " + ex.Message;
-                    }
+                    c.PropertyChanged += MarkFileDirty;
+                    newCharacterList.Add(c);
                 }
+                CharacterList.CollectionChanged -= MarkFileDirty;
+                CharacterList = newCharacterList;
+                _currentFile = new FileInfo(filePath);
+                UnsavedChanges = false;
+                //txtInfo.Text = "Opened " + open.FileName;
+                //SetDataContexts();
+            }
+            catch (XmlSchemaValidationException e)
+            {
+                Debug.WriteLine(e.Message);
+                //txtInfo.Text = Properties.Resources.infErrDocValidation;
+            }
+            catch (Exception ex)
+            {
+                //txtInfo.Text = "Open failed: " + ex.Message;
             }
         }
 

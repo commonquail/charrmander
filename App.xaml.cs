@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
 using System.Windows;
-using Charrmander.ViewModel;
 using Charrmander.View;
+using Charrmander.ViewModel;
 
 namespace Charrmander
 {
@@ -18,8 +14,15 @@ namespace Charrmander
         {
             base.OnStartup(e);
 
+            var file = "";
+            string[] args = Environment.GetCommandLineArgs();
+            if (args.Length == 2)
+            {
+                file = args[1];
+            }
+
             var window = new MainWindow();
-            var viewModel = new ViewModelMain();
+            var viewModel = new ViewModelMain(file);
             viewModel.RequestClose += delegate
             {
                 window.Close();
