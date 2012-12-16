@@ -574,25 +574,6 @@ namespace Charrmander.ViewModel
         }
         #endregion
 
-        private void RegisterExtension()
-        {
-            string exePath = Environment.GetCommandLineArgs()[0];
-            FileAssociationInfo fai = new FileAssociationInfo(".charr");
-            if (fai.Exists)
-            {
-                fai.Delete();
-            }
-            fai.Create("Charrmander", PerceivedTypes.None, "text/xml", new string[] { "notepad.exe" });
-
-            ProgramAssociationInfo pai = new ProgramAssociationInfo(fai.ProgID);
-            if (pai.Exists)
-            {
-                pai.Delete();
-            }
-            pai.Create("Charrmander GW2 Character File.", new ProgramVerb("Open", exePath + " %1"));
-            pai.DefaultIcon = new ProgramIcon(exePath);
-        }
-
         private void New()
         {
             var c = new Character();
@@ -808,6 +789,25 @@ namespace Charrmander.ViewModel
         private bool CanDeleteCharacter()
         {
             return IsCharacterDetailEnabled;
+        }
+
+        private void RegisterExtension()
+        {
+            string exePath = Environment.GetCommandLineArgs()[0];
+            FileAssociationInfo fai = new FileAssociationInfo(".charr");
+            if (fai.Exists)
+            {
+                fai.Delete();
+            }
+            fai.Create("Charrmander", PerceivedTypes.None, "text/xml", new string[] { "notepad.exe" });
+
+            ProgramAssociationInfo pai = new ProgramAssociationInfo(fai.ProgID);
+            if (pai.Exists)
+            {
+                pai.Delete();
+            }
+            pai.Create("Charrmander GW2 Character File.", new ProgramVerb("Open", exePath + " %1"));
+            pai.DefaultIcon = new ProgramIcon(exePath);
         }
 
         private void MarkFileDirty(object o, EventArgs err)
