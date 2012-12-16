@@ -49,8 +49,6 @@ namespace Charrmander.ViewModel
 
         public ViewModelMain()
         {
-            CharacterList.Add(new Character() { Name = "Bob", Profession = "Necromancer" });
-
             AreaReferenceList = new ObservableCollection<Area>();
 
             var doc = XDocument.Load(XmlReader.Create(Application.GetResourceStream(
