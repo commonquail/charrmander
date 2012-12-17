@@ -48,7 +48,7 @@
                 <Separator/>
                 <MenuItem Header="_Exit" Command="{Binding CommandExit}" InputGestureText="Alt+F4"/>
             </MenuItem>
-            <MenuItem Header="_About">
+            <MenuItem Header="_Tools">
                 <MenuItem Header="Check for updates" Command="{Binding CommandCheckUpdate}"/>
                 <MenuItem Header="Register File Extension" Command="{Binding CommandRegisterExtension}"/>
             </MenuItem>
