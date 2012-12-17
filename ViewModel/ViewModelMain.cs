@@ -19,6 +19,8 @@ namespace Charrmander.ViewModel
 {
     class ViewModelMain : AbstractNotifier
     {
+        #region Fields
+
         private RelayCommand _cmdNew;
         private RelayCommand _cmdOpen;
         private RelayCommand _cmdSave;
@@ -48,6 +50,8 @@ namespace Charrmander.ViewModel
         private bool _poisCompleted = false;
         private bool _skillsCompleted = false;
         private bool _vistasCompleted = false;
+
+        #endregion
 
         public ViewModelMain(string filePath)
         {
@@ -475,6 +479,9 @@ namespace Charrmander.ViewModel
         #endregion // Area Completion
 
         #region ICommand Implementations
+        /// <summary>
+        /// Command to create a new character.
+        /// </summary>
         public ICommand CommandNew
         {
             get
@@ -487,6 +494,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// Command to open a character file.
+        /// </summary>
         public ICommand CommandOpen
         {
             get
@@ -499,6 +509,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// Command to save the current character file.
+        /// </summary>
         public ICommand CommandSave
         {
             get
@@ -511,6 +524,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// Command to save the current character file at a specified location.
+        /// </summary>
         public ICommand CommandSaveAs
         {
             get
@@ -523,6 +539,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// Command to exit the application.
+        /// </summary>
         public ICommand CommandExit
         {
             get
@@ -535,6 +554,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// Command to check for updates.
+        /// </summary>
         public ICommand CommandCheckUpdate
         {
             get
@@ -547,6 +569,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// Command to delete a character.
+        /// </summary>
         public ICommand CommandDeleteCharacter
         {
             get
@@ -561,6 +586,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// Command to register the file extension.
+        /// </summary>
         public ICommand CommandRegisterExtension
         {
             get
@@ -574,6 +602,9 @@ namespace Charrmander.ViewModel
         }
         #endregion
 
+        /// <summary>
+        /// Creates a new character.
+        /// </summary>
         private void New()
         {
             var c = new Character();
@@ -619,6 +650,12 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// Performs the file reading and parsing of the file specified by
+        /// <see cref="filePath"/>. If there is an error processing the file
+        /// the current state is unchanged.
+        /// </summary>
+        /// <param name="filePath">The path of the file to open</param>
         private void DoOpen(string filePath)
         {
             try
@@ -675,7 +712,6 @@ namespace Charrmander.ViewModel
                 _currentFile = new FileInfo(filePath);
                 UnsavedChanges = false;
                 //txtInfo.Text = "Opened " + open.FileName;
-                //SetDataContexts();
             }
             catch (XmlSchemaValidationException e)
             {
@@ -693,6 +729,9 @@ namespace Charrmander.ViewModel
             throw new XmlSchemaValidationException("Document not a GW2 Charrmander character file.", e.Exception);
         }
 
+        /// <summary>
+        /// Save the current file if it has unsaved changes. <seealse cref="UnsavedChanges"/>
+        /// </summary>
         private void Save()
         {
             if (_currentFile != null && _currentFile.Exists && !_currentFile.IsReadOnly)
@@ -710,6 +749,10 @@ namespace Charrmander.ViewModel
             return UnsavedChanges;
         }
 
+        /// <summary>
+        /// Opens a dialog letting the user specify where to save the current file,
+        /// irrespective of <see cref="UnsavedChanges"/>.
+        /// </summary>
         private void SaveAs()
         {
             SaveFileDialog save = new SaveFileDialog();
@@ -731,7 +774,11 @@ namespace Charrmander.ViewModel
             }
         }
 
-        private void DoSave(string fileName)
+        /// <summary>
+        /// Performs the XML processing and file writing when saving.
+        /// </summary>
+        /// <param name="filePath">The file path to write to; doesn't have to exist.</param>
+        private void DoSave(string filePath)
         {
             XmlWriterSettings xws = new XmlWriterSettings();
             xws.OmitXmlDeclaration = false;
@@ -739,7 +786,7 @@ namespace Charrmander.ViewModel
 
             try
             {
-                using (XmlWriter xw = XmlWriter.Create(fileName, xws))
+                using (XmlWriter xw = XmlWriter.Create(filePath, xws))
                 {
                     new XDocument(
                         new CharrElement("Charrmander",
@@ -748,8 +795,7 @@ namespace Charrmander.ViewModel
                             select c.ToXML() : null)
                         )
                     ).Save(xw);
-                    _currentFile = new FileInfo(fileName);
-                    //UpdateTitle();
+                    _currentFile = new FileInfo(filePath);
                     UnsavedChanges = false;
                 }
             }
@@ -760,6 +806,11 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// Informs the application handler that this window would like to close.
+        /// If there are unsaved changes the user is alerted and allowed to abort.
+        /// <seealso cref="UnsavedChanges"/>
+        /// </summary>
         private void OnRequestClose()
         {
             if (UnsavedChanges && MessageBox.Show(Properties.Resources.msgUnsavedExitBody,
@@ -776,6 +827,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// Starts the background process checking for updates.
+        /// </summary>
         private void CheckUpdate()
         {
             if (!_bgUpdater.IsBusy)
@@ -784,6 +838,10 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// Removes <see cref="SelectedCharacter"/> from <see cref="CharacterList"/>.
+        /// Responsible for detaching events.
+        /// </summary>
         private void DeleteCharacter()
         {
             Character c = SelectedCharacter;
@@ -798,11 +856,21 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// Returns <c>True</c> if <see cref="DeleteCharacter"/> can be called.
+        /// </summary>
+        /// <returns><c>True</c> when a <see cref="SelectedCharacter"/> is set.</returns>
         private bool CanDeleteCharacter()
         {
             return IsCharacterDetailEnabled;
         }
 
+        /// <summary>
+        /// Registers this application's file extension with this application.
+        /// If an association already exists that association is deleted.
+        /// This application is defined by the current path of the executable,
+        /// meaning this has to be re-run if the executable is moved.
+        /// </summary>
         private void RegisterExtension()
         {
             string exePath = Environment.GetCommandLineArgs()[0];
@@ -822,17 +890,36 @@ namespace Charrmander.ViewModel
             pai.DefaultIcon = new ProgramIcon(exePath);
         }
 
+        /// <summary>
+        /// Signalled when a property of the current file was changed.
+        /// The parameters are not used.
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="err"></param>
         private void MarkFileDirty(object o, EventArgs err)
         {
             UnsavedChanges = true;
         }
 
+        /// <summary>
+        /// Starts downloading update notes in the background, passing them to
+        /// <c>e.Result</c> when finished.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">This event is passed to <see cref="UpdateWorker_RunWorkerCompleted"/>.</param>
         private void UpdateWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             XDocument doc = XDocument.Load(Properties.Resources.cfgUpdateCheckUri);
             e.Result = doc;
         }
 
+        /// <summary>
+        /// Called when the background updater finishes downloading update notes,
+        /// and displays a dialog with information about available updates and
+        /// the option to go to the location of a new update.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">This event is passed from <see cref="UpdateWorker_DoWork"/>.</param>
         private void UpdateWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Error != null)
