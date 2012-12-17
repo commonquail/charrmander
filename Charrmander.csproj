@@ -68,7 +68,11 @@
     <Compile Include="Util\AbstractNotifier.cs" />
     <Compile Include="Util\CharrElement.cs" />
     <Compile Include="Util\RelayCommand.cs" />
+    <Compile Include="ViewModel\UpdateAvailableViewModel.cs" />
     <Compile Include="ViewModel\ViewModelMain.cs" />
+    <Compile Include="View\UpdateAvailableView.xaml.cs">
+      <DependentUpon>UpdateAvailableView.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -83,6 +87,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\UpdateAvailableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -143,7 +151,9 @@
     <Resource Include="MainExecutable.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="VersionHistory.xml" />
+    <Resource Include="VersionHistory.xml">
+      <SubType>Designer</SubType>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
