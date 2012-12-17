@@ -61,7 +61,7 @@ namespace Charrmander.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://cs.au.dk/~miguel/charrmander/VersionHistory.xml.
+        ///   Looks up a localized string similar to https://bitbucket.org/jokum/charrmander/raw/tip/VersionHistory.xml.
         /// </summary>
         internal static string cfgUpdateCheckUri {
             get {

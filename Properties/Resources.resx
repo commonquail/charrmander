@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="cfgUpdateCheckUri" xml:space="preserve">
-    <value>http://cs.au.dk/~miguel/charrmander/VersionHistory.xml</value>
+    <value>https://bitbucket.org/jokum/charrmander/raw/tip/VersionHistory.xml</value>
   </data>
   <data name="msgUnsavedExitBody" xml:space="preserve">
     <value>Unsaved changes. Are you sure you wish to discard and exit?</value>
