@@ -518,7 +518,7 @@ namespace Charrmander.ViewModel
             {
                 if (_cmdSave == null)
                 {
-                    _cmdSave = new RelayCommand(param => this.Save(), param => this.CanSave());
+                    _cmdSave = new RelayCommand(param => this.Save(), param => this.UnsavedChanges);
                 }
                 return _cmdSave;
             }
@@ -742,11 +742,6 @@ namespace Charrmander.ViewModel
             {
                 SaveAs();
             }
-        }
-
-        private bool CanSave()
-        {
-            return UnsavedChanges;
         }
 
         /// <summary>
