@@ -940,25 +940,32 @@ namespace Charrmander.ViewModel
             { }
             else
             {
-                XDocument doc = (XDocument)e.Result;
-                XElement latest = doc.Root.Element("Latest");
-                Version curVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-                Version newVersion = new Version(latest.Element("Version").Value);
-                if (newVersion.IsNewerThan(curVersion))
+                try
                 {
-                    Debug.WriteLine("New version available");
-                    bool download = MessageBox.Show(
-                        String.Format("New version available: {0}. Open default browser and download?", newVersion),
-                        "Update Check: " + curVersion,
-                        MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes;
-                    if (download)
+                    XDocument doc = (XDocument)e.Result;
+                    XElement latest = doc.Root.Element("Latest").Element("Release");
+                    Version curVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+                    Version newVersion = new Version(latest.Element("Version").Value);
+                    if (newVersion.IsNewerThan(curVersion))
                     {
-                        Process.Start(latest.Element("DownloadUrl").Value);
+                        Debug.WriteLine("New version available");
+                        bool download = MessageBox.Show(
+                            String.Format("New version available: {0}. Open default browser and download?", newVersion),
+                            "Update Check: " + curVersion,
+                            MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes;
+                        if (download)
+                        {
+                            Process.Start(latest.Element("DownloadUrl").Value);
+                        }
+                    }
+                    else
+                    {
+                        Debug.WriteLine("No new version available");
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    Debug.WriteLine("No new version available");
+                    Debug.WriteLine("Error reading version history file: " + ex.Message);
                 }
             }
         }
