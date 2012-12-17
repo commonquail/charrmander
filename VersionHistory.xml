@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<SieveVersion>
+<VersionHistory>
   <Latest>
     <Version>0.1.0.0</Version>
-    <DownloadUrl>http://bitbucket.org/jokum/charrmander/downloads/sieve-0.1.0.exe</DownloadUrl>
+    <DownloadUrl>http://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.0.exe</DownloadUrl>
   </Latest>
   <History>
     <Release>
       <Version>0.1.0.0</Version>
-      <DownloadUrl>http://bitbucket.org/jokum/charrmander/downloads/sieve-0.1.0.exe</DownloadUrl>
+      <DownloadUrl>http://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.0.exe</DownloadUrl>
       <Notes>
         <Note>First release. Individual area completion tracking per character.</Note>
         <Note>Drag &amp; Drop open.</Note>
@@ -15,4 +15,4 @@
       </Notes>
     </Release>
   </History>
-</SieveVersion>
+</VersionHistory>
