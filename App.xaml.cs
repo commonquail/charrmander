@@ -23,10 +23,14 @@ namespace Charrmander
 
             var window = new MainWindow();
             var viewModel = new ViewModelMain(file);
-            viewModel.RequestClose += delegate
+            EventHandler handler = null;
+            handler = delegate
             {
+                viewModel.RequestClose -= handler;
                 window.Close();
             };
+            viewModel.RequestClose += handler;
+
             window.DataContext = viewModel;
             window.Show();
         }
