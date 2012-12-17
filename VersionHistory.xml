@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VersionHistory>
   <Latest>
-    <Version>0.1.0.0</Version>
-    <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.0.exe</DownloadUrl>
-  </Latest>
-  <History>
     <Release>
       <Version>0.1.0.0</Version>
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.0.exe</DownloadUrl>
@@ -14,5 +10,7 @@
         <Note>File type association.</Note>
       </Notes>
     </Release>
+  </Latest>
+  <History>
   </History>
 </VersionHistory>
