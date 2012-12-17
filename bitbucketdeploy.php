@@ -4,8 +4,8 @@ $json = stripslashes($_POST['payload']);
 $data = json_decode($json);
 
 $downloadFile = 'VersionHistory.xml';
-$uri = 'none';
-$author = 'none';
+$url = 'nourl';
+$author = 'noauthor';
 $download = false;
 
 if (isset($data) && isset($data->commits))
@@ -21,7 +21,7 @@ if (isset($data) && isset($data->commits))
                 {
                     $download = true;
                     $author = $commit->author;
-                    $uri = $data->canon_url . $data->repository->absolute_url
+                    $url = $data->canon_url . $data->repository->absolute_url
                         . 'raw/' . $commit->node . '/' . $file->file;
                 }
             }
@@ -33,7 +33,7 @@ echo $s;
 
 if ($download)
 {
-    file_put_contents($downloadFile, file_get_contents($uri));
+    file_put_contents($downloadFile, file_get_contents($url));
     file_put_contents('log', $s, FILE_APPEND);
 }
 
