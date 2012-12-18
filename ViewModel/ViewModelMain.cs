@@ -886,6 +886,14 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void RegisterExtension()
         {
+            if (MessageBox.Show("This operation will write to the system registry. Do you wish to proceed?",
+                "Register File Association",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                return;
+            }
+
             string exePath = Environment.GetCommandLineArgs()[0];
             FileAssociationInfo fai = new FileAssociationInfo(".charr");
             if (fai.Exists)
