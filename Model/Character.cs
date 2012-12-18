@@ -16,6 +16,7 @@ namespace Charrmander.Model
     class Character : AbstractNotifier
     {
         private string _name;
+        private string _race;
         private string _profession;
 
         public Character()
@@ -32,6 +33,19 @@ namespace Charrmander.Model
                 {
                     _name = value.Trim();
                     RaisePropertyChanged("Name");
+                }
+            }
+        }
+
+        public string Race
+        {
+            get { return _race; }
+            set
+            {
+                if (value != _race)
+                {
+                    _race = value;
+                    RaisePropertyChanged("Race");
                 }
             }
         }
@@ -55,6 +69,7 @@ namespace Charrmander.Model
         {
             return new CharrElement("Character",
                         new CharrElement("Name", Name),
+                        new CharrElement("Race", Race),
                         new CharrElement("Profession", Profession),
                         (Areas.Count > 0 ?
                         new CharrElement("Areas",

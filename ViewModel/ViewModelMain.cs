@@ -699,6 +699,7 @@ namespace Charrmander.ViewModel
                     Character c = new Character()
                     {
                         Name = charr.Element(CharrElement.Charr + "Name").Value,
+                        Race = charr.Element(CharrElement.Charr + "Race").Value,
                         Profession = charr.Element(CharrElement.Charr + "Profession").Value
                     };
                     try
