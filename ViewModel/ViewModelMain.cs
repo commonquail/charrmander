@@ -32,6 +32,7 @@ namespace Charrmander.ViewModel
         private RelayCommand _cmdRegisterExtensions;
 
         private BackgroundWorker _bgUpdater = new BackgroundWorker();
+        private UpdateAvailableViewModel _updateViewModel;
 
         private FileInfo _currentFile = null;
 
@@ -98,6 +99,22 @@ namespace Charrmander.ViewModel
                 {
                     _windowTitle = value;
                     RaisePropertyChanged("WindowTitle");
+                }
+            }
+        }
+
+        private UpdateAvailableViewModel UpdateWindow
+        {
+            get { return _updateViewModel; }
+            set
+            {
+                if (value != _updateViewModel)
+                {
+                    if (_updateViewModel != null)
+                    {
+                        _updateViewModel.Close();
+                    }
+                    _updateViewModel = value;
                 }
             }
         }
@@ -949,11 +966,11 @@ namespace Charrmander.ViewModel
                     Version newVersion = new Version(latest.Element("Version").Value);
                     if (newVersion.IsNewerThan(curVersion))
                     {
-                        var update = new UpdateAvailableViewModel();
-                        update.CurrentVersion = curVersion;
-                        update.LatestVersion = newVersion;
-                        update.LatestVersionPath = latest.Element("DownloadUrl").Value;
-                        update.VersionHistory = doc.Root.Descendants("Release");
+                        UpdateWindow = new UpdateAvailableViewModel();
+                        UpdateWindow.CurrentVersion = curVersion;
+                        UpdateWindow.LatestVersion = newVersion;
+                        UpdateWindow.LatestVersionPath = latest.Element("DownloadUrl").Value;
+                        UpdateWindow.VersionHistory = doc.Root.Descendants("Release");
 
                         Debug.WriteLine("New version available");
                     }

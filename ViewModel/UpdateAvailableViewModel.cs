@@ -10,6 +10,8 @@ namespace Charrmander.ViewModel
 {
     class UpdateAvailableViewModel : AbstractNotifier
     {
+        Window _window;
+
         private RelayCommand _cmdDownload;
         private RelayCommand _cmdClose;
 
@@ -17,7 +19,6 @@ namespace Charrmander.ViewModel
         private Version _latestVersion;
         private string _downloadUrl;
         private IEnumerable<XElement> _versionHistory;
-
         /// <summary>
         /// Creates a new <see cref="UpdateAvailableViewModel"/>. This view
         /// model has no application logic. I.e. it does not perform any update
@@ -26,16 +27,25 @@ namespace Charrmander.ViewModel
         /// </summary>
         public UpdateAvailableViewModel()
         {
-            Window window = new UpdateAvailableView();
-            window.DataContext = this;
-            window.Show();
+            _window = new UpdateAvailableView();
+            _window.DataContext = this;
+            _window.Show();
+
             EventHandler handler = null;
             handler = delegate
             {
                 this.RequestClose -= handler;
-                window.Close();
+                _window.Close();
             };
             this.RequestClose += handler;
+        }
+
+        /// <summary>
+        /// Signals this window to close.
+        /// </summary>
+        public void Close()
+        {
+            OnRequestClose();
         }
 
         /// <summary>
