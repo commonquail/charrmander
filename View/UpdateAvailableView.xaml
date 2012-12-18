@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Update Available"
         Height="300" ResizeMode="CanResize"
-        MinWidth="300" MaxWidth="300">
+        MinWidth="300" MaxWidth="300"
+        Icon="/Icons/Game/MainTitle.png">
     <Window.Resources>
         <DataTemplate DataType="Release">
             <Border Margin="2,4" Padding="6,0">
