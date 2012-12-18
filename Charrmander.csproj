@@ -155,6 +155,29 @@
       <SubType>Designer</SubType>
     </Resource>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Game\Crafts\Armorsmith.png" />
+    <Resource Include="Icons\Game\Crafts\Artificer.png" />
+    <Resource Include="Icons\Game\Crafts\Chef.png" />
+    <Resource Include="Icons\Game\Crafts\Huntsman.png" />
+    <Resource Include="Icons\Game\Crafts\Jeweler.png" />
+    <Resource Include="Icons\Game\Crafts\Leatherworker.png" />
+    <Resource Include="Icons\Game\Crafts\Tailor.png" />
+    <Resource Include="Icons\Game\Crafts\Weaponsmith.png" />
+    <Resource Include="Icons\Game\Professions\Elementalist.png" />
+    <Resource Include="Icons\Game\Professions\Engineer.png" />
+    <Resource Include="Icons\Game\Professions\Guardian.png" />
+    <Resource Include="Icons\Game\Professions\Mesmer.png" />
+    <Resource Include="Icons\Game\Professions\Necromancer.png" />
+    <Resource Include="Icons\Game\Professions\Ranger.png" />
+    <Resource Include="Icons\Game\Professions\Thief.png" />
+    <Resource Include="Icons\Game\Professions\Warrior.png" />
+    <Resource Include="Icons\Game\Races\Asura.png" />
+    <Resource Include="Icons\Game\Races\Charr.png" />
+    <Resource Include="Icons\Game\Races\Human.png" />
+    <Resource Include="Icons\Game\Races\Norn.png" />
+    <Resource Include="Icons\Game\Races\Sylvari.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
