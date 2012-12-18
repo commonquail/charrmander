@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Races>
+  <Race>
+    <Name>Asura</Name>
+  </Race>
+  <Race>
+    <Name>Charr</Name>
+  </Race>
+  <Race>
+    <Name>Human</Name>
+  </Race>
+  <Race>
+    <Name>Norn</Name>
+  </Race>
+  <Race>
+    <Name>Sylvari</Name>
+  </Race>
+</Races>
