@@ -8,6 +8,7 @@ using System.Xml;
 using System.Xml.Linq;
 using Charrmander.Model;
 using Charrmander.Util;
+using Charrmander.View;
 using Microsoft.Win32;
 using System.IO;
 using System.Xml.Schema;
@@ -948,15 +949,13 @@ namespace Charrmander.ViewModel
                     Version newVersion = new Version(latest.Element("Version").Value);
                     if (newVersion.IsNewerThan(curVersion))
                     {
+                        var update = new UpdateAvailableViewModel();
+                        update.CurrentVersion = curVersion;
+                        update.LatestVersion = newVersion;
+                        update.LatestVersionPath = latest.Element("DownloadUrl").Value;
+                        update.VersionHistory = doc.Root.Descendants("Release");
+
                         Debug.WriteLine("New version available");
-                        bool download = MessageBox.Show(
-                            String.Format("New version available: {0}. Open default browser and download?", newVersion),
-                            "Update Check: " + curVersion,
-                            MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes;
-                        if (download)
-                        {
-                            Process.Start(latest.Element("DownloadUrl").Value);
-                        }
                     }
                     else
                     {
