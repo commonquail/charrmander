@@ -1,35 +1,70 @@
 ﻿<Window x:Class="Charrmander.View.UpdateAvailableView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="UpdateAvailableView" Height="300" Width="300">
-    <Grid>
-        <Grid.Resources>
-            <XmlDataProvider x:Key="xmlVersionHistory" Source="/VersionHistory.xml"/>
-            <DataTemplate DataType="Note">
-                <Border>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text=" • "/>
-                        <TextBlock Text="{Binding XPath=.}" TextWrapping="Wrap" MaxWidth="200">
-                        </TextBlock>
-                    </StackPanel>
-                </Border>
-            </DataTemplate>
-            <DataTemplate DataType="Release">
-                <Border Margin="2,4" Padding="6,0">
-                    <StackPanel HorizontalAlignment="Stretch">
-                        <TextBlock FontWeight="Bold" Text="{Binding XPath=Version}"/>
-                        <TextBlock>
-                            <Hyperlink NavigateUri="{Binding XPath=DownloadUrl}"
-                                       RequestNavigate="Hyperlink_RequestNavigate">Download</Hyperlink>
-                        </TextBlock>
-                        <ItemsControl ItemsSource="{Binding XPath=Notes/Note}"/>
-                    </StackPanel>
-                </Border>
-            </DataTemplate>
-        </Grid.Resources>
-        <ScrollViewer Height="180" VerticalScrollBarVisibility="Auto" VerticalAlignment="Bottom">
-            <ItemsControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                 ItemsSource="{Binding Source={StaticResource xmlVersionHistory}, XPath=//History/Release}"/>
-        </ScrollViewer>
-    </Grid>
+        Title="Update Available"
+        Height="300" ResizeMode="CanResize"
+        MinWidth="300" MaxWidth="300">
+    <Window.Resources>
+        <DataTemplate DataType="Release">
+            <Border Margin="2,4" Padding="6,0">
+                <StackPanel HorizontalAlignment="Stretch">
+                    <TextBlock FontWeight="Bold" Text="{Binding Path=Element[Version].Value}"/>
+                    <TextBlock>
+                        <Hyperlink NavigateUri="{Binding Path=Element[DownloadUrl].Value}"
+                                   RequestNavigate="Hyperlink_RequestNavigate">Download</Hyperlink>
+                    </TextBlock>
+                    <ItemsControl ItemsSource="{Binding Path=Element[Notes].Elements}"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        <DataTemplate DataType="Note">
+            <Border>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text=" • "/>
+                    <TextBlock Text="{Binding Path=Value}" TextWrapping="Wrap" MaxWidth="250"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
+
+    <DockPanel Margin="6">
+        <StackPanel DockPanel.Dock="Top">
+            <TextBlock Text="A new version is available for download."/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Current version:" Grid.Column="0" Grid.Row="0"/>
+                <TextBlock Text="Latest version:" Grid.Column="0" Grid.Row="1"/>
+                <TextBlock Text="{Binding CurrentVersion}" Grid.Column="1" Grid.Row="0"/>
+                <TextBlock Text="{Binding LatestVersion}" Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+        </StackPanel>
+
+        <Grid DockPanel.Dock="Top" Margin="0,6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Download" Grid.Column="0"
+                    Height="23" Width="75"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                    Command="{Binding CommandDownload}"/>
+            <Button Content="Close" Grid.Column="1"
+                    Height="23" Width="75"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                    Command="{Binding CommandClose}"/>
+        </Grid>
+
+        <Border BorderThickness="1" BorderBrush="Black">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding VersionHistory}"/>
+            </ScrollViewer>
+        </Border>
+    </DockPanel>
 </Window>
