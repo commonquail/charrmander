@@ -52,12 +52,14 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button Content="Download" Grid.Column="0"
+                    ToolTip="Launch default browser and download new version."
                     Height="23" Width="75"
-                    HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
                     Command="{Binding CommandDownload}"/>
             <Button Content="Close" Grid.Column="1"
+                    ToolTip="Close this window."
                     Height="23" Width="75"
-                    HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
                     Command="{Binding CommandClose}"/>
         </Grid>
 
