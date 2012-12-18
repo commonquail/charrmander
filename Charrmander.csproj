@@ -133,16 +133,16 @@
     <Resource Include="Icons\Save.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\Game\HeartDone.png" />
-    <Resource Include="Icons\Game\Heart.png" />
-    <Resource Include="Icons\Game\Waypoint.png" />
-    <Resource Include="Icons\Game\PoIDone.png" />
-    <Resource Include="Icons\Game\PoI.png" />
-    <Resource Include="Icons\Game\SkillDone.png" />
-    <Resource Include="Icons\Game\Skill.png" />
-    <Resource Include="Icons\Game\VistaDone.png" />
-    <Resource Include="Icons\Game\Vista.png" />
-    <Resource Include="Icons\Game\WaypointDone.png" />
+    <Resource Include="Icons\Game\Areas\HeartDone.png" />
+    <Resource Include="Icons\Game\Areas\Heart.png" />
+    <Resource Include="Icons\Game\Areas\Waypoint.png" />
+    <Resource Include="Icons\Game\Areas\PoIDone.png" />
+    <Resource Include="Icons\Game\Areas\PoI.png" />
+    <Resource Include="Icons\Game\Areas\SkillDone.png" />
+    <Resource Include="Icons\Game\Areas\Skill.png" />
+    <Resource Include="Icons\Game\Areas\VistaDone.png" />
+    <Resource Include="Icons\Game\Areas\Vista.png" />
+    <Resource Include="Icons\Game\Areas\WaypointDone.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\Game\MainTitle.png" />

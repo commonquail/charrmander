@@ -13,17 +13,17 @@
         <BitmapImage x:Key="IconMenuOpen" UriSource="/Icons/Open.bmp"/>
         <BitmapImage x:Key="IconMenuSave" UriSource="/Icons/Save.bmp"/>
 
-        <ImageSource x:Key="IconAreaHeart">/Icons/Game/Heart.png</ImageSource>
-        <ImageSource x:Key="IconAreaWaypoint">/Icons/Game/Waypoint.png</ImageSource>
-        <ImageSource x:Key="IconAreaPoI">/Icons/Game/PoI.png</ImageSource>
-        <ImageSource x:Key="IconAreaSkill">/Icons/Game/Skill.png</ImageSource>
-        <ImageSource x:Key="IconAreaVista">/Icons/Game/Vista.png</ImageSource>
+        <ImageSource x:Key="IconAreaHeart">/Icons/Game/Areas/Heart.png</ImageSource>
+        <ImageSource x:Key="IconAreaWaypoint">/Icons/Game/Areas/Waypoint.png</ImageSource>
+        <ImageSource x:Key="IconAreaPoI">/Icons/Game/Areas/PoI.png</ImageSource>
+        <ImageSource x:Key="IconAreaSkill">/Icons/Game/Areas/Skill.png</ImageSource>
+        <ImageSource x:Key="IconAreaVista">/Icons/Game/Areas/Vista.png</ImageSource>
 
-        <ImageSource x:Key="IconAreaHeartDone">/Icons/Game/HeartDone.png</ImageSource>
-        <ImageSource x:Key="IconAreaWaypointDone">/Icons/Game/WaypointDone.png</ImageSource>
-        <ImageSource x:Key="IconAreaPoIDone">/Icons/Game/PoIDone.png</ImageSource>
-        <ImageSource x:Key="IconAreaSkillDone">/Icons/Game/SkillDone.png</ImageSource>
-        <ImageSource x:Key="IconAreaVistaDone">/Icons/Game/VistaDone.png</ImageSource>
+        <ImageSource x:Key="IconAreaHeartDone">/Icons/Game/Areas/HeartDone.png</ImageSource>
+        <ImageSource x:Key="IconAreaWaypointDone">/Icons/Game/Areas/WaypointDone.png</ImageSource>
+        <ImageSource x:Key="IconAreaPoIDone">/Icons/Game/Areas/PoIDone.png</ImageSource>
+        <ImageSource x:Key="IconAreaSkillDone">/Icons/Game/Areas/SkillDone.png</ImageSource>
+        <ImageSource x:Key="IconAreaVistaDone">/Icons/Game/Areas/VistaDone.png</ImageSource>
 
         <XmlDataProvider x:Key="ProfessionsXml" XPath="Professions/Profession" Source="/Resources/Professions.xml"/>
     </Window.Resources>
