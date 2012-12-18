@@ -74,13 +74,24 @@
             </ListBox>
             <TabControl Name="tabControl1" IsEnabled="{Binding IsCharacterDetailEnabled}">
                 <TabItem Header="Personal" Name="personal">
+                    <TabItem.Resources>
+                        <local:ProfessionIconConverter x:Key="ProfessionIconConverter"/>
+                        <DataTemplate DataType="Profession">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Height="20" Width="20"
+                                       Source="{Binding XPath=Name, Converter={StaticResource ProfessionIconConverter}}"/>
+                                <TextBlock Text="{Binding XPath=Name, StringFormat={} {0}}"
+                                           VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </TabItem.Resources>
                     <Grid>
                         <Label HorizontalAlignment="Left" VerticalAlignment="Top">Name:</Label>
                         <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="80,0,0,0"
                                  Text="{Binding SelectedCharacter.Name}"/>
                         <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,23">Profession:</Label>
                         <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="80,23,0,0"
-                                  ItemsSource="{Binding Source={StaticResource ProfessionsXml}}" DisplayMemberPath="Name"
+                                  ItemsSource="{Binding Source={StaticResource ProfessionsXml}}"
                                   SelectedValue="{Binding SelectedCharacter.Profession}"/>
                     </Grid>
                 </TabItem>

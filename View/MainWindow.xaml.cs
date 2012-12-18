@@ -68,4 +68,20 @@ namespace Charrmander.View
             throw new NotSupportedException();
         }
     }
+
+    /// <summary>
+    /// Converts the <see cref="Character.Profession"/> property to the corresponding icon.
+    /// </summary>
+    public class ProfessionIconConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return "/Icons/Game/Professions/" + value + ".png";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
+    }
 }
