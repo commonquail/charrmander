@@ -8,6 +8,16 @@ namespace Charrmander.Util
 {
     public static class ExtensionMethods
     {
+        /// <summary>
+        /// Returns <c>True</c> if this <see cref="Version"/> instance is
+        /// strictly newer than <c>other</c>.
+        /// </summary>
+        /// <param name="v">The <see cref="Version"/> instance being
+        /// checked.</param>
+        /// <param name="other">The <see cref="Version"/> instance being
+        /// checked against.</param>
+        /// <returns><c>True</c> if <c>v</c> is newer than <c>other</c> or
+        /// <c>other</c> is <c>null</c>.</returns>
         public static bool IsNewerThan(this Version v, Version other)
         {
             return v.CompareTo(other) > 0;
