@@ -139,13 +139,13 @@
     <value>File Not Found</value>
   </data>
   <data name="msgOpenFailedParsingBody" xml:space="preserve">
-    <value>The file you are trying to load contains errors and could not be opened.</value>
+    <value>The file you are trying to load contains errors and could not be opened: {0}</value>
   </data>
   <data name="msgOpenFailedParsingTitle" xml:space="preserve">
     <value>Parse Error</value>
   </data>
   <data name="msgOpenFailedValidationBody" xml:space="preserve">
-    <value>Document not a GW2 Charrmander character list file.</value>
+    <value>Document not a Charrmander GW2 character list file or document is malformed.</value>
   </data>
   <data name="msgOpenFailedValidationTitle" xml:space="preserve">
     <value>Validation Error</value>

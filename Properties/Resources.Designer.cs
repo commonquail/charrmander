@@ -124,7 +124,7 @@ namespace Charrmander.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The file you are trying to load contains errors and could not be opened..
+        ///   Looks up a localized string similar to The file you are trying to load contains errors and could not be opened: {0}.
         /// </summary>
         internal static string msgOpenFailedParsingBody {
             get {
@@ -142,7 +142,7 @@ namespace Charrmander.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Document not a GW2 Charrmander character list file..
+        ///   Looks up a localized string similar to Document not a Charrmander GW2 character list file or document is malformed..
         /// </summary>
         internal static string msgOpenFailedValidationBody {
             get {

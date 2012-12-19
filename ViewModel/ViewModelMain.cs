@@ -707,10 +707,11 @@ namespace Charrmander.ViewModel
                     Debug.WriteLine(ex.Message);
                     ShowError(Properties.Resources.msgOpenFailedValidationTitle, ex.Message);
                 }
-                catch (XmlException)
+                catch (XmlException ex)
                 {
                     ShowError(Properties.Resources.msgOpenFailedParsingTitle,
-                        Properties.Resources.msgOpenFailedParsingBody);
+                        String.Format(Properties.Resources.msgOpenFailedParsingBody,
+                        ex.Message));
                 }
                 catch (FileNotFoundException)
                 {
