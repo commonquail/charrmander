@@ -1,6 +1,7 @@
 ﻿<Window x:Class="Charrmander.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vw="clr-namespace:Charrmander.View"
         Title="{Binding WindowTitle}" Height="350" Width="525"
         Icon="/Icons/Game/MainTitle.png" AllowDrop="True" Drop="Window_Drop">
 
@@ -27,6 +28,8 @@
 
         <XmlDataProvider x:Key="ProfessionsXml" XPath="Professions/Profession" Source="/Resources/Professions.xml"/>
         <XmlDataProvider x:Key="RacesXml" XPath="Races/Race" Source="/Resources/Races.xml"/>
+
+        <vw:GameIconConverter x:Key="GameIconConverter"/>
     </Window.Resources>
 
     <Grid>
@@ -55,9 +58,9 @@
             </MenuItem>
         </Menu>
 
-        <DockPanel xmlns:local="clr-namespace:Charrmander.View" Margin="0,23">
+        <DockPanel Margin="0,23">
             <DockPanel.Resources>
-                <local:NamelessCharacterConverter x:Key="NamelessCharacterConverter"/>
+                <vw:NamelessCharacterConverter x:Key="NamelessCharacterConverter"/>
             </DockPanel.Resources>
 
             <ListBox Width="150" ItemsSource="{Binding CharacterList}" SelectedItem="{Binding SelectedCharacter}">
@@ -75,10 +78,11 @@
                 </ListBox.ContextMenu>
             </ListBox>
 
-            <TabControl Name="tabControl1" IsEnabled="{Binding IsCharacterDetailEnabled}">
+            <TabControl IsEnabled="{Binding IsCharacterDetailEnabled}">
                 <TabItem Header="Personal" Name="personal">
                     <TabItem.Resources>
-                        <local:GameIconConverter x:Key="GameIconConverter"/>
+                        <vw:GameIconConverter x:Key="GameIconConverter"/>
+                        
                         <DataTemplate DataType="Profession">
                             <StackPanel Orientation="Horizontal">
                                 <Image Height="20" Width="20"
@@ -87,6 +91,7 @@
                                            VerticalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
+                        
                         <DataTemplate DataType="Race">
                             <StackPanel Orientation="Horizontal">
                                 <Image Height="20" Width="20"
@@ -111,6 +116,7 @@
                         <Label Grid.Column="0" Grid.Row="0">Name:</Label>
                         <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Race:</Label>
                         <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Profession:</Label>
+                        
                         <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                  Grid.Column="1" Grid.Row="0"
                                  Text="{Binding SelectedCharacter.Name}"/>
@@ -125,12 +131,12 @@
                     </Grid>
                 </TabItem>
 
-                <TabItem Header="Areas" Name="areas">
+                <TabItem Header="Areas">
                     <DockPanel>
                         <ListBox SelectedItem="{Binding SelectedAreaReference}"
                                  ItemsSource="{Binding AreaReferenceList}"
                                  DisplayMemberPath="Name" Width="150"/>
-                        <Grid xmlns:local="clr-namespace:Charrmander.View">
+                        <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5*"/>
                                 <RowDefinition Height="5*"/>
@@ -153,66 +159,16 @@
                                 </Style>
                             </Grid.Resources>
 
-                            <Image Grid.Column="0" Grid.Row="0">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="{StaticResource IconAreaHeart}"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Value="True" Binding="{Binding IsHeartsCompleted}">
-                                                <Setter Property="Source" Value="{StaticResource IconAreaHeartDone}"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
-                            <Image Grid.Column="0" Grid.Row="1">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="{StaticResource IconAreaWaypoint}"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Value="True" Binding="{Binding IsWaypointsCompleted}">
-                                                <Setter Property="Source" Value="{StaticResource IconAreaWaypointDone}"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
-                            <Image Grid.Column="0" Grid.Row="2">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="{StaticResource IconAreaPoI}"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Value="True" Binding="{Binding IsPoIsCompleted}">
-                                                <Setter Property="Source" Value="{StaticResource IconAreaPoIDone}"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
-                            <Image Grid.Column="0" Grid.Row="3">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="{StaticResource IconAreaSkill}"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Value="True" Binding="{Binding IsSkillsCompleted}">
-                                                <Setter Property="Source" Value="{StaticResource IconAreaSkillDone}"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
-                            <Image Grid.Column="0" Grid.Row="4">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Setter Property="Source" Value="{StaticResource IconAreaVista}"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Value="True" Binding="{Binding IsVistasCompleted}">
-                                                <Setter Property="Source" Value="{StaticResource IconAreaVistaDone}"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
+                            <Image Grid.Column="0" Grid.Row="0" Source="{Binding HeartIcon,
+                                Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
+                            <Image Grid.Column="0" Grid.Row="1" Source="{Binding WaypointIcon,
+                                Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
+                            <Image Grid.Column="0" Grid.Row="2" Source="{Binding PoIIcon,
+                                Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
+                            <Image Grid.Column="0" Grid.Row="3" Source="{Binding SkillIcon,
+                                Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
+                            <Image Grid.Column="0" Grid.Row="4" Source="{Binding VistaIcon,
+                                Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
 
                             <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
                                      Name="txtHearts" Text="{Binding Hearts}"/>
