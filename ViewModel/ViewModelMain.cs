@@ -698,22 +698,22 @@ namespace Charrmander.ViewModel
                 {
                     Character c = new Character()
                     {
-                        Name = CElement(charr, "Name").Value,
-                        Race = CElement(charr, "Race").Value,
-                        Profession = CElement(charr, "Profession").Value
+                        Name = charr.CElement("Name").Value,
+                        Race = charr.CElement("Race").Value,
+                        Profession = charr.CElement("Profession").Value
                     };
                     try
                     {
-                        var areas = CElements(CElement(charr, "Areas"), "Area");
+                        var areas = charr.CElement("Areas").CElements("Area");
                         foreach (var area in areas)
                         {
-                            Area a = new Area(CElement(area, "Name").Value)
+                            Area a = new Area(area.CElement("Name").Value)
                             {
-                                Hearts = CElement(CElement(area, "Completion"), "Hearts").Value,
-                                Waypoints = CElement(CElement(area, "Completion"), "Waypoints").Value,
-                                PoIs = CElement(CElement(area, "Completion"), "PoIs").Value,
-                                Skills = CElement(CElement(area, "Completion"), "Skills").Value,
-                                Vistas = CElement(CElement(area, "Completion"), "Vistas").Value
+                                Hearts = area.CElement("Completion").CElement("Hearts").Value,
+                                Waypoints = area.CElement("Completion").CElement("Waypoints").Value,
+                                PoIs = area.CElement("Completion").CElement("PoIs").Value,
+                                Skills = area.CElement("Completion").CElement("Skills").Value,
+                                Vistas = area.CElement("Completion").CElement("Vistas").Value
                             };
                             a.PropertyChanged += MarkFileDirty;
                             c.Areas.Add(a);
@@ -921,48 +921,6 @@ namespace Charrmander.ViewModel
         private void MarkFileDirty(object o, EventArgs err)
         {
             UnsavedChanges = true;
-        }
-
-        /// <summary>
-        /// Wrapper method for <see cref="XElement.Element(XName)"/>, returning
-        /// the desired element or a new, empty element to avoid the need for
-        /// constant <c>null</c> checks.
-        /// </summary>
-        /// <param name="xe">The <see cref="XElement"/> containing the child of
-        /// interest.</param>
-        /// <param name="name">The name of the child of <c>xe</c> we're
-        /// interested in.</param>
-        /// <returns>The child of <c>xe</c> identified by <c>name</c> or
-        /// <c>new XElement(name);</c></returns>
-        private XElement CElement(XElement xe, string name)
-        {
-            var ce = xe.Element(CharrElement.Charr + name);
-            if (ce == null)
-            {
-                ce = new CharrElement(name);
-            }
-            return ce;
-        }
-
-        /// <summary>
-        /// Wrapper method for <see cref="XElement.Elements(XName)"/>,
-        /// returning the desired elements or a new zero-length array to avoid
-        /// the need for constant <c>null</c> checks.
-        /// </summary>
-        /// <param name="xe">The <see cref="XElement"/> containing the children
-        /// of interest.</param>
-        /// <param name="name">The name of the children of <c>xe</c> we're
-        /// interested in.</param>
-        /// <returns>The children of <c>xe</c> identified by <c>name</c> or
-        /// <c>new CharrElement[0];</c></returns>
-        private IEnumerable<XElement> CElements(XElement xe, string name)
-        {
-            var ce = xe.Elements(CharrElement.Charr + name);
-            if (ce == null)
-            {
-                ce = new CharrElement[0];
-            }
-            return ce;
         }
 
         /// <summary>
