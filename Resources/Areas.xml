@@ -25,6 +25,14 @@
     <Vistas>7</Vistas>
   </Area>
   <Area>
+    <Name>Blue Borderlands</Name>
+    <Hearts>0</Hearts>
+    <Waypoints>6</Waypoints>
+    <PoIs>16</PoIs>
+    <Skills>3</Skills>
+    <Vistas>10</Vistas>
+  </Area>
+  <Area>
     <Name>Brisban Wildlands</Name>
     <Hearts>16</Hearts>
     <Waypoints>12</Waypoints>
@@ -39,6 +47,14 @@
     <PoIs>20</PoIs>
     <Skills>7</Skills>
     <Vistas>8</Vistas>
+  </Area>
+  <Area>
+    <Name>Chantry of Secrets</Name>
+    <Hearts>0</Hearts>
+    <Waypoints>0</Waypoints>
+    <PoIs>1</PoIs>
+    <Skills>0</Skills>
+    <Vistas>0</Vistas>
   </Area>
   <Area>
     <Name>Cursed Shore</Name>
@@ -73,6 +89,14 @@
     <Vistas>6</Vistas>
   </Area>
   <Area>
+    <Name>Eternal Battlegrounds</Name>
+    <Hearts>0</Hearts>
+    <Waypoints>7</Waypoints>
+    <PoIs>28</PoIs>
+    <Skills>4</Skills>
+    <Vistas>10</Vistas>
+  </Area>
+  <Area>
     <Name>Fields of Ruin</Name>
     <Hearts>13</Hearts>
     <Waypoints>17</Waypoints>
@@ -103,6 +127,14 @@
     <PoIs>16</PoIs>
     <Skills>7</Skills>
     <Vistas>8</Vistas>
+  </Area>
+  <Area>
+    <Name>Green Borderlands</Name>
+    <Hearts>0</Hearts>
+    <Waypoints>6</Waypoints>
+    <PoIs>16</PoIs>
+    <Skills>3</Skills>
+    <Vistas>10</Vistas>
   </Area>
   <Area>
     <Name>Harathi Hinterlands</Name>
@@ -199,6 +231,14 @@
     <PoIs>19</PoIs>
     <Skills>0</Skills>
     <Vistas>5</Vistas>
+  </Area>
+  <Area>
+    <Name>Red Borderlands</Name>
+    <Hearts>0</Hearts>
+    <Waypoints>6</Waypoints>
+    <PoIs>16</PoIs>
+    <Skills>3</Skills>
+    <Vistas>10</Vistas>
   </Area>
   <Area>
     <Name>Snowden Difts</Name>
