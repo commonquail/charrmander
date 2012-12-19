@@ -702,26 +702,19 @@ namespace Charrmander.ViewModel
                         Race = charr.CElement("Race").Value,
                         Profession = charr.CElement("Profession").Value
                     };
-                    try
+                    var areas = charr.CElement("Areas").CElements("Area");
+                    foreach (var area in areas)
                     {
-                        var areas = charr.CElement("Areas").CElements("Area");
-                        foreach (var area in areas)
+                        Area a = new Area(area.CElement("Name").Value)
                         {
-                            Area a = new Area(area.CElement("Name").Value)
-                            {
-                                Hearts = area.CElement("Completion").CElement("Hearts").Value,
-                                Waypoints = area.CElement("Completion").CElement("Waypoints").Value,
-                                PoIs = area.CElement("Completion").CElement("PoIs").Value,
-                                Skills = area.CElement("Completion").CElement("Skills").Value,
-                                Vistas = area.CElement("Completion").CElement("Vistas").Value
-                            };
-                            a.PropertyChanged += MarkFileDirty;
-                            c.Areas.Add(a);
-                        }
-                    }
-                    catch (NullReferenceException)
-                    {
-                        // This character didn't have any area data stored or it was malformed.
+                            Hearts = area.CElement("Completion").CElement("Hearts").Value,
+                            Waypoints = area.CElement("Completion").CElement("Waypoints").Value,
+                            PoIs = area.CElement("Completion").CElement("PoIs").Value,
+                            Skills = area.CElement("Completion").CElement("Skills").Value,
+                            Vistas = area.CElement("Completion").CElement("Vistas").Value
+                        };
+                        a.PropertyChanged += MarkFileDirty;
+                        c.Areas.Add(a);
                     }
                     c.PropertyChanged += MarkFileDirty;
                     newCharacterList.Add(c);
