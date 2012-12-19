@@ -177,33 +177,7 @@ namespace Charrmander.ViewModel
                     if (SelectedAreaReference != null && _selectedCharacter != null)
                     {
                         SelectedAreaCharacter = null;
-                        foreach (Area a in _selectedCharacter.Areas)
-                        {
-                            if (a.Name == SelectedAreaReference.Name)
-                            {
-                                SelectedAreaCharacter = a;
-                                break;
-                            }
-                        }
-                        if (SelectedAreaCharacter == null
-                            || SelectedAreaCharacter.Name != SelectedAreaReference.Name)
-                        {
-                            var a = new Area(SelectedAreaReference.Name);
-                            a.PropertyChanged += MarkFileDirty;
-                            SelectedCharacter.Areas.Add(a);
-                            SelectedAreaCharacter = a;
-                        }
-                        RaisePropertyChanged("Hearts");
-                        RaisePropertyChanged("Waypoints");
-                        RaisePropertyChanged("PoIs");
-                        RaisePropertyChanged("Skills");
-                        RaisePropertyChanged("Vistas");
-
-                        RaisePropertyChanged("HeartIcon");
-                        RaisePropertyChanged("WaypointIcon");
-                        RaisePropertyChanged("PoIIcon");
-                        RaisePropertyChanged("SkillIcon");
-                        RaisePropertyChanged("VistaIcon");
+                        ChangedAreaOrCharacter();
                     }
                     IsCharacterDetailEnabled = value != null;
                     RaisePropertyChanged("SelectedCharacter");
@@ -224,33 +198,7 @@ namespace Charrmander.ViewModel
                     _selectedAreaReference = value;
                     if (SelectedCharacter != null)
                     {
-                        foreach (Area a in SelectedCharacter.Areas)
-                        {
-                            if (a.Name == SelectedAreaReference.Name)
-                            {
-                                SelectedAreaCharacter = a;
-                                break;
-                            }
-                        }
-                        if (SelectedAreaCharacter == null
-                            || SelectedAreaCharacter.Name != SelectedAreaReference.Name)
-                        {
-                            var a = new Area(SelectedAreaReference.Name);
-                            a.PropertyChanged += MarkFileDirty;
-                            SelectedCharacter.Areas.Add(a);
-                            SelectedAreaCharacter = a;
-                        }
-                        RaisePropertyChanged("Hearts");
-                        RaisePropertyChanged("Waypoints");
-                        RaisePropertyChanged("PoIs");
-                        RaisePropertyChanged("Skills");
-                        RaisePropertyChanged("Vistas");
-
-                        RaisePropertyChanged("HeartIcon");
-                        RaisePropertyChanged("WaypointIcon");
-                        RaisePropertyChanged("PoIIcon");
-                        RaisePropertyChanged("SkillIcon");
-                        RaisePropertyChanged("VistaIcon");
+                        ChangedAreaOrCharacter();
                     }
                     RaisePropertyChanged("SelectedAreaReference");
                 }
@@ -929,6 +877,42 @@ namespace Charrmander.ViewModel
         private void ShowError(string caption, string body, MessageBoxImage severity = MessageBoxImage.Error)
         {
             MessageBox.Show(body, caption, MessageBoxButton.OK, severity);
+        }
+
+        /// <summary>
+        /// When a character or area was selected from their respective lists,
+        /// this method is called and makes the necessary property changes.
+        /// </summary>
+        private void ChangedAreaOrCharacter()
+        {
+            foreach (Area a in SelectedCharacter.Areas)
+            {
+                if (a.Name == SelectedAreaReference.Name)
+                {
+                    SelectedAreaCharacter = a;
+                    break;
+                }
+            }
+            if (SelectedAreaCharacter == null
+                || SelectedAreaCharacter.Name != SelectedAreaReference.Name)
+            {
+                var a = new Area(SelectedAreaReference.Name);
+                a.PropertyChanged += MarkFileDirty;
+                SelectedCharacter.Areas.Add(a);
+                SelectedAreaCharacter = a;
+            }
+
+            RaisePropertyChanged("Hearts");
+            RaisePropertyChanged("Waypoints");
+            RaisePropertyChanged("PoIs");
+            RaisePropertyChanged("Skills");
+            RaisePropertyChanged("Vistas");
+
+            RaisePropertyChanged("HeartIcon");
+            RaisePropertyChanged("WaypointIcon");
+            RaisePropertyChanged("PoIIcon");
+            RaisePropertyChanged("SkillIcon");
+            RaisePropertyChanged("VistaIcon");
         }
 
         /// <summary>
