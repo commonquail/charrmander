@@ -133,7 +133,7 @@ namespace Charrmander.ViewModel
                     _unsavedChanges = value;
                     RaisePropertyChanged("UnsavedChanges");
                 }
-                WindowTitle = String.Format("{0}{1} - Charrmander",
+                WindowTitle = String.Format(Properties.Resources.wnWindowTitle,
                     _unsavedChanges ? "*" : string.Empty,
                     _currentFile == null ? "Unnamed" : Path.GetFileName(_currentFile.Name));
             }
@@ -640,8 +640,8 @@ namespace Charrmander.ViewModel
         /// <param name="filePath">The path to the file to open.</param>
         public void Open(string filePath = null)
         {
-            if (UnsavedChanges && MessageBox.Show("Unsaved changes. Discard and open?",
-                    "Discard changes and open?",
+            if (UnsavedChanges && MessageBox.Show(Properties.Resources.msgUnsavedOpenBody,
+                    Properties.Resources.msgUnsavedOpenTitle,
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Warning) == MessageBoxResult.No)
             {
@@ -651,7 +651,7 @@ namespace Charrmander.ViewModel
             if (filePath == null)
             {
                 OpenFileDialog open = new OpenFileDialog();
-                open.Filter += "Charrmander Character File (.charr)|*.charr";
+                open.Filter += Properties.Resources.cfgFileFilter;
                 if (open.ShowDialog().Value)
                 {
                     filePath = open.FileName;
@@ -659,8 +659,8 @@ namespace Charrmander.ViewModel
             }
             if (filePath != null &&
                 (_currentFile == null || _currentFile.FullName != filePath ||
-                MessageBox.Show("File already open. Would you like to reload it?",
-                    "Reload file?",
+                MessageBox.Show(Properties.Resources.msgReloadFileBody,
+                    Properties.Resources.msgReloadFileTitle,
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Warning) == MessageBoxResult.Yes))
             {
@@ -682,7 +682,7 @@ namespace Charrmander.ViewModel
             settings.CloseInput = true;
             xs.Add(Properties.Resources.xNamespace,
                 XmlReader.Create(Application.GetResourceStream(
-                    new Uri("Resources/charr.xsd", UriKind.Relative)).Stream, settings));
+                    new Uri(Properties.Resources.cfgXsdpath, UriKind.Relative)).Stream, settings));
 
             settings = new XmlReaderSettings();
             settings.ValidationType = ValidationType.Schema;
@@ -705,17 +705,17 @@ namespace Charrmander.ViewModel
                 catch (XmlSchemaValidationException ex)
                 {
                     Debug.WriteLine(ex.Message);
-                    ShowError("Validation Error", ex.Message);
+                    ShowError(Properties.Resources.msgOpenFailedValidationTitle, ex.Message);
                 }
                 catch (XmlException)
                 {
-                    ShowError("Parse Error",
-                        "The file you are trying to load contains errors and could not be opened.");
+                    ShowError(Properties.Resources.msgOpenFailedParsingTitle,
+                        Properties.Resources.msgOpenFailedParsingBody);
                 }
                 catch (FileNotFoundException)
                 {
-                    ShowError("File Not Found",
-                        "The file you are trying to load could not be found.");
+                    ShowError(Properties.Resources.msgOpenFailedNoFileTitle,
+                        Properties.Resources.msgOpenFailedNoFileBody);
                 }
             }
         }
@@ -771,7 +771,7 @@ namespace Charrmander.ViewModel
         /// error that occurred.</param>
         private static void ValidationCallBack(object sender, ValidationEventArgs e)
         {
-            throw new XmlSchemaValidationException("Document not a GW2 Charrmander character list file.", e.Exception);
+            throw new XmlSchemaValidationException(Properties.Resources.msgOpenFailedValidationBody, e.Exception);
         }
 
         /// <summary>
@@ -800,15 +800,14 @@ namespace Charrmander.ViewModel
 
             if (_currentFile == null)
             {
-                save.FileName = "GW2 Character List";
+                save.FileName = Properties.Resources.cfgFileName;
             }
             else
             {
                 save.FileName = _currentFile.Name;
             }
-            save.DefaultExt = ".charr";
-            save.Title = "Save GW2 Character List";
-            save.Filter += "Charrmander Character File (.charr)|*.charr";
+            save.DefaultExt = Properties.Resources.cfgFileExtension;
+            save.Filter += Properties.Resources.cfgFileFilter;
             if (save.ShowDialog().Value)
             {
                 DoSave(save.FileName);
@@ -906,8 +905,8 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void RegisterExtension()
         {
-            if (MessageBox.Show("This operation will write to the system registry. Do you wish to proceed?",
-                "Register File Association",
+            if (MessageBox.Show(Properties.Resources.msgRegisterExtensionBody,
+                Properties.Resources.msgRegisterExtensionTitle,
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Warning) == MessageBoxResult.No)
             {
@@ -915,7 +914,7 @@ namespace Charrmander.ViewModel
             }
 
             string exePath = Environment.GetCommandLineArgs()[0];
-            FileAssociationInfo fai = new FileAssociationInfo(".charr");
+            FileAssociationInfo fai = new FileAssociationInfo(Properties.Resources.cfgFileExtension);
             if (fai.Exists)
             {
                 fai.Delete();
@@ -1009,15 +1008,15 @@ namespace Charrmander.ViewModel
                     }
                     else
                     {
-                        ShowError("No Update Available",
-                            "There is currently no update available.",
+                        ShowError(Properties.Resources.msgUpdateCheckNoUpdatesBody,
+                            Properties.Resources.msgUpdateCheckNoUpdatesTitle,
                             MessageBoxImage.Information);
                     }
                 }
                 catch (NullReferenceException)
                 {
                     ShowError(Properties.Resources.msgUpdateCheckFailedTitle,
-                        "An error occurred while processing the version history file.");
+                        Properties.Resources.msgUpdateCheckFailedBodyReading);
                 }
             }
         }

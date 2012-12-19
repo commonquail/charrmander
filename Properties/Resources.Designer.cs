@@ -61,11 +61,137 @@ namespace Charrmander.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .charr.
+        /// </summary>
+        internal static string cfgFileExtension {
+            get {
+                return ResourceManager.GetString("cfgFileExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charrmander Character File (.charr)|*.charr.
+        /// </summary>
+        internal static string cfgFileFilter {
+            get {
+                return ResourceManager.GetString("cfgFileFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GW2 Character List.
+        /// </summary>
+        internal static string cfgFileName {
+            get {
+                return ResourceManager.GetString("cfgFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to https://bitbucket.org/jokum/charrmander/raw/tip/VersionHistory.xml.
         /// </summary>
         internal static string cfgUpdateCheckUri {
             get {
                 return ResourceManager.GetString("cfgUpdateCheckUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resources/charr.xsd.
+        /// </summary>
+        internal static string cfgXsdpath {
+            get {
+                return ResourceManager.GetString("cfgXsdpath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file you are trying to load could not be found..
+        /// </summary>
+        internal static string msgOpenFailedNoFileBody {
+            get {
+                return ResourceManager.GetString("msgOpenFailedNoFileBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File Not Found.
+        /// </summary>
+        internal static string msgOpenFailedNoFileTitle {
+            get {
+                return ResourceManager.GetString("msgOpenFailedNoFileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file you are trying to load contains errors and could not be opened..
+        /// </summary>
+        internal static string msgOpenFailedParsingBody {
+            get {
+                return ResourceManager.GetString("msgOpenFailedParsingBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parse Error.
+        /// </summary>
+        internal static string msgOpenFailedParsingTitle {
+            get {
+                return ResourceManager.GetString("msgOpenFailedParsingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Document not a GW2 Charrmander character list file..
+        /// </summary>
+        internal static string msgOpenFailedValidationBody {
+            get {
+                return ResourceManager.GetString("msgOpenFailedValidationBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validation Error.
+        /// </summary>
+        internal static string msgOpenFailedValidationTitle {
+            get {
+                return ResourceManager.GetString("msgOpenFailedValidationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This operation will write to the system registry. Do you wish to proceed?.
+        /// </summary>
+        internal static string msgRegisterExtensionBody {
+            get {
+                return ResourceManager.GetString("msgRegisterExtensionBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register File Association.
+        /// </summary>
+        internal static string msgRegisterExtensionTitle {
+            get {
+                return ResourceManager.GetString("msgRegisterExtensionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File already open. Would you like to reload it?.
+        /// </summary>
+        internal static string msgReloadFileBody {
+            get {
+                return ResourceManager.GetString("msgReloadFileBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reload file?.
+        /// </summary>
+        internal static string msgReloadFileTitle {
+            get {
+                return ResourceManager.GetString("msgReloadFileTitle", resourceCulture);
             }
         }
         
@@ -88,12 +214,39 @@ namespace Charrmander.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are unsaved changes. Are you sure you wish to open a file? Doing so will discard all unsaved changes..
+        /// </summary>
+        internal static string msgUnsavedOpenBody {
+            get {
+                return ResourceManager.GetString("msgUnsavedOpenBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Discard unsaved changes and open?.
+        /// </summary>
+        internal static string msgUnsavedOpenTitle {
+            get {
+                return ResourceManager.GetString("msgUnsavedOpenTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to connect to {0}:
         ///{1}.
         /// </summary>
         internal static string msgUpdateCheckFailedBody404 {
             get {
                 return ResourceManager.GetString("msgUpdateCheckFailedBody404", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while processing the version history file..
+        /// </summary>
+        internal static string msgUpdateCheckFailedBodyReading {
+            get {
+                return ResourceManager.GetString("msgUpdateCheckFailedBodyReading", resourceCulture);
             }
         }
         
@@ -112,6 +265,33 @@ namespace Charrmander.Properties {
         internal static string msgUpdateCheckFailedTitle {
             get {
                 return ResourceManager.GetString("msgUpdateCheckFailedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is currently no update available..
+        /// </summary>
+        internal static string msgUpdateCheckNoUpdatesBody {
+            get {
+                return ResourceManager.GetString("msgUpdateCheckNoUpdatesBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Update Available.
+        /// </summary>
+        internal static string msgUpdateCheckNoUpdatesTitle {
+            get {
+                return ResourceManager.GetString("msgUpdateCheckNoUpdatesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}{1} - Charrmander.
+        /// </summary>
+        internal static string wnWindowTitle {
+            get {
+                return ResourceManager.GetString("wnWindowTitle", resourceCulture);
             }
         }
         

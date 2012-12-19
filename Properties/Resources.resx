@@ -117,8 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="cfgFileExtension" xml:space="preserve">
+    <value>.charr</value>
+  </data>
+  <data name="cfgFileFilter" xml:space="preserve">
+    <value>Charrmander Character File (.charr)|*.charr</value>
+  </data>
+  <data name="cfgFileName" xml:space="preserve">
+    <value>GW2 Character List</value>
+  </data>
   <data name="cfgUpdateCheckUri" xml:space="preserve">
     <value>https://bitbucket.org/jokum/charrmander/raw/tip/VersionHistory.xml</value>
+  </data>
+  <data name="cfgXsdpath" xml:space="preserve">
+    <value>Resources/charr.xsd</value>
+  </data>
+  <data name="msgOpenFailedNoFileBody" xml:space="preserve">
+    <value>The file you are trying to load could not be found.</value>
+  </data>
+  <data name="msgOpenFailedNoFileTitle" xml:space="preserve">
+    <value>File Not Found</value>
+  </data>
+  <data name="msgOpenFailedParsingBody" xml:space="preserve">
+    <value>The file you are trying to load contains errors and could not be opened.</value>
+  </data>
+  <data name="msgOpenFailedParsingTitle" xml:space="preserve">
+    <value>Parse Error</value>
+  </data>
+  <data name="msgOpenFailedValidationBody" xml:space="preserve">
+    <value>Document not a GW2 Charrmander character list file.</value>
+  </data>
+  <data name="msgOpenFailedValidationTitle" xml:space="preserve">
+    <value>Validation Error</value>
+  </data>
+  <data name="msgRegisterExtensionBody" xml:space="preserve">
+    <value>This operation will write to the system registry. Do you wish to proceed?</value>
+  </data>
+  <data name="msgRegisterExtensionTitle" xml:space="preserve">
+    <value>Register File Association</value>
+  </data>
+  <data name="msgReloadFileBody" xml:space="preserve">
+    <value>File already open. Would you like to reload it?</value>
+  </data>
+  <data name="msgReloadFileTitle" xml:space="preserve">
+    <value>Reload file?</value>
   </data>
   <data name="msgUnsavedExitBody" xml:space="preserve">
     <value>Unsaved changes. Are you sure you wish to discard and exit?</value>
@@ -126,15 +168,33 @@
   <data name="msgUnsavedExitTitle" xml:space="preserve">
     <value>Discard changes and exit?</value>
   </data>
+  <data name="msgUnsavedOpenBody" xml:space="preserve">
+    <value>There are unsaved changes. Are you sure you wish to open a file? Doing so will discard all unsaved changes.</value>
+  </data>
+  <data name="msgUnsavedOpenTitle" xml:space="preserve">
+    <value>Discard unsaved changes and open?</value>
+  </data>
   <data name="msgUpdateCheckFailedBody404" xml:space="preserve">
     <value>Failed to connect to {0}:
 {1}</value>
+  </data>
+  <data name="msgUpdateCheckFailedBodyReading" xml:space="preserve">
+    <value>An error occurred while processing the version history file.</value>
   </data>
   <data name="msgUpdateCheckFailedBodyUnknown" xml:space="preserve">
     <value>Unexpected error: {0}</value>
   </data>
   <data name="msgUpdateCheckFailedTitle" xml:space="preserve">
     <value>Update Check Failed</value>
+  </data>
+  <data name="msgUpdateCheckNoUpdatesBody" xml:space="preserve">
+    <value>There is currently no update available.</value>
+  </data>
+  <data name="msgUpdateCheckNoUpdatesTitle" xml:space="preserve">
+    <value>No Update Available</value>
+  </data>
+  <data name="wnWindowTitle" xml:space="preserve">
+    <value>{0}{1} - Charrmander</value>
   </data>
   <data name="xNamespace" xml:space="preserve">
     <value>http://charr.org</value>
