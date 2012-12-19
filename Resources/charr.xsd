@@ -16,9 +16,9 @@
 
   <xs:complexType name="CharacterType">
     <xs:all>
-      <xs:element name="Name" type="xs:string"/>
-      <xs:element name="Race" type="xs:string"/>
-      <xs:element name="Profession" type="xs:string"/>
+      <xs:element name="Name" type="xs:string" minOccurs="0"/>
+      <xs:element name="Race" type="xs:string" minOccurs="0"/>
+      <xs:element name="Profession" type="xs:string" minOccurs="0"/>
       <xs:element name="Areas" minOccurs="0">
         <xs:complexType>
           <xs:sequence>
