@@ -657,12 +657,12 @@ namespace Charrmander.ViewModel
                     filePath = open.FileName;
                 }
             }
-            if (_currentFile == null ||
-                _currentFile.FullName != filePath ||
+            if (filePath != null &&
+                (_currentFile == null || _currentFile.FullName != filePath ||
                 MessageBox.Show("File already open. Would you like to reload it?",
                     "Reload file?",
                     MessageBoxButton.YesNo,
-                    MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    MessageBoxImage.Warning) == MessageBoxResult.Yes))
             {
                 DoOpen(filePath);
             }
@@ -676,80 +676,107 @@ namespace Charrmander.ViewModel
         /// <param name="filePath">The path of the file to open</param>
         private void DoOpen(string filePath)
         {
-            XmlReader r = null;
-            try
-            {
-                XmlReaderSettings settings = new XmlReaderSettings();
-                settings.ValidationType = ValidationType.Schema;
-                XmlSchemaSet xs = new XmlSchemaSet();
-                xs.Add(Properties.Resources.xNamespace,
-                    XmlReader.Create(Application.GetResourceStream(
-                        new Uri("Resources/charr.xsd", UriKind.Relative)).Stream));
-                settings.Schemas = xs;
-                settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
-                settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
-                settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
-                settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
-                r = XmlReader.Create(filePath, settings);
-                XDocument doc = XDocument.Load(r);
-                var characters = doc.Root.Descendants(CharrElement.Charr + "Character");
-                ObservableCollection<Character> newCharacterList = new ObservableCollection<Character>();
-                foreach (var charr in characters)
-                {
-                    Character c = new Character()
-                    {
-                        Name = charr.CElement("Name").Value,
-                        Race = charr.CElement("Race").Value,
-                        Profession = charr.CElement("Profession").Value
-                    };
-                    var areas = charr.CElement("Areas").CElements("Area");
-                    foreach (var area in areas)
-                    {
-                        Area a = new Area(area.CElement("Name").Value)
-                        {
-                            Hearts = area.CElement("Completion").CElement("Hearts").Value,
-                            Waypoints = area.CElement("Completion").CElement("Waypoints").Value,
-                            PoIs = area.CElement("Completion").CElement("PoIs").Value,
-                            Skills = area.CElement("Completion").CElement("Skills").Value,
-                            Vistas = area.CElement("Completion").CElement("Vistas").Value
-                        };
-                        a.PropertyChanged += MarkFileDirty;
-                        c.Areas.Add(a);
-                    }
-                    c.PropertyChanged += MarkFileDirty;
-                    newCharacterList.Add(c);
-                }
-                CharacterList.CollectionChanged -= MarkFileDirty;
-                CharacterList = newCharacterList;
-                _currentFile = new FileInfo(filePath);
-                UnsavedChanges = false;
-                //txtInfo.Text = "Opened " + open.FileName;
-            }
-            catch (XmlSchemaValidationException e)
-            {
-                Debug.WriteLine(e.Message);
-                //txtInfo.Text = Properties.Resources.infErrDocValidation;
-            }
-            catch (Exception ex)
-            {
-                //txtInfo.Text = "Open failed: " + ex.Message;
-            }
-            finally
-            {
-                if (r != null)
-                {
-                    r.Close();
-                }
-            }
-        }
+            XmlReaderSettings settings = new XmlReaderSettings();
 
-        private static void ValidationCallBack(object sender, ValidationEventArgs e)
-        {
-            throw new XmlSchemaValidationException("Document not a GW2 Charrmander character file.", e.Exception);
+            XmlSchemaSet xs = new XmlSchemaSet();
+            settings.CloseInput = true;
+            xs.Add(Properties.Resources.xNamespace,
+                XmlReader.Create(Application.GetResourceStream(
+                    new Uri("Resources/charr.xsd", UriKind.Relative)).Stream, settings));
+
+            settings = new XmlReaderSettings();
+            settings.ValidationType = ValidationType.Schema;
+            settings.Schemas = xs;
+            settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
+            settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
+            settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
+            settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
+
+            XDocument doc = null;
+            using (XmlReader r = XmlReader.Create(filePath, settings))
+            {
+                try
+                {
+                    doc = XDocument.Load(r);
+                    Parse(doc);
+                    _currentFile = new FileInfo(filePath);
+                    UnsavedChanges = false;
+                }
+                catch (XmlSchemaValidationException ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                    ShowError("Validation Error", ex.Message);
+                }
+                catch (XmlException)
+                {
+                    ShowError("Parse Error",
+                        "The file you are trying to load contains errors and could not be opened.");
+                }
+                catch (FileNotFoundException)
+                {
+                    ShowError("File Not Found",
+                        "The file you are trying to load could not be found.");
+                }
+            }
         }
 
         /// <summary>
-        /// Save the current file if it has unsaved changes. <seealse cref="UnsavedChanges"/>
+        /// Parses the supplied document into the model.
+        /// </summary>
+        /// <param name="doc">The document to parse.</param>
+        private void Parse(XDocument doc)
+        {
+            var characters = doc.Root.Descendants(CharrElement.Charr + "Character");
+            ObservableCollection<Character> newCharacterList = new ObservableCollection<Character>();
+
+            foreach (var charr in characters)
+            {
+                Character c = new Character()
+                {
+                    Name = charr.CElement("Name").Value,
+                    Race = charr.CElement("Race").Value,
+                    Profession = charr.CElement("Profession").Value
+                };
+                var areas = charr.CElement("Areas").CElements("Area");
+                foreach (var area in areas)
+                {
+                    Area a = new Area(area.CElement("Name").Value)
+                    {
+                        Hearts = area.CElement("Completion").CElement("Hearts").Value,
+                        Waypoints = area.CElement("Completion").CElement("Waypoints").Value,
+                        PoIs = area.CElement("Completion").CElement("PoIs").Value,
+                        Skills = area.CElement("Completion").CElement("Skills").Value,
+                        Vistas = area.CElement("Completion").CElement("Vistas").Value
+                    };
+                    a.PropertyChanged += MarkFileDirty;
+                    c.Areas.Add(a);
+                }
+                c.PropertyChanged += MarkFileDirty;
+                newCharacterList.Add(c);
+            }
+            CharacterList.CollectionChanged -= MarkFileDirty;
+            CharacterList = newCharacterList;
+        }
+
+        /// <summary>
+        /// This callback gets around the problem of XML warnings, raised when
+        /// an XML file does not contain a matching schema definition, not
+        /// failing validation. It does so by throwing a new
+        /// <see cref="XmlSchemaValidationException"/> containing the original
+        /// one.
+        /// </summary>
+        /// <param name="sender">The culprit causing the warning or error,
+        /// for instance an XML element or a text element.</param>
+        /// <param name="e">Contains information about the type of validation
+        /// error that occurred.</param>
+        private static void ValidationCallBack(object sender, ValidationEventArgs e)
+        {
+            throw new XmlSchemaValidationException("Document not a GW2 Charrmander character list file.", e.Exception);
+        }
+
+        /// <summary>
+        /// Save the current file if it has unsaved changes.
+        /// <seealso cref="UnsavedChanges"/>
         /// </summary>
         private void Save()
         {
@@ -798,25 +825,17 @@ namespace Charrmander.ViewModel
             xws.OmitXmlDeclaration = false;
             xws.Indent = true;
 
-            try
+            using (XmlWriter xw = XmlWriter.Create(filePath, xws))
             {
-                using (XmlWriter xw = XmlWriter.Create(filePath, xws))
-                {
-                    new XDocument(
-                        new CharrElement("Charrmander",
-                            (CharacterList.Count > 0 ?
-                            from c in CharacterList
-                            select c.ToXML() : null)
-                        )
-                    ).Save(xw);
-                    _currentFile = new FileInfo(filePath);
-                    UnsavedChanges = false;
-                }
-            }
-            catch (Exception e)
-            {
-                //txtInfo.Text = String.Format(Properties.Resources.infErrSaveFailed, fileName);
-                Debug.WriteLine("Error saving: " + e.Message);
+                new XDocument(
+                    new CharrElement("Charrmander",
+                        (CharacterList.Count > 0 ?
+                        from c in CharacterList
+                        select c.ToXML() : null)
+                    )
+                ).Save(xw);
+                _currentFile = new FileInfo(filePath);
+                UnsavedChanges = false;
             }
         }
 
@@ -924,6 +943,18 @@ namespace Charrmander.ViewModel
         }
 
         /// <summary>
+        /// Wrapper for displaying a <see cref="MessageBox"/>.
+        /// </summary>
+        /// <param name="caption">The message box caption.</param>
+        /// <param name="body">The message box message.</param>
+        /// <param name="severity">A <see cref="MessageBoxImage"/> indicating
+        /// the severity, default <c>MessageBoxImage.Error</c></param>
+        private void ShowError(string caption, string body, MessageBoxImage severity = MessageBoxImage.Error)
+        {
+            MessageBox.Show(body, caption, MessageBoxButton.OK, severity);
+        }
+
+        /// <summary>
         /// Starts downloading update notes in the background, passing them to
         /// <c>e.Result</c> when finished.
         /// </summary>
@@ -948,20 +979,15 @@ namespace Charrmander.ViewModel
             {
                 if (e.Error is InvalidOperationException)
                 {
-                    MessageBox.Show(
+                    ShowError(Properties.Resources.msgUpdateCheckFailedTitle,
                         String.Format(Properties.Resources.msgUpdateCheckFailedBody404,
-                        Properties.Resources.cfgUpdateCheckUri, e.Error.Message),
-                        Properties.Resources.msgUpdateCheckFailedTitle,
-                        MessageBoxButton.OK, MessageBoxImage.Error);
+                        Properties.Resources.cfgUpdateCheckUri, e.Error.Message));
                 }
                 else
                 {
-                    MessageBox.Show(
-                        String.Format(Properties.Resources.msgUpdateCheckFailedBodyUnknown, e.Error.Message),
-                        Properties.Resources.msgUpdateCheckFailedTitle,
-                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    ShowError(Properties.Resources.msgUpdateCheckFailedTitle,
+                        String.Format(Properties.Resources.msgUpdateCheckFailedBodyUnknown, e.Error.Message));
                 }
-                Debug.WriteLine("Update check failed");
             }
             else if (e.Cancelled)
             { }
@@ -980,17 +1006,18 @@ namespace Charrmander.ViewModel
                         UpdateWindow.LatestVersion = newVersion;
                         UpdateWindow.LatestVersionPath = latest.Element("DownloadUrl").Value;
                         UpdateWindow.VersionHistory = doc.Root.Descendants("Release");
-
-                        Debug.WriteLine("New version available");
                     }
                     else
                     {
-                        Debug.WriteLine("No new version available");
+                        ShowError("No Update Available",
+                            "There is currently no update available.",
+                            MessageBoxImage.Information);
                     }
                 }
-                catch (Exception ex)
+                catch (NullReferenceException)
                 {
-                    Debug.WriteLine("Error reading version history file: " + ex.Message);
+                    ShowError(Properties.Resources.msgUpdateCheckFailedTitle,
+                        "An error occurred while processing the version history file.");
                 }
             }
         }
