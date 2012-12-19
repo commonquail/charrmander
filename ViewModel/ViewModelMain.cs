@@ -676,6 +676,7 @@ namespace Charrmander.ViewModel
         /// <param name="filePath">The path of the file to open</param>
         private void DoOpen(string filePath)
         {
+            XmlReader r = null;
             try
             {
                 XmlReaderSettings settings = new XmlReaderSettings();
@@ -689,9 +690,8 @@ namespace Charrmander.ViewModel
                 settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
                 settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
                 settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
-                XmlReader r = XmlReader.Create(filePath, settings);
+                r = XmlReader.Create(filePath, settings);
                 XDocument doc = XDocument.Load(r);
-                r.Close();
                 var characters = doc.Root.Descendants(CharrElement.Charr + "Character");
                 ObservableCollection<Character> newCharacterList = new ObservableCollection<Character>();
                 foreach (var charr in characters)
@@ -733,6 +733,13 @@ namespace Charrmander.ViewModel
             catch (Exception ex)
             {
                 //txtInfo.Text = "Open failed: " + ex.Message;
+            }
+            finally
+            {
+                if (r != null)
+                {
+                    r.Close();
+                }
             }
         }
 
