@@ -36,12 +36,7 @@ namespace Charrmander.Util
         /// <c>new XElement(name);</c></returns>
         public static XElement CElement(this XElement xe, string name)
         {
-            var ce = xe.Element(CharrElement.Charr + name);
-            if (ce == null)
-            {
-                ce = new CharrElement(name);
-            }
-            return ce;
+            return xe.Element(CharrElement.Charr + name) ?? new CharrElement(name);
         }
 
         /// <summary>
