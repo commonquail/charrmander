@@ -15,7 +15,7 @@
   </xs:complexType>
 
   <xs:complexType name="CharacterType">
-    <xs:sequence>
+    <xs:all>
       <xs:element name="Name" type="xs:string"/>
       <xs:element name="Race" type="xs:string"/>
       <xs:element name="Profession" type="xs:string"/>
@@ -26,7 +26,7 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-    </xs:sequence>
+    </xs:all>
   </xs:complexType>
 
   <xs:complexType name="AreaType">
