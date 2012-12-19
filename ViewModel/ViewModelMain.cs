@@ -862,7 +862,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         /// <param name="o"></param>
         /// <param name="err"></param>
-        private void MarkFileDirty(object o, EventArgs err)
+        private void MarkFileDirty(object o, EventArgs e)
         {
             UnsavedChanges = true;
         }
