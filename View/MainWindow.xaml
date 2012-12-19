@@ -128,8 +128,8 @@
                 <TabItem Header="Areas" Name="areas">
                     <DockPanel>
                         <ListBox SelectedItem="{Binding SelectedAreaReference}"
-                            ItemsSource="{Binding AreaReferenceList}"
-                            DisplayMemberPath="Name"/>
+                                 ItemsSource="{Binding AreaReferenceList}"
+                                 DisplayMemberPath="Name" Width="150"/>
                         <Grid xmlns:local="clr-namespace:Charrmander.View">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5*"/>
