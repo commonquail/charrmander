@@ -553,6 +553,10 @@ namespace Charrmander.ViewModel
             var c = new Character();
             c.PropertyChanged += MarkFileDirty;
             CharacterList.Add(c);
+            if (SelectedCharacter == null)
+            {
+                SelectedCharacter = c;
+            }
         }
 
         /// <summary>
