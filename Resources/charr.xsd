@@ -19,6 +19,13 @@
       <xs:element name="Name" type="xs:string" minOccurs="0"/>
       <xs:element name="Race" type="xs:string" minOccurs="0"/>
       <xs:element name="Profession" type="xs:string" minOccurs="0"/>
+      <xs:element name="CraftingDisciplines" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="CraftingDiscipline" maxOccurs="8" type="CraftingDisciplineType"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="Areas" minOccurs="0">
         <xs:complexType>
           <xs:sequence>
@@ -26,6 +33,13 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="CraftingDisciplineType">
+    <xs:all>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Level" type="xs:string"/>
     </xs:all>
   </xs:complexType>
 
