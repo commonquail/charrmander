@@ -146,7 +146,7 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="20"/>
-                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="40"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.Resources>
@@ -171,15 +171,15 @@
                                 Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
 
                             <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
-                                     Name="txtHearts" Text="{Binding Hearts}"/>
+                                     Name="txtHearts" Text="{Binding Hearts}" TextAlignment="Right"/>
                             <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"
-                                     Name="txtWaypoints" Text="{Binding Waypoints}"/>
+                                     Name="txtWaypoints" Text="{Binding Waypoints}" TextAlignment="Right"/>
                             <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"
-                                     Name="txtPoIs" Text="{Binding PoIs}"/>
+                                     Name="txtPoIs" Text="{Binding PoIs}" TextAlignment="Right"/>
                             <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"
-                                     Name="txtSkills" Text="{Binding Skills}"/>
+                                     Name="txtSkills" Text="{Binding Skills}" TextAlignment="Right"/>
                             <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="4"
-                                     Name="txtVistas" Text="{Binding Vistas}"/>
+                                     Name="txtVistas" Text="{Binding Vistas}" TextAlignment="Right"/>
 
                             <Label Name="lblHearts"
                                 DataContext="{Binding SelectedAreaReference}"
@@ -241,12 +241,13 @@
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <Image Source="{Binding Path=Name, Converter={StaticResource GameIconConverter}, ConverterParameter=Crafts}"
-                                                       Height="20" Width="20" HorizontalAlignment="Left"/>
+                                                <Image Source="{Binding Path=Name, Converter={StaticResource GameIconConverter},
+                                                    ConverterParameter=Crafts}"
+                                                       Height="20" Width="20" />
 
-                                                <Slider Value="{Binding Level}" Name="sldCraftingDiscipline"/>
+                                                <Slider Value="{Binding Level}" Name="sldCraftingDiscipline" Margin="6,2"/>
 
-                                                <TextBox VerticalAlignment="Center" Width="40"
+                                                <TextBox VerticalAlignment="Center" Width="35" TextAlignment="Right"
                                                          Text="{Binding ElementName=sldCraftingDiscipline, Path=Value}"/>
                                             </StackPanel>
                                         </DataTemplate>
