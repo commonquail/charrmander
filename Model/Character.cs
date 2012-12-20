@@ -10,7 +10,7 @@ namespace Charrmander.Model
 {
     class Character : AbstractNotifier, IDisposable
     {
-        private ViewModelMain _viewModel;
+        private IViewModel _viewModel;
 
         private string _name;
         private string _race;
@@ -23,7 +23,7 @@ namespace Charrmander.Model
         /// Creates a new character for the specified view model.
         /// </summary>
         /// <param name="vm">The view model housing this character.</param>
-        public Character(ViewModelMain vm)
+        public Character(IViewModel vm)
         {
             _viewModel = vm;
             this.PropertyChanged += _viewModel.MarkFileDirty;

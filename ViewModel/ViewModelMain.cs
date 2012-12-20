@@ -18,7 +18,7 @@ using BrendanGrant.Helpers.FileAssociation;
 
 namespace Charrmander.ViewModel
 {
-    class ViewModelMain : AbstractNotifier
+    class ViewModelMain : AbstractNotifier, IViewModel
     {
         #region Fields
 
@@ -868,9 +868,9 @@ namespace Charrmander.ViewModel
         /// Signalled when a property of the current file was changed.
         /// The parameters are not used.
         /// </summary>
-        /// <param name="o"></param>
-        /// <param name="err"></param>
-        public void MarkFileDirty(object o, EventArgs e)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void MarkFileDirty(object sender, EventArgs e)
         {
             UnsavedChanges = true;
         }

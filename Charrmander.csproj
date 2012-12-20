@@ -69,6 +69,7 @@
     <Compile Include="Util\AbstractNotifier.cs" />
     <Compile Include="Util\CharrElement.cs" />
     <Compile Include="Util\RelayCommand.cs" />
+    <Compile Include="ViewModel\IViewModel.cs" />
     <Compile Include="ViewModel\UpdateAvailableViewModel.cs" />
     <Compile Include="ViewModel\ViewModelMain.cs" />
     <Compile Include="View\UpdateAvailableView.xaml.cs">
