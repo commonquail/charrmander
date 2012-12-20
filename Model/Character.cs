@@ -1,29 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Diagnostics;
-using System.ComponentModel;
 using System.Collections.ObjectModel;
-using Charrmander.Util;
+using System.Collections.Specialized;
+using System.Linq;
 using System.Xml.Linq;
-using Charrmander.Properties;
-using System.Xml;
-using System.Xml.Schema;
+using Charrmander.Util;
+using Charrmander.ViewModel;
 
 namespace Charrmander.Model
 {
-    class Character : AbstractNotifier
+    class Character : AbstractNotifier, IDisposable
     {
+        private ViewModelMain _viewModel;
+
         private string _name;
         private string _race;
         private string _profession;
 
         private ObservableCollection<CraftingDiscipline> _craftingDisciplines;
+        private ObservableCollection<Area> _areas;
 
-        public Character()
+        /// <summary>
+        /// Creates a new character for the specified view model.
+        /// </summary>
+        /// <param name="vm">The view model housing this character.</param>
+        public Character(ViewModelMain vm)
         {
-            Areas = new ObservableCollection<Area>();
+            _viewModel = vm;
+            this.PropertyChanged += _viewModel.MarkFileDirty;
         }
 
         /// <summary>
@@ -96,22 +99,30 @@ namespace Charrmander.Model
                             new CraftingDiscipline() { Name = "Tailor" },
                             new CraftingDiscipline() { Name = "Weaponsmith" }
                         };
+                    foreach (var d in _craftingDisciplines)
+                    {
+                        d.PropertyChanged += _viewModel.MarkFileDirty;
+                    }
                 }
                 return _craftingDisciplines;
-            }
-            set
-            {
-                if (value != _craftingDisciplines)
-                {
-                    _craftingDisciplines = value;
-                }
             }
         }
 
         /// <summary>
         /// A collection of the areas this character has information about.
         /// </summary>
-        public ObservableCollection<Area> Areas { get; set; }
+        public ObservableCollection<Area> Areas
+        {
+            get
+            {
+                if (_areas == null)
+                {
+                    _areas = new ObservableCollection<Area>();
+                    _areas.CollectionChanged += Areas_CollectionChanged;
+                }
+                return _areas;
+            }
+        }
 
         /// <summary>
         /// Serializes this character to XML.
@@ -147,5 +158,47 @@ namespace Charrmander.Model
                         ) : null)
                     );
         }
+
+        /// <summary>
+        /// IDisposable implementation.
+        /// </summary>
+        public void Dispose()
+        {
+            this.PropertyChanged -= _viewModel.MarkFileDirty;
+            foreach (var d in _craftingDisciplines)
+            {
+                d.PropertyChanged -= _viewModel.MarkFileDirty;
+            }
+            foreach (Area a in Areas)
+            {
+                a.PropertyChanged -= _viewModel.MarkFileDirty;
+            }
+            Areas.CollectionChanged -= Areas_CollectionChanged;
+        }
+
+        /// <summary>
+        /// Handles adding and removal of PropertyChanged listeners for areas.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">Contains the items added or removed.</param>
+        private void Areas_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (Area a in e.NewItems)
+                {
+                    a.PropertyChanged += _viewModel.MarkFileDirty;
+                }
+            }
+
+            if (e.OldItems != null)
+            {
+                foreach (Area a in e.OldItems)
+                {
+                    a.PropertyChanged -= _viewModel.MarkFileDirty;
+                }
+            }
+        }
+
     }
 }

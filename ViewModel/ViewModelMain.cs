@@ -150,6 +150,10 @@ namespace Charrmander.ViewModel
             {
                 if (value != _characterList)
                 {
+                    if (_characterList != null)
+                    {
+                        _characterList.CollectionChanged -= MarkFileDirty;
+                    }
                     _characterList = value;
                     _characterList.CollectionChanged += MarkFileDirty;
                     RaisePropertyChanged("CharacterList");
@@ -550,8 +554,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void NewCharacter()
         {
-            var c = new Character();
-            c.PropertyChanged += MarkFileDirty;
+            var c = new Character(this);
             CharacterList.Add(c);
             if (SelectedCharacter == null)
             {
@@ -661,7 +664,7 @@ namespace Charrmander.ViewModel
 
             foreach (var charr in characters)
             {
-                Character c = new Character()
+                Character c = new Character(this)
                 {
                     Name = charr.CElement("Name").Value,
                     Race = charr.CElement("Race").Value,
@@ -685,13 +688,10 @@ namespace Charrmander.ViewModel
                         Skills = area.CElement("Completion").CElement("Skills").Value,
                         Vistas = area.CElement("Completion").CElement("Vistas").Value
                     };
-                    a.PropertyChanged += MarkFileDirty;
                     c.Areas.Add(a);
                 }
-                c.PropertyChanged += MarkFileDirty;
                 newCharacterList.Add(c);
             }
-            CharacterList.CollectionChanged -= MarkFileDirty;
             CharacterList = newCharacterList;
         }
 
@@ -814,14 +814,11 @@ namespace Charrmander.ViewModel
         private void DeleteCharacter()
         {
             Character c = SelectedCharacter;
+
             if (c != null)
             {
-                c.PropertyChanged -= MarkFileDirty;
-                foreach (Area a in c.Areas)
-                {
-                    a.PropertyChanged -= MarkFileDirty;
-                }
                 CharacterList.Remove(c);
+                c.Dispose();
             }
         }
 
@@ -873,7 +870,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         /// <param name="o"></param>
         /// <param name="err"></param>
-        private void MarkFileDirty(object o, EventArgs e)
+        public void MarkFileDirty(object o, EventArgs e)
         {
             UnsavedChanges = true;
         }
@@ -908,7 +905,6 @@ namespace Charrmander.ViewModel
                 || SelectedAreaCharacter.Name != SelectedAreaReference.Name)
             {
                 var a = new Area(SelectedAreaReference.Name);
-                a.PropertyChanged += MarkFileDirty;
                 SelectedCharacter.Areas.Add(a);
                 SelectedAreaCharacter = a;
             }
