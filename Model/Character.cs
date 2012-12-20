@@ -19,6 +19,9 @@ namespace Charrmander.Model
         private string _race;
         private string _profession;
 
+        private string _artificer;
+        private string _huntsman;
+
         public Character()
         {
             Areas = new ObservableCollection<Area>();
@@ -59,6 +62,32 @@ namespace Charrmander.Model
                 {
                     _profession = value;
                     RaisePropertyChanged("Profession");
+                }
+            }
+        }
+
+        public string Artificer
+        {
+            get { return _artificer; }
+            set
+            {
+                if (value != _artificer)
+                {
+                    _artificer = value;
+                    RaisePropertyChanged("Artificer");
+                }
+            }
+        }
+
+        public string Huntsman
+        {
+            get { return _huntsman; }
+            set
+            {
+                if (value != _huntsman)
+                {
+                    _huntsman = value;
+                    RaisePropertyChanged("Huntsman");
                 }
             }
         }

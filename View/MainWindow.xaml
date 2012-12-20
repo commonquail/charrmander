@@ -82,7 +82,7 @@
                 <TabItem Header="Personal" Name="personal">
                     <TabItem.Resources>
                         <vw:GameIconConverter x:Key="GameIconConverter"/>
-                        
+
                         <DataTemplate DataType="Profession">
                             <StackPanel Orientation="Horizontal">
                                 <Image Height="20" Width="20"
@@ -91,7 +91,7 @@
                                            VerticalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
-                        
+
                         <DataTemplate DataType="Race">
                             <StackPanel Orientation="Horizontal">
                                 <Image Height="20" Width="20"
@@ -116,7 +116,7 @@
                         <Label Grid.Column="0" Grid.Row="0">Name:</Label>
                         <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Race:</Label>
                         <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Profession:</Label>
-                        
+
                         <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                  Grid.Column="1" Grid.Row="0"
                                  Text="{Binding SelectedCharacter.Name}"/>
@@ -215,6 +215,40 @@
 
                     </DockPanel>
                 </TabItem>
+
+                <TabItem Header="Crafting" IsSelected="True">
+                    <StackPanel>
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Slider}">
+                                <Setter Property="TickPlacement" Value="TopLeft"/>
+                                <Setter Property="AutoToolTipPlacement" Value="BottomRight"/>
+                                <Setter Property="Minimum" Value="0"/>
+                                <Setter Property="Maximum" Value="400"/>
+                                <Setter Property="SmallChange" Value="1"/>
+                                <Setter Property="LargeChange" Value="10"/>
+                                <Setter Property="Ticks" Value="0, 75, 150, 225, 300, 375, 400"/>
+                                <Setter Property="Width" Value="200"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Icons/Game/Crafts/Artificer.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+
+                            <Slider Name="sldArtificer" Value="{Binding SelectedCharacter.Artificer}"
+                                    ValueChanged="Slider_ValueChanged" />
+
+                            <TextBox VerticalAlignment="Center" Width="40" Text="{Binding ElementName=sldArtificer, Path=Value}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Icons/Game/Crafts/Huntsman.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+
+                            <Slider Name="sldHuntsman" Value="{Binding SelectedCharacter.Huntsman}"
+                                    ValueChanged="Slider_ValueChanged" />
+
+                            <TextBox VerticalAlignment="Center" Width="40" Text="{Binding ElementName=sldHuntsman, Path=Value}"></TextBox>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+
             </TabControl>
         </DockPanel>
         <StatusBar Height="23" HorizontalAlignment="Stretch" Name="statusBar1" VerticalAlignment="Bottom"/>
