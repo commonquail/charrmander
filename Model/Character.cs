@@ -10,6 +10,7 @@ using System.Xml.Linq;
 using Charrmander.Properties;
 using System.Xml;
 using System.Xml.Schema;
+using System.Text.RegularExpressions;
 
 namespace Charrmander.Model
 {
@@ -19,12 +20,40 @@ namespace Charrmander.Model
         private string _race;
         private string _profession;
 
-        private string _artificer;
-        private string _huntsman;
+        private ObservableCollection<CraftingDiscipline> _craftingDisciplines;
 
         public Character()
         {
             Areas = new ObservableCollection<Area>();
+        }
+
+        public ObservableCollection<CraftingDiscipline> CraftingDisciplines
+        {
+            get
+            {
+                if (_craftingDisciplines == null)
+                {
+                    _craftingDisciplines = new ObservableCollection<CraftingDiscipline>()
+                        {
+                            new CraftingDiscipline() { Name = "Armorsmith" },
+                            new CraftingDiscipline() { Name = "Artificer" },
+                            new CraftingDiscipline() { Name = "Chef" },
+                            new CraftingDiscipline() { Name = "Huntsman" },
+                            new CraftingDiscipline() { Name = "Jeweler" },
+                            new CraftingDiscipline() { Name = "Leatherworker" },
+                            new CraftingDiscipline() { Name = "Tailor" },
+                            new CraftingDiscipline() { Name = "Weaponsmith" }
+                        };
+                }
+                return _craftingDisciplines;
+            }
+            set
+            {
+                if (value != _craftingDisciplines)
+                {
+                    _craftingDisciplines = value;
+                }
+            }
         }
 
         public string Name
@@ -66,32 +95,6 @@ namespace Charrmander.Model
             }
         }
 
-        public string Artificer
-        {
-            get { return _artificer; }
-            set
-            {
-                if (value != _artificer)
-                {
-                    _artificer = value;
-                    RaisePropertyChanged("Artificer");
-                }
-            }
-        }
-
-        public string Huntsman
-        {
-            get { return _huntsman; }
-            set
-            {
-                if (value != _huntsman)
-                {
-                    _huntsman = value;
-                    RaisePropertyChanged("Huntsman");
-                }
-            }
-        }
-
         public ObservableCollection<Area> Areas { get; set; }
 
         public CharrElement ToXML()
@@ -115,6 +118,40 @@ namespace Charrmander.Model
                             )
                         ) : null)
                     );
+        }
+    }
+
+    class CraftingDiscipline : AbstractNotifier
+    {
+        private Regex _NaNMatch = new Regex("[^0-9]");
+
+        private string _name;
+        private string _level;
+
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (value != _name)
+                {
+                    _name = value;
+                    RaisePropertyChanged("Name");
+                }
+            }
+        }
+
+        public string Level
+        {
+            get { return _level; }
+            set
+            {
+                if (value != _level && !_NaNMatch.IsMatch(value))
+                {
+                    _level = value;
+                    RaisePropertyChanged("Level");
+                }
+            }
         }
     }
 }

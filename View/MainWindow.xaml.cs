@@ -52,6 +52,11 @@ namespace Charrmander.View
             }
         }
 
+        private void Slider_Loaded(object sender, RoutedEventArgs e)
+        {
+            (sender as Slider).ValueChanged += Slider_ValueChanged;
+        }
+
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             (sender as Slider).Value = Math.Round(e.NewValue);
