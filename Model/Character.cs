@@ -10,7 +10,6 @@ using System.Xml.Linq;
 using Charrmander.Properties;
 using System.Xml;
 using System.Xml.Schema;
-using System.Text.RegularExpressions;
 
 namespace Charrmander.Model
 {
@@ -123,8 +122,6 @@ namespace Charrmander.Model
 
     class CraftingDiscipline : AbstractNotifier
     {
-        private Regex _NaNMatch = new Regex("[^0-9]");
-
         private string _name;
         private string _level;
 
@@ -143,10 +140,10 @@ namespace Charrmander.Model
 
         public string Level
         {
-            get { return _level; }
+            get { return string.IsNullOrWhiteSpace(_level) ? "0" : _level; }
             set
             {
-                if (value != _level && !_NaNMatch.IsMatch(value))
+                if (value != _level)
                 {
                     _level = value;
                     RaisePropertyChanged("Level");

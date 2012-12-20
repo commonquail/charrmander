@@ -234,7 +234,7 @@
                                 <Setter Property="Ticks" Value="0, 75, 150, 225, 300, 375, 400"/>
                                 <Setter Property="Width" Value="200"/>
                                 <EventSetter Event="Loaded" Handler="Slider_Loaded"/>
-                              </Style>
+                            </Style>
 
                             <DataTemplate x:Key="CraftingDisciplineTemplate">
                                 <ItemsControl ItemsSource="{Binding}">
@@ -244,7 +244,7 @@
                                                 <Image Source="{Binding Path=Name, Converter={StaticResource GameIconConverter}, ConverterParameter=Crafts}"
                                                        Height="20" Width="20" HorizontalAlignment="Left"/>
 
-                                                <Slider Value="{Binding Path=Level}" Name="sldCraftingDiscipline"/>
+                                                <Slider Value="{Binding Level}" Name="sldCraftingDiscipline"/>
 
                                                 <TextBox VerticalAlignment="Center" Width="40"
                                                          Text="{Binding ElementName=sldCraftingDiscipline, Path=Value}"/>
@@ -254,9 +254,11 @@
                                 </ItemsControl>
                             </DataTemplate>
                         </StackPanel.Resources>
+
                         <ContentControl
                             Content="{Binding SelectedCharacter.CraftingDisciplines}"
                             ContentTemplate="{StaticResource CraftingDisciplineTemplate}"/>
+
                     </StackPanel>
                 </TabItem>
 
