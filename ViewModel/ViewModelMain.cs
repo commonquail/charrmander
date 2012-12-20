@@ -425,13 +425,13 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// Command to create a new character.
         /// </summary>
-        public ICommand CommandNew
+        public ICommand CommandNewCharacter
         {
             get
             {
                 if (_cmdNew == null)
                 {
-                    _cmdNew = new RelayCommand(param => this.New());
+                    _cmdNew = new RelayCommand(param => this.NewCharacter());
                 }
                 return _cmdNew;
             }
@@ -548,7 +548,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// Creates a new character.
         /// </summary>
-        private void New()
+        private void NewCharacter()
         {
             var c = new Character();
             c.PropertyChanged += MarkFileDirty;

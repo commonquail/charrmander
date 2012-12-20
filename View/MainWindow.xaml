@@ -6,7 +6,7 @@
         Icon="/Icons/Game/MainTitle.png" AllowDrop="True" Drop="Window_Drop">
 
     <Window.InputBindings>
-        <KeyBinding Gesture="Ctrl+N" Command="{Binding CommandNew}"/>
+        <KeyBinding Gesture="Ctrl+N" Command="{Binding CommandNewCharacter}"/>
         <KeyBinding Gesture="Ctrl+O" Command="{Binding CommandOpen}"/>
         <KeyBinding Gesture="Ctrl+S" Command="{Binding CommandSave}"/>
     </Window.InputBindings>
@@ -35,7 +35,7 @@
     <Grid>
         <Menu Height="23" HorizontalAlignment="Stretch" VerticalAlignment="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_New Character" Command="{Binding CommandNew}" InputGestureText="Ctrl+N"/>
+                <MenuItem Header="_New Character" Command="{Binding CommandNewCharacter}" InputGestureText="Ctrl+N"/>
                 <Separator/>
                 <MenuItem Header="_Open" Command="{Binding CommandOpen}" InputGestureText="Ctrl+O">
                     <MenuItem.Icon>
@@ -71,7 +71,7 @@
                 </ListBox.ItemTemplate>
                 <ListBox.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="_New Character" Command="{Binding CommandNew}" InputGestureText="Ctrl+N"/>
+                        <MenuItem Header="_New Character" Command="{Binding CommandNewCharacter}" InputGestureText="Ctrl+N"/>
                         <MenuItem Header="Delete Selected" Command="{Binding CommandDeleteCharacter}"
                                   IsEnabled="{Binding IsCharacterDetailEnabled}"/>
                     </ContextMenu>
