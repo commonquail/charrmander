@@ -216,7 +216,7 @@
                     </DockPanel>
                 </TabItem>
 
-                <TabItem Header="Crafting" IsSelected="True">
+                <TabItem Header="Crafting">
                     <StackPanel>
                         <StackPanel.Resources>
                             <Style TargetType="{x:Type TextBox}">
