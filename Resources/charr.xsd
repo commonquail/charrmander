@@ -21,9 +21,16 @@
       <xs:element name="Profession" type="xs:string" minOccurs="0"/>
       <xs:element name="CraftingDisciplines" minOccurs="0">
         <xs:complexType>
-          <xs:sequence>
-            <xs:element name="CraftingDiscipline" maxOccurs="8" type="CraftingDisciplineType"/>
-          </xs:sequence>
+          <xs:all>
+            <xs:element name="Armorsmith" type="CraftingDisciplineType"/>
+            <xs:element name="Artificer" type="CraftingDisciplineType"/>
+            <xs:element name="Chef" type="CraftingDisciplineType"/>
+            <xs:element name="Huntsman" type="CraftingDisciplineType"/>
+            <xs:element name="Leatherworker" type="CraftingDisciplineType"/>
+            <xs:element name="Jeweler" type="CraftingDisciplineType"/>
+            <xs:element name="Tailor" type="CraftingDisciplineType"/>
+            <xs:element name="Weaponsmith" type="CraftingDisciplineType"/>
+          </xs:all>
         </xs:complexType>
       </xs:element>
       <xs:element name="Areas" minOccurs="0">
@@ -38,7 +45,6 @@
 
   <xs:complexType name="CraftingDisciplineType">
     <xs:all>
-      <xs:element name="Name" type="xs:string"/>
       <xs:element name="Level" type="xs:string"/>
     </xs:all>
   </xs:complexType>

@@ -664,18 +664,10 @@ namespace Charrmander.ViewModel
                     Profession = charr.CElement("Profession").Value
                 };
 
-                var craftingDisciplines = charr.CElement("CraftingDisciplines").CElements("CraftingDiscipline");
-                foreach (var cd in craftingDisciplines)
+                var craftingDisciplines = charr.CElement("CraftingDisciplines");
+                foreach (var d in c.CraftingDisciplines)
                 {
-                    var name = cd.CElement("Name").Value;
-                    foreach (var d in c.CraftingDisciplines)
-                    {
-                        if (d.Name == name)
-                        {
-                            d.Level = cd.CElement("Level").Value;
-                            d.PropertyChanged += MarkFileDirty;
-                        }
-                    }
+                    d.Level = craftingDisciplines.CElement(d.Name).CElement("Level").Value;
                 }
 
                 var areas = charr.CElement("Areas").CElements("Area");

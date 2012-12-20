@@ -127,8 +127,7 @@ namespace Charrmander.Model
                         new CharrElement("Profession", Profession),
                         new CharrElement("CraftingDisciplines",
                             from d in CraftingDisciplines
-                            select new CharrElement("CraftingDiscipline",
-                                new CharrElement("Name", d.Name),
+                            select new CharrElement(d.Name,
                                 new CharrElement("Level", d.Level)
                             )
                         ),
