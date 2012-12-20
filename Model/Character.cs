@@ -26,6 +26,59 @@ namespace Charrmander.Model
             Areas = new ObservableCollection<Area>();
         }
 
+        /// <summary>
+        /// The character name.
+        /// </summary>
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (value != _name && !string.IsNullOrWhiteSpace(value))
+                {
+                    _name = value.Trim();
+                    RaisePropertyChanged("Name");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The character's race. One of Asura, Charr, Human, Norn, Sylvari.
+        /// Values are not validated.
+        /// </summary>
+        public string Race
+        {
+            get { return _race; }
+            set
+            {
+                if (value != _race)
+                {
+                    _race = value;
+                    RaisePropertyChanged("Race");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The characater's profession. Values are not validated.
+        /// </summary>
+        public string Profession
+        {
+            get { return _profession; }
+            set
+            {
+                if (value != _profession)
+                {
+                    _profession = value;
+                    RaisePropertyChanged("Profession");
+                }
+            }
+        }
+
+        /// <summary>
+        /// A collection of all the crafting disciplines.
+        /// See <see cref="CraftingDiscipline"/>.
+        /// </summary>
         public ObservableCollection<CraftingDiscipline> CraftingDisciplines
         {
             get
@@ -55,53 +108,30 @@ namespace Charrmander.Model
             }
         }
 
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                if (value != _name && !string.IsNullOrWhiteSpace(value))
-                {
-                    _name = value.Trim();
-                    RaisePropertyChanged("Name");
-                }
-            }
-        }
-
-        public string Race
-        {
-            get { return _race; }
-            set
-            {
-                if (value != _race)
-                {
-                    _race = value;
-                    RaisePropertyChanged("Race");
-                }
-            }
-        }
-
-        public string Profession
-        {
-            get { return _profession; }
-            set
-            {
-                if (value != _profession)
-                {
-                    _profession = value;
-                    RaisePropertyChanged("Profession");
-                }
-            }
-        }
-
+        /// <summary>
+        /// A collection of the areas this character has information about.
+        /// </summary>
         public ObservableCollection<Area> Areas { get; set; }
 
+        /// <summary>
+        /// Serializes this character to XML.
+        /// <seealso cref="XElement"/>
+        /// </summary>
+        /// <returns>A <see cref="CharrElement"/> XML representation of this
+        /// character.</returns>
         public CharrElement ToXML()
         {
             return new CharrElement("Character",
                         new CharrElement("Name", Name),
                         new CharrElement("Race", Race),
                         new CharrElement("Profession", Profession),
+                        new CharrElement("CraftingDisciplines",
+                            from d in CraftingDisciplines
+                            select new CharrElement("CraftingDiscipline",
+                                new CharrElement("Name", d.Name),
+                                new CharrElement("Level", d.Level)
+                            )
+                        ),
                         (Areas.Count > 0 ?
                         new CharrElement("Areas",
                             from a in Areas
@@ -117,38 +147,6 @@ namespace Charrmander.Model
                             )
                         ) : null)
                     );
-        }
-    }
-
-    class CraftingDiscipline : AbstractNotifier
-    {
-        private string _name;
-        private string _level;
-
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                if (value != _name)
-                {
-                    _name = value;
-                    RaisePropertyChanged("Name");
-                }
-            }
-        }
-
-        public string Level
-        {
-            get { return string.IsNullOrWhiteSpace(_level) ? "0" : _level; }
-            set
-            {
-                if (value != _level)
-                {
-                    _level = value;
-                    RaisePropertyChanged("Level");
-                }
-            }
         }
     }
 }

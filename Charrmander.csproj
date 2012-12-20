@@ -65,6 +65,7 @@
     <Compile Include="FileAssociation\RegistryWrapper.cs" />
     <Compile Include="FileAssociation\ShellNotification.cs" />
     <Compile Include="Model\Area.cs" />
+    <Compile Include="Model\CraftingDiscipline.cs" />
     <Compile Include="Util\AbstractNotifier.cs" />
     <Compile Include="Util\CharrElement.cs" />
     <Compile Include="Util\RelayCommand.cs" />
