@@ -53,11 +53,7 @@ namespace Charrmander.Model
 
         private string GetCompletionItem(string item)
         {
-            if (string.IsNullOrWhiteSpace(item))
-            {
-                return string.Empty;
-            }
-            return item;
+            return string.IsNullOrWhiteSpace(item) ? "0" : item;
         }
 
         private void SetCompletionItem(ref string item, string value, string property)
