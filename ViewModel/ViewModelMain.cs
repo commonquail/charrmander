@@ -693,6 +693,10 @@ namespace Charrmander.ViewModel
                 newCharacterList.Add(c);
             }
             CharacterList = newCharacterList;
+            if (CharacterList.Count > 0)
+            {
+                SelectedCharacter = CharacterList[0];
+            }
         }
 
         /// <summary>
