@@ -6,7 +6,8 @@ This tool was created primarily to assist with keeping track of which areas had 
 
 ## Features
 
-* Individual area completion tracking per character
+* Individual area completion tracking
+* Crafting disciplines
 * Drag & drop file opening
 * Update check
 * File type association
