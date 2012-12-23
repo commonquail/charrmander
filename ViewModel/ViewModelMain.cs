@@ -15,6 +15,7 @@ using System.Xml.Schema;
 using System.Collections.Generic;
 using System.Linq;
 using BrendanGrant.Helpers.FileAssociation;
+using System.Collections;
 
 namespace Charrmander.ViewModel
 {
@@ -49,6 +50,10 @@ namespace Charrmander.ViewModel
 
         #endregion
 
+        private IDictionary<string, object> _biographyOptionsProfession;
+        private ObservableCollection<string> _biographyOptionsPersonality;
+        private IDictionary<string, IDictionary<string, ObservableCollection<string>>> _biographyOptionsRace;
+
         public ViewModelMain(string filePath)
         {
             AreaReferenceList = new ObservableCollection<Area>();
@@ -67,6 +72,49 @@ namespace Charrmander.ViewModel
                     Vistas = xe.Element("Vistas").Value
                 });
             }
+
+            var races = XDocument.Load(XmlReader.Create(Application.GetResourceStream(
+                new Uri("Resources/Races.xml", UriKind.Relative)).Stream)).Root.Elements("Race");
+
+            var biographies = XDocument.Load(XmlReader.Create(Application.GetResourceStream(
+                new Uri("Resources/Biographies.xml", UriKind.Relative)).Stream));
+
+            _biographyOptionsProfession = new Dictionary<string, object>(8);
+            foreach (XElement xe in biographies.Root.Element("Professions").Elements())
+            {
+                if (xe.Name.LocalName == "Ranger")
+                {
+                    var d = new Dictionary<string, ObservableCollection<string>>();
+                    foreach (var race in races)
+                    {
+                        string key = race.Element("Name").Value;
+                        d[key] = new ObservableCollection<string>(
+                            from bo in xe.Element(key).Elements() select bo.Value);
+                    }
+                    _biographyOptionsProfession[xe.Name.LocalName] = d;
+                }
+                else
+                {
+                    _biographyOptionsProfession[xe.Name.LocalName] = new ObservableCollection<string>(
+                        from e in xe.Elements() select e.Value);
+                }
+            }
+
+            _biographyOptionsPersonality = new ObservableCollection<string>(
+                from p in biographies.Root.Element("Personalities").Elements() select p.Value);
+
+            _biographyOptionsRace = new Dictionary<string, IDictionary<string, ObservableCollection<string>>>(5);
+            foreach (XElement xe in biographies.Root.Element("Races").Elements())
+            {
+                var d = new Dictionary<string, ObservableCollection<string>>(3);
+                foreach (var choice in xe.Elements())
+                {
+                    d[choice.Name.LocalName] = new ObservableCollection<string>(
+                        from c in choice.Elements() select c.Value);
+                }
+                _biographyOptionsRace[xe.Name.LocalName] = d;
+            }
+
             _bgUpdater.DoWork += UpdateWorker_DoWork;
             _bgUpdater.RunWorkerCompleted += UpdateWorker_RunWorkerCompleted;
 
@@ -237,6 +285,78 @@ namespace Charrmander.ViewModel
                 {
                     _isCharacterDetailEnabled = value;
                     RaisePropertyChanged("IsCharacterDetailEnabled");
+                }
+            }
+        }
+
+        private ObservableCollection<string>
+            _selectedBiographyOptionsProfession,
+            _selectedBiographyOptionsPersonality,
+            _selectedBiographyOptionsRaceFirst,
+            _selectedBiographyOptionsRaceSecond,
+            _selectedBiographyOptionsRaceThird;
+
+        public ObservableCollection<string> BiographyOptionsProfession
+        {
+            get { return _selectedBiographyOptionsProfession; }
+            private set
+            {
+                if (value != _selectedBiographyOptionsProfession)
+                {
+                    _selectedBiographyOptionsProfession = value;
+                    RaisePropertyChanged("BiographyOptionsProfession");
+                }
+            }
+        }
+
+        public ObservableCollection<string> BiographyOptionsPersonality
+        {
+            get { return _selectedBiographyOptionsPersonality; }
+            private set
+            {
+                if (value != _selectedBiographyOptionsPersonality)
+                {
+                    _selectedBiographyOptionsPersonality = value;
+                    RaisePropertyChanged("BiographyOptionsPersonality");
+                }
+            }
+        }
+
+        public ObservableCollection<string> BiographyOptionsRaceFirst
+        {
+            get { return _selectedBiographyOptionsRaceFirst; }
+            private set
+            {
+                if (value != _selectedBiographyOptionsRaceFirst)
+                {
+                    _selectedBiographyOptionsRaceFirst = value;
+                    RaisePropertyChanged("BiographyOptionsRaceFirst");
+                }
+            }
+        }
+
+        public ObservableCollection<string> BiographyOptionsRaceSecond
+        {
+            get { return _selectedBiographyOptionsRaceSecond; }
+            private set
+            {
+                if (value != _selectedBiographyOptionsRaceSecond)
+                {
+                    _selectedBiographyOptionsRaceSecond = value;
+                    RaisePropertyChanged("BiographyOptionsRaceSecond");
+                }
+            }
+        }
+
+        public ObservableCollection<string> BiographyOptionsRaceThird
+        {
+            get { return _selectedBiographyOptionsRaceThird; }
+            private set
+            {
+                if (value != _selectedBiographyOptionsRaceThird)
+                {
+                    _selectedBiographyOptionsRaceThird = value;
+                    RaisePropertyChanged("BiographyOptionsRaceThird");
                 }
             }
         }
@@ -879,6 +999,147 @@ namespace Charrmander.ViewModel
             UnsavedChanges = true;
         }
 
+        public string BiographyProfession
+        {
+            get
+            {
+                if (SelectedCharacter == null || SelectedCharacter.Biographies["Profession"] == null)
+                {
+                    return string.Empty;
+                }
+                return SelectedCharacter.Biographies["Profession"];
+            }
+            set
+            {
+                if (value != SelectedCharacter.Biographies["Profession"])
+                {
+                    SelectedCharacter.Biographies["Profession"] = value;
+                    RaisePropertyChanged("BiographyProfession");
+                }
+            }
+        }
+
+        public string BiographyPersonality
+        {
+            get
+            {
+                if (SelectedCharacter == null || SelectedCharacter.Biographies["Personality"] == null)
+                {
+                    return string.Empty;
+                }
+                return SelectedCharacter.Biographies["Personality"];
+            }
+            set
+            {
+                if (value != SelectedCharacter.Biographies["Personality"])
+                {
+                    SelectedCharacter.Biographies["Personality"] = value;
+                    RaisePropertyChanged("BiographyPersonality");
+                }
+            }
+        }
+
+        public string BiographyRaceFirst
+        {
+            get
+            {
+                if (SelectedCharacter == null || SelectedCharacter.Biographies["RaceFirst"] == null)
+                {
+                    return string.Empty;
+                }
+                return SelectedCharacter.Biographies["RaceFirst"];
+            }
+            set
+            {
+                if (value != SelectedCharacter.Biographies["RaceFirst"])
+                {
+                    SelectedCharacter.Biographies["RaceFirst"] = value;
+                    RaisePropertyChanged("BiographyRaceFirst");
+                }
+            }
+        }
+
+        public string BiographyRaceSecond
+        {
+            get
+            {
+                if (SelectedCharacter == null || SelectedCharacter.Biographies["RaceSecond"] == null)
+                {
+                    return string.Empty;
+                }
+                return SelectedCharacter.Biographies["RaceSecond"];
+            }
+            set
+            {
+                if (value != SelectedCharacter.Biographies["RaceSecond"])
+                {
+                    SelectedCharacter.Biographies["RaceSecond"] = value;
+                    RaisePropertyChanged("BiographyRaceSecond");
+                }
+            }
+        }
+
+        public string BiographyRaceThird
+        {
+            get
+            {
+                if (SelectedCharacter == null || SelectedCharacter.Biographies["RaceThird"] == null)
+                {
+                    return string.Empty;
+                }
+                return SelectedCharacter.Biographies["RaceThird"];
+            }
+            set
+            {
+                if (value != SelectedCharacter.Biographies["RaceThird"])
+                {
+                    SelectedCharacter.Biographies["RaceThird"] = value;
+                    RaisePropertyChanged("BiographyRaceThird");
+                }
+            }
+        }
+
+        public void UpdateBiographyOptions()
+        {
+            if (SelectedCharacter == null || string.IsNullOrEmpty(SelectedCharacter.Profession)
+                || string.IsNullOrEmpty(SelectedCharacter.Race))
+            {
+                BiographyOptionsProfession = null;
+                BiographyOptionsPersonality = null;
+                BiographyOptionsRaceFirst = null;
+                BiographyOptionsRaceSecond = null;
+                BiographyOptionsRaceThird = null;
+            }
+            else
+            {
+                // Non-rangers all have simple lists of options.
+                var nonRanger = _biographyOptionsProfession[SelectedCharacter.Profession]
+                    as ObservableCollection<string>;
+                if (nonRanger != null)
+                {
+                    BiographyOptionsProfession = nonRanger;
+                }
+                else
+                {
+                    // Ranger requires special handling. It has a race
+                    // dependency and so is nested one level further.
+                    var ranger = _biographyOptionsProfession[SelectedCharacter.Profession]
+                        as IDictionary<string, ObservableCollection<string>>;
+                    if (ranger != null)
+                    {
+                        BiographyOptionsProfession = ranger[SelectedCharacter.Race];
+                    }
+                }
+
+                // Personality (this one is constant).
+                BiographyOptionsPersonality = _biographyOptionsPersonality;
+
+                // Race.
+                BiographyOptionsRaceFirst = _biographyOptionsRace[SelectedCharacter.Race]["First"];
+                BiographyOptionsRaceSecond = _biographyOptionsRace[SelectedCharacter.Race]["Second"];
+                BiographyOptionsRaceThird = _biographyOptionsRace[SelectedCharacter.Race]["Third"];
+            }
+        }
         /// <summary>
         /// Wrapper for displaying a <see cref="MessageBox"/>.
         /// </summary>

@@ -61,6 +61,11 @@ namespace Charrmander.View
         {
             (sender as Slider).Value = Math.Round(e.NewValue);
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            (DataContext as ViewModelMain).UpdateBiographyOptions();
+        }
     }
 
     /// <summary>
