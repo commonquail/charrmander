@@ -5,6 +5,7 @@ using System.Linq;
 using System.Xml.Linq;
 using Charrmander.Util;
 using Charrmander.ViewModel;
+using System.Collections.Generic;
 
 namespace Charrmander.Model
 {
@@ -74,6 +75,34 @@ namespace Charrmander.Model
                 {
                     _profession = value;
                     RaisePropertyChanged("Profession");
+                }
+            }
+        }
+
+        private IDictionary<string, string> _biographies;
+        public IDictionary<string, string> Biographies
+        {
+            get
+            {
+                if (_biographies == null)
+                {
+                    _biographies = new Dictionary<string, string>()
+                    {
+                        { "Profession", "" },
+                        { "Personality","" },
+                        { "RaceFirst",  "" },
+                        { "RaceSecond", "" },
+                        { "RaceThird",  "" }
+                    };
+                }
+                return _biographies;
+            }
+            set
+            {
+                if (value != _biographies)
+                {
+                    _biographies = value;
+                    RaisePropertyChanged("Biographies");
                 }
             }
         }
