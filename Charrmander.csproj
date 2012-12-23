@@ -123,7 +123,9 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Professions.xml" />
+    <Resource Include="Resources\Professions.xml">
+      <SubType>Designer</SubType>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Areas.xml">
@@ -181,7 +183,14 @@
     <Resource Include="Icons\Game\Races\Sylvari.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Races.xml" />
+    <Resource Include="Resources\Races.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Biographies.xml">
+      <SubType>Designer</SubType>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

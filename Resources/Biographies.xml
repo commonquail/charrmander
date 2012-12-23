@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Biographies>
+  <Professions>
+    <Elementalist>
+      <Option>Water</Option>
+      <Option>Fire</Option>
+      <Option>Earth</Option>
+      <Option>Air</Option>
+    </Elementalist>
+    <Engineer>
+      <Option>Universal Multi-Tool</Option>
+      <Option>Eagle-Eye Goggles</Option>
+      <Option>Panscopic Monocle</Option>
+    </Engineer>
+    <Guardian>
+      <Option>Conqueror's Pauldrons</Option>
+      <Option>Fanatic's Pauldrons</Option>
+      <Option>Visionary's Helm</Option>
+    </Guardian>
+    <Mesmer>
+      <Option>Harlequin's Smile</Option>
+      <Option>Phantasm of Sorrow</Option>
+      <Option>Fanged Dread</Option>
+    </Mesmer>
+    <Necromancer>
+      <Option>Trickster Demon</Option>
+      <Option>Skull</Option>
+      <Option>Ghostly Wraith</Option>
+    </Necromancer>
+    <Ranger>
+      <Asura>
+        <Option>Moa</Option>
+        <Option>Stalker</Option>
+        <Option>Drake</Option>
+      </Asura>
+      <Charr>
+        <Option>Devourer</Option>
+        <Option>Stalker</Option>
+        <Option>Drake</Option>
+      </Charr>
+      <Human>
+        <Option>Bear</Option>
+        <Option>Stalker</Option>
+        <Option>Drake</Option>
+      </Human>
+      <Norn>
+        <Option>Bear</Option>
+        <Option>Wolf</Option>
+        <Option>Snow Leopard</Option>
+      </Norn>
+      <Sylvari>
+        <Option>Moa</Option>
+        <Option>Stalker</Option>
+        <Option>Fern Hound</Option>
+      </Sylvari>
+    </Ranger>
+    <Thief>
+      <Option>Anonymity</Option>
+      <Option>Determination</Option>
+      <Option>Subterfuge</Option>
+    </Thief>
+    <Warrior>
+      <Option>Spangenhelm</Option>
+      <Option>Cap Helm</Option>
+      <Option>No Helm</Option>
+    </Warrior>
+  </Professions>
+  <Personalities>
+    <Option>Charm</Option>
+    <Option>Dignity</Option>
+    <Option>Ferocity</Option>
+  </Personalities>
+  <Races>
+    <Asura>
+      <First>
+        <Option>Statics</Option>
+        <Option>Dynamics</Option>
+        <Option>Synergetics</Option>
+      </First>
+      <Second>
+        <Option>The VAL-A GOlem</Option>
+        <Option>A Transatmospheric Converter</Option>
+        <Option>An Infinity Ball</Option>
+      </Second>
+      <Third>
+        <Option>Bronk</Option>
+        <Option>Zinga</Option>
+        <Option>Blipp</Option>
+        <Option>Canni</Option>
+      </Third>
+    </Asura>
+    <Charr>
+      <First>
+        <Option>Blood Legion</Option>
+        <Option>Ashin Legion</Option>
+        <Option>Iron Legion</Option>
+      </First>
+      <Second>
+        <Option>Maverick</Option>
+        <Option>Euryale</Option>
+        <Option>Clawspur</Option>
+        <Option>Dinky</Option>
+        <Option>Reeva</Option>
+      </Second>
+      <Third>
+        <Option>Loyal Soldier</Option>
+        <Option>Sorcerous Shaman</Option>
+        <Option>Honorless Gladium</Option>
+      </Third>
+    </Charr>
+    <Human>
+      <First>
+        <Option>Commoner</Option>
+        <Option>Nobility</Option>
+        <Option>Street Rat</Option>
+      </First>
+      <Second>
+        <Option>Unknown Parents</Option>
+        <Option>Dead Sister</Option>
+        <Option>Missed Opportunity</Option>
+      </Second>
+      <Third>
+        <Option>Dwayna</Option>
+        <Option>Grenth</Option>
+        <Option>Balthazar</Option>
+        <Option>Melandru</Option>
+        <Option>Lyssa</Option>
+        <Option>Kormir</Option>
+      </Third>
+    </Human>
+    <Norn>
+      <First>
+        <Option>Defeat Our Ancient Foes</Option>
+        <Option>Protect the Spirits</Option>
+        <Option>Guard the Mists</Option>
+      </First>
+      <Second>
+        <Option>Blacked Out</Option>
+        <Option>Revenge</Option>
+        <Option>Lost an Heirloom</Option>
+      </Second>
+      <Third>
+        <Option>Bear</Option>
+        <Option>Snow Leopard</Option>
+        <Option>Wolf</Option>
+        <Option>Raven</Option>
+      </Third>
+    </Norn>
+    <Sylvari>
+      <First>
+        <Option>The White Stag</Option>
+        <Option>The Green Knight</Option>
+        <Option>The Shield of the Moon</Option>
+      </First>
+      <Second>
+        <Option>Act with wisdom, but act.</Option>
+        <Option>All things have a right to grow.</Option>
+        <Option>Where life goes, so too, should you.</Option>
+      </Second>
+      <Third>
+        <Option>Cycle of Dawn</Option>
+        <Option>Cycle of Noon</Option>
+        <Option>Cycle of Dusk</Option>
+        <Option>Cycle of Night</Option>
+      </Third>
+    </Sylvari>
+  </Races>
+</Biographies>
