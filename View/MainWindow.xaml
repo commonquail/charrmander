@@ -144,7 +144,7 @@
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Height="20" Width="20"
+                                        <Image Height="35" Width="35"
                                                Source="{Binding Converter={StaticResource GameIconConverter},
                                             ConverterParameter=Biographies/Professions}"/>
                                         <TextBlock Text="{Binding StringFormat={} {0}}"
@@ -161,7 +161,7 @@
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Height="20" Width="20"
+                                        <Image Height="35" Width="35"
                                                Source="{Binding Converter={StaticResource GameIconConverter},
                                             ConverterParameter=Biographies/Personalities}"/>
                                         <TextBlock Text="{Binding StringFormat={} {0}}"
@@ -178,7 +178,7 @@
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Height="20" Width="20"
+                                        <Image Height="35" Width="35"
                                                Source="{Binding Converter={StaticResource GameIconConverter},
                                             ConverterParameter=Biographies/Races}"/>
                                         <TextBlock Text="{Binding StringFormat={} {0}}"
@@ -195,7 +195,7 @@
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Height="20" Width="20"
+                                        <Image Height="35" Width="35"
                                                Source="{Binding Converter={StaticResource GameIconConverter},
                                             ConverterParameter=Biographies/Races}"/>
                                         <TextBlock Text="{Binding StringFormat={} {0}}"
@@ -212,7 +212,7 @@
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Height="20" Width="20"
+                                        <Image Height="35" Width="35"
                                                Source="{Binding Converter={StaticResource GameIconConverter},
                                             ConverterParameter=Biographies/Races}"/>
                                         <TextBlock Text="{Binding StringFormat={} {0}}"
