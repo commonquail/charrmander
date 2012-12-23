@@ -791,6 +791,13 @@ namespace Charrmander.ViewModel
                     Profession = charr.CElement("Profession").Value
                 };
 
+                var biographies = charr.CElement("Biographies");
+                BiographyProfession = biographies.CElement("Profession").Value;
+                BiographyPersonality = biographies.CElement("Personality").Value;
+                BiographyRaceFirst = biographies.CElement("RaceFirst").Value;
+                BiographyRaceSecond = biographies.CElement("RaceSecond").Value;
+                BiographyRaceThird = biographies.CElement("RaceThird").Value;
+
                 var craftingDisciplines = charr.CElement("CraftingDisciplines");
                 foreach (var d in c.CraftingDisciplines)
                 {
@@ -1011,7 +1018,7 @@ namespace Charrmander.ViewModel
             }
             set
             {
-                if (value != SelectedCharacter.Biographies["Profession"])
+                if (SelectedCharacter != null && value != SelectedCharacter.Biographies["Profession"])
                 {
                     SelectedCharacter.Biographies["Profession"] = value;
                     RaisePropertyChanged("BiographyProfession");
@@ -1031,7 +1038,7 @@ namespace Charrmander.ViewModel
             }
             set
             {
-                if (value != SelectedCharacter.Biographies["Personality"])
+                if (SelectedCharacter != null && value != SelectedCharacter.Biographies["Personality"])
                 {
                     SelectedCharacter.Biographies["Personality"] = value;
                     RaisePropertyChanged("BiographyPersonality");
@@ -1051,7 +1058,7 @@ namespace Charrmander.ViewModel
             }
             set
             {
-                if (value != SelectedCharacter.Biographies["RaceFirst"])
+                if (SelectedCharacter != null && value != SelectedCharacter.Biographies["RaceFirst"])
                 {
                     SelectedCharacter.Biographies["RaceFirst"] = value;
                     RaisePropertyChanged("BiographyRaceFirst");
@@ -1071,7 +1078,7 @@ namespace Charrmander.ViewModel
             }
             set
             {
-                if (value != SelectedCharacter.Biographies["RaceSecond"])
+                if (SelectedCharacter != null && value != SelectedCharacter.Biographies["RaceSecond"])
                 {
                     SelectedCharacter.Biographies["RaceSecond"] = value;
                     RaisePropertyChanged("BiographyRaceSecond");
@@ -1091,7 +1098,7 @@ namespace Charrmander.ViewModel
             }
             set
             {
-                if (value != SelectedCharacter.Biographies["RaceThird"])
+                if (SelectedCharacter != null && value != SelectedCharacter.Biographies["RaceThird"])
                 {
                     SelectedCharacter.Biographies["RaceThird"] = value;
                     RaisePropertyChanged("BiographyRaceThird");

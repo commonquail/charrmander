@@ -165,6 +165,13 @@ namespace Charrmander.Model
                         new CharrElement("Name", Name),
                         new CharrElement("Race", Race),
                         new CharrElement("Profession", Profession),
+                        new CharrElement("Biographies",
+                            new CharrElement("Profession", Biographies["Profession"]),
+                            new CharrElement("Personality", Biographies["Personality"]),
+                            new CharrElement("RaceFirst", Biographies["RaceFirst"]),
+                            new CharrElement("RaceSecond", Biographies["RaceSecond"]),
+                            new CharrElement("RaceThird", Biographies["RaceThird"])
+                        ),
                         new CharrElement("CraftingDisciplines",
                             from d in CraftingDisciplines
                             select new CharrElement(d.Name,
