@@ -86,6 +86,8 @@ namespace Charrmander.ViewModel
             _biographyOptionsProfession = new Dictionary<string, object>(8);
             foreach (XElement xe in biographies.Root.Element("Professions").Elements())
             {
+                // Rangers need an extra level of nesting becauseo of a racial
+                // dependency.
                 if (xe.Name.LocalName == "Ranger")
                 {
                     var d = new Dictionary<string, ObservableCollection<string>>();

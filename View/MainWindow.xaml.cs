@@ -52,16 +52,34 @@ namespace Charrmander.View
             }
         }
 
+        /// <summary>
+        /// Restricts the calling slider to discrete integer values.
+        /// <seealso cref="Slider_ValueChanged"/>
+        /// </summary>
+        /// <param name="sender">The Slider control.</param>
+        /// <param name="e"></param>
         private void Slider_Loaded(object sender, RoutedEventArgs e)
         {
             (sender as Slider).ValueChanged += Slider_ValueChanged;
         }
 
+        /// <summary>
+        /// Restricts the calling slider to discrete integer values.
+        /// <seealso cref="Slider_ValueChanged"/>
+        /// </summary>
+        /// <param name="sender">The Slider control.</param>
+        /// <param name="e"></param>
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             (sender as Slider).Value = Math.Round(e.NewValue);
         }
 
+        /// <summary>
+        /// When race or profession is changed, update the biography choice
+        /// options.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             (DataContext as ViewModelMain).UpdateBiographyOptions();
