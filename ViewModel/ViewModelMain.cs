@@ -48,11 +48,18 @@ namespace Charrmander.ViewModel
 
         private bool _isCharacterDetailEnabled = false;
 
-        #endregion
-
         private IDictionary<string, object> _biographyOptionsProfession;
         private ObservableCollection<string> _biographyOptionsPersonality;
         private IDictionary<string, IDictionary<string, ObservableCollection<string>>> _biographyOptionsRace;
+
+        private ObservableCollection<string>
+            _selectedBiographyOptionsProfession,
+            _selectedBiographyOptionsPersonality,
+            _selectedBiographyOptionsRaceFirst,
+            _selectedBiographyOptionsRaceSecond,
+            _selectedBiographyOptionsRaceThird;
+
+        #endregion
 
         public ViewModelMain(string filePath)
         {
@@ -145,6 +152,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// This view model displays when a new update is available.
+        /// </summary>
         private UpdateAvailableViewModel UpdateWindow
         {
             get { return _updateViewModel; }
@@ -226,10 +236,13 @@ namespace Charrmander.ViewModel
                 if (value != _selectedCharacter)
                 {
                     _selectedCharacter = value;
-                    if (SelectedAreaReference != null && _selectedCharacter != null)
+                    if (_selectedCharacter != null)
                     {
-                        SelectedAreaCharacter = null;
-                        ChangedAreaOrCharacter();
+                        if (SelectedAreaReference != null)
+                        {
+                            SelectedAreaCharacter = null;
+                            ChangedAreaOrCharacter();
+                        }
                     }
                     IsCharacterDetailEnabled = value != null;
                     RaisePropertyChanged("SelectedCharacter");
@@ -288,13 +301,6 @@ namespace Charrmander.ViewModel
                 }
             }
         }
-
-        private ObservableCollection<string>
-            _selectedBiographyOptionsProfession,
-            _selectedBiographyOptionsPersonality,
-            _selectedBiographyOptionsRaceFirst,
-            _selectedBiographyOptionsRaceSecond,
-            _selectedBiographyOptionsRaceThird;
 
         public ObservableCollection<string> BiographyOptionsProfession
         {
@@ -543,7 +549,7 @@ namespace Charrmander.ViewModel
             }
         }
 
-        #endregion // Area Completion
+        #endregion
 
         #region ICommand Implementations
         /// <summary>
@@ -749,6 +755,8 @@ namespace Charrmander.ViewModel
             {
                 try
                 {
+                    // Load and parse the file. Only if load and parse succeed
+                    // should the file handle be updated.
                     doc = XDocument.Load(r);
                     Parse(doc);
                     _currentFile = new FileInfo(filePath);
@@ -779,7 +787,7 @@ namespace Charrmander.ViewModel
         /// <param name="doc">The document to parse.</param>
         private void Parse(XDocument doc)
         {
-            var characters = doc.Root.Descendants(CharrElement.Charr + "Character");
+            var characters = doc.Root.CElements("Character");
             ObservableCollection<Character> newCharacterList = new ObservableCollection<Character>();
 
             foreach (var charr in characters)
@@ -791,19 +799,22 @@ namespace Charrmander.ViewModel
                     Profession = charr.CElement("Profession").Value
                 };
 
+                // Biography choices.
                 var biographies = charr.CElement("Biographies");
-                BiographyProfession = biographies.CElement("Profession").Value;
-                BiographyPersonality = biographies.CElement("Personality").Value;
-                BiographyRaceFirst = biographies.CElement("RaceFirst").Value;
-                BiographyRaceSecond = biographies.CElement("RaceSecond").Value;
-                BiographyRaceThird = biographies.CElement("RaceThird").Value;
+                c.BiographyProfession = biographies.CElement("Profession").Value;
+                c.BiographyPersonality = biographies.CElement("Personality").Value;
+                c.BiographyRaceFirst = biographies.CElement("RaceFirst").Value;
+                c.BiographyRaceSecond = biographies.CElement("RaceSecond").Value;
+                c.BiographyRaceThird = biographies.CElement("RaceThird").Value;
 
+                // Crafting disciplines.
                 var craftingDisciplines = charr.CElement("CraftingDisciplines");
-                foreach (var d in c.CraftingDisciplines)
+                foreach (var discipline in c.CraftingDisciplines)
                 {
-                    d.Level = craftingDisciplines.CElement(d.Name).CElement("Level").Value;
+                    discipline.Level = craftingDisciplines.CElement(discipline.Name).CElement("Level").Value;
                 }
 
+                // Area completion.
                 var areas = charr.CElement("Areas").CElements("Area");
                 foreach (var area in areas)
                 {
@@ -817,6 +828,8 @@ namespace Charrmander.ViewModel
                     };
                     c.Areas.Add(a);
                 }
+
+                // All done.
                 newCharacterList.Add(c);
             }
             CharacterList = newCharacterList;
@@ -1004,106 +1017,6 @@ namespace Charrmander.ViewModel
         public void MarkFileDirty(object sender, EventArgs e)
         {
             UnsavedChanges = true;
-        }
-
-        public string BiographyProfession
-        {
-            get
-            {
-                if (SelectedCharacter == null || SelectedCharacter.Biographies["Profession"] == null)
-                {
-                    return string.Empty;
-                }
-                return SelectedCharacter.Biographies["Profession"];
-            }
-            set
-            {
-                if (SelectedCharacter != null && value != SelectedCharacter.Biographies["Profession"])
-                {
-                    SelectedCharacter.Biographies["Profession"] = value;
-                    RaisePropertyChanged("BiographyProfession");
-                }
-            }
-        }
-
-        public string BiographyPersonality
-        {
-            get
-            {
-                if (SelectedCharacter == null || SelectedCharacter.Biographies["Personality"] == null)
-                {
-                    return string.Empty;
-                }
-                return SelectedCharacter.Biographies["Personality"];
-            }
-            set
-            {
-                if (SelectedCharacter != null && value != SelectedCharacter.Biographies["Personality"])
-                {
-                    SelectedCharacter.Biographies["Personality"] = value;
-                    RaisePropertyChanged("BiographyPersonality");
-                }
-            }
-        }
-
-        public string BiographyRaceFirst
-        {
-            get
-            {
-                if (SelectedCharacter == null || SelectedCharacter.Biographies["RaceFirst"] == null)
-                {
-                    return string.Empty;
-                }
-                return SelectedCharacter.Biographies["RaceFirst"];
-            }
-            set
-            {
-                if (SelectedCharacter != null && value != SelectedCharacter.Biographies["RaceFirst"])
-                {
-                    SelectedCharacter.Biographies["RaceFirst"] = value;
-                    RaisePropertyChanged("BiographyRaceFirst");
-                }
-            }
-        }
-
-        public string BiographyRaceSecond
-        {
-            get
-            {
-                if (SelectedCharacter == null || SelectedCharacter.Biographies["RaceSecond"] == null)
-                {
-                    return string.Empty;
-                }
-                return SelectedCharacter.Biographies["RaceSecond"];
-            }
-            set
-            {
-                if (SelectedCharacter != null && value != SelectedCharacter.Biographies["RaceSecond"])
-                {
-                    SelectedCharacter.Biographies["RaceSecond"] = value;
-                    RaisePropertyChanged("BiographyRaceSecond");
-                }
-            }
-        }
-
-        public string BiographyRaceThird
-        {
-            get
-            {
-                if (SelectedCharacter == null || SelectedCharacter.Biographies["RaceThird"] == null)
-                {
-                    return string.Empty;
-                }
-                return SelectedCharacter.Biographies["RaceThird"];
-            }
-            set
-            {
-                if (SelectedCharacter != null && value != SelectedCharacter.Biographies["RaceThird"])
-                {
-                    SelectedCharacter.Biographies["RaceThird"] = value;
-                    RaisePropertyChanged("BiographyRaceThird");
-                }
-            }
         }
 
         public void UpdateBiographyOptions()

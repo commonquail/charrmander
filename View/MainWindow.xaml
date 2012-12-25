@@ -140,27 +140,27 @@
                         <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                   Grid.Column="2" Grid.Row="3" Height="26"
                                   ItemsSource="{Binding BiographyOptionsProfession}"
-                                  SelectedValue="{Binding BiographyProfession}"/>
+                                  SelectedValue="{Binding SelectedCharacter.BiographyProfession}"/>
 
                         <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                   Grid.Column="2" Grid.Row="4" Height="26"
                                   ItemsSource="{Binding BiographyOptionsPersonality}"
-                                  SelectedValue="{Binding BiographyPersonality}"/>
+                                  SelectedValue="{Binding SelectedCharacter.BiographyPersonality}"/>
 
                         <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                   Grid.Column="2" Grid.Row="5" Height="26"
                                   ItemsSource="{Binding BiographyOptionsRaceFirst}"
-                                  SelectedValue="{Binding BiographyRaceFirst}"/>
+                                  SelectedValue="{Binding SelectedCharacter.BiographyRaceFirst}"/>
 
                         <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                   Grid.Column="2" Grid.Row="6" Height="26"
                                   ItemsSource="{Binding BiographyOptionsRaceSecond}"
-                                  SelectedValue="{Binding BiographyRaceSecond}"/>
+                                  SelectedValue="{Binding SelectedCharacter.BiographyRaceSecond}"/>
 
                         <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                   Grid.Column="2" Grid.Row="7" Height="26"
                                   ItemsSource="{Binding BiographyOptionsRaceThird}"
-                                  SelectedValue="{Binding BiographyRaceThird}"/>
+                                  SelectedValue="{Binding SelectedCharacter.BiographyRaceThird}"/>
                     </Grid>
                 </TabItem>
 

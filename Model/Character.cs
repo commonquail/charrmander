@@ -17,6 +17,8 @@ namespace Charrmander.Model
         private string _race;
         private string _profession;
 
+        private IDictionary<string, string> _biographies;
+
         private ObservableCollection<CraftingDiscipline> _craftingDisciplines;
         private ObservableCollection<Area> _areas;
 
@@ -27,6 +29,16 @@ namespace Charrmander.Model
         public Character(IViewModel vm)
         {
             _viewModel = vm;
+
+            _biographies = new Dictionary<string, string>()
+            {
+                { "Profession", "" },
+                { "Personality","" },
+                { "RaceFirst",  "" },
+                { "RaceSecond", "" },
+                { "RaceThird",  "" }
+            };
+
             this.PropertyChanged += _viewModel.MarkFileDirty;
         }
 
@@ -79,30 +91,88 @@ namespace Charrmander.Model
             }
         }
 
-        private IDictionary<string, string> _biographies;
-        public IDictionary<string, string> Biographies
+        /// <summary>
+        /// The character's profession-dependant biography choice.
+        /// </summary>
+        public string BiographyProfession
         {
-            get
-            {
-                if (_biographies == null)
-                {
-                    _biographies = new Dictionary<string, string>()
-                    {
-                        { "Profession", "" },
-                        { "Personality","" },
-                        { "RaceFirst",  "" },
-                        { "RaceSecond", "" },
-                        { "RaceThird",  "" }
-                    };
-                }
-                return _biographies;
-            }
+            get { return _biographies["Profession"]; }
             set
             {
-                if (value != _biographies)
+                if (value != _biographies["Profession"])
                 {
-                    _biographies = value;
-                    RaisePropertyChanged("Biographies");
+                    _biographies["Profession"] = value;
+                    RaisePropertyChanged("BiographyProfession");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The character's personality biography choice.
+        /// </summary>
+        public string BiographyPersonality
+        {
+            get { return _biographies["Personality"]; }
+            set
+            {
+                if (value != _biographies["Personality"])
+                {
+                    _biographies["Personality"] = value;
+                    RaisePropertyChanged("BiographyPersonality");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The character's first of three race-dependant biography choices.
+        /// <seealso cref="BiographyRaceSecond"/>
+        /// <seealso cref="BiographyRaceThird"/>
+        /// </summary>
+        public string BiographyRaceFirst
+        {
+            get { return _biographies["RaceFirst"]; }
+            set
+            {
+                if (value != _biographies["RaceFirst"])
+                {
+                    _biographies["RaceFirst"] = value;
+                    RaisePropertyChanged("BiographyRaceFirst");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The character's second of three race-dependant biography choices.
+        /// <seealso cref="BiographyRaceFirst"/>
+        /// <seealso cref="BiographyRaceThird"/>
+        /// </summary>
+        public string BiographyRaceSecond
+        {
+            get { return _biographies["RaceSecond"]; }
+            set
+            {
+                if (value != _biographies["RaceSecond"])
+                {
+                    _biographies["RaceSecond"] = value;
+                    RaisePropertyChanged("BiographyRaceSecond");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The character's third of three race-dependant biography choices.
+        /// <seealso cref="BiographyRaceFirst"/>
+        /// <seealso cref="BiographyRaceSecond"/>
+        /// </summary>
+        public string BiographyRaceThird
+        {
+            get { return _biographies["RaceThird"]; }
+            set
+            {
+                if (value != _biographies["RaceThird"])
+                {
+                    _biographies["RaceThird"] = value;
+                    RaisePropertyChanged("BiographyRaceThird");
                 }
             }
         }
@@ -162,37 +232,37 @@ namespace Charrmander.Model
         public CharrElement ToXML()
         {
             return new CharrElement("Character",
-                        new CharrElement("Name", Name),
-                        new CharrElement("Race", Race),
-                        new CharrElement("Profession", Profession),
-                        new CharrElement("Biographies",
-                            new CharrElement("Profession", Biographies["Profession"]),
-                            new CharrElement("Personality", Biographies["Personality"]),
-                            new CharrElement("RaceFirst", Biographies["RaceFirst"]),
-                            new CharrElement("RaceSecond", Biographies["RaceSecond"]),
-                            new CharrElement("RaceThird", Biographies["RaceThird"])
-                        ),
-                        new CharrElement("CraftingDisciplines",
-                            from d in CraftingDisciplines
-                            select new CharrElement(d.Name,
-                                new CharrElement("Level", d.Level)
-                            )
-                        ),
-                        (Areas.Count > 0 ?
-                        new CharrElement("Areas",
-                            from a in Areas
-                            select new CharrElement("Area",
-                                new CharrElement("Name", a.Name),
-                                new CharrElement("Completion",
-                                    new CharrElement("Hearts", a.Hearts),
-                                    new CharrElement("Waypoints", a.Waypoints),
-                                    new CharrElement("PoIs", a.PoIs),
-                                    new CharrElement("Skills", a.Skills),
-                                    new CharrElement("Vistas", a.Vistas)
-                                )
-                            )
-                        ) : null)
-                    );
+                new CharrElement("Name", Name),
+                new CharrElement("Race", Race),
+                new CharrElement("Profession", Profession),
+                new CharrElement("Biographies",
+                    new CharrElement("Profession", BiographyProfession),
+                    new CharrElement("Personality", BiographyPersonality),
+                    new CharrElement("RaceFirst", BiographyRaceFirst),
+                    new CharrElement("RaceSecond", BiographyRaceSecond),
+                    new CharrElement("RaceThird", BiographyRaceThird)
+                ),
+                new CharrElement("CraftingDisciplines",
+                    from d in CraftingDisciplines
+                    select new CharrElement(d.Name,
+                        new CharrElement("Level", d.Level)
+                    )
+                ),
+                (Areas.Count > 0 ?
+                new CharrElement("Areas",
+                    from a in Areas
+                    select new CharrElement("Area",
+                        new CharrElement("Name", a.Name),
+                        new CharrElement("Completion",
+                            new CharrElement("Hearts", a.Hearts),
+                            new CharrElement("Waypoints", a.Waypoints),
+                            new CharrElement("PoIs", a.PoIs),
+                            new CharrElement("Skills", a.Skills),
+                            new CharrElement("Vistas", a.Vistas)
+                        )
+                    )
+                ) : null)
+            );
         }
 
         /// <summary>
