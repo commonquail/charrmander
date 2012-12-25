@@ -63,22 +63,19 @@ namespace Charrmander.ViewModel
 
         public ViewModelMain(string filePath)
         {
-            AreaReferenceList = new ObservableCollection<Area>();
-
             var doc = XDocument.Load(XmlReader.Create(Application.GetResourceStream(
                 new Uri("Resources/Areas.xml", UriKind.Relative)).Stream));
 
-            foreach (XElement xe in doc.Root.Elements("Area"))
-            {
-                AreaReferenceList.Add(new Area(xe.Element("Name").Value)
+            AreaReferenceList = new ObservableCollection<Area>(
+                from a in doc.Root.Elements("Area")
+                select new Area(a.Element("Name").Value)
                 {
-                    Hearts = xe.Element("Hearts").Value,
-                    Waypoints = xe.Element("Waypoints").Value,
-                    PoIs = xe.Element("PoIs").Value,
-                    Skills = xe.Element("Skills").Value,
-                    Vistas = xe.Element("Vistas").Value
+                    Hearts = a.Element("Hearts").Value,
+                    Waypoints = a.Element("Waypoints").Value,
+                    PoIs = a.Element("PoIs").Value,
+                    Skills = a.Element("Skills").Value,
+                    Vistas = a.Element("Vistas").Value
                 });
-            }
 
             var races = XDocument.Load(XmlReader.Create(Application.GetResourceStream(
                 new Uri("Resources/Races.xml", UriKind.Relative)).Stream)).Root.Elements("Race");
