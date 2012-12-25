@@ -32,8 +32,8 @@
         <vw:GameIconConverter x:Key="GameIconConverter"/>
     </Window.Resources>
 
-    <Grid>
-        <Menu Height="23" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+    <DockPanel>
+        <Menu Height="23" HorizontalAlignment="Stretch" VerticalAlignment="Top" DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_New Character" Command="{Binding CommandNewCharacter}" InputGestureText="Ctrl+N"/>
                 <Separator/>
@@ -58,7 +58,7 @@
             </MenuItem>
         </Menu>
 
-        <DockPanel Margin="0,23">
+        <DockPanel>
             <DockPanel.Resources>
                 <vw:NamelessCharacterConverter x:Key="NamelessCharacterConverter"/>
             </DockPanel.Resources>
@@ -325,6 +325,5 @@
 
             </TabControl>
         </DockPanel>
-        <StatusBar Height="23" HorizontalAlignment="Stretch" Name="statusBar1" VerticalAlignment="Bottom"/>
-    </Grid>
+    </DockPanel>
 </Window>
