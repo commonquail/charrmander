@@ -103,65 +103,92 @@
                         </DataTemplate>
                     </TabItem.Resources>
 
-                    <Grid VerticalAlignment="Top">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
+                    <StackPanel >
+                        <Grid VerticalAlignment="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="30.05"/>
+                                <RowDefinition Height="30.05"/>
+                                <!--
                             <RowDefinition Height="30.05"/>
                             <RowDefinition Height="30.05"/>
                             <RowDefinition Height="30.05"/>
                             <RowDefinition Height="30.05"/>
                             <RowDefinition Height="30.05"/>
-                            <RowDefinition Height="30.05"/>
-                            <RowDefinition Height="30.05"/>
-                        </Grid.RowDefinitions>
+                            -->
+                            </Grid.RowDefinitions>
 
-                        <Label Grid.Column="0" Grid.Row="0">Name:</Label>
-                        <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Race:</Label>
-                        <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Profession:</Label>
+                            <Label Grid.Column="0" Grid.Row="0">Name:</Label>
+                            <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Race:</Label>
+                            <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Profession:</Label>
 
-                        <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                            <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                  Grid.Column="1" Grid.Row="0"
                                  Text="{Binding SelectedCharacter.Name}"/>
-                        <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                            <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                   Grid.Column="1" Grid.Row="1" Height="26"
                                   ItemsSource="{Binding Source={StaticResource RacesXml}}"
                                   SelectedValue="{Binding SelectedCharacter.Race}"
                                   SelectedValuePath="Name" SelectionChanged="ComboBox_SelectionChanged"/>
-                        <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                            <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
                                   Grid.Column="2" Grid.Row="2" Height="26"
                                   ItemsSource="{Binding Source={StaticResource ProfessionsXml}}"
                                   SelectedValue="{Binding SelectedCharacter.Profession}"
                                   SelectedValuePath="Name" SelectionChanged="ComboBox_SelectionChanged"/>
 
-                        <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                  Grid.Column="2" Grid.Row="3" Height="26"
-                                  ItemsSource="{Binding BiographyOptionsProfession}"
-                                  SelectedValue="{Binding SelectedCharacter.BiographyProfession}"/>
+                        </Grid>
+                        <GroupBox Header="Biography">
+                            <StackPanel>
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type DockPanel}">
+                                        <Setter Property="Margin" Value="0,2"/>
+                                    </Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Width" Value="94"/>
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                    </Style>
+                                    <Style TargetType="{x:Type ComboBox}">
+                                        <Setter Property="VerticalAlignment" Value="Center"/>
+                                    </Style>
+                                </StackPanel.Resources>
 
-                        <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                  Grid.Column="2" Grid.Row="4" Height="26"
-                                  ItemsSource="{Binding BiographyOptionsPersonality}"
-                                  SelectedValue="{Binding SelectedCharacter.BiographyPersonality}"/>
+                                <DockPanel>
+                                    <TextBlock Text="Profession:"/>
+                                    <ComboBox ItemsSource="{Binding BiographyOptionsProfession}"
+                                              SelectedValue="{Binding SelectedCharacter.BiographyProfession}"/>
+                                </DockPanel>
 
-                        <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                  Grid.Column="2" Grid.Row="5" Height="26"
-                                  ItemsSource="{Binding BiographyOptionsRaceFirst}"
-                                  SelectedValue="{Binding SelectedCharacter.BiographyRaceFirst}"/>
+                                <DockPanel>
+                                    <TextBlock Text="Personality:"/>
+                                    <ComboBox ItemsSource="{Binding BiographyOptionsPersonality}"
+                                              SelectedValue="{Binding SelectedCharacter.BiographyPersonality}"/>
+                                </DockPanel>
 
-                        <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                  Grid.Column="2" Grid.Row="6" Height="26"
-                                  ItemsSource="{Binding BiographyOptionsRaceSecond}"
-                                  SelectedValue="{Binding SelectedCharacter.BiographyRaceSecond}"/>
+                                <DockPanel>
+                                    <TextBlock Text="Racial 1:"/>
+                                    <ComboBox ItemsSource="{Binding BiographyOptionsRaceFirst}"
+                                              SelectedValue="{Binding SelectedCharacter.BiographyRaceFirst}"/>
+                                </DockPanel>
 
-                        <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                  Grid.Column="2" Grid.Row="7" Height="26"
-                                  ItemsSource="{Binding BiographyOptionsRaceThird}"
-                                  SelectedValue="{Binding SelectedCharacter.BiographyRaceThird}"/>
-                    </Grid>
+                                <DockPanel>
+                                    <TextBlock Text="Racial 2:"/>
+                                    <ComboBox ItemsSource="{Binding BiographyOptionsRaceSecond}"
+                                              SelectedValue="{Binding SelectedCharacter.BiographyRaceSecond}"/>
+                                </DockPanel>
+
+                                <DockPanel>
+                                    <TextBlock Text="Racial 3:"/>
+                                    <ComboBox ItemsSource="{Binding BiographyOptionsRaceThird}"
+                                              SelectedValue="{Binding SelectedCharacter.BiographyRaceThird}"/>
+                                </DockPanel>
+
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
                 </TabItem>
 
                 <TabItem Header="Areas">
