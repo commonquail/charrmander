@@ -103,7 +103,7 @@
                         </DataTemplate>
                     </TabItem.Resources>
 
-                    <StackPanel >
+                    <StackPanel>
                         <Grid VerticalAlignment="Top">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="100"/>
@@ -113,13 +113,6 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="30.05"/>
                                 <RowDefinition Height="30.05"/>
-                                <!--
-                            <RowDefinition Height="30.05"/>
-                            <RowDefinition Height="30.05"/>
-                            <RowDefinition Height="30.05"/>
-                            <RowDefinition Height="30.05"/>
-                            <RowDefinition Height="30.05"/>
-                            -->
                             </Grid.RowDefinitions>
 
                             <Label Grid.Column="0" Grid.Row="0">Name:</Label>
@@ -141,7 +134,7 @@
                                   SelectedValuePath="Name" SelectionChanged="ComboBox_SelectionChanged"/>
 
                         </Grid>
-                        <GroupBox Header="Biography">
+                        <GroupBox Header="Biography" Visibility="{Binding IsBiographyVisible}">
                             <StackPanel>
                                 <StackPanel.Resources>
                                     <Style TargetType="{x:Type DockPanel}">

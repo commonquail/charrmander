@@ -48,6 +48,8 @@ namespace Charrmander.ViewModel
 
         private bool _isCharacterDetailEnabled = false;
 
+        private Visibility _isBiographyVisible = Visibility.Collapsed;
+
         private IDictionary<string, object> _biographyOptionsProfession;
         private ObservableCollection<string> _biographyOptionsPersonality;
         private IDictionary<string, IDictionary<string, ObservableCollection<string>>> _biographyOptionsRace;
@@ -297,6 +299,23 @@ namespace Charrmander.ViewModel
                 {
                     _isCharacterDetailEnabled = value;
                     RaisePropertyChanged("IsCharacterDetailEnabled");
+                }
+            }
+        }
+
+        /// <summary>
+        /// <c>Visibility.Visible</c> if the biography options should be shown,
+        /// <c>Visibility.Collapsed</c> otherwise.
+        /// </summary>
+        public Visibility IsBiographyVisible
+        {
+            get { return _isBiographyVisible; }
+            set
+            {
+                if (value != _isBiographyVisible)
+                {
+                    _isBiographyVisible = value;
+                    RaisePropertyChanged("IsBiographyVisible");
                 }
             }
         }
@@ -1023,6 +1042,7 @@ namespace Charrmander.ViewModel
             if (SelectedCharacter == null || string.IsNullOrEmpty(SelectedCharacter.Profession)
                 || string.IsNullOrEmpty(SelectedCharacter.Race))
             {
+                IsBiographyVisible = Visibility.Collapsed;
                 BiographyOptionsProfession = null;
                 BiographyOptionsPersonality = null;
                 BiographyOptionsRaceFirst = null;
@@ -1031,6 +1051,7 @@ namespace Charrmander.ViewModel
             }
             else
             {
+                IsBiographyVisible = Visibility.Visible;
                 // Non-rangers all have simple lists of options.
                 var nonRanger = _biographyOptionsProfession[SelectedCharacter.Profession]
                     as ObservableCollection<string>;
