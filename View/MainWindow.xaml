@@ -212,6 +212,9 @@
                             <Grid.Resources>
                                 <Style x:Key="CompletionLabel" TargetType="Label">
                                     <Setter Property="ContentStringFormat" Value="{}/{0,3}"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="DataContext" Value="{Binding SelectedAreaReference}"/>
+                                    <Setter Property="Grid.Column" Value="2"/>
                                 </Style>
                                 <Style TargetType="{x:Type TextBox}">
                                     <EventSetter Event="GotKeyboardFocus" Handler="txtGotKeyboardFocus"/>
@@ -241,36 +244,21 @@
                             <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="4"
                                      Name="txtVistas" Text="{Binding Vistas}" TextAlignment="Right"/>
 
-                            <Label Name="lblHearts"
-                                DataContext="{Binding SelectedAreaReference}"
-                                Style="{StaticResource CompletionLabel}"
-                                VerticalAlignment="Center"
-                                Content="{Binding Hearts}"
-                                Grid.Column="2" Grid.Row="0"/>
                             <Label
-                                DataContext="{Binding SelectedAreaReference}"
                                 Style="{StaticResource CompletionLabel}"
-                                VerticalAlignment="Center"
-                                Content="{Binding Waypoints}"
-                                Grid.Column="2" Grid.Row="1"/>
+                                Content="{Binding Hearts}" Grid.Row="0"/>
                             <Label
-                                DataContext="{Binding SelectedAreaReference}"
                                 Style="{StaticResource CompletionLabel}"
-                                VerticalAlignment="Center"
-                                Content="{Binding PoIs}"
-                                Grid.Column="2" Grid.Row="2"/>
+                                Content="{Binding Waypoints}" Grid.Row="1"/>
                             <Label
-                                DataContext="{Binding SelectedAreaReference}"
                                 Style="{StaticResource CompletionLabel}"
-                                VerticalAlignment="Center"
-                                Content="{Binding Skills}"
-                                Grid.Column="2" Grid.Row="3"/>
+                                Content="{Binding PoIs}" Grid.Row="2"/>
                             <Label
-                                DataContext="{Binding SelectedAreaReference}"
                                 Style="{StaticResource CompletionLabel}"
-                                VerticalAlignment="Center"
-                                Content="{Binding Vistas}"
-                                Grid.Column="2" Grid.Row="4"/>
+                                Content="{Binding Skills}" Grid.Row="3"/>
+                            <Label
+                                Style="{StaticResource CompletionLabel}"
+                                Content="{Binding Vistas}" Grid.Row="4"/>
                         </Grid>
 
                     </DockPanel>
