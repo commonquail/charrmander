@@ -72,6 +72,9 @@ namespace Charrmander.ViewModel
                 from a in doc.Root.Elements("Area")
                 select new Area(a.Element("Name").Value)
                 {
+                    MinLevel = a.Element("LevelRange").Element("MinLevel").Value,
+                    MaxLevel = a.Element("LevelRange").Element("MaxLevel").Value,
+
                     Hearts = a.Element("Completion").Element("Hearts").Value,
                     Waypoints = a.Element("Completion").Element("Waypoints").Value,
                     PoIs = a.Element("Completion").Element("PoIs").Value,

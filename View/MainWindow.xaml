@@ -188,7 +188,14 @@
                     <DockPanel>
                         <ListBox SelectedItem="{Binding SelectedAreaReference}"
                                  ItemsSource="{Binding AreaReferenceList}"
-                                 DisplayMemberPath="Name" Width="150"/>
+                                 DisplayMemberPath="Name" Width="150">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="ToolTip" Value="{Binding LevelRange}"/>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                        </ListBox>
+                        
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5*"/>

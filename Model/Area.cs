@@ -7,6 +7,9 @@ namespace Charrmander.Model
     {
         private Regex _NaNMatch;
 
+        private string _minLevel = "1";
+        private string _maxLevel = "80";
+
         private string _hearts = string.Empty;
         private string _waypoints = string.Empty;
         private string _pois = string.Empty;
@@ -23,6 +26,46 @@ namespace Charrmander.Model
         /// The name of this area.
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// This area's recommended minimum level, default 1.
+        /// </summary>
+        public string MinLevel
+        {
+            get { return _minLevel; }
+            set
+            {
+                if (value != _minLevel)
+                {
+                    _minLevel = value;
+                    RaisePropertyChanged("MinLevel");
+                }
+            }
+        }
+
+        /// <summary>
+        /// This area's recommended maximum level, default 80.
+        /// </summary>
+        public string MaxLevel
+        {
+            get { return _maxLevel; }
+            set
+            {
+                if (value != _maxLevel)
+                {
+                    _maxLevel = value;
+                    RaisePropertyChanged("MaxLevel");
+                }
+            }
+        }
+
+        /// <summary>
+        /// A human readable string representation of this area's level range.
+        /// </summary>
+        public string LevelRange
+        {
+            get { return string.Format("Level range: {0}-{1}", _minLevel, _maxLevel); }
+        }
 
         /// <summary>
         /// The number of hearts in this area.
