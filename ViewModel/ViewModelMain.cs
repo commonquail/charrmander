@@ -72,11 +72,11 @@ namespace Charrmander.ViewModel
                 from a in doc.Root.Elements("Area")
                 select new Area(a.Element("Name").Value)
                 {
-                    Hearts = a.Element("Hearts").Value,
-                    Waypoints = a.Element("Waypoints").Value,
-                    PoIs = a.Element("PoIs").Value,
-                    Skills = a.Element("Skills").Value,
-                    Vistas = a.Element("Vistas").Value
+                    Hearts = a.Element("Completion").Element("Hearts").Value,
+                    Waypoints = a.Element("Completion").Element("Waypoints").Value,
+                    PoIs = a.Element("Completion").Element("PoIs").Value,
+                    Skills = a.Element("Completion").Element("Skills").Value,
+                    Vistas = a.Element("Completion").Element("Vistas").Value
                 });
 
             var races = XDocument.Load(XmlReader.Create(Application.GetResourceStream(
