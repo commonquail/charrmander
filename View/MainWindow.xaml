@@ -295,8 +295,7 @@
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
                                                 <Image Source="{Binding Path=Name, Converter={StaticResource GameIconConverter},
-                                                    ConverterParameter=Crafts}"
-                                                       Height="20" Width="20" />
+                                                    ConverterParameter=Crafts}" ToolTip="{Binding Name}" Height="20" Width="20" />
 
                                                 <Slider Value="{Binding Level}" Name="sldCraftingDiscipline" Margin="6,2"/>
 
