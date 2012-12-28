@@ -2,10 +2,6 @@
 <Areas>
   <Area>
     <Name>Black Citadel</Name>
-    <LevelRange>
-      <MinLevel>1</MinLevel>
-      <MaxLevel>80</MaxLevel>
-    </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
       <Waypoints>11</Waypoints>
@@ -46,7 +42,6 @@
     <Name>Blue Borderlands</Name>
     <LevelRange>
       <MinLevel>80</MinLevel>
-      <MaxLevel>80</MaxLevel>
     </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
@@ -73,7 +68,6 @@
   <Area>
     <Name>Caledon Forest</Name>
     <LevelRange>
-      <MinLevel>1</MinLevel>
       <MaxLevel>15</MaxLevel>
     </LevelRange>
     <Completion>
@@ -86,10 +80,6 @@
   </Area>
   <Area>
     <Name>Chantry of Secrets</Name>
-    <LevelRange>
-      <MinLevel>1</MinLevel>
-      <MaxLevel>80</MaxLevel>
-    </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
       <Waypoints>0</Waypoints>
@@ -102,7 +92,6 @@
     <Name>Cursed Shore</Name>
     <LevelRange>
       <MinLevel>80</MinLevel>
-      <MaxLevel>80</MaxLevel>
     </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
@@ -142,10 +131,6 @@
   </Area>
   <Area>
     <Name>Divinity's Reach</Name>
-    <LevelRange>
-      <MinLevel>1</MinLevel>
-      <MaxLevel>80</MaxLevel>
-    </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
       <Waypoints>13</Waypoints>
@@ -158,7 +143,6 @@
     <Name>Eternal Battlegrounds</Name>
     <LevelRange>
       <MinLevel>80</MinLevel>
-      <MaxLevel>80</MaxLevel>
     </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
@@ -200,7 +184,6 @@
     <Name>Frostgorge Sound</Name>
     <LevelRange>
       <MinLevel>70</MinLevel>
-      <MaxLevel>80</MaxLevel>
     </LevelRange>
     <Completion>
       <Hearts>11</Hearts>
@@ -228,7 +211,6 @@
     <Name>Green Borderlands</Name>
     <LevelRange>
       <MinLevel>80</MinLevel>
-      <MaxLevel>80</MaxLevel>
     </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
@@ -254,10 +236,6 @@
   </Area>
   <Area>
     <Name>Hoelbrak</Name>
-    <LevelRange>
-      <MinLevel>1</MinLevel>
-      <MaxLevel>80</MaxLevel>
-    </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
       <Waypoints>14</Waypoints>
@@ -296,10 +274,6 @@
   </Area>
   <Area>
     <Name>Lion's Arch</Name>
-    <LevelRange>
-      <MinLevel>1</MinLevel>
-      <MaxLevel>80</MaxLevel>
-    </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
       <Waypoints>13</Waypoints>
@@ -326,7 +300,6 @@
     <Name>Malchor's Leap</Name>
     <LevelRange>
       <MinLevel>75</MinLevel>
-      <MaxLevel>80</MaxLevel>
     </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
@@ -339,7 +312,6 @@
   <Area>
     <Name>Metrica Province</Name>
     <LevelRange>
-      <MinLevel>1</MinLevel>
       <MaxLevel>15</MaxLevel>
     </LevelRange>
     <Completion>
@@ -394,10 +366,6 @@
   </Area>
   <Area>
     <Name>Rata Sum</Name>
-    <LevelRange>
-      <MinLevel>1</MinLevel>
-      <MaxLevel>80</MaxLevel>
-    </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
       <Waypoints>9</Waypoints>
@@ -410,7 +378,6 @@
     <Name>Red Borderlands</Name>
     <LevelRange>
       <MinLevel>80</MinLevel>
-      <MaxLevel>80</MaxLevel>
     </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
@@ -438,7 +405,6 @@
     <Name>Southsun Cove</Name>
     <LevelRange>
       <MinLevel>80</MinLevel>
-      <MaxLevel>80</MaxLevel>
     </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
@@ -478,10 +444,6 @@
   </Area>
   <Area>
     <Name>The Grove</Name>
-    <LevelRange>
-      <MinLevel>1</MinLevel>
-      <MaxLevel>80</MaxLevel>
-    </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
       <Waypoints>4</Waypoints>
@@ -507,8 +469,7 @@
   <Area>
     <Name>Wayfarer Foothills</Name>
     <LevelRange>
-      <MinLevel>1</MinLevel>
-      <MaxLevel>80</MaxLevel>
+      <MaxLevel>15</MaxLevel>
     </LevelRange>
     <Completion>
       <Hearts>16</Hearts>
