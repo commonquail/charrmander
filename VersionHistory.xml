@@ -2,14 +2,24 @@
 <VersionHistory>
   <Latest>
     <Release>
+      <Version>0.1.2.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.2.zip</DownloadUrl>
+      <Notes>
+        <Note>Lion's Arch listed 223 points of interest. It has 23.</Note>
+        <Note>Crafting discipline icons show the discipline name in a tooltip.</Note>
+        <Note>Show area level ranges in a tooltip in the area reference list.</Note>
+        <Note>Biography choice "Ash Legion" appeared as "Ashin Legion."</Note>
+      </Notes>
+    </Release>
+  </Latest>
+  <History>
+    <Release>
       <Version>0.1.1.0</Version>
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.1.zip</DownloadUrl>
       <Notes>
         <Note>Added character creation biography choices.</Note>
       </Notes>
     </Release>
-  </Latest>
-  <History>
     <Release>
       <Version>0.1.0.0</Version>
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.0.zip</DownloadUrl>
