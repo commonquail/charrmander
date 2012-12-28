@@ -22,7 +22,7 @@
             <Border>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text=" • "/>
-                    <TextBlock Text="{Binding Path=Value}" TextWrapping="Wrap" MaxWidth="250"/>
+                    <TextBlock Text="{Binding Path=Value}" TextWrapping="Wrap" MaxWidth="225"/>
                 </StackPanel>
             </Border>
         </DataTemplate>
