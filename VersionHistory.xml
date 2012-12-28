@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VersionHistory>
+  <Unreleased>
+    <Version>0.1.3.0</Version>
+    <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.3.zip</DownloadUrl>
+    <Notes>
+      <Note></Note>
+    </Notes>
+  </Unreleased>
   <Latest>
     <Release>
       <Version>0.1.2.0</Version>
@@ -9,6 +16,8 @@
         <Note>Crafting discipline icons show the discipline name in a tooltip.</Note>
         <Note>Show area level ranges in a tooltip in the area reference list.</Note>
         <Note>Biography choice "Ash Legion" appeared as "Ashin Legion."</Note>
+        <Note>Text in update history log occasionally cut off on the right.</Note>
+        <Note>Version history will no longer include unreleased update notes.</Note>
       </Notes>
     </Release>
   </Latest>

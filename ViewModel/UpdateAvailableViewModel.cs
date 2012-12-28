@@ -19,6 +19,7 @@ namespace Charrmander.ViewModel
         private Version _latestVersion;
         private string _downloadUrl;
         private IEnumerable<XElement> _versionHistory;
+
         /// <summary>
         /// Creates a new <see cref="UpdateAvailableViewModel"/>. This view
         /// model has no application logic. I.e. it does not perform any update

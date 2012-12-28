@@ -1162,16 +1162,35 @@ namespace Charrmander.ViewModel
                 try
                 {
                     XDocument doc = (XDocument)e.Result;
-                    XElement latest = doc.Root.Element("Latest").Element("Release");
+                    XElement latest = null;
+
+                    var released = doc.Root.Element("Public");
+                    if (released != null)
+                    {
+                        latest = released.Element("Latest").Element("Release");
+                    }
+                    else
+                    {
+                        latest = doc.Root.Element("Latest").Element("Release");
+                    }
+
                     Version curVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
                     Version newVersion = new Version(latest.Element("Version").Value);
+
                     if (newVersion.IsNewerThan(curVersion))
                     {
                         UpdateWindow = new UpdateAvailableViewModel();
                         UpdateWindow.CurrentVersion = curVersion;
                         UpdateWindow.LatestVersion = newVersion;
                         UpdateWindow.LatestVersionPath = latest.Element("DownloadUrl").Value;
-                        UpdateWindow.VersionHistory = doc.Root.Descendants("Release");
+                        if (released != null)
+                        {
+                            UpdateWindow.VersionHistory = released.Descendants("Release");
+                        }
+                        else
+                        {
+                            UpdateWindow.VersionHistory = doc.Root.Descendants("Release");
+                        }
                     }
                     else
                     {
