@@ -1,11 +1,12 @@
 ﻿using Charrmander.Util;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace Charrmander.Model
 {
     class Area : AbstractNotifier
     {
-        private Regex _NaNMatch;
+        private static Regex _NaNMatch;
 
         private string _minLevel = "1";
         private string _maxLevel = "80";
@@ -16,10 +17,55 @@ namespace Charrmander.Model
         private string _skills = string.Empty;
         private string _vistas = string.Empty;
 
+        static Area()
+        {
+            _NaNMatch = new Regex("[^0-9]");
+        }
+
+        /// <summary>
+        /// Creates a new <c>Area</c> with the specified name.
+        /// </summary>
+        /// <param name="name">The name of the area.</param>
         public Area(string name)
         {
             Name = name;
-            _NaNMatch = new Regex("[^0-9]");
+        }
+
+        /// <summary>
+        /// Creates a new <c>Area</c> with property values given by the
+        /// <see cref="XElement"/> argument.
+        /// </summary>
+        /// <param name="area">An <c>XElement</c> instance describing the
+        /// properties of the area to be created.</param>
+        /// <returns>A new instance of <c>Area</c>.</returns>
+        public static Area FromXML(XElement area)
+        {
+            var a = new Area(area.Element("Name").Value)
+            {
+                Hearts = area.Element("Completion").Element("Hearts").Value,
+                Waypoints = area.Element("Completion").Element("Waypoints").Value,
+                PoIs = area.Element("Completion").Element("PoIs").Value,
+                Skills = area.Element("Completion").Element("Skills").Value,
+                Vistas = area.Element("Completion").Element("Vistas").Value
+            };
+
+            var levelRange = area.Element("LevelRange");
+            if (levelRange != null)
+            {
+                var minLevel = levelRange.Element("MinLevel");
+                if (minLevel != null)
+                {
+                    a.MinLevel = minLevel.Value;
+                }
+
+                var maxLevel = levelRange.Element("MaxLevel");
+                if (maxLevel != null)
+                {
+                    a.MaxLevel = maxLevel.Value;
+                }
+            }
+
+            return a;
         }
 
         /// <summary>
@@ -134,7 +180,7 @@ namespace Charrmander.Model
         private void SetCompletionItem(ref string item, string value, string property)
         {
             value = value.Trim();
-            if (value != item && !_NaNMatch.IsMatch(value))
+            if (value != item && !Area._NaNMatch.IsMatch(value))
             {
                 item = value;
                 RaisePropertyChanged(property);

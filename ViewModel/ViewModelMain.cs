@@ -70,17 +70,7 @@ namespace Charrmander.ViewModel
 
             AreaReferenceList = new ObservableCollection<Area>(
                 from a in doc.Root.Elements("Area")
-                select new Area(a.Element("Name").Value)
-                {
-                    MinLevel = a.Element("LevelRange").Element("MinLevel").Value,
-                    MaxLevel = a.Element("LevelRange").Element("MaxLevel").Value,
-
-                    Hearts = a.Element("Completion").Element("Hearts").Value,
-                    Waypoints = a.Element("Completion").Element("Waypoints").Value,
-                    PoIs = a.Element("Completion").Element("PoIs").Value,
-                    Skills = a.Element("Completion").Element("Skills").Value,
-                    Vistas = a.Element("Completion").Element("Vistas").Value
-                });
+                select Area.FromXML(a));
 
             var races = XDocument.Load(XmlReader.Create(Application.GetResourceStream(
                 new Uri("Resources/Races.xml", UriKind.Relative)).Stream)).Root.Elements("Race");
