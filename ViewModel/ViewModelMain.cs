@@ -980,7 +980,9 @@ namespace Charrmander.ViewModel
         }
 
         /// <summary>
-        /// Removes <see cref="SelectedCharacter"/> from <see cref="CharacterList"/>.
+        /// Removes <see cref="SelectedCharacter"/> from
+        /// <see cref="CharacterList"/>. If there are more characters in the
+        /// list, selects the first one.
         /// Responsible for detaching events.
         /// </summary>
         private void DeleteCharacter()
@@ -991,6 +993,11 @@ namespace Charrmander.ViewModel
             {
                 CharacterList.Remove(c);
                 c.Dispose();
+            }
+
+            if (CharacterList.Count > 0)
+            {
+                SelectedCharacter = CharacterList[0];
             }
         }
 
