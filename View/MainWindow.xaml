@@ -203,6 +203,7 @@
                                 <RowDefinition Height="5*"/>
                                 <RowDefinition Height="5*"/>
                                 <RowDefinition Height="5*"/>
+                                <RowDefinition Height="5*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="20"/>
@@ -259,6 +260,10 @@
                             <Label
                                 Style="{StaticResource CompletionLabel}"
                                 Content="{Binding Vistas}" Grid.Row="4"/>
+                            
+                            <TextBlock Grid.Column="2" Grid.Row="5">
+                                <Hyperlink Command="{Binding CommandCompleteArea}">Fill All</Hyperlink>
+                            </TextBlock>
                         </Grid>
 
                     </DockPanel>
