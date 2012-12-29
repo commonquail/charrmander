@@ -22,7 +22,7 @@ namespace Charrmander.ViewModel
     class ViewModelMain : AbstractNotifier, IViewModel
     {
         #region Fields
-
+        
         private RelayCommand _cmdNew;
         private RelayCommand _cmdOpen;
         private RelayCommand _cmdSave;
@@ -31,6 +31,7 @@ namespace Charrmander.ViewModel
         private RelayCommand _cmdCheckUpdate;
         private RelayCommand _cmdDeleteCharacter;
         private RelayCommand _cmdRegisterExtensions;
+        private RelayCommand _cmdCompleteArea;
 
         private BackgroundWorker _bgUpdater = new BackgroundWorker();
         private UpdateAvailableViewModel _updateViewModel;
@@ -684,6 +685,22 @@ namespace Charrmander.ViewModel
                 return _cmdRegisterExtensions;
             }
         }
+
+        /// <summary>
+        /// Command to mark the selected area as completed.
+        /// </summary>
+        public ICommand CommandCompleteArea
+        {
+            get
+            {
+                if (_cmdCompleteArea == null)
+                {
+                    _cmdCompleteArea = new RelayCommand(param => this.MarkAreaCompleted(), param => this.CanMarkAreaCompleted());
+                }
+                return _cmdCompleteArea;
+            }
+        }
+
         #endregion
 
         /// <summary>
@@ -963,7 +980,9 @@ namespace Charrmander.ViewModel
         }
 
         /// <summary>
-        /// Removes <see cref="SelectedCharacter"/> from <see cref="CharacterList"/>.
+        /// Removes <see cref="SelectedCharacter"/> from
+        /// <see cref="CharacterList"/>. If there are more characters in the
+        /// list, selects the first one.
         /// Responsible for detaching events.
         /// </summary>
         private void DeleteCharacter()
@@ -974,6 +993,11 @@ namespace Charrmander.ViewModel
             {
                 CharacterList.Remove(c);
                 c.Dispose();
+            }
+
+            if (CharacterList.Count > 0)
+            {
+                SelectedCharacter = CharacterList[0];
             }
         }
 
@@ -1017,6 +1041,34 @@ namespace Charrmander.ViewModel
             }
             pai.Create("Charrmander GW2 Character File.", new ProgramVerb("Open", exePath + " %1"));
             pai.DefaultIcon = new ProgramIcon(exePath);
+        }
+
+        /// <summary>
+        /// Updates all completion items of the selected area to be equal to
+        /// values of the reference area. In short, an area is marked as
+        /// completed.
+        /// </summary>
+        private void MarkAreaCompleted()
+        {
+            SelectedAreaCharacter.Hearts = SelectedAreaReference.Hearts;
+            SelectedAreaCharacter.Waypoints = SelectedAreaReference.Waypoints;
+            SelectedAreaCharacter.PoIs = SelectedAreaReference.PoIs;
+            SelectedAreaCharacter.Skills = SelectedAreaReference.Skills;
+            SelectedAreaCharacter.Vistas = SelectedAreaReference.Vistas;
+
+            // Call this to signal an update of the relevant UI components.
+            ChangedAreaOrCharacter();
+        }
+
+        /// <summary>
+        /// If <see cref="SelectedAreaCharacter"/> and
+        /// <see cref="SelectedAreaReference"/> are not null the selected area
+        /// can be marked completed for the selected character.
+        /// </summary>
+        /// <returns><c>True</c> if an area can be marked as completed.</returns>
+        private bool CanMarkAreaCompleted()
+        {
+            return SelectedAreaCharacter != null && SelectedAreaReference != null;
         }
 
         /// <summary>

@@ -194,72 +194,74 @@
                                     <Setter Property="ToolTip" Value="{Binding LevelRange}"/>
                                 </Style>
                             </ListBox.ItemContainerStyle>
+                            <ListBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Mark Completed" Command="{Binding CommandCompleteArea}"/>
+                                </ContextMenu>
+                            </ListBox.ContextMenu>
                         </ListBox>
-                        
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="5*"/>
-                                <RowDefinition Height="5*"/>
-                                <RowDefinition Height="5*"/>
-                                <RowDefinition Height="5*"/>
-                                <RowDefinition Height="5*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="20"/>
-                                <ColumnDefinition Width="40"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.Resources>
-                                <Style x:Key="CompletionLabel" TargetType="Label">
-                                    <Setter Property="ContentStringFormat" Value="{}/{0,3}"/>
-                                    <Setter Property="VerticalAlignment" Value="Center"/>
-                                    <Setter Property="DataContext" Value="{Binding SelectedAreaReference}"/>
-                                    <Setter Property="Grid.Column" Value="2"/>
+
+                        <StackPanel Margin="6,0">
+                            <StackPanel.Resources>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Width" Value="20"/>
                                 </Style>
                                 <Style TargetType="{x:Type TextBox}">
                                     <EventSetter Event="GotKeyboardFocus" Handler="txtGotKeyboardFocus"/>
                                     <EventSetter Event="PreviewMouseLeftButtonDown" Handler="txtPreviewMouseLeftButtonDown"/>
+                                    <Setter Property="Width" Value="50"/>
+                                    <Setter Property="Margin" Value="2,4"/>
+                                    <Setter Property="TextAlignment" Value="Right"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
                                 </Style>
-                            </Grid.Resources>
+                                <Style TargetType="{x:Type Label}">
+                                    <Setter Property="ContentStringFormat" Value="{}/{0,3}"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="DataContext" Value="{Binding SelectedAreaReference}"/>
+                                    <Setter Property="Grid.Column" Value="2"/>
+                                    <Setter Property="Width" Value="100"/>
+                                </Style>
+                            </StackPanel.Resources>
 
-                            <Image Grid.Column="0" Grid.Row="0" Source="{Binding HeartIcon,
-                                Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                            <Image Grid.Column="0" Grid.Row="1" Source="{Binding WaypointIcon,
-                                Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                            <Image Grid.Column="0" Grid.Row="2" Source="{Binding PoIIcon,
-                                Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                            <Image Grid.Column="0" Grid.Row="3" Source="{Binding SkillIcon,
-                                Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                            <Image Grid.Column="0" Grid.Row="4" Source="{Binding VistaIcon,
-                                Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
+                            <TextBlock Margin="23,0">
+                                <Hyperlink Command="{Binding CommandCompleteArea}">Fill All</Hyperlink>
+                            </TextBlock>
 
-                            <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"
-                                     Name="txtHearts" Text="{Binding Hearts}" TextAlignment="Right"/>
-                            <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"
-                                     Name="txtWaypoints" Text="{Binding Waypoints}" TextAlignment="Right"/>
-                            <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"
-                                     Name="txtPoIs" Text="{Binding PoIs}" TextAlignment="Right"/>
-                            <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"
-                                     Name="txtSkills" Text="{Binding Skills}" TextAlignment="Right"/>
-                            <TextBox VerticalAlignment="Center" Grid.Column="1" Grid.Row="4"
-                                     Name="txtVistas" Text="{Binding Vistas}" TextAlignment="Right"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding HeartIcon,
+                                    Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
+                                <TextBox Text="{Binding Hearts}"/>
+                                <Label Content="{Binding Hearts}"/>
+                            </StackPanel>
 
-                            <Label
-                                Style="{StaticResource CompletionLabel}"
-                                Content="{Binding Hearts}" Grid.Row="0"/>
-                            <Label
-                                Style="{StaticResource CompletionLabel}"
-                                Content="{Binding Waypoints}" Grid.Row="1"/>
-                            <Label
-                                Style="{StaticResource CompletionLabel}"
-                                Content="{Binding PoIs}" Grid.Row="2"/>
-                            <Label
-                                Style="{StaticResource CompletionLabel}"
-                                Content="{Binding Skills}" Grid.Row="3"/>
-                            <Label
-                                Style="{StaticResource CompletionLabel}"
-                                Content="{Binding Vistas}" Grid.Row="4"/>
-                        </Grid>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding WaypointIcon,
+                                    Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
+                                <TextBox Text="{Binding Waypoints}"/>
+                                <Label Content="{Binding Waypoints}"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding PoIIcon,
+                                    Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
+                                <TextBox Text="{Binding PoIs}"/>
+                                <Label Content="{Binding PoIs}"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding SkillIcon,
+                                    Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
+                                <TextBox Text="{Binding Skills}"/>
+                                <Label Content="{Binding Skills}"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding VistaIcon,
+                                    Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
+                                <TextBox Text="{Binding Vistas}"/>
+                                <Label Content="{Binding Vistas}"/>
+                            </StackPanel>
+                        </StackPanel>
 
                     </DockPanel>
                 </TabItem>
