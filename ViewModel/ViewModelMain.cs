@@ -695,7 +695,7 @@ namespace Charrmander.ViewModel
             {
                 if (_cmdCompleteArea == null)
                 {
-                    _cmdCompleteArea = new RelayCommand(param => this.CompleteArea());
+                    _cmdCompleteArea = new RelayCommand(param => this.MarkAreaCompleted(), param => this.CanMarkAreaCompleted());
                 }
                 return _cmdCompleteArea;
             }
@@ -1041,7 +1041,7 @@ namespace Charrmander.ViewModel
         /// values of the reference area. In short, an area is marked as
         /// completed.
         /// </summary>
-        private void CompleteArea()
+        private void MarkAreaCompleted()
         {
             SelectedAreaCharacter.Hearts = SelectedAreaReference.Hearts;
             SelectedAreaCharacter.Waypoints = SelectedAreaReference.Waypoints;
@@ -1051,6 +1051,17 @@ namespace Charrmander.ViewModel
 
             // Call this to signal an update of the relevant UI components.
             ChangedAreaOrCharacter();
+        }
+
+        /// <summary>
+        /// If <see cref="SelectedAreaCharacter"/> and
+        /// <see cref="SelectedAreaReference"/> are not null the selected area
+        /// can be marked completed for the selected character.
+        /// </summary>
+        /// <returns><c>True</c> if an area can be marked as completed.</returns>
+        private bool CanMarkAreaCompleted()
+        {
+            return SelectedAreaCharacter != null && SelectedAreaReference != null;
         }
 
         /// <summary>
