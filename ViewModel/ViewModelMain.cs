@@ -686,6 +686,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// Command to mark the selected area as completed.
+        /// </summary>
         public ICommand CommandCompleteArea
         {
             get
