@@ -194,6 +194,11 @@
                                     <Setter Property="ToolTip" Value="{Binding LevelRange}"/>
                                 </Style>
                             </ListBox.ItemContainerStyle>
+                            <ListBox.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Mark Completed" Command="{Binding CommandCompleteArea}"/>
+                                </ContextMenu>
+                            </ListBox.ContextMenu>
                         </ListBox>
 
                         <StackPanel Margin="6,0">
@@ -228,28 +233,28 @@
                                 <TextBox Text="{Binding Hearts}"/>
                                 <Label Content="{Binding Hearts}"/>
                             </StackPanel>
-                            
+
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding WaypointIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
                                 <TextBox Text="{Binding Waypoints}"/>
                                 <Label Content="{Binding Waypoints}"/>
                             </StackPanel>
-                            
+
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding PoIIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
                                 <TextBox Text="{Binding PoIs}"/>
                                 <Label Content="{Binding PoIs}"/>
                             </StackPanel>
-                            
+
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding SkillIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
                                 <TextBox Text="{Binding Skills}"/>
                                 <Label Content="{Binding Skills}"/>
                             </StackPanel>
-                            
+
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding VistaIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>

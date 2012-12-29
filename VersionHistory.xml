@@ -4,7 +4,8 @@
     <Version>0.1.3.0</Version>
     <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.3.zip</DownloadUrl>
     <Notes>
-      <Note></Note>
+      <Note>Option to mark an area as completed, filling all items automatically. Also in context menu.</Note>
+      <Note>After deleting a character, if more remain in the list select the first one.</Note>
     </Notes>
   </Unreleased>
   <Latest>
