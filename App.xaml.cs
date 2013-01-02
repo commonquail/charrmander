@@ -33,6 +33,7 @@ namespace Charrmander
 
             window.DataContext = viewModel;
             window.Show();
+            viewModel.CheckUpdate();
         }
     }
 }

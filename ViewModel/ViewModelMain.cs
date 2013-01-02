@@ -40,6 +40,8 @@ namespace Charrmander.ViewModel
 
         private string _windowTitle = "Charrmander";
 
+        private string _statusBarUpdateCheck;
+
         private bool _unsavedChanges = false;
 
         private ObservableCollection<Character> _characterList;
@@ -143,6 +145,22 @@ namespace Charrmander.ViewModel
                 {
                     _windowTitle = value;
                     RaisePropertyChanged("WindowTitle");
+                }
+            }
+        }
+
+        /// <summary>
+        /// A string value indicating the result of performing an update check.
+        /// </summary>
+        public string StatusBarUpdateCheck
+        {
+            get { return _statusBarUpdateCheck; }
+            set
+            {
+                if (value != _statusBarUpdateCheck)
+                {
+                    _statusBarUpdateCheck = value;
+                    RaisePropertyChanged("StatusBarUpdateCheck");
                 }
             }
         }
@@ -971,10 +989,11 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// Starts the background process checking for updates.
         /// </summary>
-        private void CheckUpdate()
+        internal void CheckUpdate()
         {
             if (!_bgUpdater.IsBusy)
             {
+                StatusBarUpdateCheck = Properties.Resources.suUpdateCheckInProgress;
                 _bgUpdater.RunWorkerAsync();
             }
         }
@@ -1197,14 +1216,14 @@ namespace Charrmander.ViewModel
             {
                 if (e.Error is InvalidOperationException)
                 {
-                    ShowError(Properties.Resources.msgUpdateCheckFailedTitle,
-                        String.Format(Properties.Resources.msgUpdateCheckFailedBody404,
-                        Properties.Resources.cfgUpdateCheckUri, e.Error.Message));
+                    StatusBarUpdateCheck = String.Format(
+                        Properties.Resources.suUpdateCheckFailed404,
+                        Properties.Resources.cfgUpdateCheckUri, e.Error.Message);
                 }
                 else
                 {
-                    ShowError(Properties.Resources.msgUpdateCheckFailedTitle,
-                        String.Format(Properties.Resources.msgUpdateCheckFailedBodyUnknown, e.Error.Message));
+                    StatusBarUpdateCheck = String.Format(
+                        Properties.Resources.suUpdateCheckFailedUnknown, e.Error.Message);
                 }
             }
             else if (e.Cancelled)
@@ -1231,6 +1250,7 @@ namespace Charrmander.ViewModel
 
                     if (newVersion.IsNewerThan(curVersion))
                     {
+                        StatusBarUpdateCheck = Properties.Resources.suUpdateCheckNewVersion;
                         UpdateWindow = new UpdateAvailableViewModel();
                         UpdateWindow.CurrentVersion = curVersion;
                         UpdateWindow.LatestVersion = newVersion;
@@ -1246,15 +1266,12 @@ namespace Charrmander.ViewModel
                     }
                     else
                     {
-                        ShowError(Properties.Resources.msgUpdateCheckNoUpdatesBody,
-                            Properties.Resources.msgUpdateCheckNoUpdatesTitle,
-                            MessageBoxImage.Information);
+                        StatusBarUpdateCheck = Properties.Resources.suUpdateCheckNoUpdates;
                     }
                 }
                 catch (NullReferenceException)
                 {
-                    ShowError(Properties.Resources.msgUpdateCheckFailedTitle,
-                        Properties.Resources.msgUpdateCheckFailedBodyReading);
+                    StatusBarUpdateCheck = Properties.Resources.suUpdateCheckFailedReading;
                 }
             }
         }

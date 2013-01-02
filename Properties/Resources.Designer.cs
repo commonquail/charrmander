@@ -232,57 +232,56 @@ namespace Charrmander.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to connect to {0}:
-        ///{1}.
+        ///   Looks up a localized string similar to Failed to connect to {0}: {1}.
         /// </summary>
-        internal static string msgUpdateCheckFailedBody404 {
+        internal static string suUpdateCheckFailed404 {
             get {
-                return ResourceManager.GetString("msgUpdateCheckFailedBody404", resourceCulture);
+                return ResourceManager.GetString("suUpdateCheckFailed404", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to An error occurred while processing the version history file..
         /// </summary>
-        internal static string msgUpdateCheckFailedBodyReading {
+        internal static string suUpdateCheckFailedReading {
             get {
-                return ResourceManager.GetString("msgUpdateCheckFailedBodyReading", resourceCulture);
+                return ResourceManager.GetString("suUpdateCheckFailedReading", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Unexpected error: {0}.
         /// </summary>
-        internal static string msgUpdateCheckFailedBodyUnknown {
+        internal static string suUpdateCheckFailedUnknown {
             get {
-                return ResourceManager.GetString("msgUpdateCheckFailedBodyUnknown", resourceCulture);
+                return ResourceManager.GetString("suUpdateCheckFailedUnknown", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update Check Failed.
+        ///   Looks up a localized string similar to Checking for updates....
         /// </summary>
-        internal static string msgUpdateCheckFailedTitle {
+        internal static string suUpdateCheckInProgress {
             get {
-                return ResourceManager.GetString("msgUpdateCheckFailedTitle", resourceCulture);
+                return ResourceManager.GetString("suUpdateCheckInProgress", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is currently no update available..
+        ///   Looks up a localized string similar to New version available..
         /// </summary>
-        internal static string msgUpdateCheckNoUpdatesBody {
+        internal static string suUpdateCheckNewVersion {
             get {
-                return ResourceManager.GetString("msgUpdateCheckNoUpdatesBody", resourceCulture);
+                return ResourceManager.GetString("suUpdateCheckNewVersion", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Update Available.
+        ///   Looks up a localized string similar to No update available..
         /// </summary>
-        internal static string msgUpdateCheckNoUpdatesTitle {
+        internal static string suUpdateCheckNoUpdates {
             get {
-                return ResourceManager.GetString("msgUpdateCheckNoUpdatesTitle", resourceCulture);
+                return ResourceManager.GetString("suUpdateCheckNoUpdates", resourceCulture);
             }
         }
         
