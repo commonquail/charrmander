@@ -174,24 +174,23 @@
   <data name="msgUnsavedOpenTitle" xml:space="preserve">
     <value>Discard unsaved changes and open?</value>
   </data>
-  <data name="msgUpdateCheckFailedBody404" xml:space="preserve">
-    <value>Failed to connect to {0}:
-{1}</value>
+  <data name="suUpdateCheckFailed404" xml:space="preserve">
+    <value>Failed to connect to {0}: {1}</value>
   </data>
-  <data name="msgUpdateCheckFailedBodyReading" xml:space="preserve">
+  <data name="suUpdateCheckFailedReading" xml:space="preserve">
     <value>An error occurred while processing the version history file.</value>
   </data>
-  <data name="msgUpdateCheckFailedBodyUnknown" xml:space="preserve">
+  <data name="suUpdateCheckFailedUnknown" xml:space="preserve">
     <value>Unexpected error: {0}</value>
   </data>
-  <data name="msgUpdateCheckFailedTitle" xml:space="preserve">
-    <value>Update Check Failed</value>
+  <data name="suUpdateCheckInProgress" xml:space="preserve">
+    <value>Checking for updates...</value>
   </data>
-  <data name="msgUpdateCheckNoUpdatesBody" xml:space="preserve">
-    <value>There is currently no update available.</value>
+  <data name="suUpdateCheckNewVersion" xml:space="preserve">
+    <value>New version available.</value>
   </data>
-  <data name="msgUpdateCheckNoUpdatesTitle" xml:space="preserve">
-    <value>No Update Available</value>
+  <data name="suUpdateCheckNoUpdates" xml:space="preserve">
+    <value>No update available.</value>
   </data>
   <data name="wnWindowTitle" xml:space="preserve">
     <value>{0}{1} - Charrmander</value>
