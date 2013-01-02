@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vw="clr-namespace:Charrmander.View"
-        Title="{Binding WindowTitle}" Height="350" Width="525"
+        Title="{Binding WindowTitle}" Height="360" Width="525"
         Icon="/Icons/Game/MainTitle.png" AllowDrop="True" Drop="Window_Drop">
 
     <Window.InputBindings>
@@ -13,18 +13,6 @@
     <Window.Resources>
         <BitmapImage x:Key="IconMenuOpen" UriSource="/Icons/Open.bmp"/>
         <BitmapImage x:Key="IconMenuSave" UriSource="/Icons/Save.bmp"/>
-
-        <ImageSource x:Key="IconAreaHeart">/Icons/Game/Areas/Heart.png</ImageSource>
-        <ImageSource x:Key="IconAreaWaypoint">/Icons/Game/Areas/Waypoint.png</ImageSource>
-        <ImageSource x:Key="IconAreaPoI">/Icons/Game/Areas/PoI.png</ImageSource>
-        <ImageSource x:Key="IconAreaSkill">/Icons/Game/Areas/Skill.png</ImageSource>
-        <ImageSource x:Key="IconAreaVista">/Icons/Game/Areas/Vista.png</ImageSource>
-
-        <ImageSource x:Key="IconAreaHeartDone">/Icons/Game/Areas/HeartDone.png</ImageSource>
-        <ImageSource x:Key="IconAreaWaypointDone">/Icons/Game/Areas/WaypointDone.png</ImageSource>
-        <ImageSource x:Key="IconAreaPoIDone">/Icons/Game/Areas/PoIDone.png</ImageSource>
-        <ImageSource x:Key="IconAreaSkillDone">/Icons/Game/Areas/SkillDone.png</ImageSource>
-        <ImageSource x:Key="IconAreaVistaDone">/Icons/Game/Areas/VistaDone.png</ImageSource>
 
         <XmlDataProvider x:Key="ProfessionsXml" XPath="Professions/Profession" Source="/Resources/Professions.xml"/>
         <XmlDataProvider x:Key="RacesXml" XPath="Races/Race" Source="/Resources/Races.xml"/>
@@ -66,7 +54,7 @@
             <ListBox Width="150" ItemsSource="{Binding CharacterList}" SelectedItem="{Binding SelectedCharacter}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Path=Name, Converter={StaticResource NamelessCharacterConverter}}"/>
+                        <TextBlock Text="{Binding Name, Converter={StaticResource NamelessCharacterConverter}}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
                 <ListBox.ContextMenu>
@@ -79,17 +67,14 @@
             </ListBox>
 
             <TabControl IsEnabled="{Binding IsCharacterDetailEnabled}">
-                <TabItem Header="Personal" Name="personal">
+                <TabItem Header="Personal">
                     <TabItem.Resources>
-                        <vw:GameIconConverter x:Key="GameIconConverter"/>
-
                         <DataTemplate DataType="Profession">
                             <StackPanel Orientation="Horizontal">
                                 <Image Height="20" Width="20"
                                        Source="{Binding XPath=Name,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Professions}"/>
-                                <TextBlock Text="{Binding XPath=Name, StringFormat={} {0}}"
-                                           VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding XPath=Name, StringFormat={} {0}}" VerticalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
 
@@ -97,43 +82,48 @@
                             <StackPanel Orientation="Horizontal">
                                 <Image Height="20" Width="20"
                                        Source="{Binding XPath=Name, Converter={StaticResource GameIconConverter}, ConverterParameter=Races}"/>
-                                <TextBlock Text="{Binding XPath=Name, StringFormat={} {0}}"
-                                           VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding XPath=Name, StringFormat={} {0}}" VerticalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
                     </TabItem.Resources>
 
                     <StackPanel>
-                        <Grid VerticalAlignment="Top">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="30.05"/>
-                                <RowDefinition Height="30.05"/>
-                            </Grid.RowDefinitions>
-
-                            <Label Grid.Column="0" Grid.Row="0">Name:</Label>
-                            <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Race:</Label>
-                            <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Profession:</Label>
-
-                            <TextBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                 Grid.Column="1" Grid.Row="0"
-                                 Text="{Binding SelectedCharacter.Name}"/>
-                            <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                  Grid.Column="1" Grid.Row="1" Height="26"
-                                  ItemsSource="{Binding Source={StaticResource RacesXml}}"
-                                  SelectedValue="{Binding SelectedCharacter.Race}"
-                                  SelectedValuePath="Name" SelectionChanged="ComboBox_SelectionChanged"/>
-                            <ComboBox HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                                  Grid.Column="2" Grid.Row="2" Height="26"
-                                  ItemsSource="{Binding Source={StaticResource ProfessionsXml}}"
-                                  SelectedValue="{Binding SelectedCharacter.Profession}"
-                                  SelectedValuePath="Name" SelectionChanged="ComboBox_SelectionChanged"/>
-
-                        </Grid>
+                        <StackPanel DataContext="{Binding SelectedCharacter}">
+                            <StackPanel.Resources>
+                                <Style TargetType="{x:Type DockPanel}">
+                                    <Setter Property="Margin" Value="0,2"/>
+                                </Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Width" Value="100"/>
+                                    <Setter Property="Padding" Value="5"/>
+                                </Style>
+                                <Style TargetType="{x:Type ComboBox}">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="Height" Value="26"/>
+                                    <Setter Property="SelectedValuePath" Value="Name"/>
+                                    <EventSetter Event="SelectionChanged" Handler="ComboBox_SelectionChanged"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            
+                            <DockPanel>
+                                <TextBlock Text="Name:"/>
+                                <TextBox VerticalAlignment="Center" Text="{Binding Name}"/>
+                            </DockPanel>
+                            
+                            <DockPanel>
+                                <TextBlock Text="Race:"/>
+                                <ComboBox ItemsSource="{Binding Source={StaticResource RacesXml}}"
+                                  SelectedValue="{Binding Race}"/>
+                            </DockPanel>
+                            
+                            <DockPanel>
+                                <TextBlock Text="Profession:"/>
+                                <ComboBox ItemsSource="{Binding Source={StaticResource ProfessionsXml}}"
+                                  SelectedValue="{Binding Profession}"/>
+                            </DockPanel>
+                            
+                        </StackPanel>
+                        
                         <GroupBox Header="Biography" Visibility="{Binding IsBiographyVisible}">
                             <StackPanel>
                                 <StackPanel.Resources>
@@ -291,13 +281,13 @@
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <Image Source="{Binding Path=Name, Converter={StaticResource GameIconConverter},
+                                                <Image Source="{Binding Name, Converter={StaticResource GameIconConverter},
                                                     ConverterParameter=Crafts}" ToolTip="{Binding Name}" Height="20" Width="20" />
 
                                                 <Slider Value="{Binding Level}" Name="sldCraftingDiscipline" Margin="6,2"/>
 
                                                 <TextBox VerticalAlignment="Center" Width="35" TextAlignment="Right"
-                                                         Text="{Binding ElementName=sldCraftingDiscipline, Path=Value}"/>
+                                                         Text="{Binding Value, ElementName=sldCraftingDiscipline}"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
