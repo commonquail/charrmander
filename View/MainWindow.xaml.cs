@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using Charrmander.ViewModel;
+using Charrmander.Model;
 
 namespace Charrmander.View
 {
@@ -110,6 +111,37 @@ namespace Charrmander.View
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             return "/Icons/Game/" + parameter + "/" + value + ".png";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
+    }
+
+    /// <summary>
+    /// Converts the <see cref="Character.Profession"/> property to the corresponding icon.
+    /// </summary>
+    public class CompletionStateConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            string res = string.Empty;
+            switch ((Area.CompletionState)value)
+            {
+                case Area.CompletionState.Unvisited:
+                    break;
+                case Area.CompletionState.Visited:
+                    res = "\u2606"; // White star.
+                    break;
+                case Area.CompletionState.Completed:
+                    res = "\u2605"; // Black star.
+                    break;
+                default:
+                    break;
+            }
+
+            return res;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

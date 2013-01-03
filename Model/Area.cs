@@ -17,6 +17,15 @@ namespace Charrmander.Model
         private string _skills = string.Empty;
         private string _vistas = string.Empty;
 
+        private CompletionState _areaState = CompletionState.Unvisited;
+
+        public enum CompletionState
+        {
+            Unvisited = 0,
+            Visited = 1,
+            Completed = 2,
+        }
+
         static Area()
         {
             _NaNMatch = new Regex("[^0-9]");
@@ -111,6 +120,24 @@ namespace Charrmander.Model
         public string LevelRange
         {
             get { return string.Format("Level range: {0}-{1}", _minLevel, _maxLevel); }
+        }
+
+        /// <summary>
+        /// The <see cref="CompletionState"/> of this area. Since this value
+        /// generally has to be calculated at runtime it is not stored with
+        /// <see cref="ToXML()"/>.
+        /// </summary>
+        public CompletionState State
+        {
+            get { return _areaState; }
+            set
+            {
+                if (value != _areaState)
+                {
+                    _areaState = value;
+                    RaisePropertyChanged("State");
+                }
+            }
         }
 
         /// <summary>

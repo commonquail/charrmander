@@ -315,6 +315,8 @@ namespace Charrmander.ViewModel
             }
         }
 
+        #region Biography
+
         /// <summary>
         /// <c>Visibility.Visible</c> if the biography options should be shown,
         /// <c>Visibility.Collapsed</c> otherwise.
@@ -332,6 +334,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// The profession biography options.
+        /// </summary>
         public ObservableCollection<string> BiographyOptionsProfession
         {
             get { return _selectedBiographyOptionsProfession; }
@@ -345,6 +350,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// The personality biography options.
+        /// </summary>
         public ObservableCollection<string> BiographyOptionsPersonality
         {
             get { return _selectedBiographyOptionsPersonality; }
@@ -358,6 +366,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// The biography options for the first racial choice.
+        /// </summary>
         public ObservableCollection<string> BiographyOptionsRaceFirst
         {
             get { return _selectedBiographyOptionsRaceFirst; }
@@ -371,6 +382,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// The biography options for the second racial choice.
+        /// </summary>
         public ObservableCollection<string> BiographyOptionsRaceSecond
         {
             get { return _selectedBiographyOptionsRaceSecond; }
@@ -384,6 +398,9 @@ namespace Charrmander.ViewModel
             }
         }
 
+        /// <summary>
+        /// The biography options for the third racial choice.
+        /// </summary>
         public ObservableCollection<string> BiographyOptionsRaceThird
         {
             get { return _selectedBiographyOptionsRaceThird; }
@@ -396,6 +413,8 @@ namespace Charrmander.ViewModel
                 }
             }
         }
+
+        #endregion //Biography
 
         #region Area Completion
 
@@ -419,67 +438,8 @@ namespace Charrmander.ViewModel
                     SelectedAreaCharacter.Hearts = value;
                     RaisePropertyChanged("HeartIcon");
                     RaisePropertyChanged("Hearts");
+                    UpdateAreaState(SelectedAreaReference);
                 }
-            }
-        }
-
-        public string HeartIcon
-        {
-            get
-            {
-                if (SelectedAreaReference != null && SelectedAreaReference.Hearts == Hearts)
-                {
-                    return "HeartDone";
-                }
-                return "Heart";
-            }
-        }
-
-        public string WaypointIcon
-        {
-            get
-            {
-                if (SelectedAreaReference != null && SelectedAreaReference.Waypoints == Waypoints)
-                {
-                    return "WaypointDone";
-                }
-                return "Waypoint";
-            }
-        }
-
-        public string PoIIcon
-        {
-            get
-            {
-                if (SelectedAreaReference != null && SelectedAreaReference.PoIs == PoIs)
-                {
-                    return "PoIDone";
-                }
-                return "PoI";
-            }
-        }
-
-        public string SkillIcon
-        {
-            get
-            {
-                if (SelectedAreaReference != null && SelectedAreaReference.Skills == Skills)
-                {
-                    return "SkillDone";
-                }
-                return "Skill";
-            }
-        }
-
-        public string VistaIcon
-        {
-            get
-            {
-                if (SelectedAreaReference != null && SelectedAreaReference.Vistas == Vistas)
-                {
-                    return "VistaDone";
-                }
-                return "Vista";
             }
         }
 
@@ -503,6 +463,7 @@ namespace Charrmander.ViewModel
                     SelectedAreaCharacter.Waypoints = value;
                     RaisePropertyChanged("Waypoints");
                     RaisePropertyChanged("WaypointIcon");
+                    UpdateAreaState(SelectedAreaReference);
                 }
             }
         }
@@ -527,6 +488,7 @@ namespace Charrmander.ViewModel
                     SelectedAreaCharacter.PoIs = value;
                     RaisePropertyChanged("PoIs");
                     RaisePropertyChanged("PoIIcon");
+                    UpdateAreaState(SelectedAreaReference);
                 }
             }
         }
@@ -551,6 +513,7 @@ namespace Charrmander.ViewModel
                     SelectedAreaCharacter.Skills = value;
                     RaisePropertyChanged("Skills");
                     RaisePropertyChanged("SkillIcon");
+                    UpdateAreaState(SelectedAreaReference);
                 }
             }
         }
@@ -575,7 +538,88 @@ namespace Charrmander.ViewModel
                     SelectedAreaCharacter.Vistas = value;
                     RaisePropertyChanged("Vistas");
                     RaisePropertyChanged("VistaIcon");
+                    UpdateAreaState(SelectedAreaReference);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Gets the name of the completion icon, minus extension, to use for
+        /// heats.
+        /// </summary>
+        public string HeartIcon
+        {
+            get
+            {
+                if (SelectedAreaReference != null && SelectedAreaReference.Hearts == Hearts)
+                {
+                    return "HeartDone";
+                }
+                return "Heart";
+            }
+        }
+
+        /// <summary>
+        /// Gets the name of the completion icon, minus extension, to use for
+        /// waypoints.
+        /// </summary>
+        public string WaypointIcon
+        {
+            get
+            {
+                if (SelectedAreaReference != null && SelectedAreaReference.Waypoints == Waypoints)
+                {
+                    return "WaypointDone";
+                }
+                return "Waypoint";
+            }
+        }
+
+        /// <summary>
+        /// Gets the name of the completion icon, minus extension, to use for
+        /// points of interest.
+        /// </summary>
+        public string PoIIcon
+        {
+            get
+            {
+                if (SelectedAreaReference != null && SelectedAreaReference.PoIs == PoIs)
+                {
+                    return "PoIDone";
+                }
+                return "PoI";
+            }
+        }
+
+        /// <summary>
+        /// Gets the name of the completion icon, minus extension, to use for
+        /// skill challenges.
+        /// </summary>
+        public string SkillIcon
+        {
+            get
+            {
+                if (SelectedAreaReference != null && SelectedAreaReference.Skills == Skills)
+                {
+                    return "SkillDone";
+                }
+                return "Skill";
+            }
+        }
+
+        /// <summary>
+        /// Gets the name of the completion icon, minus extension, to use for
+        /// vistas.
+        /// </summary>
+        public string VistaIcon
+        {
+            get
+            {
+                if (SelectedAreaReference != null && SelectedAreaReference.Vistas == Vistas)
+                {
+                    return "VistaDone";
+                }
+                return "Vista";
             }
         }
 
@@ -872,6 +916,7 @@ namespace Charrmander.ViewModel
                         Skills = area.CElement("Completion").CElement("Skills").Value,
                         Vistas = area.CElement("Completion").CElement("Vistas").Value
                     };
+
                     c.Areas.Add(a);
                 }
 
@@ -1018,6 +1063,10 @@ namespace Charrmander.ViewModel
             {
                 SelectedCharacter = CharacterList[0];
             }
+            else
+            {
+                SelectedCharacter = null;
+            }
         }
 
         /// <summary>
@@ -1101,6 +1150,16 @@ namespace Charrmander.ViewModel
             UnsavedChanges = true;
         }
 
+        /// <summary>
+        /// Updates the biography options to match with
+        /// <see cref="SelectedCharacter.Race"/> and
+        /// <see cref="SelectedCharacter.Profession"/>
+        /// <seealso cref="BiographyOptionsProfession"/>
+        /// <seealso cref="BiographyOptionsPersonality"/>
+        /// <seealso cref="BiographyOptionsRaceFirst"/>
+        /// <seealso cref="BiographyOptionsRaceSecond"/>
+        /// <seealso cref="BiographyOptionsRaceThird"/>
+        /// </summary>
         public void UpdateBiographyOptions()
         {
             if (SelectedCharacter == null || string.IsNullOrEmpty(SelectedCharacter.Profession)
@@ -1144,6 +1203,7 @@ namespace Charrmander.ViewModel
                 BiographyOptionsRaceThird = _biographyOptionsRace[SelectedCharacter.Race]["Third"];
             }
         }
+
         /// <summary>
         /// Wrapper for displaying a <see cref="MessageBox"/>.
         /// </summary>
@@ -1154,6 +1214,58 @@ namespace Charrmander.ViewModel
         private void ShowError(string caption, string body, MessageBoxImage severity = MessageBoxImage.Error)
         {
             MessageBox.Show(body, caption, MessageBoxButton.OK, severity);
+        }
+
+        /// <summary>
+        /// Updates the <see cref="Area.State"/> of the specified area to match
+        /// the state of the corresponding area in
+        /// <see cref="SelectedCharacter.Areas"/>. This is necessary because it
+        /// does not hold that
+        /// <c>AreaReferenceList \ SelectedCharacter.Areas == Ø</c>
+        /// The state therefore has to be gotten from <c>AreaReferenceList</c>,
+        /// which is always current, and thus serializing the value doesn't
+        /// achieve anything.
+        /// </summary>
+        /// <seealso cref="Area.State"/>
+        /// <param name="referenceArea">The area whose <c>State</c> to
+        /// update.</param>
+        private void UpdateAreaState(Area referenceArea)
+        {
+            bool found = false;
+            foreach (var ca in SelectedCharacter.Areas)
+            {
+                if (referenceArea.Name == ca.Name)
+                {
+                    found = true;
+                    if (referenceArea.Hearts == ca.Hearts &&
+                        referenceArea.Waypoints == ca.Waypoints &&
+                        referenceArea.PoIs == ca.PoIs &&
+                        referenceArea.Skills == ca.Skills &&
+                        referenceArea.Vistas == ca.Vistas)
+                    {
+                        if (referenceArea.Hearts != string.Empty)
+                        {
+                            referenceArea.State = Area.CompletionState.Completed;
+                        }
+                    }
+                    else
+                    {
+                        if (ca.Waypoints != "0" || ca.PoIs != "0" || ca.Vistas != "0")
+                        {
+                            referenceArea.State = Area.CompletionState.Visited;
+                        }
+                        else
+                        {
+                            referenceArea.State = Area.CompletionState.Unvisited;
+                        }
+                    }
+                    break;
+                }
+            }
+            if (!found)
+            {
+                referenceArea.State = Area.CompletionState.Unvisited;
+            }
         }
 
         /// <summary>
@@ -1176,6 +1288,11 @@ namespace Charrmander.ViewModel
                 var a = new Area(SelectedAreaReference.Name);
                 SelectedCharacter.Areas.Add(a);
                 SelectedAreaCharacter = a;
+            }
+
+            foreach (var ra in AreaReferenceList)
+            {
+                UpdateAreaState(ra);
             }
 
             RaisePropertyChanged("Hearts");
