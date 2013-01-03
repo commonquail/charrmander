@@ -1,14 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VersionHistory>
   <Unreleased>
-    <Version>0.1.3.0</Version>
-    <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.3.zip</DownloadUrl>
-    <Notes>
-      <Note>Option to mark an area as completed, filling all items automatically. Also in context menu.</Note>
-      <Note>After deleting a character, if more remain in the list select the first one.</Note>
-    </Notes>
   </Unreleased>
   <Latest>
+    <Release>
+      <Version>0.1.3.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.3.zip</DownloadUrl>
+      <Notes>
+        <Note>Option to mark an area as completed, filling all items automatically. Also in context menu.</Note>
+        <Note>Indicate area completion status with icons in reference list.</Note>
+        <Note>Added a field for any personal notes the user wishes to record.</Note>
+        <Note>After deleting a character, if more remain in the list select the first one.</Note>
+        <Note>Update check performed automatically on startup.</Note>
+      </Notes>
+    </Release>
+  </Latest>
+  <History>
     <Release>
       <Version>0.1.2.0</Version>
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.2.zip</DownloadUrl>
@@ -21,8 +28,6 @@
         <Note>Version history will no longer include unreleased update notes.</Note>
       </Notes>
     </Release>
-  </Latest>
-  <History>
     <Release>
       <Version>0.1.1.0</Version>
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.1.zip</DownloadUrl>
