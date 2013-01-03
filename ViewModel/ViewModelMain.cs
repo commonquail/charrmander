@@ -920,6 +920,8 @@ namespace Charrmander.ViewModel
                     c.Areas.Add(a);
                 }
 
+                c.Notes = charr.CElement("Notes").Value;
+
                 // All done.
                 newCharacterList.Add(c);
             }

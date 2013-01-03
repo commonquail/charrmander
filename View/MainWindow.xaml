@@ -311,6 +311,16 @@
                     </StackPanel>
                 </TabItem>
 
+                <TabItem Header="Notes">
+                    <DockPanel>
+                        <TextBlock Text="Add any personal notes here." DockPanel.Dock="Top"/>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <TextBox TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" AutoWordSelection="True"
+                                     Text="{Binding SelectedCharacter.Notes}"/>
+                        </ScrollViewer>
+                    </DockPanel>
+                </TabItem>
+
             </TabControl>
         </DockPanel>
         <StatusBar Height="23" VerticalAlignment="Bottom">

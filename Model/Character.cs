@@ -22,6 +22,8 @@ namespace Charrmander.Model
         private ObservableCollection<CraftingDiscipline> _craftingDisciplines;
         private ObservableCollection<Area> _areas;
 
+        private string _notes;
+
         /// <summary>
         /// Creates a new character for the specified view model.
         /// </summary>
@@ -224,6 +226,22 @@ namespace Charrmander.Model
         }
 
         /// <summary>
+        /// Any personal notes the user wishes to record for this character.
+        /// </summary>
+        public string Notes
+        {
+            get { return _notes; }
+            set
+            {
+                if (value != _notes)
+                {
+                    _notes = value;
+                    RaisePropertyChanged("Notes");
+                }
+            }
+        }
+
+        /// <summary>
         /// Serializes this character to XML.
         /// <seealso cref="XElement"/>
         /// </summary>
@@ -261,7 +279,8 @@ namespace Charrmander.Model
                             new CharrElement("Vistas", a.Vistas)
                         )
                     )
-                ) : null)
+                ) : null),
+                new CharrElement("Notes", Notes)
             );
         }
 
