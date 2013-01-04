@@ -102,7 +102,7 @@
     </Completion>
   </Area>
   <Area>
-    <Name>Dedgehaunt Cliffs</Name>
+    <Name>Dredgehaunt Cliffs</Name>
     <LevelRange>
       <MinLevel>40</MinLevel>
       <MaxLevel>50</MaxLevel>
@@ -388,7 +388,7 @@
     </Completion>
   </Area>
   <Area>
-    <Name>Snowden Difts</Name>
+    <Name>Snowden Drifts</Name>
     <LevelRange>
       <MinLevel>15</MinLevel>
       <MaxLevel>25</MaxLevel>
