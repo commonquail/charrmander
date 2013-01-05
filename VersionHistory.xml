@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VersionHistory>
   <Unreleased>
+    <Release>
+      <Version>0.1.4.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.4.zip</DownloadUrl>
+      <Notes>
+        <Note>Version history log still might cut off on the right.</Note>
+        <Note>Snowden Drifts and Dredgehaunt Cliffs had typos.</Note>
+      </Notes>
+    </Release>
   </Unreleased>
   <Latest>
     <Release>
