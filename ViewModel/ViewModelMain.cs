@@ -253,9 +253,12 @@ namespace Charrmander.ViewModel
                     {
                         if (SelectedAreaReference != null)
                         {
+                            /// Necessary to get the text fields to update when
+                            /// switching character, else they will remain
+                            /// bound to the previous character.
                             SelectedAreaCharacter = null;
-                            ChangedAreaOrCharacter();
                         }
+                        ChangedAreaOrCharacter();
                     }
                     IsCharacterDetailEnabled = value != null;
                     RaisePropertyChanged("SelectedCharacter");
@@ -1276,22 +1279,30 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void ChangedAreaOrCharacter()
         {
-            foreach (Area a in SelectedCharacter.Areas)
+            /// An area was selected. Find the matching area in
+            /// SelectedCharacter.Areas, or create a new one if it doesn't
+            /// exist yet.
+            if (SelectedAreaReference != null)
             {
-                if (a.Name == SelectedAreaReference.Name)
+                foreach (Area a in SelectedCharacter.Areas)
                 {
+                    if (a.Name == SelectedAreaReference.Name)
+                    {
+                        SelectedAreaCharacter = a;
+                        break;
+                    }
+                }
+                if (SelectedAreaCharacter == null
+                    || SelectedAreaCharacter.Name != SelectedAreaReference.Name)
+                {
+                    var a = new Area(SelectedAreaReference.Name);
+                    SelectedCharacter.Areas.Add(a);
                     SelectedAreaCharacter = a;
-                    break;
                 }
             }
-            if (SelectedAreaCharacter == null
-                || SelectedAreaCharacter.Name != SelectedAreaReference.Name)
-            {
-                var a = new Area(SelectedAreaReference.Name);
-                SelectedCharacter.Areas.Add(a);
-                SelectedAreaCharacter = a;
-            }
 
+            /// Area states in the reference list can be updated without having
+            /// and area selected.
             foreach (var ra in AreaReferenceList)
             {
                 UpdateAreaState(ra);
