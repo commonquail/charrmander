@@ -45,6 +45,8 @@
                 <MenuItem Header="Check for updates" Command="{Binding CommandCheckUpdate}"/>
                 <MenuItem Header="Register File Extension" Command="{Binding CommandRegisterExtension}"/>
             </MenuItem>
+            <MenuItem Header="Completion Overview" Command="{Binding CommandCompletionOverview}"
+                      ToolTip="Show area completion state for all named characters."/>
         </Menu>
 
         <DockPanel Margin="0,23">

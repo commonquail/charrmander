@@ -26,6 +26,7 @@ namespace Charrmander
             EventHandler handler = null;
             handler = delegate
             {
+                viewModel.Dispose();
                 viewModel.RequestClose -= handler;
                 window.Close();
             };

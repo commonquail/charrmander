@@ -16,10 +16,11 @@ using System.Collections.Generic;
 using System.Linq;
 using BrendanGrant.Helpers.FileAssociation;
 using System.Collections;
+using System.Data;
 
 namespace Charrmander.ViewModel
 {
-    class ViewModelMain : AbstractNotifier, IViewModel
+    class ViewModelMain : AbstractNotifier, IViewModel, IDisposable
     {
         #region Fields
         
@@ -32,9 +33,12 @@ namespace Charrmander.ViewModel
         private RelayCommand _cmdDeleteCharacter;
         private RelayCommand _cmdRegisterExtensions;
         private RelayCommand _cmdCompleteArea;
+        private RelayCommand _cmdCompletionOverview;
 
         private BackgroundWorker _bgUpdater = new BackgroundWorker();
+
         private UpdateAvailableViewModel _updateViewModel;
+        private CompletionOverviewView _completionOverview;
 
         private FileInfo _currentFile = null;
 
@@ -441,7 +445,7 @@ namespace Charrmander.ViewModel
                     SelectedAreaCharacter.Hearts = value;
                     RaisePropertyChanged("HeartIcon");
                     RaisePropertyChanged("Hearts");
-                    UpdateAreaState(SelectedAreaReference);
+                    UpdateAreaState(SelectedAreaReference, SelectedCharacter);
                 }
             }
         }
@@ -466,7 +470,7 @@ namespace Charrmander.ViewModel
                     SelectedAreaCharacter.Waypoints = value;
                     RaisePropertyChanged("Waypoints");
                     RaisePropertyChanged("WaypointIcon");
-                    UpdateAreaState(SelectedAreaReference);
+                    UpdateAreaState(SelectedAreaReference, SelectedCharacter);
                 }
             }
         }
@@ -491,7 +495,7 @@ namespace Charrmander.ViewModel
                     SelectedAreaCharacter.PoIs = value;
                     RaisePropertyChanged("PoIs");
                     RaisePropertyChanged("PoIIcon");
-                    UpdateAreaState(SelectedAreaReference);
+                    UpdateAreaState(SelectedAreaReference, SelectedCharacter);
                 }
             }
         }
@@ -516,7 +520,7 @@ namespace Charrmander.ViewModel
                     SelectedAreaCharacter.Skills = value;
                     RaisePropertyChanged("Skills");
                     RaisePropertyChanged("SkillIcon");
-                    UpdateAreaState(SelectedAreaReference);
+                    UpdateAreaState(SelectedAreaReference, SelectedCharacter);
                 }
             }
         }
@@ -541,7 +545,7 @@ namespace Charrmander.ViewModel
                     SelectedAreaCharacter.Vistas = value;
                     RaisePropertyChanged("Vistas");
                     RaisePropertyChanged("VistaIcon");
-                    UpdateAreaState(SelectedAreaReference);
+                    UpdateAreaState(SelectedAreaReference, SelectedCharacter);
                 }
             }
         }
@@ -763,6 +767,22 @@ namespace Charrmander.ViewModel
                     _cmdCompleteArea = new RelayCommand(param => this.MarkAreaCompleted(), param => this.CanMarkAreaCompleted());
                 }
                 return _cmdCompleteArea;
+            }
+        }
+
+        /// <summary>
+        /// Command to mark the selected area as completed.
+        /// </summary>
+        public ICommand CommandCompletionOverview
+        {
+            get
+            {
+                if (_cmdCompletionOverview == null)
+                {
+                    _cmdCompletionOverview = new RelayCommand(param => this.ShowCompletionOverview(),
+                        param => this.CanShowCompletionOverview());
+                }
+                return _cmdCompletionOverview;
             }
         }
 
@@ -1145,6 +1165,83 @@ namespace Charrmander.ViewModel
         }
 
         /// <summary>
+        /// Open a window that shows an overview of all characters' area
+        /// completion state. This does not show the state for unnamed
+        /// characters as these cannot exist in the game world.
+        /// </summary>
+        private void ShowCompletionOverview()
+        {
+            Type t = typeof(string);
+            var table = new DataTable();
+            var column = new DataColumn("Area", t);
+            table.Columns.Add(column);
+
+            if (_completionOverview != null)
+            {
+                _completionOverview.Close();
+            }
+            _completionOverview = new CompletionOverviewView(table);
+            _completionOverview.Show();
+
+            /// Generate all the columns using character names.
+            var res = from c in CharacterList
+                      where !string.IsNullOrWhiteSpace(c.Name)
+                      select c;
+            foreach (var r in res)
+            {
+                table.Columns.Add(new DataColumn(r.Name, t));
+            }
+
+            /// Make a copy of the reference list so as to not accidentally
+            /// affect the reference list. Specifically,
+            /// UpdateAreaState(Area, Character) has the side effect of
+            /// discarding the state of all other area and character
+            /// combinations than the one it is called with.
+            var areas = from a in AreaReferenceList
+                        select new Area(a.Name)
+                            {
+                                Hearts = a.Hearts,
+                                Waypoints = a.Waypoints,
+                                PoIs = a.PoIs,
+                                Skills = a.Skills,
+                                Vistas = a.Vistas
+                            };
+
+            foreach (var a in areas)
+            {
+                var row = table.NewRow();
+                row["Area"] = a.Name;
+                foreach (var character in CharacterList)
+                {
+                    /// null and string.Empty are invalid column name indices.
+                    /// Ignore them, since these cannot exist in the game world
+                    /// anyway. Marking them as [Unnamed] would be pointless.
+                    if (!string.IsNullOrWhiteSpace(character.Name))
+                    {
+                        UpdateAreaState(a, character);
+                        row[character.Name] = a.State;
+                    }
+                }
+                table.Rows.Add(row);
+            }
+        }
+
+        /// <summary>
+        /// Determines whether or not the area completion overview can be
+        /// shown. The completion overview can be shown if at least one named
+        /// character exists in <see cref="CharacterList"/>.
+        /// </summary>
+        /// <returns><c>True</c> if the completion overview can be
+        /// shown.</returns>
+        private bool CanShowCompletionOverview()
+        {
+            var namedCharacters = from c in CharacterList
+                      where !string.IsNullOrWhiteSpace(c.Name)
+                      select c;
+            return namedCharacters.Count() > 0;
+        }
+
+        /// <summary>
         /// Signalled when a property of the current file was changed.
         /// The parameters are not used.
         /// </summary>
@@ -1234,10 +1331,11 @@ namespace Charrmander.ViewModel
         /// <seealso cref="Area.State"/>
         /// <param name="referenceArea">The area whose <c>State</c> to
         /// update.</param>
-        private void UpdateAreaState(Area referenceArea)
+        /// <param name="c">The character whose completion state to get</param>
+        private void UpdateAreaState(Area referenceArea, Character c)
         {
             bool found = false;
-            foreach (var ca in SelectedCharacter.Areas)
+            foreach (var ca in c.Areas)
             {
                 if (referenceArea.Name == ca.Name)
                 {
@@ -1305,7 +1403,7 @@ namespace Charrmander.ViewModel
             /// and area selected.
             foreach (var ra in AreaReferenceList)
             {
-                UpdateAreaState(ra);
+                UpdateAreaState(ra, SelectedCharacter);
             }
 
             RaisePropertyChanged("Hearts");
@@ -1403,6 +1501,22 @@ namespace Charrmander.ViewModel
                 {
                     StatusBarUpdateCheck = Properties.Resources.suUpdateCheckFailedReading;
                 }
+            }
+        }
+
+        /// <summary>
+        /// <see cref="IDisposable"/> implementation. CLoses all secondary
+        /// windows.
+        /// </summary>
+        public void Dispose()
+        {
+            if (_updateViewModel != null)
+            {
+                _updateViewModel.Close();
+            }
+            if (_completionOverview != null)
+            {
+                _completionOverview.Close();
             }
         }
     }
