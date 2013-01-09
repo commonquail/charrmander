@@ -13,9 +13,9 @@ namespace Charrmander.Model
     {
         private IViewModel _viewModel;
 
-        private string _name;
-        private string _race;
-        private string _profession;
+        private string _name = string.Empty;
+        private string _race = string.Empty;
+        private string _profession = string.Empty;
 
         private IDictionary<string, string> _biographies;
 
