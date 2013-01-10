@@ -127,7 +127,17 @@ namespace Charrmander.View
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             string res = string.Empty;
-            switch ((Area.CompletionState)value)
+            Area.CompletionState state = Area.CompletionState.Unvisited;
+            if (value is Area.CompletionState)
+            {
+                state = (Area.CompletionState)value;
+            }
+            else if (value is string)
+            {
+                Enum.TryParse<Area.CompletionState>(value as string, out state);
+            }
+
+            switch (state)
             {
                 case Area.CompletionState.Unvisited:
                     break;

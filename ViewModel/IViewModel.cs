@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charrmander.ViewModel
 {
-    interface IViewModel
+    interface IViewModel : IDisposable
     {
         void MarkFileDirty(object sender, EventArgs e);
     }

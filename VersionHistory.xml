@@ -5,7 +5,7 @@
       <Version>0.1.5.0</Version>
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.5.zip</DownloadUrl>
       <Notes>
-        <Note></Note>
+        <Note>Added area completion overview for all named characters.</Note>
       </Notes>
     </Release>
   </Unreleased>
