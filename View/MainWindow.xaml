@@ -122,7 +122,6 @@
                                     <Setter Property="SmallChange" Value="1"/>
                                     <Setter Property="LargeChange" Value="10"/>
                                     <Setter Property="Ticks" Value="0, 10, 20, 30, 40, 50, 60, 70, 80"/>
-                                    <Setter Property="Width" Value="190"/>
                                     <EventSetter Event="Loaded" Handler="Slider_Loaded"/>
                                 </Style>
                             </StackPanel.Resources>
@@ -146,11 +145,12 @@
 
                             <DockPanel>
                                 <TextBlock Text="Level:"/>
-                                <Slider Value="{Binding Level}" Name="sldLevel" Margin="0,2"/>
                                 <TextBlock Text="/ 80" DockPanel.Dock="Right" Width="Auto"/>
                                 <TextBox VerticalAlignment="Center" TextAlignment="Right"
                                          Text="{Binding Value, ElementName=sldLevel}"
-                                         Style="{StaticResource OnFocusSelectAll}" />
+                                         Style="{StaticResource OnFocusSelectAll}"
+                                         DockPanel.Dock="Right" Width="25"/>
+                                <Slider Value="{Binding Level}" Name="sldLevel" Margin="0,2"/>
                             </DockPanel>
 
                         </StackPanel>
