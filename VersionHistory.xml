@@ -9,67 +9,69 @@
       </Notes>
     </Release>
   </Unreleased>
-  <Latest>
-    <Release>
-      <Version>0.1.5.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.5.zip</DownloadUrl>
-      <Notes>
-        <Note>Added area completion overview for all named characters.</Note>
-        <Note>Added character level.</Note>
-        <Note>Crafting discipline and level sliders auto-size to consume window space greedily.</Note>
-      </Notes>
-    </Release>
-  </Latest>
-  <History>
-    <Release>
-      <Version>0.1.4.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.4.zip</DownloadUrl>
-      <Notes>
-        <Note>Version history log still might cut off on the right.</Note>
-        <Note>Snowden Drifts and Dredgehaunt Cliffs had typos.</Note>
-      </Notes>
-    </Release>
-    <Release>
-      <Version>0.1.3.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.3.zip</DownloadUrl>
-      <Notes>
-        <Note>Option to mark an area as completed, filling all items automatically. Also in context menu.</Note>
-        <Note>Indicate area completion status with icons in reference list.</Note>
-        <Note>Added a field for any personal notes the user wishes to record.</Note>
-        <Note>After deleting a character, if more remain in the list select the first one.</Note>
-        <Note>Update check performed automatically on startup.</Note>
-      </Notes>
-    </Release>
-    <Release>
-      <Version>0.1.2.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.2.zip</DownloadUrl>
-      <Notes>
-        <Note>Lion's Arch listed 223 points of interest. It has 23.</Note>
-        <Note>Crafting discipline icons show the discipline name in a tooltip.</Note>
-        <Note>Show area level ranges in a tooltip in the area reference list.</Note>
-        <Note>Biography choice "Ash Legion" appeared as "Ashin Legion."</Note>
-        <Note>Text in update history log occasionally cut off on the right.</Note>
-        <Note>Version history will no longer include unreleased update notes.</Note>
-      </Notes>
-    </Release>
-    <Release>
-      <Version>0.1.1.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.1.zip</DownloadUrl>
-      <Notes>
-        <Note>Added character creation biography choices.</Note>
-      </Notes>
-    </Release>
-    <Release>
-      <Version>0.1.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.0.zip</DownloadUrl>
-      <Notes>
-        <Note>First release.</Note>
-        <Note>Individual area completion tracking per character.</Note>
-        <Note>Crafting disciplines.</Note>
-        <Note>Drag &amp; Drop open.</Note>
-        <Note>File type association.</Note>
-        <Note>Manual update check.</Note>
-      </Notes>
-    </Release>
-  </History>
+  <Public>
+    <Latest>
+      <Release>
+        <Version>0.1.5.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.5.zip</DownloadUrl>
+        <Notes>
+          <Note>Added area completion overview for all named characters.</Note>
+          <Note>Added character level.</Note>
+          <Note>Crafting discipline and level sliders auto-size to consume window space greedily.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
+      <Release>
+        <Version>0.1.4.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.4.zip</DownloadUrl>
+        <Notes>
+          <Note>Version history log still might cut off on the right.</Note>
+          <Note>Snowden Drifts and Dredgehaunt Cliffs had typos.</Note>
+        </Notes>
+      </Release>
+      <Release>
+        <Version>0.1.3.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.3.zip</DownloadUrl>
+        <Notes>
+          <Note>Option to mark an area as completed, filling all items automatically. Also in context menu.</Note>
+          <Note>Indicate area completion status with icons in reference list.</Note>
+          <Note>Added a field for any personal notes the user wishes to record.</Note>
+          <Note>After deleting a character, if more remain in the list select the first one.</Note>
+          <Note>Update check performed automatically on startup.</Note>
+        </Notes>
+      </Release>
+      <Release>
+        <Version>0.1.2.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.2.zip</DownloadUrl>
+        <Notes>
+          <Note>Lion's Arch listed 223 points of interest. It has 23.</Note>
+          <Note>Crafting discipline icons show the discipline name in a tooltip.</Note>
+          <Note>Show area level ranges in a tooltip in the area reference list.</Note>
+          <Note>Biography choice "Ash Legion" appeared as "Ashin Legion."</Note>
+          <Note>Text in update history log occasionally cut off on the right.</Note>
+          <Note>Version history will no longer include unreleased update notes.</Note>
+        </Notes>
+      </Release>
+      <Release>
+        <Version>0.1.1.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.1.zip</DownloadUrl>
+        <Notes>
+          <Note>Added character creation biography choices.</Note>
+        </Notes>
+      </Release>
+      <Release>
+        <Version>0.1.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.0.zip</DownloadUrl>
+        <Notes>
+          <Note>First release.</Note>
+          <Note>Individual area completion tracking per character.</Note>
+          <Note>Crafting disciplines.</Note>
+          <Note>Drag &amp; Drop open.</Note>
+          <Note>File type association.</Note>
+          <Note>Manual update check.</Note>
+        </Notes>
+      </Release>
+    </History>
+  </Public>
 </VersionHistory>
