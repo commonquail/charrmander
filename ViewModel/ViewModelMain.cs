@@ -909,7 +909,8 @@ namespace Charrmander.ViewModel
                 {
                     Name = charr.CElement("Name").Value,
                     Race = charr.CElement("Race").Value,
-                    Profession = charr.CElement("Profession").Value
+                    Profession = charr.CElement("Profession").Value,
+                    Level = charr.CElement("Level").Value
                 };
 
                 // Biography choices.

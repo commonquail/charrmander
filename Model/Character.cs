@@ -16,6 +16,7 @@ namespace Charrmander.Model
         private string _name = string.Empty;
         private string _race = string.Empty;
         private string _profession = string.Empty;
+        private string _level = string.Empty;
 
         private IDictionary<string, string> _biographies;
 
@@ -78,7 +79,7 @@ namespace Charrmander.Model
         }
 
         /// <summary>
-        /// The characater's profession. Values are not validated.
+        /// The character's profession. Values are not validated.
         /// </summary>
         public string Profession
         {
@@ -89,6 +90,22 @@ namespace Charrmander.Model
                 {
                     _profession = value;
                     RaisePropertyChanged("Profession");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The character's level. Values are not validated.
+        /// </summary>
+        public string Level
+        {
+            get { return _level; }
+            set
+            {
+                if (value != _level)
+                {
+                    _level = value;
+                    RaisePropertyChanged("Level");
                 }
             }
         }
@@ -253,6 +270,7 @@ namespace Charrmander.Model
                 new CharrElement("Name", Name),
                 new CharrElement("Race", Race),
                 new CharrElement("Profession", Profession),
+                new CharrElement("Level", Level),
                 new CharrElement("Biographies",
                     new CharrElement("Profession", BiographyProfession),
                     new CharrElement("Personality", BiographyPersonality),

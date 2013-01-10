@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vw="clr-namespace:Charrmander.View"
-        Title="{Binding WindowTitle}" Height="360" Width="525"
+        Title="{Binding WindowTitle}" Height="390" Width="525"
         Icon="/Icons/Game/MainTitle.png" AllowDrop="True" Drop="Window_Drop">
 
     <Window.InputBindings>
@@ -96,15 +96,34 @@
                                 <Style TargetType="{x:Type DockPanel}">
                                     <Setter Property="Margin" Value="0,2"/>
                                 </Style>
+                                
                                 <Style TargetType="{x:Type TextBlock}">
                                     <Setter Property="Width" Value="100"/>
                                     <Setter Property="Padding" Value="5"/>
                                 </Style>
+                                
                                 <Style TargetType="{x:Type ComboBox}">
                                     <Setter Property="VerticalAlignment" Value="Center"/>
                                     <Setter Property="Height" Value="26"/>
                                     <Setter Property="SelectedValuePath" Value="Name"/>
                                     <EventSetter Event="SelectionChanged" Handler="ComboBox_SelectionChanged"/>
+                                </Style>
+                                
+                                <Style x:Key="OnFocusSelectAll" TargetType="{x:Type TextBox}">
+                                    <EventSetter Event="GotKeyboardFocus" Handler="txtGotKeyboardFocus"/>
+                                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="txtPreviewMouseLeftButtonDown"/>
+                                </Style>
+
+                                <Style TargetType="{x:Type Slider}">
+                                    <Setter Property="TickPlacement" Value="TopLeft"/>
+                                    <Setter Property="AutoToolTipPlacement" Value="BottomRight"/>
+                                    <Setter Property="Minimum" Value="0"/>
+                                    <Setter Property="Maximum" Value="80"/>
+                                    <Setter Property="SmallChange" Value="1"/>
+                                    <Setter Property="LargeChange" Value="10"/>
+                                    <Setter Property="Ticks" Value="0, 10, 20, 30, 40, 50, 60, 70, 80"/>
+                                    <Setter Property="Width" Value="190"/>
+                                    <EventSetter Event="Loaded" Handler="Slider_Loaded"/>
                                 </Style>
                             </StackPanel.Resources>
 
@@ -116,13 +135,22 @@
                             <DockPanel>
                                 <TextBlock Text="Race:"/>
                                 <ComboBox ItemsSource="{Binding Source={StaticResource RacesXml}}"
-                                  SelectedValue="{Binding Race}"/>
+                                          SelectedValue="{Binding Race}"/>
                             </DockPanel>
 
                             <DockPanel>
                                 <TextBlock Text="Profession:"/>
                                 <ComboBox ItemsSource="{Binding Source={StaticResource ProfessionsXml}}"
-                                  SelectedValue="{Binding Profession}"/>
+                                          SelectedValue="{Binding Profession}"/>
+                            </DockPanel>
+
+                            <DockPanel>
+                                <TextBlock Text="Level:"/>
+                                <Slider Value="{Binding Level}" Name="sldLevel" Margin="0,2"/>
+                                <TextBlock Text="/ 80" DockPanel.Dock="Right" Width="Auto"/>
+                                <TextBox VerticalAlignment="Center" TextAlignment="Right"
+                                         Text="{Binding Value, ElementName=sldLevel}"
+                                         Style="{StaticResource OnFocusSelectAll}" />
                             </DockPanel>
 
                         </StackPanel>
