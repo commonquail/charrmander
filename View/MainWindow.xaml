@@ -311,7 +311,6 @@
                                 <Setter Property="SmallChange" Value="1"/>
                                 <Setter Property="LargeChange" Value="10"/>
                                 <Setter Property="Ticks" Value="0, 75, 150, 225, 300, 375, 400"/>
-                                <Setter Property="Width" Value="200"/>
                                 <EventSetter Event="Loaded" Handler="Slider_Loaded"/>
                             </Style>
 
@@ -319,15 +318,18 @@
                                 <ItemsControl ItemsSource="{Binding}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
+                                            <DockPanel>
                                                 <Image Source="{Binding Name, Converter={StaticResource GameIconConverter},
                                                     ConverterParameter=Crafts}" ToolTip="{Binding Name}" Height="20" Width="20" />
 
-                                                <Slider Value="{Binding Level}" Name="sldCraftingDiscipline" Margin="6,2"/>
-
+                                                <TextBlock Text=" / 400" DockPanel.Dock="Right" Margin="0,5"/>
+                                                
                                                 <TextBox VerticalAlignment="Center" Width="35" TextAlignment="Right"
-                                                         Text="{Binding Value, ElementName=sldCraftingDiscipline}"/>
-                                            </StackPanel>
+                                                         Text="{Binding Value, ElementName=sldCraftingDiscipline}"
+                                                         DockPanel.Dock="Right" />
+                                                
+                                                <Slider Value="{Binding Level}" Name="sldCraftingDiscipline" Margin="6,2"/>
+                                            </DockPanel>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
