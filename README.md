@@ -2,7 +2,7 @@
 
 This is a tool to assist with keeping track of the state of [Guild Wars 2][GW2] characters.
 
-This tool was created primarily to assist with keeping track of which areas had been completed on which characters. The initial (unreleased) version was finished 2012-12-13. The following day [a patch][patch-12-12-14] was released that basically made this tool redundant.
+This tool was created primarily to assist with keeping track of which areas had been completed on which characters. The initial (unreleased) version was finished 2012-12-13. The following day [a patch][patch-12-12-14] was released that basically made that version redundant. It still provides a faster way to keep track of characters than constantly relogging, however.
 
 ## Features
 
@@ -12,6 +12,7 @@ This tool was created primarily to assist with keeping track of which areas had 
 * Update check
 * File type association
 * Saves as XML with a different file extension
+* Other things I can't be bothered to update this list with
 
 ## Installation
 
