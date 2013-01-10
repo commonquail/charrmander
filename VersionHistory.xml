@@ -6,6 +6,8 @@
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.5.zip</DownloadUrl>
       <Notes>
         <Note>Added area completion overview for all named characters.</Note>
+        <Note>Added character level.</Note>
+        <Note>Crafting discipline and level sliders auto-size to consume window space greedily.</Note>
       </Notes>
     </Release>
   </Unreleased>
