@@ -16,7 +16,7 @@ namespace Charrmander.Model
         private string _name = string.Empty;
         private string _race = string.Empty;
         private string _profession = string.Empty;
-        private string _level = string.Empty;
+        private string _level = "0";
 
         private IDictionary<string, string> _biographies;
 
