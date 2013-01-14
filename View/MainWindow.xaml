@@ -214,36 +214,37 @@
                 <TabItem Header="Areas">
                     <DockPanel>
                         <DataGrid SelectedItem="{Binding SelectedAreaReference}"
-                                 ItemsSource="{Binding AreaReferenceList}"
-                                 Width="230"
+                                  ItemsSource="{Binding AreaReferenceList}"
                                   AutoGenerateColumns="False"
                                   IsReadOnly="True"
                                   CanUserResizeRows="False"
-                                  SelectionMode="Single">
-                            <!--
-                            <DataGrid.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding State, Converter={StaticResource CompletionStateConverter}}"/>
-                                        <TextBlock Text="{Binding Name}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGrid.ItemTemplate>
-                            <DataGrid.ItemContainerStyle>
-                                <Style TargetType="ListBoxItem">
-                                    <Setter Property="ToolTip" Value="{Binding LevelRange}"/>
-                                </Style>
-                            </DataGrid.ItemContainerStyle>
-                            -->
+                                  CanUserResizeColumns="False"
+                                  SelectionMode="Single"
+                                  Block.TextAlignment="Right">
+                            
                             <DataGrid.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Mark Completed" Command="{Binding CommandCompleteArea}"/>
                                 </ContextMenu>
                             </DataGrid.ContextMenu>
+                            
+                            <DataGrid.RowStyle>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <Setter Property="ToolTip" Value="{Binding LevelRange}"/>
+                                </Style>
+                            </DataGrid.RowStyle>
+                            
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="State"
-                                                    Binding="{Binding State, Converter={StaticResource CompletionStateConverter}}"/>
-                                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                                <DataGridTemplateColumn Header="Area Name" MinWidth="130">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding State, Converter={StaticResource CompletionStateConverter}}"/>
+                                                <TextBlock Text="{Binding Name}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                                 <DataGridTextColumn Header="Min" Binding="{Binding MinLevel}"/>
                                 <DataGridTextColumn Header="Max" Binding="{Binding MaxLevel}"/>
                             </DataGrid.Columns>
@@ -267,7 +268,6 @@
                                     <Setter Property="VerticalAlignment" Value="Center"/>
                                     <Setter Property="DataContext" Value="{Binding SelectedAreaReference}"/>
                                     <Setter Property="Grid.Column" Value="2"/>
-                                    <Setter Property="Width" Value="100"/>
                                 </Style>
                             </StackPanel.Resources>
 
