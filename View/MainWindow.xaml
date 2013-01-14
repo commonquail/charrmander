@@ -57,7 +57,8 @@
             <ListBox Width="150" ItemsSource="{Binding CharacterList}" SelectedItem="{Binding SelectedCharacter}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name, Converter={StaticResource NamelessCharacterConverter}}"/>
+                        <TextBlock Text="{Binding Name, Converter={StaticResource NamelessCharacterConverter}}"
+                                   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
                 <ListBox.ContextMenu>
