@@ -55,7 +55,7 @@
             </DockPanel.Resources>
 
             <DataGrid Width="200" ItemsSource="{Binding CharacterList}" SelectedItem="{Binding SelectedCharacter}"
-                      AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False">
+                      AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False" SelectionMode="Single">
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="_New Character" Command="{Binding CommandNewCharacter}" InputGestureText="Ctrl+N"/>
@@ -102,19 +102,19 @@
                                 <Style TargetType="{x:Type DockPanel}">
                                     <Setter Property="Margin" Value="0,2"/>
                                 </Style>
-                                
+
                                 <Style TargetType="{x:Type TextBlock}">
                                     <Setter Property="Width" Value="100"/>
                                     <Setter Property="Padding" Value="5"/>
                                 </Style>
-                                
+
                                 <Style TargetType="{x:Type ComboBox}">
                                     <Setter Property="VerticalAlignment" Value="Center"/>
                                     <Setter Property="Height" Value="26"/>
                                     <Setter Property="SelectedValuePath" Value="Name"/>
                                     <EventSetter Event="SelectionChanged" Handler="ComboBox_SelectionChanged"/>
                                 </Style>
-                                
+
                                 <Style x:Key="OnFocusSelectAll" TargetType="{x:Type TextBox}">
                                     <EventSetter Event="GotKeyboardFocus" Handler="txtGotKeyboardFocus"/>
                                     <EventSetter Event="PreviewMouseLeftButtonDown" Handler="txtPreviewMouseLeftButtonDown"/>
@@ -213,28 +213,41 @@
 
                 <TabItem Header="Areas">
                     <DockPanel>
-                        <ListBox SelectedItem="{Binding SelectedAreaReference}"
+                        <DataGrid SelectedItem="{Binding SelectedAreaReference}"
                                  ItemsSource="{Binding AreaReferenceList}"
-                                 Width="150">
-                            <ListBox.ItemTemplate>
+                                 Width="230"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  CanUserResizeRows="False"
+                                  SelectionMode="Single">
+                            <!--
+                            <DataGrid.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="{Binding State, Converter={StaticResource CompletionStateConverter}}"/>
                                         <TextBlock Text="{Binding Name}"/>
                                     </StackPanel>
                                 </DataTemplate>
-                            </ListBox.ItemTemplate>
-                            <ListBox.ItemContainerStyle>
+                            </DataGrid.ItemTemplate>
+                            <DataGrid.ItemContainerStyle>
                                 <Style TargetType="ListBoxItem">
                                     <Setter Property="ToolTip" Value="{Binding LevelRange}"/>
                                 </Style>
-                            </ListBox.ItemContainerStyle>
-                            <ListBox.ContextMenu>
+                            </DataGrid.ItemContainerStyle>
+                            -->
+                            <DataGrid.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Mark Completed" Command="{Binding CommandCompleteArea}"/>
                                 </ContextMenu>
-                            </ListBox.ContextMenu>
-                        </ListBox>
+                            </DataGrid.ContextMenu>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="State"
+                                                    Binding="{Binding State, Converter={StaticResource CompletionStateConverter}}"/>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="Min" Binding="{Binding MinLevel}"/>
+                                <DataGridTextColumn Header="Max" Binding="{Binding MaxLevel}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
 
                         <StackPanel Margin="6,0">
                             <StackPanel.Resources>
@@ -329,11 +342,11 @@
                                                     ConverterParameter=Crafts}" ToolTip="{Binding Name}" Height="20" Width="20" />
 
                                                 <TextBlock Text=" / 400" DockPanel.Dock="Right" Margin="0,5"/>
-                                                
+
                                                 <TextBox VerticalAlignment="Center" Width="35" TextAlignment="Right"
                                                          Text="{Binding Value, ElementName=sldCraftingDiscipline}"
                                                          DockPanel.Dock="Right" />
-                                                
+
                                                 <Slider Value="{Binding Level}" Name="sldCraftingDiscipline" Margin="6,2"/>
                                             </DockPanel>
                                         </DataTemplate>
