@@ -102,20 +102,6 @@
     </Completion>
   </Area>
   <Area>
-    <Name>Dredgehaunt Cliffs</Name>
-    <LevelRange>
-      <MinLevel>40</MinLevel>
-      <MaxLevel>50</MaxLevel>
-    </LevelRange>
-    <Completion>
-      <Hearts>11</Hearts>
-      <Waypoints>18</Waypoints>
-      <PoIs>24</PoIs>
-      <Skills>6</Skills>
-      <Vistas>8</Vistas>
-    </Completion>
-  </Area>
-  <Area>
     <Name>Diessa Plateau</Name>
     <LevelRange>
       <MinLevel>15</MinLevel>
@@ -137,6 +123,20 @@
       <PoIs>20</PoIs>
       <Skills>0</Skills>
       <Vistas>6</Vistas>
+    </Completion>
+  </Area>
+  <Area>
+    <Name>Dredgehaunt Cliffs</Name>
+    <LevelRange>
+      <MinLevel>40</MinLevel>
+      <MaxLevel>50</MaxLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>11</Hearts>
+      <Waypoints>18</Waypoints>
+      <PoIs>24</PoIs>
+      <Skills>6</Skills>
+      <Vistas>8</Vistas>
     </Completion>
   </Area>
   <Area>
