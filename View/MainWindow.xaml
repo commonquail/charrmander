@@ -64,7 +64,7 @@
                     </ContextMenu>
                 </DataGrid.ContextMenu>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Level" Binding="{Binding Level}"/>
+                    <DataGridTextColumn Header="Level" Binding="{Binding Level}" MaxWidth="37"/>
                     <DataGridTextColumn Header="Name" Binding="{Binding Name, Converter={StaticResource NamelessCharacterConverter}}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="{x:Type TextBlock}">
