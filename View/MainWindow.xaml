@@ -235,7 +235,8 @@
                             </DataGrid.RowStyle>
                             
                             <DataGrid.Columns>
-                                <DataGridTemplateColumn Header="Area Name" MinWidth="130" SortMemberPath="Name">
+                                <DataGridTemplateColumn Header="Area Name" MinWidth="130" SortMemberPath="Name"
+                                                        ClipboardContentBinding="{Binding Name}">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
