@@ -8,7 +8,7 @@ namespace Charrmander.Model
     {
         private static Regex _NaNMatch;
 
-        private string _minLevel = "1";
+        private string _minLevel = "0";
         private string _maxLevel = "80";
 
         private string _hearts = string.Empty;

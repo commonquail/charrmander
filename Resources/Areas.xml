@@ -40,9 +40,6 @@
   </Area>
   <Area>
     <Name>Blue Borderlands</Name>
-    <LevelRange>
-      <MinLevel>80</MinLevel>
-    </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
       <Waypoints>6</Waypoints>
@@ -68,6 +65,7 @@
   <Area>
     <Name>Caledon Forest</Name>
     <LevelRange>
+      <MinLevel>1</MinLevel>
       <MaxLevel>15</MaxLevel>
     </LevelRange>
     <Completion>
@@ -141,9 +139,6 @@
   </Area>
   <Area>
     <Name>Eternal Battlegrounds</Name>
-    <LevelRange>
-      <MinLevel>80</MinLevel>
-    </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
       <Waypoints>7</Waypoints>
@@ -209,9 +204,6 @@
   </Area>
   <Area>
     <Name>Green Borderlands</Name>
-    <LevelRange>
-      <MinLevel>80</MinLevel>
-    </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
       <Waypoints>6</Waypoints>
@@ -312,6 +304,7 @@
   <Area>
     <Name>Metrica Province</Name>
     <LevelRange>
+      <MinLevel>1</MinLevel>
       <MaxLevel>15</MaxLevel>
     </LevelRange>
     <Completion>
@@ -376,9 +369,6 @@
   </Area>
   <Area>
     <Name>Red Borderlands</Name>
-    <LevelRange>
-      <MinLevel>80</MinLevel>
-    </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
       <Waypoints>6</Waypoints>
@@ -469,6 +459,7 @@
   <Area>
     <Name>Wayfarer Foothills</Name>
     <LevelRange>
+      <MinLevel>1</MinLevel>
       <MaxLevel>15</MaxLevel>
     </LevelRange>
     <Completion>
