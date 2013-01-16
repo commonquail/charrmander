@@ -219,6 +219,10 @@
                                   AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False" CanUserResizeColumns="False"
                                   SelectionMode="Single" Block.TextAlignment="Right">
 
+                            <DataGrid.HorizontalGridLinesBrush>
+                                <SolidColorBrush Color="LightGray"/>
+                            </DataGrid.HorizontalGridLinesBrush>
+                            
                             <DataGrid.RowStyle>
                                 <Style TargetType="{x:Type DataGridRow}">
                                     <Setter Property="ToolTip" Value="{Binding LevelRange}"/>
