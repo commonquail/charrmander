@@ -2,16 +2,25 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>0.1.6.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.6.zip</DownloadUrl>
+      <Version>0.1.7.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.7.zip</DownloadUrl>
       <Notes>
-        <Note>Character and area reference lists include level and level range and are sortable. Shift+click to sort on multiple columns.</Note>
-        <Note>WvW and city areas have their level range changed from 1-80 to 0-80.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>0.1.6.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.6.zip</DownloadUrl>
+        <Notes>
+          <Note>Character and area reference lists include level and level range and are sortable. Shift+click to sort on multiple columns.</Note>
+          <Note>WvW and city areas have their level range changed from 1-80 to 0-80.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>0.1.5.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.5.zip</DownloadUrl>
@@ -21,8 +30,6 @@
           <Note>Crafting discipline and level sliders auto-size to consume window space greedily.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>0.1.4.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.4.zip</DownloadUrl>
