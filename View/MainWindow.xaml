@@ -56,6 +56,13 @@
 
             <DataGrid Width="200" ItemsSource="{Binding CharacterList}" SelectedItem="{Binding SelectedCharacter}"
                       AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False" SelectionMode="Single">
+                
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Setter Property="ToolTip" Value="{Binding Name, Converter={StaticResource NamelessCharacterConverter}}"/>
+                    </Style>
+                </DataGrid.RowStyle>
+
                 <DataGrid.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="_New Character" Command="{Binding CommandNewCharacter}" InputGestureText="Ctrl+N"/>
@@ -63,14 +70,10 @@
                                   IsEnabled="{Binding IsCharacterDetailEnabled}"/>
                     </ContextMenu>
                 </DataGrid.ContextMenu>
+                
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Level" Binding="{Binding Level}" MaxWidth="37"/>
                     <DataGridTextColumn Header="Name" Binding="{Binding Name, Converter={StaticResource NamelessCharacterConverter}}">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style TargetType="{x:Type TextBlock}">
-                                <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
@@ -80,8 +83,7 @@
                     <TabItem.Resources>
                         <DataTemplate DataType="Profession">
                             <StackPanel Orientation="Horizontal">
-                                <Image Height="20" Width="20"
-                                       Source="{Binding XPath=Name,
+                                <Image Height="20" Width="20" Source="{Binding XPath=Name,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Professions}"/>
                                 <TextBlock Text="{Binding XPath=Name, StringFormat={} {0}}" VerticalAlignment="Center"/>
                             </StackPanel>
@@ -213,26 +215,21 @@
 
                 <TabItem Header="Areas">
                     <DockPanel>
-                        <DataGrid SelectedItem="{Binding SelectedAreaReference}"
-                                  ItemsSource="{Binding AreaReferenceList}"
-                                  AutoGenerateColumns="False"
-                                  IsReadOnly="True"
-                                  CanUserResizeRows="False"
-                                  CanUserResizeColumns="False"
-                                  SelectionMode="Single"
-                                  Block.TextAlignment="Right">
-                            
-                            <DataGrid.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="Mark Completed" Command="{Binding CommandCompleteArea}"/>
-                                </ContextMenu>
-                            </DataGrid.ContextMenu>
-                            
+                        <DataGrid ItemsSource="{Binding AreaReferenceList}" SelectedItem="{Binding SelectedAreaReference}"
+                                  AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False" CanUserResizeColumns="False"
+                                  SelectionMode="Single" Block.TextAlignment="Right">
+
                             <DataGrid.RowStyle>
                                 <Style TargetType="{x:Type DataGridRow}">
                                     <Setter Property="ToolTip" Value="{Binding LevelRange}"/>
                                 </Style>
                             </DataGrid.RowStyle>
+
+                            <DataGrid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Mark Completed" Command="{Binding CommandCompleteArea}"/>
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
                             
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn Header="Area Name" MinWidth="130" SortMemberPath="Name"
