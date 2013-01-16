@@ -125,6 +125,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="VersionHistory.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <Resource Include="Resources\charr.xsd">
       <SubType>Designer</SubType>
     </Resource>

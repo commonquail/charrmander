@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<VersionHistory>
+<VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
       <Version>0.1.6.0</Version>
