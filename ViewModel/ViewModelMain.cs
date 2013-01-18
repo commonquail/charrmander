@@ -1425,10 +1425,16 @@ namespace Charrmander.ViewModel
         /// <c>e.Result</c> when finished.
         /// </summary>
         /// <param name="sender"></param>
-        /// <param name="e">This event is passed to <see cref="UpdateWorker_RunWorkerCompleted"/>.</param>
+        /// <param name="e">This event is passed to
+        /// <see cref="UpdateWorker_RunWorkerCompleted"/>.</param>
         private void UpdateWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            XDocument doc = XDocument.Load(Properties.Resources.cfgUpdateCheckUri);
+            XDocument doc = null;
+            using (XmlTextReader tr = new XmlTextReader(Properties.Resources.cfgUpdateCheckUri))
+            {
+                tr.Namespaces = false;
+                doc = XDocument.Load(tr);
+            }
             e.Result = doc;
         }
 
