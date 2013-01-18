@@ -1429,6 +1429,8 @@ namespace Charrmander.ViewModel
         /// <see cref="UpdateWorker_RunWorkerCompleted"/>.</param>
         private void UpdateWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            /// We don't want to deal with the namespace for the version
+            /// history file, we're not validating it anyway.
             XDocument doc = null;
             using (XmlTextReader tr = new XmlTextReader(Properties.Resources.cfgUpdateCheckUri))
             {
