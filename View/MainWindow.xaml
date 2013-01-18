@@ -73,7 +73,7 @@
                 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Level" Binding="{Binding Level}" MaxWidth="37"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Name, Converter={StaticResource NamelessCharacterConverter}}">
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name, Converter={StaticResource NamelessCharacterConverter}}" Width="*">
                     </DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
