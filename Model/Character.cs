@@ -16,7 +16,7 @@ namespace Charrmander.Model
         private string _name = string.Empty;
         private string _race = string.Empty;
         private string _profession = string.Empty;
-        private string _level = "0";
+        private int _level = 0;
 
         private IDictionary<string, string> _biographies;
 
@@ -24,6 +24,9 @@ namespace Charrmander.Model
         private ObservableCollection<Area> _areas;
 
         private string _notes;
+
+        public const int MaxLevel = 80;
+        public const int MinLevel = 0;
 
         /// <summary>
         /// Creates a new character for the specified view model.
@@ -97,12 +100,13 @@ namespace Charrmander.Model
         /// <summary>
         /// The character's level. Values are not validated.
         /// </summary>
-        public string Level
+        public int Level
         {
             get { return _level; }
             set
             {
-                if (value != _level)
+                if (value != _level &&
+                    value >= MinLevel && value <= MaxLevel)
                 {
                     _level = value;
                     RaisePropertyChanged("Level");

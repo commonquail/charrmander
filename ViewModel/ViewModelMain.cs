@@ -909,9 +909,12 @@ namespace Charrmander.ViewModel
                 {
                     Name = charr.CElement("Name").Value,
                     Race = charr.CElement("Race").Value,
-                    Profession = charr.CElement("Profession").Value,
-                    Level = charr.CElement("Level").Value
+                    Profession = charr.CElement("Profession").Value
                 };
+
+                int level = 0;
+                int.TryParse(charr.CElement("Level").Value, out level);
+                c.Level = level;
 
                 // Biography choices.
                 var biographies = charr.CElement("Biographies");
@@ -925,7 +928,10 @@ namespace Charrmander.ViewModel
                 var craftingDisciplines = charr.CElement("CraftingDisciplines");
                 foreach (var discipline in c.CraftingDisciplines)
                 {
-                    discipline.Level = craftingDisciplines.CElement(discipline.Name).CElement("Level").Value;
+                    int craftLevel = 0;
+                    int.TryParse(craftingDisciplines.CElement(discipline.Name).CElement("Level").Value,
+                        out craftLevel);
+                    discipline.Level = craftLevel;
                 }
 
                 // Area completion.

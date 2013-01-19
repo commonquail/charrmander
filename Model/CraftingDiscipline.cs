@@ -9,7 +9,10 @@ namespace Charrmander.Model
     class CraftingDiscipline : AbstractNotifier
     {
         private string _name;
-        private string _level;
+        private int _level = CraftingDiscipline.MinLevel;
+
+        public const int MaxLevel = 400;
+        public const int MinLevel = 0;
 
         /// <summary>
         /// The name of this crafting discipline.
@@ -31,12 +34,13 @@ namespace Charrmander.Model
         /// The level of this crafting discipline, from 0 to 400. Limits are
         /// not enforced.
         /// </summary>
-        public string Level
+        public int Level
         {
-            get { return string.IsNullOrWhiteSpace(_level) ? "0" : _level; }
+            get { return _level; }
             set
             {
-                if (value != _level)
+                if (value != _level &&
+                    value >= MinLevel && value <= MaxLevel)
                 {
                     _level = value;
                     RaisePropertyChanged("Level");
