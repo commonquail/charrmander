@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:View="clr-namespace:Charrmander.View"
         xmlns:Model="clr-namespace:Charrmander.Model"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="{Binding WindowTitle}" Height="390" Width="575"
         Icon="/Icons/Game/MainTitle.png" AllowDrop="True" Drop="Window_Drop">
 
@@ -275,7 +276,11 @@
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding HeartIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <TextBox Text="{Binding Hearts}"/>
+                                <!--<TextBox Text="{Binding Hearts}"/>-->
+                                <xctk:IntegerUpDown Text="{Binding Hearts}" DefaultValue="0"
+                                                    Minimum="0" SelectAllOnGotFocus="True"
+                                                    Maximum="{Binding SelectedAreaReference.Hearts}"
+                                                    />
                                 <Label Content="{Binding Hearts}"/>
                             </StackPanel>
 

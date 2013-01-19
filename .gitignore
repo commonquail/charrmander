@@ -37,3 +37,4 @@ Autotask.txt
 backup.xml
 creds.txt
 *.pfx
+packages/
