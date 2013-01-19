@@ -6,6 +6,7 @@
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.7.zip</DownloadUrl>
       <Notes>
         <Note>Properly handles new version history file.</Note>
+        <Note>Sliders occasionally showed decimal values.</Note>
       </Notes>
     </Release>
   </Unreleased>
