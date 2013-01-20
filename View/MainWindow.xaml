@@ -252,6 +252,7 @@
                                 </Style>
                                 <Style TargetType="{x:Type xctk:IntegerUpDown}">
                                     <Setter Property="Width" Value="50"/>
+                                    <Setter Property="Height" Value="22"/>
                                     <Setter Property="Margin" Value="2,4"/>
                                     <Setter Property="Minimum" Value="0"/>
                                     <Setter Property="SelectAllOnGotFocus" Value="True"/>
