@@ -144,11 +144,12 @@
 
                             <DockPanel>
                                 <TextBlock Text="Level:"/>
-                                <TextBlock Text="/ 80" DockPanel.Dock="Right" Width="Auto"/>
-                                <TextBox VerticalAlignment="Center" TextAlignment="Right"
-                                         Text="{Binding Value, ElementName=sldLevel}"
-                                         Style="{StaticResource OnFocusSelectAll}"
-                                         DockPanel.Dock="Right" Width="25"/>
+                                <TextBlock Text="{Binding Source={x:Static Model:Character.MaxLevel}, StringFormat='/ {0}'}"
+                                           DockPanel.Dock="Right" Width="Auto"/>
+                                <xctk:IntegerUpDown DockPanel.Dock="Right" Width="45"
+                                                    Text="{Binding Value, ElementName=sldLevel, UpdateSourceTrigger=PropertyChanged}"
+                                                    Minimum="{x:Static Model:Character.MinLevel}"
+                                                    Maximum="{x:Static Model:Character.MaxLevel}"/>
                                 <Slider Value="{Binding Level}" Name="sldLevel" Margin="0,2"
                                         TickPlacement="TopLeft" AutoToolTipPlacement="BottomRight"
                                         Minimum="{Binding Source={x:Static Model:Character.MinLevel}}"
