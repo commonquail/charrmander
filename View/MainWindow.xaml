@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:View="clr-namespace:Charrmander.View"
         xmlns:Model="clr-namespace:Charrmander.Model"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="{Binding WindowTitle}" Height="390" Width="575"
         Icon="/Icons/Game/MainTitle.png" AllowDrop="True" Drop="Window_Drop">
 
@@ -73,9 +74,9 @@
                 </DataGrid.ContextMenu>
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Level" Binding="{Binding Level}" MaxWidth="37"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Name, Converter={StaticResource NamelessCharacterConverter}}" Width="*">
-                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Level" MaxWidth="37" Binding="{Binding Level}"/>
+                    <DataGridTextColumn Header="Name" Width="*"
+                                        Binding="{Binding Name, Converter={StaticResource NamelessCharacterConverter}}"/>
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -117,16 +118,11 @@
                                     <Setter Property="SelectedValuePath" Value="Name"/>
                                     <EventSetter Event="SelectionChanged" Handler="ComboBox_SelectionChanged"/>
                                 </Style>
-
-                                <Style x:Key="OnFocusSelectAll" TargetType="{x:Type TextBox}">
-                                    <EventSetter Event="GotKeyboardFocus" Handler="txtGotKeyboardFocus"/>
-                                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="txtPreviewMouseLeftButtonDown"/>
-                                </Style>
                             </StackPanel.Resources>
 
                             <DockPanel>
                                 <TextBlock Text="Name:"/>
-                                <TextBox VerticalAlignment="Center" Text="{Binding Name}"/>
+                                <TextBox VerticalAlignment="Center" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                             </DockPanel>
 
                             <DockPanel>
@@ -143,11 +139,13 @@
 
                             <DockPanel>
                                 <TextBlock Text="Level:"/>
-                                <TextBlock Text="/ 80" DockPanel.Dock="Right" Width="Auto"/>
-                                <TextBox VerticalAlignment="Center" TextAlignment="Right"
-                                         Text="{Binding Value, ElementName=sldLevel}"
-                                         Style="{StaticResource OnFocusSelectAll}"
-                                         DockPanel.Dock="Right" Width="25"/>
+                                <TextBlock Text="{Binding Source={x:Static Model:Character.MaxLevel}, StringFormat='/ {0}'}"
+                                           DockPanel.Dock="Right" Width="Auto"/>
+                                <xctk:IntegerUpDown DockPanel.Dock="Right" Width="45"
+                                                    Text="{Binding Value, ElementName=sldLevel, UpdateSourceTrigger=PropertyChanged}"
+                                                    Minimum="{x:Static Model:Character.MinLevel}"
+                                                    Maximum="{x:Static Model:Character.MaxLevel}"
+                                                    SelectAllOnGotFocus="True"/>
                                 <Slider Value="{Binding Level}" Name="sldLevel" Margin="0,2"
                                         TickPlacement="TopLeft" AutoToolTipPlacement="BottomRight"
                                         Minimum="{Binding Source={x:Static Model:Character.MinLevel}}"
@@ -252,13 +250,12 @@
                                 <Style TargetType="{x:Type Image}">
                                     <Setter Property="Width" Value="20"/>
                                 </Style>
-                                <Style TargetType="{x:Type TextBox}">
-                                    <EventSetter Event="GotKeyboardFocus" Handler="txtGotKeyboardFocus"/>
-                                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="txtPreviewMouseLeftButtonDown"/>
+                                <Style TargetType="{x:Type xctk:IntegerUpDown}">
                                     <Setter Property="Width" Value="50"/>
+                                    <Setter Property="Height" Value="22"/>
                                     <Setter Property="Margin" Value="2,4"/>
-                                    <Setter Property="TextAlignment" Value="Right"/>
-                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="Minimum" Value="0"/>
+                                    <Setter Property="SelectAllOnGotFocus" Value="True"/>
                                 </Style>
                                 <Style TargetType="{x:Type Label}">
                                     <Setter Property="ContentStringFormat" Value="{}/{0,3}"/>
@@ -275,35 +272,35 @@
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding HeartIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <TextBox Text="{Binding Hearts}"/>
+                                <xctk:IntegerUpDown Text="{Binding Hearts, UpdateSourceTrigger=PropertyChanged}"/>
                                 <Label Content="{Binding Hearts}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding WaypointIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <TextBox Text="{Binding Waypoints}"/>
+                                <xctk:IntegerUpDown Text="{Binding Waypoints, UpdateSourceTrigger=PropertyChanged}"/>
                                 <Label Content="{Binding Waypoints}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding PoIIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <TextBox Text="{Binding PoIs}"/>
+                                <xctk:IntegerUpDown Text="{Binding PoIs, UpdateSourceTrigger=PropertyChanged}"/>
                                 <Label Content="{Binding PoIs}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding SkillIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <TextBox Text="{Binding Skills}"/>
+                                <xctk:IntegerUpDown Text="{Binding Skills, UpdateSourceTrigger=PropertyChanged}"/>
                                 <Label Content="{Binding Skills}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding VistaIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <TextBox Text="{Binding Vistas}"/>
+                                <xctk:IntegerUpDown Text="{Binding Vistas, UpdateSourceTrigger=PropertyChanged}"/>
                                 <Label Content="{Binding Vistas}"/>
                             </StackPanel>
                         </StackPanel>
@@ -314,11 +311,6 @@
                 <TabItem Header="Crafting">
                     <StackPanel>
                         <StackPanel.Resources>
-                            <Style TargetType="{x:Type TextBox}">
-                                <EventSetter Event="GotKeyboardFocus" Handler="txtGotKeyboardFocus"/>
-                                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="txtPreviewMouseLeftButtonDown"/>
-                            </Style>
-
                             <Style TargetType="{x:Type Slider}">
                                 <Setter Property="TickPlacement" Value="TopLeft"/>
                                 <Setter Property="AutoToolTipPlacement" Value="BottomRight"/>
@@ -337,11 +329,16 @@
                                                 <Image Source="{Binding Name, Converter={StaticResource GameIconConverter},
                                                     ConverterParameter=Crafts}" ToolTip="{Binding Name}" Height="20" Width="20" />
 
-                                                <TextBlock Text=" / 400" DockPanel.Dock="Right" Margin="0,5"/>
+                                                <TextBlock Text="{Binding Source={x:Static Model:CraftingDiscipline.MaxLevel},
+                                                    StringFormat=' / {0}'}" DockPanel.Dock="Right" Margin="0,5"/>
 
-                                                <TextBox VerticalAlignment="Center" Width="35" TextAlignment="Right"
-                                                         Text="{Binding Value, ElementName=sldCraftingDiscipline}"
-                                                         DockPanel.Dock="Right" />
+                                                <xctk:IntegerUpDown
+                                                    Text="{Binding Value, ElementName=sldCraftingDiscipline,
+                                                    UpdateSourceTrigger=PropertyChanged}"
+                                                    Minimum="{x:Static Model:CraftingDiscipline.MinLevel}"
+                                                    Maximum="{x:Static Model:CraftingDiscipline.MaxLevel}"
+                                                    SelectAllOnGotFocus="True" DockPanel.Dock="Right"
+                                                    Width="55" Height="22" VerticalAlignment="Center"/>
 
                                                 <Slider Value="{Binding Level}" Name="sldCraftingDiscipline" Margin="6,2"/>
                                             </DockPanel>
@@ -363,7 +360,7 @@
                         <TextBlock Text="Add any personal notes here." DockPanel.Dock="Top"/>
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <TextBox TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" AutoWordSelection="True"
-                                     Text="{Binding SelectedCharacter.Notes}"/>
+                                     Text="{Binding SelectedCharacter.Notes, UpdateSourceTrigger=PropertyChanged}"/>
                         </ScrollViewer>
                     </DockPanel>
                 </TabItem>
