@@ -52,6 +52,7 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="FractalTier" type="xs:string" minOccurs="0"/>
       <xs:element name="Notes" type="xs:string" minOccurs="0"/>
     </xs:all>
   </xs:complexType>

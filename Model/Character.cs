@@ -320,6 +320,7 @@ namespace Charrmander.Model
                         )
                     )
                 ) : null),
+                new CharrElement("FractalTier", FractalTier),
                 new CharrElement("Notes", Notes)
             );
         }

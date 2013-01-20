@@ -950,6 +950,10 @@ namespace Charrmander.ViewModel
                     c.Areas.Add(a);
                 }
 
+                int fractalTier = 0;
+                int.TryParse(charr.CElement("FractalTier").Value, out fractalTier);
+                c.FractalTier = fractalTier;
+
                 c.Notes = charr.CElement("Notes").Value;
 
                 // All done.
