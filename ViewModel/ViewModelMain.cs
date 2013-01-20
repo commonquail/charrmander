@@ -950,6 +950,20 @@ namespace Charrmander.ViewModel
                     c.Areas.Add(a);
                 }
 
+                foreach (var cd in c.Dungeons)
+                {
+                    foreach (var ld in charr.CElement("Dungeons").CElements("Dungeon"))
+                    {
+                        if (cd.Name == ld.CElement("Name").Value)
+                        {
+                            bool completed = false;
+                            bool.TryParse(ld.CElement("StoryCompleted").Value, out completed);
+                            cd.StoryCompleted = completed;
+                            break;
+                        }
+                    }
+                }
+
                 int fractalTier = 0;
                 int.TryParse(charr.CElement("FractalTier").Value, out fractalTier);
                 c.FractalTier = fractalTier;
