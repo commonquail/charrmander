@@ -118,11 +118,6 @@
                                     <Setter Property="SelectedValuePath" Value="Name"/>
                                     <EventSetter Event="SelectionChanged" Handler="ComboBox_SelectionChanged"/>
                                 </Style>
-
-                                <Style x:Key="OnFocusSelectAll" TargetType="{x:Type TextBox}">
-                                    <EventSetter Event="GotKeyboardFocus" Handler="txtGotKeyboardFocus"/>
-                                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="txtPreviewMouseLeftButtonDown"/>
-                                </Style>
                             </StackPanel.Resources>
 
                             <DockPanel>
@@ -315,11 +310,6 @@
                 <TabItem Header="Crafting">
                     <StackPanel>
                         <StackPanel.Resources>
-                            <Style TargetType="{x:Type TextBox}">
-                                <EventSetter Event="GotKeyboardFocus" Handler="txtGotKeyboardFocus"/>
-                                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="txtPreviewMouseLeftButtonDown"/>
-                            </Style>
-
                             <Style TargetType="{x:Type Slider}">
                                 <Setter Property="TickPlacement" Value="TopLeft"/>
                                 <Setter Property="AutoToolTipPlacement" Value="BottomRight"/>

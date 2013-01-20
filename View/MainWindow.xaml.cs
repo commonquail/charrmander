@@ -18,28 +18,6 @@ namespace Charrmander.View
             InitializeComponent();
         }
 
-        private void txtGotKeyboardFocus(object sender, RoutedEventArgs e)
-        {
-            var tb = sender as TextBox;
-            if (tb != null)
-            {
-                tb.SelectAll();
-            }
-        }
-
-        private void txtPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var tb = sender as TextBox;
-            if (tb != null && !tb.IsKeyboardFocusWithin)
-            {
-                if (e.OriginalSource.GetType().Name == "TextBoxView")
-                {
-                    e.Handled = true;
-                    tb.Focus();
-                }
-            }
-        }
-
         private void Window_Drop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
