@@ -355,6 +355,16 @@
                     </StackPanel>
                 </TabItem>
 
+                <TabItem Header="Dungeons">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Fractal Tier:" Width="100" VerticalAlignment="Center"/>
+                            <xctk:IntegerUpDown Minimum="0" SelectAllOnGotFocus="True" Width="50" Height="22"
+                                        Text=""/>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+
                 <TabItem Header="Notes">
                     <DockPanel>
                         <TextBlock Text="Add any personal notes here." DockPanel.Dock="Top"/>
