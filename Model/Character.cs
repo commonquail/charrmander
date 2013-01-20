@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using Charrmander.Util;
 using Charrmander.ViewModel;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace Charrmander.Model
 {
@@ -30,6 +31,8 @@ namespace Charrmander.Model
         public const int MaxLevel = 80;
         public const int MinLevel = 0;
 
+        private ObservableCollection<Dungeon> _dungeons = new ObservableCollection<Dungeon>();
+
         /// <summary>
         /// Creates a new character for the specified view model.
         /// </summary>
@@ -47,7 +50,20 @@ namespace Charrmander.Model
                 { "RaceThird",  "" }
             };
 
+            var dungeons = XDocument.Load(System.Xml.XmlReader.Create(Application.GetResourceStream(
+                new Uri("Resources/Dungeons.xml", UriKind.Relative)).Stream)).Root.Elements("Dungeon");
+
+            foreach (var dungeon in dungeons)
+            {
+                _dungeons.Add(new Dungeon(dungeon.Element("Name").Value, dungeon.Element("StoryLevel").Value));
+            }
+
             this.PropertyChanged += _viewModel.MarkFileDirty;
+        }
+
+        public ObservableCollection<Dungeon> Dungeons
+        {
+            get { return _dungeons; }
         }
 
         /// <summary>
@@ -321,6 +337,13 @@ namespace Charrmander.Model
                     )
                 ) : null),
                 new CharrElement("FractalTier", FractalTier),
+                new CharrElement("Dungeons",
+                    from d in Dungeons
+                    select new CharrElement("Dungeon",
+                        new CharrElement("Name", d.Name),
+                        new CharrElement("StoryCompleted", d.StoryCompleted)
+                    )
+                ),
                 new CharrElement("Notes", Notes)
             );
         }

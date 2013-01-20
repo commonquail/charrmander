@@ -363,6 +363,13 @@
                                                 Text="{Binding SelectedCharacter.FractalTier, UpdateSourceTrigger=PropertyChanged}"
                                                 ToolTip="Highest tier reached in Fractals of the Mists."/>
                         </StackPanel>
+                        <DataGrid ItemsSource="{Binding SelectedCharacter.Dungeons}" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                                <DataGridCheckBoxColumn Header="Completed"
+                                                        Binding="{Binding StoryCompleted, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </StackPanel>
                 </TabItem>
 
