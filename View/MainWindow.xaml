@@ -337,7 +337,8 @@
                                                     UpdateSourceTrigger=PropertyChanged}"
                                                     Minimum="{x:Static Model:CraftingDiscipline.MinLevel}"
                                                     Maximum="{x:Static Model:CraftingDiscipline.MaxLevel}"
-                                                    SelectAllOnGotFocus="True" DockPanel.Dock="Right" Width="55"/>
+                                                    SelectAllOnGotFocus="True" DockPanel.Dock="Right"
+                                                    Width="55" Height="22" VerticalAlignment="Center"/>
 
                                                 <Slider Value="{Binding Level}" Name="sldCraftingDiscipline" Margin="6,2"/>
                                             </DockPanel>
