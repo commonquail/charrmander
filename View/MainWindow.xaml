@@ -253,14 +253,6 @@
                                 <Style TargetType="{x:Type Image}">
                                     <Setter Property="Width" Value="20"/>
                                 </Style>
-                                <Style TargetType="{x:Type TextBox}">
-                                    <EventSetter Event="GotKeyboardFocus" Handler="txtGotKeyboardFocus"/>
-                                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="txtPreviewMouseLeftButtonDown"/>
-                                    <Setter Property="Width" Value="50"/>
-                                    <Setter Property="Margin" Value="2,4"/>
-                                    <Setter Property="TextAlignment" Value="Right"/>
-                                    <Setter Property="VerticalAlignment" Value="Center"/>
-                                </Style>
                                 <Style TargetType="{x:Type xctk:IntegerUpDown}">
                                     <Setter Property="Width" Value="50"/>
                                     <Setter Property="Margin" Value="2,4"/>
@@ -289,28 +281,28 @@
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding WaypointIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <TextBox Text="{Binding Waypoints}"/>
+                                <xctk:IntegerUpDown Text="{Binding Waypoints, UpdateSourceTrigger=PropertyChanged}"/>
                                 <Label Content="{Binding Waypoints}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding PoIIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <TextBox Text="{Binding PoIs}"/>
+                                <xctk:IntegerUpDown Text="{Binding PoIs, UpdateSourceTrigger=PropertyChanged}"/>
                                 <Label Content="{Binding PoIs}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding SkillIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <TextBox Text="{Binding Skills}"/>
+                                <xctk:IntegerUpDown Text="{Binding Skills, UpdateSourceTrigger=PropertyChanged}"/>
                                 <Label Content="{Binding Skills}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding VistaIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <TextBox Text="{Binding Vistas}"/>
+                                <xctk:IntegerUpDown Text="{Binding Vistas, UpdateSourceTrigger=PropertyChanged}"/>
                                 <Label Content="{Binding Vistas}"/>
                             </StackPanel>
                         </StackPanel>
