@@ -149,7 +149,8 @@
                                 <xctk:IntegerUpDown DockPanel.Dock="Right" Width="45"
                                                     Text="{Binding Value, ElementName=sldLevel, UpdateSourceTrigger=PropertyChanged}"
                                                     Minimum="{x:Static Model:Character.MinLevel}"
-                                                    Maximum="{x:Static Model:Character.MaxLevel}"/>
+                                                    Maximum="{x:Static Model:Character.MaxLevel}"
+                                                    SelectAllOnGotFocus="True"/>
                                 <Slider Value="{Binding Level}" Name="sldLevel" Margin="0,2"
                                         TickPlacement="TopLeft" AutoToolTipPlacement="BottomRight"
                                         Minimum="{Binding Source={x:Static Model:Character.MinLevel}}"
