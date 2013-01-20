@@ -127,7 +127,7 @@
 
                             <DockPanel>
                                 <TextBlock Text="Name:"/>
-                                <TextBox VerticalAlignment="Center" Text="{Binding Name}"/>
+                                <TextBox VerticalAlignment="Center" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                             </DockPanel>
 
                             <DockPanel>
