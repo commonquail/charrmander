@@ -363,7 +363,7 @@
                         <TextBlock Text="Add any personal notes here." DockPanel.Dock="Top"/>
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <TextBox TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" AutoWordSelection="True"
-                                     Text="{Binding SelectedCharacter.Notes}"/>
+                                     Text="{Binding SelectedCharacter.Notes, UpdateSourceTrigger=PropertyChanged}"/>
                         </ScrollViewer>
                     </DockPanel>
                 </TabItem>
