@@ -261,6 +261,12 @@
                                     <Setter Property="TextAlignment" Value="Right"/>
                                     <Setter Property="VerticalAlignment" Value="Center"/>
                                 </Style>
+                                <Style TargetType="{x:Type xctk:IntegerUpDown}">
+                                    <Setter Property="Width" Value="50"/>
+                                    <Setter Property="Margin" Value="2,4"/>
+                                    <Setter Property="Minimum" Value="0"/>
+                                    <Setter Property="SelectAllOnGotFocus" Value="True"/>
+                                </Style>
                                 <Style TargetType="{x:Type Label}">
                                     <Setter Property="ContentStringFormat" Value="{}/{0,3}"/>
                                     <Setter Property="VerticalAlignment" Value="Center"/>
@@ -276,11 +282,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding HeartIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <!--<TextBox Text="{Binding Hearts}"/>-->
-                                <xctk:IntegerUpDown Text="{Binding Hearts}" DefaultValue="0"
-                                                    Minimum="0" SelectAllOnGotFocus="True"
-                                                    Maximum="{Binding SelectedAreaReference.Hearts}"
-                                                    />
+                                <xctk:IntegerUpDown Text="{Binding Hearts, UpdateSourceTrigger=PropertyChanged}"/>
                                 <Label Content="{Binding Hearts}"/>
                             </StackPanel>
 
