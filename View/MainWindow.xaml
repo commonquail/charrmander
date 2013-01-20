@@ -74,9 +74,9 @@
                 </DataGrid.ContextMenu>
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Level" Binding="{Binding Level}" MaxWidth="37"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Name, Converter={StaticResource NamelessCharacterConverter}}" Width="*">
-                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Level" MaxWidth="37" Binding="{Binding Level}"/>
+                    <DataGridTextColumn Header="Name" Width="*"
+                                        Binding="{Binding Name, Converter={StaticResource NamelessCharacterConverter}}"/>
                 </DataGrid.Columns>
             </DataGrid>
 
