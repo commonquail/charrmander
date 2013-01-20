@@ -23,6 +23,8 @@ namespace Charrmander.Model
         private ObservableCollection<CraftingDiscipline> _craftingDisciplines;
         private ObservableCollection<Area> _areas;
 
+        private int _fractalTier = 0;
+
         private string _notes;
 
         public const int MaxLevel = 80;
@@ -98,7 +100,7 @@ namespace Charrmander.Model
         }
 
         /// <summary>
-        /// The character's level. Values are not validated.
+        /// The character's level.
         /// </summary>
         public int Level
         {
@@ -243,6 +245,22 @@ namespace Charrmander.Model
                     _areas.CollectionChanged += Areas_CollectionChanged;
                 }
                 return _areas;
+            }
+        }
+
+        /// <summary>
+        /// The character's Fractal of the Mists tier.
+        /// </summary>
+        public int FractalTier
+        {
+            get { return _fractalTier; }
+            set
+            {
+                if (value != _fractalTier && value >= 0)
+                {
+                    _fractalTier = value;
+                    RaisePropertyChanged("FractalTier");
+                }
             }
         }
 
