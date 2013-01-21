@@ -51,7 +51,8 @@ namespace Charrmander.Model
             };
 
             var dungeons = XDocument.Load(System.Xml.XmlReader.Create(Application.GetResourceStream(
-                new Uri("Resources/Dungeons.xml", UriKind.Relative)).Stream)).Root.Elements("Dungeon");
+                new Uri("Resources/Dungeons.xml", UriKind.Relative)).Stream)).Root.Elements("Dungeon")
+                .OrderBy(d => d.Element("StoryLevel").Value);
 
             foreach (var dungeon in dungeons)
             {
