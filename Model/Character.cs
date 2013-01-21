@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using Charrmander.Util;
 using Charrmander.ViewModel;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace Charrmander.Model
 {
@@ -23,10 +24,14 @@ namespace Charrmander.Model
         private ObservableCollection<CraftingDiscipline> _craftingDisciplines;
         private ObservableCollection<Area> _areas;
 
+        private int _fractalTier = 1;
+
         private string _notes;
 
         public const int MaxLevel = 80;
         public const int MinLevel = 0;
+
+        private ObservableCollection<Dungeon> _dungeons = new ObservableCollection<Dungeon>();
 
         /// <summary>
         /// Creates a new character for the specified view model.
@@ -45,7 +50,23 @@ namespace Charrmander.Model
                 { "RaceThird",  "" }
             };
 
+            var dungeons = XDocument.Load(System.Xml.XmlReader.Create(Application.GetResourceStream(
+                new Uri("Resources/Dungeons.xml", UriKind.Relative)).Stream)).Root.Elements("Dungeon")
+                .OrderBy(d => d.Element("StoryLevel").Value);
+
+            foreach (var dungeon in dungeons)
+            {
+                var d = new Dungeon(dungeon.Element("Name").Value, dungeon.Element("StoryLevel").Value);
+                d.PropertyChanged += _viewModel.MarkFileDirty;
+                _dungeons.Add(d);
+            }
+
             this.PropertyChanged += _viewModel.MarkFileDirty;
+        }
+
+        public ObservableCollection<Dungeon> Dungeons
+        {
+            get { return _dungeons; }
         }
 
         /// <summary>
@@ -98,7 +119,7 @@ namespace Charrmander.Model
         }
 
         /// <summary>
-        /// The character's level. Values are not validated.
+        /// The character's level.
         /// </summary>
         public int Level
         {
@@ -247,6 +268,22 @@ namespace Charrmander.Model
         }
 
         /// <summary>
+        /// The character's Fractal of the Mists tier.
+        /// </summary>
+        public int FractalTier
+        {
+            get { return _fractalTier; }
+            set
+            {
+                if (value != _fractalTier && value >= 0)
+                {
+                    _fractalTier = value;
+                    RaisePropertyChanged("FractalTier");
+                }
+            }
+        }
+
+        /// <summary>
         /// Any personal notes the user wishes to record for this character.
         /// </summary>
         public string Notes
@@ -302,6 +339,14 @@ namespace Charrmander.Model
                         )
                     )
                 ) : null),
+                new CharrElement("FractalTier", FractalTier),
+                new CharrElement("Dungeons",
+                    from d in Dungeons
+                    select new CharrElement("Dungeon",
+                        new CharrElement("Name", d.Name),
+                        new CharrElement("StoryCompleted", d.StoryCompleted)
+                    )
+                ),
                 new CharrElement("Notes", Notes)
             );
         }
@@ -316,11 +361,15 @@ namespace Charrmander.Model
             {
                 d.PropertyChanged -= _viewModel.MarkFileDirty;
             }
-            foreach (Area a in Areas)
+            foreach (var a in Areas)
             {
                 a.PropertyChanged -= _viewModel.MarkFileDirty;
             }
             Areas.CollectionChanged -= Areas_CollectionChanged;
+            foreach (var dungeon in Dungeons)
+            {
+                dungeon.PropertyChanged -= _viewModel.MarkFileDirty;
+            }
         }
 
         /// <summary>

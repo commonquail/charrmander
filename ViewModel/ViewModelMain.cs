@@ -877,7 +877,7 @@ namespace Charrmander.ViewModel
                 }
                 catch (XmlSchemaValidationException ex)
                 {
-                    Debug.WriteLine(ex.Message);
+                    Debug.WriteLine(ex.InnerException.Message);
                     ShowError(Properties.Resources.msgOpenFailedValidationTitle, ex.Message);
                 }
                 catch (XmlException ex)
@@ -949,6 +949,24 @@ namespace Charrmander.ViewModel
 
                     c.Areas.Add(a);
                 }
+
+                foreach (var cd in c.Dungeons)
+                {
+                    foreach (var ld in charr.CElement("Dungeons").CElements("Dungeon"))
+                    {
+                        if (cd.Name == ld.CElement("Name").Value)
+                        {
+                            bool completed = false;
+                            bool.TryParse(ld.CElement("StoryCompleted").Value, out completed);
+                            cd.StoryCompleted = completed;
+                            break;
+                        }
+                    }
+                }
+
+                int fractalTier = 0;
+                int.TryParse(charr.CElement("FractalTier").Value, out fractalTier);
+                c.FractalTier = fractalTier;
 
                 c.Notes = charr.CElement("Notes").Value;
 

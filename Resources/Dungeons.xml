@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Dungeons>
+  <Dungeon>
+    <Name>Ascalonian Catacombs</Name>
+    <StoryLevel>30</StoryLevel>
+  </Dungeon>
+  <Dungeon>
+    <Name>Caudecus's Manor</Name>
+    <StoryLevel>40</StoryLevel>
+  </Dungeon>
+  <Dungeon>
+    <Name>Citadel of Flame</Name>
+    <StoryLevel>70</StoryLevel>
+  </Dungeon>
+  <Dungeon>
+    <Name>Crucible of Eternity</Name>
+    <StoryLevel>78</StoryLevel>
+  </Dungeon>
+  <Dungeon>
+    <Name>Honor of the Waves</Name>
+    <StoryLevel>76</StoryLevel>
+  </Dungeon>
+  <Dungeon>
+    <Name>Sorrow's Embrace</Name>
+    <StoryLevel>60</StoryLevel>
+  </Dungeon>
+  <Dungeon>
+    <Name>The Ruined City of Arah</Name>
+    <StoryLevel>80</StoryLevel>
+  </Dungeon>
+  <Dungeon>
+    <Name>Twilight Arbor</Name>
+    <StoryLevel>50</StoryLevel>
+  </Dungeon>
+</Dungeons>

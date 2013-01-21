@@ -71,6 +71,7 @@
     <Compile Include="FileAssociation\RegistryWrapper.cs" />
     <Compile Include="FileAssociation\ShellNotification.cs" />
     <Compile Include="Model\Area.cs" />
+    <Compile Include="Model\Dungeon.cs" />
     <Compile Include="Model\CraftingDiscipline.cs" />
     <Compile Include="Util\AbstractNotifier.cs" />
     <Compile Include="Util\CharrElement.cs" />
@@ -206,6 +207,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Biographies.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dungeons.xml">
       <SubType>Designer</SubType>
     </Resource>
   </ItemGroup>

@@ -355,6 +355,45 @@
                     </StackPanel>
                 </TabItem>
 
+                <TabItem Header="Dungeons">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Fractal Tier:" Width="80" VerticalAlignment="Center"/>
+                            <xctk:IntegerUpDown Minimum="1" SelectAllOnGotFocus="True" Width="50" Height="22"
+                                                Text="{Binding SelectedCharacter.FractalTier, UpdateSourceTrigger=PropertyChanged}"
+                                                ToolTip="Highest tier reached in Fractals of the Mists."/>
+                        </StackPanel>
+                        <GroupBox Header="Dungeon Story Mode Completion">
+                            <ContentControl Content="{Binding SelectedCharacter.Dungeons}">
+                                <ContentControl.ContentTemplate>
+                                    <DataTemplate>
+                                        <ItemsControl ItemsSource="{Binding}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <CheckBox IsChecked="{Binding StoryCompleted}">
+                                                            <CheckBox.Content>
+                                                                <TextBlock>
+                                                                    <TextBlock.Text>
+                                                                        <MultiBinding StringFormat="{}{0} {1}">
+                                                                            <Binding Path="StoryLevel"/>
+                                                                            <Binding Path="Name"/>
+                                                                        </MultiBinding>
+                                                                    </TextBlock.Text>
+                                                                </TextBlock>
+                                                            </CheckBox.Content>
+                                                        </CheckBox>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </DataTemplate>
+                                </ContentControl.ContentTemplate>
+                            </ContentControl>
+                        </GroupBox>
+                    </StackPanel>
+                </TabItem>
+
                 <TabItem Header="Notes">
                     <DockPanel>
                         <TextBlock Text="Add any personal notes here." DockPanel.Dock="Top"/>
