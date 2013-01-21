@@ -38,3 +38,4 @@ backup.xml
 creds.txt
 *.pfx
 packages/
+WPFToolkit.Extended.dll
