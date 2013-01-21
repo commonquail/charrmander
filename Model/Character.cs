@@ -55,7 +55,9 @@ namespace Charrmander.Model
 
             foreach (var dungeon in dungeons)
             {
-                _dungeons.Add(new Dungeon(dungeon.Element("Name").Value, dungeon.Element("StoryLevel").Value));
+                var d = new Dungeon(dungeon.Element("Name").Value, dungeon.Element("StoryLevel").Value);
+                d.PropertyChanged += _viewModel.MarkFileDirty;
+                _dungeons.Add(d);
             }
 
             this.PropertyChanged += _viewModel.MarkFileDirty;
@@ -358,11 +360,15 @@ namespace Charrmander.Model
             {
                 d.PropertyChanged -= _viewModel.MarkFileDirty;
             }
-            foreach (Area a in Areas)
+            foreach (var a in Areas)
             {
                 a.PropertyChanged -= _viewModel.MarkFileDirty;
             }
             Areas.CollectionChanged -= Areas_CollectionChanged;
+            foreach (var dungeon in Dungeons)
+            {
+                dungeon.PropertyChanged -= _viewModel.MarkFileDirty;
+            }
         }
 
         /// <summary>
