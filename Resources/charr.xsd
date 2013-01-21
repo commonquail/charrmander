@@ -55,13 +55,19 @@
       <xs:element name="FractalTier" type="xs:string" minOccurs="0"/>
       <xs:element name="Dungeons" minOccurs="0">
         <xs:complexType>
-          <xs:all>
-            <xs:element name="Name" type="xs:string"/>
-            <xs:element name="StoryCompleted" type="xs:string"/>
-          </xs:all>
+          <xs:sequence>
+            <xs:element name="Dungeon" maxOccurs="unbounded" type="DungeonType"/>
+          </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="Notes" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="DungeonType">
+    <xs:all>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="StoryCompleted" type="xs:string"/>
     </xs:all>
   </xs:complexType>
 
