@@ -363,13 +363,34 @@
                                                 Text="{Binding SelectedCharacter.FractalTier, UpdateSourceTrigger=PropertyChanged}"
                                                 ToolTip="Highest tier reached in Fractals of the Mists."/>
                         </StackPanel>
-                        <DataGrid ItemsSource="{Binding SelectedCharacter.Dungeons}" AutoGenerateColumns="False">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                                <DataGridCheckBoxColumn Header="Completed"
-                                                        Binding="{Binding StoryCompleted, UpdateSourceTrigger=PropertyChanged}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <GroupBox Header="Dungeon Story Mode Completion">
+                            <ContentControl Content="{Binding SelectedCharacter.Dungeons}">
+                                <ContentControl.ContentTemplate>
+                                    <DataTemplate>
+                                        <ItemsControl ItemsSource="{Binding}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <CheckBox IsChecked="{Binding StoryCompleted}">
+                                                            <CheckBox.Content>
+                                                                <TextBlock>
+                                                                    <TextBlock.Text>
+                                                                        <MultiBinding StringFormat="{}{0} {1}">
+                                                                            <Binding Path="StoryLevel"/>
+                                                                            <Binding Path="Name"/>
+                                                                        </MultiBinding>
+                                                                    </TextBlock.Text>
+                                                                </TextBlock>
+                                                            </CheckBox.Content>
+                                                        </CheckBox>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </DataTemplate>
+                                </ContentControl.ContentTemplate>
+                            </ContentControl>
+                        </GroupBox>
                     </StackPanel>
                 </TabItem>
 
