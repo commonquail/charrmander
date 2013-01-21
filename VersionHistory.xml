@@ -2,16 +2,27 @@
 <VersionHistory>
   <Unreleased>
     <Release>
-      <Version>0.1.7.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.7.zip</DownloadUrl>
+      <Version>0.1.8.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.8.zip</DownloadUrl>
       <Notes>
-        <Note>Properly handles new version history file.</Note>
-        <Note>Sliders occasionally showed decimal values.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>0.1.7.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.7.zip</DownloadUrl>
+        <Notes>
+          <Note>Dungeon story mode and FotM tier tracking.</Note>
+          <Note>Properly handles new version history file.</Note>
+          <Note>Sliders occasionally showed decimal values.</Note>
+          <Note>Up/down input controls for better usability.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>0.1.6.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.6.zip</DownloadUrl>
@@ -20,8 +31,6 @@
           <Note>WvW and city areas have their level range changed from 1-80 to 0-80.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>0.1.5.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.5.zip</DownloadUrl>
