@@ -28,10 +28,22 @@ namespace Charrmander.Model
 
         private string _notes;
 
+        private ObservableCollection<Dungeon> _dungeons = new ObservableCollection<Dungeon>();
+
+        /// <summary>
+        /// Maximum character level.
+        /// </summary>
         public const int MaxLevel = 80;
+
+        /// <summary>
+        /// Minimum character level.
+        /// </summary>
         public const int MinLevel = 0;
 
-        private ObservableCollection<Dungeon> _dungeons = new ObservableCollection<Dungeon>();
+        /// <summary>
+        /// Minimum Fractal of the Mists tier.
+        /// </summary>
+        public const int FractalTierMin = 1;
 
         /// <summary>
         /// Creates a new character for the specified view model.
@@ -269,13 +281,14 @@ namespace Charrmander.Model
 
         /// <summary>
         /// The character's Fractal of the Mists tier.
+        /// <seealso cref="Character.FractalTierMin"/>
         /// </summary>
         public int FractalTier
         {
             get { return _fractalTier; }
             set
             {
-                if (value != _fractalTier && value >= 0)
+                if (value != _fractalTier && value >= FractalTierMin)
                 {
                     _fractalTier = value;
                     RaisePropertyChanged("FractalTier");

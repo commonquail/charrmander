@@ -964,7 +964,7 @@ namespace Charrmander.ViewModel
                     }
                 }
 
-                int fractalTier = 0;
+                int fractalTier = Character.FractalTierMin;
                 int.TryParse(charr.CElement("FractalTier").Value, out fractalTier);
                 c.FractalTier = fractalTier;
 
