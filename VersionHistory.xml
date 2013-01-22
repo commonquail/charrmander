@@ -1,16 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<VersionHistory>
+<VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>0.1.8.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.8.zip</DownloadUrl>
+      <Version>0.1.9.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.9.zip</DownloadUrl>
       <Notes>
-        <Note>Removed external DLL dependency introduced in 0.1.7. This DLL may be deleted.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>0.1.8.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.8.zip</DownloadUrl>
+        <Notes>
+          <Note>Removed external DLL dependency introduced in 0.1.7. Charrmander.exe now runs by itself again.</Note>
+          <Note>FotM tier input will not be empty when loading a character with no FotM tier data.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>0.1.7.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.7.zip</DownloadUrl>
@@ -21,8 +31,6 @@
           <Note>Up/down input controls for better usability.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>0.1.6.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.6.zip</DownloadUrl>
