@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StoryChoices>
+  <Order>
+    <Level>28</Level>
+    <Chapter>The Orders of Tyria</Chapter>
+    <Options>
+      <Option>Durmand Priory</Option>
+      <Option>Order of Whispers</Option>
+      <Option>Vigil</Option>
+    </Options>
+  </Order>
+  <RacialSympathy>
+    <Level>39</Level>
+    <Chapter>A Friend In Deed</Chapter>
+    <Options>
+      <Option>Grawl</Option>
+      <Option>Hylek</Option>
+      <Option>Ogre</Option>
+      <Option>Quaggan</Option>
+      <Option>Skritt</Option>
+    </Options>
+  </RacialSympathy>
+  <RetributionAlly>
+    <Level>51</Level>
+    <Chapter>This Far, No Further</Chapter>
+    <Options>
+      <Option>OoW: Gorr</Option>
+      <Option>OoW: Benn Tenstrikes</Option>
+      <Option>Piory: Tegwen</Option>
+      <Option>Piory: Barron and Fero</Option>
+      <Option>Vigil: Galina and Snarl</Option>
+      <Option>Vigil: Fibharr Yogsson</Option>
+    </Options>
+  </RetributionAlly>
+  <GreatestFear>
+    <Level>55</Level>
+    <Chapter>The Cost of Victory</Chapter>
+    <Options>
+      <Option>Letting an innocent die</Option>
+      <Option>Dishonored by allies</Option>
+      <Option>Making another suffer</Option>
+    </Options>
+  </GreatestFear>
+  <PlanOfAttack>
+    <Level>77</Level>
+    <Chapter>Savior of Tyria</Chapter>
+    <Options>
+      <Option>OoW: Zhaitan's Navy</Option>
+      <Option>Priory: Missing Squad</Option>
+      <Option>Vigil: Tanks</Option>
+    </Options>
+  </PlanOfAttack>
+</StoryChoices>
