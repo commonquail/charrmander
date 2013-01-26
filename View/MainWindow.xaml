@@ -208,12 +208,17 @@
                 </TabItem>
 
                 <TabItem Header="Story" IsSelected="True">
-                    <StackPanel>
-                        <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=Order//Option}"/>
-                        <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=RacialSympathy//Option}"/>
-                        <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=RetributionAlly//Option}"/>
-                        <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=GreatestFear//Option}"/>
-                        <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=PlanOfAttack//Option}"/>
+                    <StackPanel DataContext="{Binding SelectedCharacter}">
+                        <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=Order//Option}"
+                                  SelectedValue="{Binding Order}"/>
+                        <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=RacialSympathy//Option}"
+                                  SelectedValue="{Binding RacialSympathy}"/>
+                        <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=RetributionAlly//Option}"
+                                  SelectedValue="{Binding RetributionAlly}"/>
+                        <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=GreatestFear//Option}"
+                                  SelectedValue="{Binding GreatestFear}"/>
+                        <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=PlanOfAttack//Option}"
+                                  SelectedValue="{Binding PlanOfAttack}"/>
                     </StackPanel>
                 </TabItem>
                 
