@@ -924,6 +924,13 @@ namespace Charrmander.ViewModel
                 c.BiographyRaceSecond = biographies.CElement("RaceSecond").Value;
                 c.BiographyRaceThird = biographies.CElement("RaceThird").Value;
 
+                var storyChoices = charr.CElement("StoryChoices");
+                c.Order = storyChoices.CElement("Order").Value;
+                c.RacialSympathy = storyChoices.CElement("RacialSympathy").Value;
+                c.RetributionAlly = storyChoices.CElement("RetributionAlly").Value;
+                c.GreatestFear = storyChoices.CElement("GreatestFear").Value;
+                c.PlanOfAttack = storyChoices.CElement("PlanOfAttack").Value;
+
                 // Crafting disciplines.
                 var craftingDisciplines = charr.CElement("CraftingDisciplines");
                 foreach (var discipline in c.CraftingDisciplines)
