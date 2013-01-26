@@ -18,6 +18,7 @@
 
         <XmlDataProvider x:Key="ProfessionsXml" XPath="Professions/Profession" Source="/Resources/Professions.xml"/>
         <XmlDataProvider x:Key="RacesXml" XPath="Races/Race" Source="/Resources/Races.xml"/>
+        <XmlDataProvider x:Key="StoryXml" XPath="StoryChoices" Source="/Resources/StoryChoices.xml"/>
 
         <View:GameIconConverter x:Key="GameIconConverter"/>
         <View:CompletionStateConverter x:Key="CompletionStateConverter"/>
@@ -206,6 +207,16 @@
                     </StackPanel>
                 </TabItem>
 
+                <TabItem Header="Story" IsSelected="True">
+                    <StackPanel>
+                        <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=Order//Option}"/>
+                        <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=RacialSympathy//Option}"/>
+                        <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=RetributionAlly//Option}"/>
+                        <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=GreatestFear//Option}"/>
+                        <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=PlanOfAttack//Option}"/>
+                    </StackPanel>
+                </TabItem>
+                
                 <TabItem Header="Areas">
                     <DockPanel>
                         <DataGrid ItemsSource="{Binding AreaReferenceList}" SelectedItem="{Binding SelectedAreaReference}"
