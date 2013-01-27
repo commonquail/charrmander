@@ -2,8 +2,8 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>0.1.9.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.9.zip</DownloadUrl>
+      <Version>0.1.10.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.10.zip</DownloadUrl>
       <Notes>
         <Note></Note>
       </Notes>
@@ -12,6 +12,15 @@
   <Public>
     <Latest>
       <Release>
+        <Version>0.1.9.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.9.zip</DownloadUrl>
+        <Notes>
+          <Note>Add story choice tracking (order, lesser race, etc.).</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
+      <Release>
         <Version>0.1.8.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.8.zip</DownloadUrl>
         <Notes>
@@ -19,8 +28,6 @@
           <Note>FotM tier input will not be empty when loading a character with no FotM tier data.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>0.1.7.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.7.zip</DownloadUrl>
