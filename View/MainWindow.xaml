@@ -207,7 +207,7 @@
                     </StackPanel>
                 </TabItem>
 
-                <TabItem Header="Story" IsSelected="True">
+                <TabItem Header="Story">
                     <StackPanel DataContext="{Binding SelectedCharacter}">
                         <StackPanel.Resources>
                             <Style x:Key="LabelStyle" TargetType="{x:Type TextBlock}">
