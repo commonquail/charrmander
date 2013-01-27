@@ -31,6 +31,17 @@
           </xs:all>
         </xs:complexType>
       </xs:element>
+      <xs:element name="StoryChoices" minOccurs="0">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Order" minOccurs="0"/>
+            <xs:element name="RacialSympathy" minOccurs="0"/>
+            <xs:element name="RetributionAlly" minOccurs="0"/>
+            <xs:element name="GreatestFear" minOccurs="0"/>
+            <xs:element name="PlanOfAttack" minOccurs="0"/>
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="CraftingDisciplines" minOccurs="0">
         <xs:complexType>
           <xs:all>

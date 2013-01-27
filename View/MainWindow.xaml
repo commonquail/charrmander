@@ -18,6 +18,7 @@
 
         <XmlDataProvider x:Key="ProfessionsXml" XPath="Professions/Profession" Source="/Resources/Professions.xml"/>
         <XmlDataProvider x:Key="RacesXml" XPath="Races/Race" Source="/Resources/Races.xml"/>
+        <XmlDataProvider x:Key="StoryXml" XPath="StoryChoices" Source="/Resources/StoryChoices.xml"/>
 
         <View:GameIconConverter x:Key="GameIconConverter"/>
         <View:CompletionStateConverter x:Key="CompletionStateConverter"/>
@@ -203,6 +204,86 @@
 
                             </StackPanel>
                         </GroupBox>
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem Header="Story" IsSelected="True">
+                    <StackPanel DataContext="{Binding SelectedCharacter}">
+                        <StackPanel.Resources>
+                            <Style x:Key="LabelStyle" TargetType="{x:Type TextBlock}">
+                                <Setter Property="Width" Value="120"/>
+                                <Setter Property="Padding" Value="5"/>
+                            </Style>
+
+                            <Style TargetType="{x:Type ComboBox}">
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <DockPanel>
+                            <TextBlock DataContext="{Binding Source={StaticResource StoryXml}, XPath=Order}"
+                                       Text="{Binding XPath=Chapter, StringFormat={}{0}:}" Style="{StaticResource LabelStyle}">
+                                <TextBlock.ToolTip>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="The order you join. Choice quest level: "/>
+                                        <TextBlock Text="{Binding XPath=Level}"/>
+                                    </StackPanel>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                            <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=Order//Option}"
+                                      SelectedValue="{Binding Order}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock DataContext="{Binding Source={StaticResource StoryXml}, XPath=RacialSympathy}"
+                                       Text="{Binding XPath=Chapter, StringFormat={}{0}:}" Style="{StaticResource LabelStyle}">
+                                <TextBlock.ToolTip>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="The lesser race your order aids. Choice quest level: "/>
+                                        <TextBlock Text="{Binding XPath=Level}"/>
+                                    </StackPanel>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                            <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=RacialSympathy//Option}"
+                                      SelectedValue="{Binding RacialSympathy}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock DataContext="{Binding Source={StaticResource StoryXml}, XPath=RetributionAlly}"
+                                       Text="{Binding XPath=Chapter, StringFormat={}{0}:}" Style="{StaticResource LabelStyle}">
+                                <TextBlock.ToolTip>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="The ally you bring to Retribution. Choice quest level: "/>
+                                        <TextBlock Text="{Binding XPath=Level}"/>
+                                    </StackPanel>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                            <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=RetributionAlly//Option}"
+                                      SelectedValue="{Binding RetributionAlly}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock DataContext="{Binding Source={StaticResource StoryXml}, XPath=GreatestFear}"
+                                       Text="{Binding XPath=Chapter, StringFormat={}{0}:}" Style="{StaticResource LabelStyle}">
+                                <TextBlock.ToolTip>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Your greatest fear, per the Pale Tree. Choice quest level: "/>
+                                        <TextBlock Text="{Binding XPath=Level}"/>
+                                    </StackPanel>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                            <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=GreatestFear//Option}"
+                                      SelectedValue="{Binding GreatestFear}"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock DataContext="{Binding Source={StaticResource StoryXml}, XPath=PlanOfAttack}"
+                                       Text="{Binding XPath=Chapter, StringFormat={}{0}:}" Style="{StaticResource LabelStyle}">
+                                <TextBlock.ToolTip>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="The final attack on Orr. Choice quest level: "/>
+                                        <TextBlock Text="{Binding XPath=Level}"/>
+                                    </StackPanel>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                            <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=PlanOfAttack//Option}"
+                                      SelectedValue="{Binding PlanOfAttack}"/>
+                        </DockPanel>
                     </StackPanel>
                 </TabItem>
 

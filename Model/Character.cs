@@ -21,6 +21,12 @@ namespace Charrmander.Model
 
         private IDictionary<string, string> _biographies;
 
+        private string _order = string.Empty;
+        private string _racialSympathy = string.Empty;
+        private string _retributionAlly = string.Empty;
+        private string _greatestFear = string.Empty;
+        private string _planOfAttack = string.Empty;
+
         private ObservableCollection<CraftingDiscipline> _craftingDisciplines;
         private ObservableCollection<Area> _areas;
 
@@ -234,6 +240,86 @@ namespace Charrmander.Model
         }
 
         /// <summary>
+        /// The order this character joins.
+        /// </summary>
+        public string Order
+        {
+            get { return _order; }
+            set
+            {
+                if (value != _order)
+                {
+                    _order = value;
+                    RaisePropertyChanged("Order");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The lesser race this character choses to aid.
+        /// </summary>
+        public string RacialSympathy
+        {
+            get { return _racialSympathy; }
+            set
+            {
+                if (value != _racialSympathy)
+                {
+                    _racialSympathy = value;
+                    RaisePropertyChanged("RacialSympathy");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The ally this character picks for the story quest Retribution.
+        /// </summary>
+        public string RetributionAlly
+        {
+            get { return _retributionAlly; }
+            set
+            {
+                if (value != _retributionAlly)
+                {
+                    _retributionAlly = value;
+                    RaisePropertyChanged("RetributionAlly");
+                }
+            }
+        }
+
+        /// <summary>
+        /// This character's greatest fear, picked in A Light in the Darkness.
+        /// </summary>
+        public string GreatestFear
+        {
+            get { return _greatestFear; }
+            set
+            {
+                if (value != _greatestFear)
+                {
+                    _greatestFear = value;
+                    RaisePropertyChanged("GreatestFear");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The Orr attack plan this character picks.
+        /// </summary>
+        public string PlanOfAttack
+        {
+            get { return _planOfAttack; }
+            set
+            {
+                if (value != _planOfAttack)
+                {
+                    _planOfAttack = value;
+                    RaisePropertyChanged("PlanOfAttack");
+                }
+            }
+        }
+
+        /// <summary>
         /// A collection of all the crafting disciplines.
         /// See <see cref="CraftingDiscipline"/>.
         /// </summary>
@@ -331,6 +417,13 @@ namespace Charrmander.Model
                     new CharrElement("RaceFirst", BiographyRaceFirst),
                     new CharrElement("RaceSecond", BiographyRaceSecond),
                     new CharrElement("RaceThird", BiographyRaceThird)
+                ),
+                new CharrElement("StoryChoices",
+                    new CharrElement("Order", Order),
+                    new CharrElement("RacialSympathy", RacialSympathy),
+                    new CharrElement("RetributionAlly", RetributionAlly),
+                    new CharrElement("GreatestFear", GreatestFear),
+                    new CharrElement("PlanOfAttack", PlanOfAttack)
                 ),
                 new CharrElement("CraftingDisciplines",
                     from d in CraftingDisciplines
