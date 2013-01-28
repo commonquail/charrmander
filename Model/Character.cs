@@ -112,7 +112,7 @@ namespace Charrmander.Model
             get { return _race; }
             set
             {
-                if (value != _race)
+                if (value != _race && !string.IsNullOrWhiteSpace(value))
                 {
                     _race = value;
                     RaisePropertyChanged("Race");
@@ -128,7 +128,7 @@ namespace Charrmander.Model
             get { return _profession; }
             set
             {
-                if (value != _profession)
+                if (value != _profession && !string.IsNullOrWhiteSpace(value))
                 {
                     _profession = value;
                     RaisePropertyChanged("Profession");
@@ -161,7 +161,7 @@ namespace Charrmander.Model
             get { return _biographies["Profession"]; }
             set
             {
-                if (value != _biographies["Profession"])
+                if (value != _biographies["Profession"] && !string.IsNullOrWhiteSpace(value))
                 {
                     _biographies["Profession"] = value;
                     RaisePropertyChanged("BiographyProfession");
@@ -177,7 +177,7 @@ namespace Charrmander.Model
             get { return _biographies["Personality"]; }
             set
             {
-                if (value != _biographies["Personality"])
+                if (value != _biographies["Personality"] && !string.IsNullOrWhiteSpace(value))
                 {
                     _biographies["Personality"] = value;
                     RaisePropertyChanged("BiographyPersonality");
@@ -195,7 +195,7 @@ namespace Charrmander.Model
             get { return _biographies["RaceFirst"]; }
             set
             {
-                if (value != _biographies["RaceFirst"])
+                if (value != _biographies["RaceFirst"] && !string.IsNullOrWhiteSpace(value))
                 {
                     _biographies["RaceFirst"] = value;
                     RaisePropertyChanged("BiographyRaceFirst");
@@ -213,7 +213,7 @@ namespace Charrmander.Model
             get { return _biographies["RaceSecond"]; }
             set
             {
-                if (value != _biographies["RaceSecond"])
+                if (value != _biographies["RaceSecond"] && !string.IsNullOrWhiteSpace(value))
                 {
                     _biographies["RaceSecond"] = value;
                     RaisePropertyChanged("BiographyRaceSecond");
@@ -231,7 +231,7 @@ namespace Charrmander.Model
             get { return _biographies["RaceThird"]; }
             set
             {
-                if (value != _biographies["RaceThird"])
+                if (value != _biographies["RaceThird"] && !string.IsNullOrWhiteSpace(value))
                 {
                     _biographies["RaceThird"] = value;
                     RaisePropertyChanged("BiographyRaceThird");
@@ -247,7 +247,7 @@ namespace Charrmander.Model
             get { return _order; }
             set
             {
-                if (value != _order)
+                if (value != _order && !string.IsNullOrWhiteSpace(value))
                 {
                     _order = value;
                     RaisePropertyChanged("Order");
@@ -263,7 +263,7 @@ namespace Charrmander.Model
             get { return _racialSympathy; }
             set
             {
-                if (value != _racialSympathy)
+                if (value != _racialSympathy && !string.IsNullOrWhiteSpace(value))
                 {
                     _racialSympathy = value;
                     RaisePropertyChanged("RacialSympathy");
@@ -279,7 +279,7 @@ namespace Charrmander.Model
             get { return _retributionAlly; }
             set
             {
-                if (value != _retributionAlly)
+                if (value != _retributionAlly && !string.IsNullOrWhiteSpace(value))
                 {
                     _retributionAlly = value;
                     RaisePropertyChanged("RetributionAlly");
@@ -295,7 +295,7 @@ namespace Charrmander.Model
             get { return _greatestFear; }
             set
             {
-                if (value != _greatestFear)
+                if (value != _greatestFear && !string.IsNullOrWhiteSpace(value))
                 {
                     _greatestFear = value;
                     RaisePropertyChanged("GreatestFear");
@@ -311,7 +311,7 @@ namespace Charrmander.Model
             get { return _planOfAttack; }
             set
             {
-                if (value != _planOfAttack)
+                if (value != _planOfAttack && !string.IsNullOrWhiteSpace(value))
                 {
                     _planOfAttack = value;
                     RaisePropertyChanged("PlanOfAttack");
@@ -390,7 +390,7 @@ namespace Charrmander.Model
             get { return _notes; }
             set
             {
-                if (value != _notes)
+                if (value != _notes && !string.IsNullOrWhiteSpace(value))
                 {
                     _notes = value;
                     RaisePropertyChanged("Notes");
