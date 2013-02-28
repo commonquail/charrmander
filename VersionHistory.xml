@@ -2,15 +2,25 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>0.1.10.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.10.zip</DownloadUrl>
+      <Version>0.1.11.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.11.zip</DownloadUrl>
       <Notes>
-        <Note>No longer mark loaded file as changed when loading certain legacy files.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>0.1.10.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.10.zip</DownloadUrl>
+        <Notes>
+          <Note>No longer mark loaded file as changed when loading certain legacy files.</Note>
+          <Note>Update waypoint count for Brisban Wildlands, Cursed Shore, Plains of Ashford, and Straits of Devastation.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>0.1.9.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.9.zip</DownloadUrl>
@@ -18,8 +28,6 @@
           <Note>Add story choice tracking (order, lesser race, etc.).</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>0.1.8.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.8.zip</DownloadUrl>
