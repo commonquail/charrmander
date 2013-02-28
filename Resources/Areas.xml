@@ -56,7 +56,7 @@
     </LevelRange>
     <Completion>
       <Hearts>16</Hearts>
-      <Waypoints>12</Waypoints>
+      <Waypoints>13</Waypoints>
       <PoIs>19</PoIs>
       <Skills>8</Skills>
       <Vistas>7</Vistas>
@@ -93,7 +93,7 @@
     </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
-      <Waypoints>12</Waypoints>
+      <Waypoints>13</Waypoints>
       <PoIs>28</PoIs>
       <Skills>17</Skills>
       <Vistas>5</Vistas>
@@ -337,7 +337,7 @@
     </LevelRange>
     <Completion>
       <Hearts>16</Hearts>
-      <Waypoints>18</Waypoints>
+      <Waypoints>19</Waypoints>
       <PoIs>17</PoIs>
       <Skills>6</Skills>
       <Vistas>10</Vistas>
@@ -426,7 +426,7 @@
     </LevelRange>
     <Completion>
       <Hearts>0</Hearts>
-      <Waypoints>19</Waypoints>
+      <Waypoints>20</Waypoints>
       <PoIs>30</PoIs>
       <Skills>12</Skills>
       <Vistas>6</Vistas>
