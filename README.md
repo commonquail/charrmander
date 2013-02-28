@@ -7,6 +7,8 @@ This tool was created primarily to assist with keeping track of which areas had 
 ## Features
 
 * Individual area completion tracking
+* Story choices
+* Dungeon story completion tracking
 * Crafting disciplines
 * Drag & drop file opening
 * Update check
