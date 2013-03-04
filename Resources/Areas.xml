@@ -150,8 +150,8 @@
   <Area>
     <Name>Fields of Ruin</Name>
     <LevelRange>
-      <MinLevel>40</MinLevel>
-      <MaxLevel>50</MaxLevel>
+      <MinLevel>30</MinLevel>
+      <MaxLevel>40</MaxLevel>
     </LevelRange>
     <Completion>
       <Hearts>13</Hearts>
