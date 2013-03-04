@@ -2,8 +2,8 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>0.1.11.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.11.zip</DownloadUrl>
+      <Version>0.1.12.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.12.zip</DownloadUrl>
       <Notes>
         <Note></Note>
       </Notes>
@@ -12,6 +12,15 @@
   <Public>
     <Latest>
       <Release>
+        <Version>0.1.11.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.11.zip</DownloadUrl>
+        <Notes>
+          <Note>Fields of Ruin now has correct level range 30-40.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
+      <Release>
         <Version>0.1.10.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.10.zip</DownloadUrl>
         <Notes>
@@ -19,8 +28,6 @@
           <Note>Update waypoint count for Brisban Wildlands, Cursed Shore, Plains of Ashford, and Straits of Devastation.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>0.1.9.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.9.zip</DownloadUrl>
