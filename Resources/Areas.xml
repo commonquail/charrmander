@@ -87,6 +87,20 @@
     </Completion>
   </Area>
   <Area>
+    <Name>Claw Island</Name>
+    <LevelRange>
+      <MinLevel>51</MinLevel>
+      <MaxLevel>60</MaxLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>0</Waypoints>
+      <PoIs>4</PoIs>
+      <Skills>0</Skills>
+      <Vistas>0</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Cursed Shore</Name>
     <LevelRange>
       <MinLevel>80</MinLevel>
@@ -108,7 +122,7 @@
     <Completion>
       <Hearts>15</Hearts>
       <Waypoints>19</Waypoints>
-      <PoIs>16</PoIs>
+      <PoIs>17</PoIs>
       <Skills>8</Skills>
       <Vistas>10</Vistas>
     </Completion>
@@ -257,7 +271,7 @@
       <MaxLevel>25</MaxLevel>
     </LevelRange>
     <Completion>
-      <Hearts>17</Hearts>
+      <Hearts>14</Hearts>
       <Waypoints>18</Waypoints>
       <PoIs>18</PoIs>
       <Skills>5</Skills>
@@ -385,7 +399,7 @@
     </LevelRange>
     <Completion>
       <Hearts>13</Hearts>
-      <Waypoints>18</Waypoints>
+      <Waypoints>19</Waypoints>
       <PoIs>11</PoIs>
       <Skills>6</Skills>
       <Vistas>6</Vistas>
@@ -465,7 +479,7 @@
     <Completion>
       <Hearts>16</Hearts>
       <Waypoints>17</Waypoints>
-      <PoIs>19</PoIs>
+      <PoIs>20</PoIs>
       <Skills>8</Skills>
       <Vistas>10</Vistas>
     </Completion>
