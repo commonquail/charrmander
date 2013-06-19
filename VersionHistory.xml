@@ -2,8 +2,8 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>0.1.13.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.13.zip</DownloadUrl>
+      <Version>0.1.14.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.14.zip</DownloadUrl>
       <Notes>
         <Note></Note>
       </Notes>
@@ -11,6 +11,15 @@
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>0.1.13.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.13.zip</DownloadUrl>
+        <Notes>
+          <Note>Added new PoI to Divinity's Reach.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>0.1.12.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.12.zip</DownloadUrl>
@@ -20,8 +29,6 @@
           <Note>Updated PoIs and waypoints in Diessa Plateau, Snowden Drifts, and Wayfarer Foothills.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>0.1.11.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.11.zip</DownloadUrl>
