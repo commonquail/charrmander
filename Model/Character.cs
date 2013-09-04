@@ -332,13 +332,13 @@ namespace Charrmander.Model
                     _craftingDisciplines = new ObservableCollection<CraftingDiscipline>()
                         {
                             new CraftingDiscipline() { Name = "Armorsmith" },
-                            new CraftingDiscipline() { Name = "Artificer" },
+                            new CraftingDiscipline() { Name = "Artificer", MaxLevel = 500 },
                             new CraftingDiscipline() { Name = "Chef" },
-                            new CraftingDiscipline() { Name = "Huntsman" },
+                            new CraftingDiscipline() { Name = "Huntsman", MaxLevel = 500 },
                             new CraftingDiscipline() { Name = "Jeweler" },
                             new CraftingDiscipline() { Name = "Leatherworker" },
                             new CraftingDiscipline() { Name = "Tailor" },
-                            new CraftingDiscipline() { Name = "Weaponsmith" }
+                            new CraftingDiscipline() { Name = "Weaponsmith", MaxLevel = 500 }
                         };
                     foreach (var d in _craftingDisciplines)
                     {
