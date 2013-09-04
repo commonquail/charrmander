@@ -396,7 +396,6 @@
                                 <Setter Property="TickPlacement" Value="TopLeft"/>
                                 <Setter Property="AutoToolTipPlacement" Value="BottomRight"/>
                                 <Setter Property="Minimum" Value="{Binding Source={x:Static Model:CraftingDiscipline.MinLevel}}"/>
-                                <Setter Property="Maximum" Value="{Binding Source={x:Static Model:CraftingDiscipline.MaxLevel}}"/>
                                 <Setter Property="SmallChange" Value="1"/>
                                 <Setter Property="LargeChange" Value="10"/>
                                 <Setter Property="Ticks" Value="0, 75, 150, 225, 300, 375, 400"/>
@@ -410,18 +409,19 @@
                                                 <Image Source="{Binding Name, Converter={StaticResource GameIconConverter},
                                                     ConverterParameter=Crafts}" ToolTip="{Binding Name}" Height="20" Width="20" />
 
-                                                <TextBlock Text="{Binding Source={x:Static Model:CraftingDiscipline.MaxLevel},
+                                                <TextBlock Text="{Binding MaxLevel,
                                                     StringFormat=' / {0}'}" DockPanel.Dock="Right" Margin="0,5"/>
 
                                                 <xctk:IntegerUpDown
                                                     Text="{Binding Value, ElementName=sldCraftingDiscipline,
                                                     UpdateSourceTrigger=PropertyChanged}"
                                                     Minimum="{x:Static Model:CraftingDiscipline.MinLevel}"
-                                                    Maximum="{x:Static Model:CraftingDiscipline.MaxLevel}"
+                                                    Maximum="{Binding MaxLevel}"
                                                     SelectAllOnGotFocus="True" DockPanel.Dock="Right"
                                                     Width="55" Height="22" VerticalAlignment="Center"/>
 
-                                                <Slider Value="{Binding Level}" Name="sldCraftingDiscipline" Margin="6,2"/>
+                                                <Slider Value="{Binding Level}" Name="sldCraftingDiscipline"
+                                                        Maximum="{Binding MaxLevel}" Margin="6,2"/>
                                             </DockPanel>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>

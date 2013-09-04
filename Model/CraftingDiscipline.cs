@@ -10,8 +10,8 @@ namespace Charrmander.Model
     {
         private string _name;
         private int _level = CraftingDiscipline.MinLevel;
+        private int _maxLevel = 400;
 
-        public const int MaxLevel = 400;
         public const int MinLevel = 0;
 
         /// <summary>
@@ -31,8 +31,7 @@ namespace Charrmander.Model
         }
 
         /// <summary>
-        /// The level of this crafting discipline, from 0 to 400. Limits are
-        /// not enforced.
+        /// The level of this crafting discipline, from 0 to MaxLevel.
         /// </summary>
         public int Level
         {
@@ -44,6 +43,22 @@ namespace Charrmander.Model
                 {
                     _level = value;
                     RaisePropertyChanged("Level");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The max level of this crafting discipline.
+        /// </summary>
+        public int MaxLevel
+        {
+            get { return _maxLevel; }
+            set
+            {
+                if (value != _maxLevel && value >= MinLevel)
+                {
+                    _maxLevel = value;
+                    RaisePropertyChanged("MaxLevel");
                 }
             }
         }
