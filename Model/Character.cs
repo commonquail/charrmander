@@ -390,7 +390,7 @@ namespace Charrmander.Model
             get { return _notes; }
             set
             {
-                if (value != _notes && !string.IsNullOrWhiteSpace(value))
+                if (value != _notes)
                 {
                     _notes = value;
                     RaisePropertyChanged("Notes");
