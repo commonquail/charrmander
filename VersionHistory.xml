@@ -2,8 +2,8 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>0.1.16.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.16.zip</DownloadUrl>
+      <Version>0.1.17.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.17.zip</DownloadUrl>
       <Notes>
         <Note></Note>
       </Notes>
@@ -12,14 +12,21 @@
   <Public>
     <Latest>
       <Release>
+        <Version>0.1.16.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.16.zip</DownloadUrl>
+        <Notes>
+          <Note>Two new PoIs added to Kessex Hills.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
+      <Release>
         <Version>0.1.15.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.15.zip</DownloadUrl>
         <Notes>
           <Note>Allow clearing of character notes.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>0.1.14.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.14.zip</DownloadUrl>
