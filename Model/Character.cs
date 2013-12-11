@@ -30,7 +30,7 @@ namespace Charrmander.Model
         private ObservableCollection<CraftingDiscipline> _craftingDisciplines;
         private ObservableCollection<Area> _areas;
 
-        private int _fractalTier = 1;
+        private static int _fractalTier = 1;
 
         private string _notes;
 

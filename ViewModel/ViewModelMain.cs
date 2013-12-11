@@ -973,7 +973,10 @@ namespace Charrmander.ViewModel
 
                 int fractalTier = Character.FractalTierMin;
                 int.TryParse(charr.CElement("FractalTier").Value, out fractalTier);
-                c.FractalTier = fractalTier;
+                if (fractalTier > c.FractalTier)
+                {
+                    c.FractalTier = fractalTier;
+                }
 
                 c.Notes = charr.CElement("Notes").Value;
 
