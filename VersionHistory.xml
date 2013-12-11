@@ -2,8 +2,8 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>0.1.18.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.18.zip</DownloadUrl>
+      <Version>1.1.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.1.0.zip</DownloadUrl>
       <Notes>
         <Note></Note>
       </Notes>
@@ -12,6 +12,18 @@
   <Public>
     <Latest>
       <Release>
+        <Version>1.0.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.0.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Make Fractal tier account wide as per recent patch.</Note>
+          <Note>Ask for confirmation when closing with X button instead of Exit menu entry.</Note>
+          <Note>The default choice in the close confirmation dialog is changed from Yes to No.</Note>
+          <Note>Fix crash when using spinner buttons on empty number field.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
+      <Release>
         <Version>0.1.17.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.17.zip</DownloadUrl>
         <Notes>
@@ -19,8 +31,6 @@
           <Note>Remove two waypoints in Kessex Hills.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>0.1.16.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.16.zip</DownloadUrl>
