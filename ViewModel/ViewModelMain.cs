@@ -1093,8 +1093,8 @@ namespace Charrmander.ViewModel
         {
             return UnsavedChanges && MessageBox.Show(Properties.Resources.msgUnsavedExitBody,
                 Properties.Resources.msgUnsavedExitTitle,
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Warning) == MessageBoxResult.No;
+                MessageBoxButton.YesNo, MessageBoxImage.Warning,
+                MessageBoxResult.No) == MessageBoxResult.No;
         }
 
         /// <summary>
