@@ -2,8 +2,8 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>0.1.17.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.17.zip</DownloadUrl>
+      <Version>0.1.18.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.18.zip</DownloadUrl>
       <Notes>
         <Note></Note>
       </Notes>
@@ -12,14 +12,22 @@
   <Public>
     <Latest>
       <Release>
+        <Version>0.1.17.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.17.zip</DownloadUrl>
+        <Notes>
+          <Note>Increase level cap for crafts Armorsmith, Leatherworker, and Tailor to 500.</Note>
+          <Note>Remove two waypoints in Kessex Hills.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
+      <Release>
         <Version>0.1.16.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.16.zip</DownloadUrl>
         <Notes>
           <Note>Two new PoIs added to Kessex Hills.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>0.1.15.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.15.zip</DownloadUrl>
