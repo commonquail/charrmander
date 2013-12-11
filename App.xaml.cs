@@ -77,8 +77,8 @@ namespace Charrmander
             };
             window.Closing += xButtonHandler;
             window.DataContext = viewModel;
-            window.Show();
             viewModel.CheckUpdate();
+            window.Show();
         }
     }
 }
