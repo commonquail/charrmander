@@ -1077,18 +1077,24 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void OnRequestClose()
         {
-            if (UnsavedChanges && MessageBox.Show(Properties.Resources.msgUnsavedExitBody,
-                Properties.Resources.msgUnsavedExitTitle,
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Warning) == MessageBoxResult.No)
-            {
-                return;
-            }
             EventHandler handler = this.RequestClose;
             if (handler != null)
             {
                 handler(this, EventArgs.Empty);
             }
+        }
+
+        /// <summary>
+        /// Returns <c>true</c> if user was prompted to close and said no,
+        /// <c>false</c> either if user wasn't prompted or if user said yes.
+        /// </summary>
+        /// <returns><c>True</c> if user wants to abort closing.</returns>
+        public bool AbortClosing()
+        {
+            return UnsavedChanges && MessageBox.Show(Properties.Resources.msgUnsavedExitBody,
+                Properties.Resources.msgUnsavedExitTitle,
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning) == MessageBoxResult.No;
         }
 
         /// <summary>

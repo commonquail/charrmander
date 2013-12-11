@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.ComponentModel;
 using Charrmander.View;
 using Charrmander.ViewModel;
 
@@ -48,17 +49,33 @@ namespace Charrmander
                 file = args[1];
             }
 
+            /* Setup some close event handlers.
+             * First, if the menu Exit option is selected, call the [X] button
+             * event handler.
+             * Next, in the [X] button event handler, allow the user to abort
+             * closing. If proceed, tear down everything and remove the close
+             * event handlers.
+             * Set in here instead of view model because I need access to view
+             * model, window, and handler references.
+             */
             var window = new MainWindow();
             var viewModel = new ViewModelMain(file);
-            EventHandler handler = null;
-            handler = delegate
-            {
-                viewModel.Dispose();
-                viewModel.RequestClose -= handler;
-                window.Close();
-            };
-            viewModel.RequestClose += handler;
+            EventHandler menuExitHandler = null;
+            menuExitHandler = delegate { window.Close(); };
+            viewModel.RequestClose += menuExitHandler;
 
+            CancelEventHandler xButtonHandler = null;
+            xButtonHandler = delegate(object o, CancelEventArgs ce)
+            {
+                if (viewModel.AbortClosing()) { ce.Cancel = true; }
+                else
+                {
+                    viewModel.Dispose();
+                    viewModel.RequestClose -= menuExitHandler;
+                    window.Closing -= xButtonHandler;
+                }
+            };
+            window.Closing += xButtonHandler;
             window.DataContext = viewModel;
             window.Show();
             viewModel.CheckUpdate();
