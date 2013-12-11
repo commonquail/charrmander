@@ -10,7 +10,7 @@ namespace Charrmander.Model
     {
         private string _name;
         private int _level = CraftingDiscipline.MinLevel;
-        private int _maxLevel = 400;
+        private int _maxLevel = 500;
 
         public const int MinLevel = 0;
 
