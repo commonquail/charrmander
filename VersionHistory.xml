@@ -12,6 +12,19 @@
   <Public>
     <Latest>
       <Release>
+        <Version>1.1.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.1.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Black Citadel has 12 waypoints.</Note>
+          <Note>Southsun Cove has 6 PoIs.</Note>
+          <Note>Lion's Arch has 25 PoIs.</Note>
+          <Note>Gendarran Fields has 17 PoIs.</Note>
+          <Note>Lornar's Pass has 17 WPs.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
+      <Release>
         <Version>1.0.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.0.0.zip</DownloadUrl>
         <Notes>
@@ -21,8 +34,6 @@
           <Note>Fix crash when using spinner buttons on empty number field.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>0.1.17.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.17.zip</DownloadUrl>
