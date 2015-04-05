@@ -12,6 +12,15 @@
   <Public>
     <Latest>
       <Release>
+        <Version>1.1.1.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.1.1.zip</DownloadUrl>
+        <Notes>
+          <Note>Update-check URL has been moved.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
+      <Release>
         <Version>1.1.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.1.0.zip</DownloadUrl>
         <Notes>
@@ -22,8 +31,6 @@
           <Note>Lornar's Pass has 17 WPs.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.0.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.0.0.zip</DownloadUrl>
