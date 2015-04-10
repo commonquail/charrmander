@@ -295,16 +295,6 @@ namespace Charrmander.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] WPFToolkit_Extended {
-            get {
-                object obj = ResourceManager.GetObject("WPFToolkit_Extended", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to http://charr.org.
         /// </summary>
         internal static string xNamespace {
