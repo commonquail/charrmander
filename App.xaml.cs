@@ -1,6 +1,7 @@
-﻿using System;
-using System.Windows;
+using System;
 using System.ComponentModel;
+using System.Reflection;
+using System.Windows;
 using Charrmander.View;
 using Charrmander.ViewModel;
 
@@ -13,29 +14,33 @@ namespace Charrmander
     {
         public App()
         {
-            AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
+            AppDomain.CurrentDomain.AssemblyResolve += ResolveAssembly;
         }
 
-        System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        static Assembly ResolveAssembly(object sender, ResolveEventArgs args)
         {
-            string dllName = args.Name.Contains(",") ?
-                args.Name.Substring(0, args.Name.IndexOf(',')) :
-                args.Name.Replace(".dll", "");
+            var assemblyName = typeof(App).Namespace + '.'
+                + new AssemblyName(args.Name).Name;
 
-            dllName = dllName.Replace(".", "_");
-
-            if (dllName.EndsWith("_resources"))
+            if (assemblyName.EndsWith(".resources"))
             {
                 return null;
             }
 
-            System.Resources.ResourceManager rm =
-                new System.Resources.ResourceManager(GetType().Namespace + ".Properties.Resources",
-                    System.Reflection.Assembly.GetExecutingAssembly());
+            var dllName = assemblyName + ".dll";
 
-            byte[] bytes = (byte[])rm.GetObject(dllName);
+            using (var stream = Assembly.GetExecutingAssembly()
+                .GetManifestResourceStream(dllName))
+            {
+                if (stream == null)
+                {
+                    return null;
+                }
 
-            return System.Reflection.Assembly.Load(bytes);
+                var data = new byte[stream.Length];
+                stream.Read(data, 0, data.Length);
+                return Assembly.Load(data);
+            }
         }
 
         protected override void OnStartup(StartupEventArgs e)

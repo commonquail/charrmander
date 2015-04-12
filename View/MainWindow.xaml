@@ -146,8 +146,7 @@
                                                     Text="{Binding Value, ElementName=sldLevel, UpdateSourceTrigger=PropertyChanged}"
                                                     Minimum="{x:Static Model:Character.MinLevel}"
                                                     Maximum="{x:Static Model:Character.MaxLevel}"
-                                                    DefaultValue="0"
-                                                    SelectAllOnGotFocus="True"/>
+                                                    DefaultValue="0"/>
                                 <Slider Value="{Binding Level}" Name="sldLevel" Margin="0,2"
                                         TickPlacement="TopLeft" AutoToolTipPlacement="BottomRight"
                                         Minimum="{Binding Source={x:Static Model:Character.MinLevel}}"
@@ -338,7 +337,6 @@
                                     <Setter Property="Margin" Value="2,4"/>
                                     <Setter Property="Minimum" Value="0"/>
                                     <Setter Property="DefaultValue" Value="0"/>
-                                    <Setter Property="SelectAllOnGotFocus" Value="True"/>
                                 </Style>
                                 <Style TargetType="{x:Type Label}">
                                     <Setter Property="ContentStringFormat" Value="{}/{0,3}"/>
@@ -420,7 +418,7 @@
                                                     Minimum="{x:Static Model:CraftingDiscipline.MinLevel}"
                                                     Maximum="{Binding MaxLevel}"
                                                     DefaultValue="0"
-                                                    SelectAllOnGotFocus="True" DockPanel.Dock="Right"
+                                                    DockPanel.Dock="Right"
                                                     Width="55" Height="22" VerticalAlignment="Center"/>
 
                                                 <Slider Value="{Binding Level}" Name="sldCraftingDiscipline"
@@ -443,7 +441,7 @@
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Fractal Tier:" Width="80" VerticalAlignment="Center"/>
-                            <xctk:IntegerUpDown Minimum="1" DefaultValue="1" SelectAllOnGotFocus="True" Width="50" Height="22"
+                            <xctk:IntegerUpDown Minimum="1" DefaultValue="1" Width="50" Height="22"
                                                 Text="{Binding SelectedCharacter.FractalTier, UpdateSourceTrigger=PropertyChanged}"
                                                 ToolTip="Highest tier reached in Fractals of the Mists."/>
                         </StackPanel>
