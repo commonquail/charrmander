@@ -2,8 +2,8 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.1.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.1.0.zip</DownloadUrl>
+      <Version>1.2.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.2.0.zip</DownloadUrl>
       <Notes>
         <Note></Note>
       </Notes>
@@ -12,14 +12,25 @@
   <Public>
     <Latest>
       <Release>
+        <Version>1.2.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.2.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Plains of Ashford has 18 hearts and waypoints.</Note>
+          <Note>Caledon Forest has 19 hearts.</Note>
+          <Note>Brisban Wildlands has 20 PoIs.</Note>
+          <Note>Areas not required for world completion are no longer included and will be removed on save.</Note>
+          <Note>Completion overview works again.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
+      <Release>
         <Version>1.1.1.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.1.1.zip</DownloadUrl>
         <Notes>
           <Note>Update-check URL has been moved.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.1.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.1.0.zip</DownloadUrl>
