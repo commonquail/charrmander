@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Areas>
   <Area>
     <Name>Black Citadel</Name>
@@ -39,16 +39,6 @@
     </Completion>
   </Area>
   <Area>
-    <Name>Blue Borderlands</Name>
-    <Completion>
-      <Hearts>0</Hearts>
-      <Waypoints>6</Waypoints>
-      <PoIs>16</PoIs>
-      <Skills>3</Skills>
-      <Vistas>10</Vistas>
-    </Completion>
-  </Area>
-  <Area>
     <Name>Brisban Wildlands</Name>
     <LevelRange>
       <MinLevel>15</MinLevel>
@@ -57,7 +47,7 @@
     <Completion>
       <Hearts>16</Hearts>
       <Waypoints>13</Waypoints>
-      <PoIs>19</PoIs>
+      <PoIs>20</PoIs>
       <Skills>8</Skills>
       <Vistas>7</Vistas>
     </Completion>
@@ -69,7 +59,7 @@
       <MaxLevel>15</MaxLevel>
     </LevelRange>
     <Completion>
-      <Hearts>18</Hearts>
+      <Hearts>19</Hearts>
       <Waypoints>18</Waypoints>
       <PoIs>20</PoIs>
       <Skills>7</Skills>
@@ -82,20 +72,6 @@
       <Hearts>0</Hearts>
       <Waypoints>0</Waypoints>
       <PoIs>1</PoIs>
-      <Skills>0</Skills>
-      <Vistas>0</Vistas>
-    </Completion>
-  </Area>
-  <Area>
-    <Name>Claw Island</Name>
-    <LevelRange>
-      <MinLevel>51</MinLevel>
-      <MaxLevel>60</MaxLevel>
-    </LevelRange>
-    <Completion>
-      <Hearts>0</Hearts>
-      <Waypoints>0</Waypoints>
-      <PoIs>4</PoIs>
       <Skills>0</Skills>
       <Vistas>0</Vistas>
     </Completion>
@@ -152,16 +128,6 @@
     </Completion>
   </Area>
   <Area>
-    <Name>Eternal Battlegrounds</Name>
-    <Completion>
-      <Hearts>0</Hearts>
-      <Waypoints>7</Waypoints>
-      <PoIs>28</PoIs>
-      <Skills>4</Skills>
-      <Vistas>10</Vistas>
-    </Completion>
-  </Area>
-  <Area>
     <Name>Fields of Ruin</Name>
     <LevelRange>
       <MinLevel>30</MinLevel>
@@ -214,16 +180,6 @@
       <PoIs>17</PoIs>
       <Skills>7</Skills>
       <Vistas>8</Vistas>
-    </Completion>
-  </Area>
-  <Area>
-    <Name>Green Borderlands</Name>
-    <Completion>
-      <Hearts>0</Hearts>
-      <Waypoints>6</Waypoints>
-      <PoIs>16</PoIs>
-      <Skills>3</Skills>
-      <Vistas>10</Vistas>
     </Completion>
   </Area>
   <Area>
@@ -350,8 +306,8 @@
       <MaxLevel>15</MaxLevel>
     </LevelRange>
     <Completion>
-      <Hearts>16</Hearts>
-      <Waypoints>19</Waypoints>
+      <Hearts>18</Hearts>
+      <Waypoints>18</Waypoints>
       <PoIs>17</PoIs>
       <Skills>6</Skills>
       <Vistas>10</Vistas>
@@ -382,16 +338,6 @@
     </Completion>
   </Area>
   <Area>
-    <Name>Red Borderlands</Name>
-    <Completion>
-      <Hearts>0</Hearts>
-      <Waypoints>6</Waypoints>
-      <PoIs>16</PoIs>
-      <Skills>3</Skills>
-      <Vistas>10</Vistas>
-    </Completion>
-  </Area>
-  <Area>
     <Name>Snowden Drifts</Name>
     <LevelRange>
       <MinLevel>15</MinLevel>
@@ -403,19 +349,6 @@
       <PoIs>11</PoIs>
       <Skills>6</Skills>
       <Vistas>6</Vistas>
-    </Completion>
-  </Area>
-  <Area>
-    <Name>Southsun Cove</Name>
-    <LevelRange>
-      <MinLevel>80</MinLevel>
-    </LevelRange>
-    <Completion>
-      <Hearts>0</Hearts>
-      <Waypoints>6</Waypoints>
-      <PoIs>6</PoIs>
-      <Skills>0</Skills>
-      <Vistas>0</Vistas>
     </Completion>
   </Area>
   <Area>
