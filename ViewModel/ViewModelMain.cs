@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -954,7 +954,10 @@ namespace Charrmander.ViewModel
                         Vistas = area.CElement("Completion").CElement("Vistas").Value
                     };
 
-                    c.Areas.Add(a);
+                    if (AreaReferenceList.Count(aa => aa.Name == a.Name) > 0)
+                    {
+                        c.Areas.Add(a);
+                    }
                 }
 
                 foreach (var cd in c.Dungeons)
