@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Areas>
   <Area>
     <Name>Black Citadel</Name>
@@ -57,7 +57,7 @@
     <Completion>
       <Hearts>16</Hearts>
       <Waypoints>13</Waypoints>
-      <PoIs>19</PoIs>
+      <PoIs>20</PoIs>
       <Skills>8</Skills>
       <Vistas>7</Vistas>
     </Completion>
@@ -69,7 +69,7 @@
       <MaxLevel>15</MaxLevel>
     </LevelRange>
     <Completion>
-      <Hearts>18</Hearts>
+      <Hearts>19</Hearts>
       <Waypoints>18</Waypoints>
       <PoIs>20</PoIs>
       <Skills>7</Skills>
@@ -350,8 +350,8 @@
       <MaxLevel>15</MaxLevel>
     </LevelRange>
     <Completion>
-      <Hearts>16</Hearts>
-      <Waypoints>19</Waypoints>
+      <Hearts>18</Hearts>
+      <Waypoints>18</Waypoints>
       <PoIs>17</PoIs>
       <Skills>6</Skills>
       <Vistas>10</Vistas>
