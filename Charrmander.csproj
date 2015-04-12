@@ -138,6 +138,7 @@
     <None Include="VersionHistory.xsd">
       <SubType>Designer</SubType>
     </None>
+    <EmbeddedResource Include="Xceed.Wpf.Toolkit.dll.gz" />
     <Resource Include="Resources\charr.xsd">
       <SubType>Designer</SubType>
     </Resource>
@@ -219,9 +220,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\StoryChoices.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Xceed.Wpf.Toolkit.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

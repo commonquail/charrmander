@@ -38,4 +38,4 @@ backup.xml
 creds.txt
 *.pfx
 packages/
-Xceed.Wpf.*.dll
+Xceed.Wpf.*.dll.gz

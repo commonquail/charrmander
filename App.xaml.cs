@@ -1,5 +1,8 @@
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.IO.Compression;
 using System.Reflection;
 using System.Windows;
 using Charrmander.View;
@@ -27,19 +30,31 @@ namespace Charrmander
                 return null;
             }
 
-            var dllName = assemblyName + ".dll";
+            var dllArchive = assemblyName + ".dll.gz";
 
-            using (var stream = Assembly.GetExecutingAssembly()
-                .GetManifestResourceStream(dllName))
+            using (var zipped = new GZipStream(
+                Assembly.GetExecutingAssembly()
+                .GetManifestResourceStream(dllArchive) ?? Stream.Null,
+                CompressionMode.Decompress))
             {
-                if (stream == null)
+                using (var outstream = new MemoryStream())
                 {
-                    return null;
+                    CopyTo(zipped, outstream);
+                    return Assembly.Load(outstream.GetBuffer());
                 }
+            }
+        }
 
-                var data = new byte[stream.Length];
-                stream.Read(data, 0, data.Length);
-                return Assembly.Load(data);
+        private static void CopyTo(Stream source, Stream destination)
+        {
+            Debug.Assert(source != null);
+            Debug.Assert(destination != null);
+
+            var buffer = new byte[2048];
+            int bytesRead;
+            while ((bytesRead = source.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                destination.Write(buffer, 0, bytesRead);
             }
         }
 
