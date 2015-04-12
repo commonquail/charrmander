@@ -1209,13 +1209,24 @@ namespace Charrmander.ViewModel
         }
 
         /// <summary>
+        /// Gets all characters that have been formally named.
+        /// </summary>
+        /// <returns>Returns all named characters.</returns>
+        private IEnumerable<Character> GetNamedCharacters()
+        {
+            return from c in CharacterList
+                where !string.IsNullOrWhiteSpace(c.Name)
+                select c;
+        }
+
+        /// <summary>
         /// Open a window that shows an overview of all characters' area
         /// completion state. This does not show the state for unnamed
         /// characters as these cannot exist in the game world.
         /// </summary>
         private void ShowCompletionOverview()
         {
-            Type t = typeof(string);
+            var t = typeof(string);
             var table = new DataTable();
             var column = new DataColumn("Area", t);
             table.Columns.Add(column);
@@ -1225,23 +1236,15 @@ namespace Charrmander.ViewModel
                 _completionOverview.Close();
             }
 
-            /// Generate all the columns using character names.
-            var res = from c in CharacterList
-                      where !string.IsNullOrWhiteSpace(c.Name)
-                      select c;
-            foreach (var r in res)
+            var namedCharacters = GetNamedCharacters().ToList();
+            foreach (var c in namedCharacters)
             {
-                table.Columns.Add(new DataColumn(r.Name, t));
+                table.Columns.Add(new DataColumn(c.Name, t));
             }
 
             _completionOverview = new CompletionOverviewView(table);
             _completionOverview.Show();
 
-            /// Make a copy of the reference list so as to not accidentally
-            /// affect the reference list. Specifically,
-            /// UpdateAreaState(Area, Character) has the side effect of
-            /// discarding the state of all other area and character
-            /// combinations than the one it is called with.
             var areas = from a in AreaReferenceList
                         select new Area(a.Name)
                             {
@@ -1256,16 +1259,10 @@ namespace Charrmander.ViewModel
             {
                 var row = table.NewRow();
                 row["Area"] = a.Name;
-                foreach (var character in CharacterList)
+                foreach (var character in namedCharacters)
                 {
-                    /// null and string.Empty are invalid column name indices.
-                    /// Ignore them, since these cannot exist in the game world
-                    /// anyway. Marking them as [Unnamed] would be pointless.
-                    if (!string.IsNullOrWhiteSpace(character.Name))
-                    {
-                        UpdateAreaState(a, character);
-                        row[character.Name] = a.State;
-                    }
+                    UpdateAreaState(a, character);
+                    row[character.Name] = a.State;
                 }
                 table.Rows.Add(row);
             }
@@ -1278,12 +1275,10 @@ namespace Charrmander.ViewModel
         /// </summary>
         /// <returns><c>True</c> if the completion overview can be
         /// shown.</returns>
+        /// <seealso cref="GetNamedCharacters"/>
         private bool CanShowCompletionOverview()
         {
-            var namedCharacters = from c in CharacterList
-                      where !string.IsNullOrWhiteSpace(c.Name)
-                      select c;
-            return namedCharacters.Count() > 0;
+            return GetNamedCharacters().Any();
         }
 
         /// <summary>
