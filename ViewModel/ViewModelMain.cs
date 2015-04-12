@@ -1224,8 +1224,6 @@ namespace Charrmander.ViewModel
             {
                 _completionOverview.Close();
             }
-            _completionOverview = new CompletionOverviewView(table);
-            _completionOverview.Show();
 
             /// Generate all the columns using character names.
             var res = from c in CharacterList
@@ -1235,6 +1233,9 @@ namespace Charrmander.ViewModel
             {
                 table.Columns.Add(new DataColumn(r.Name, t));
             }
+
+            _completionOverview = new CompletionOverviewView(table);
+            _completionOverview.Show();
 
             /// Make a copy of the reference list so as to not accidentally
             /// affect the reference list. Specifically,
