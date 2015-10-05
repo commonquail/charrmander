@@ -2,10 +2,10 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.2.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.2.0.zip</DownloadUrl>
+      <Version>1.3.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.3.0.zip</DownloadUrl>
       <Notes>
-        <Note></Note>
+        <Note>Wayfarer Foothills has 15 hearts.</Note>
       </Notes>
     </Release>
   </Unreleased>
