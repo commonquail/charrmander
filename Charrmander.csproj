@@ -195,6 +195,7 @@
     <Resource Include="Icons\Game\Professions\Mesmer.png" />
     <Resource Include="Icons\Game\Professions\Necromancer.png" />
     <Resource Include="Icons\Game\Professions\Ranger.png" />
+    <Resource Include="Icons\Game\Professions\Revenant.png" />
     <Resource Include="Icons\Game\Professions\Thief.png" />
     <Resource Include="Icons\Game\Professions\Warrior.png" />
     <Resource Include="Icons\Game\Races\Asura.png" />
