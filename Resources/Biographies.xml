@@ -54,6 +54,11 @@
         <Option>Fern Hound</Option>
       </Sylvari>
     </Ranger>
+    <Revenant>
+      <Option>Mist Scrim</Option>
+      <Option>Veil Piercer</Option>
+      <Option>Resplendent Curtain</Option>
+    </Revenant>
     <Thief>
       <Option>Anonymity</Option>
       <Option>Determination</Option>
