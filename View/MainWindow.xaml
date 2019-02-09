@@ -78,6 +78,31 @@
                     <DataGridTextColumn Header="Level" MaxWidth="37" Binding="{Binding Level}"/>
                     <DataGridTextColumn Header="Name" Width="*"
                                         Binding="{Binding Name, Converter={StaticResource NamelessCharacterConverter}}"/>
+                    <DataGridTemplateColumn MinWidth="22" MaxWidth="22">
+                        <DataGridTemplateColumn.CellStyle>
+                            <Style TargetType="DataGridCell" BasedOn="{StaticResource {x:Type DataGridCell}}">
+                                <Setter Property="ToolTip" Value="World completion"/>
+                            </Style>
+                        </DataGridTemplateColumn.CellStyle>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="/Icons/Game/WorldCompletionDone.png">
+                                    <Image.Style>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding HasWorldCompletion}" Value="False">
+                                                    <Setter Property="Visibility" Value="Hidden"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding HasWorldCompletion}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Image.Style>
+                                </Image>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -384,6 +409,12 @@
                                 <xctk:IntegerUpDown Text="{Binding Vistas, UpdateSourceTrigger=PropertyChanged}"/>
                                 <Label Content="{Binding Vistas}"/>
                             </StackPanel>
+
+                            <DockPanel DataContext="{Binding SelectedCharacter}">
+                                <TextBlock Text="World Completion:" VerticalAlignment="Center" Margin="2"/>
+                                <CheckBox VerticalAlignment="Center" IsChecked="{Binding HasWorldCompletion, UpdateSourceTrigger=PropertyChanged}"/>
+                            </DockPanel>
+
                         </StackPanel>
 
                     </DockPanel>
