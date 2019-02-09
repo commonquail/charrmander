@@ -941,6 +941,11 @@ namespace Charrmander.ViewModel
                     discipline.Level = craftLevel;
                 }
 
+                // World completion.
+                bool worldCompleted;
+                bool.TryParse(charr.CElement("HasWorldCompletion").Value, out worldCompleted);
+                c.HasWorldCompletion = worldCompleted;
+
                 // Area completion.
                 var areas = charr.CElement("Areas").CElements("Area");
                 foreach (var area in areas)

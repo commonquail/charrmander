@@ -27,6 +27,8 @@ namespace Charrmander.Model
         private string _greatestFear = string.Empty;
         private string _planOfAttack = string.Empty;
 
+        private bool _hasWorldCompletion = false;
+
         private ObservableCollection<CraftingDiscipline> _craftingDisciplines;
         private ObservableCollection<Area> _areas;
 
@@ -319,6 +321,16 @@ namespace Charrmander.Model
             }
         }
 
+        public bool HasWorldCompletion
+        {
+            get { return _hasWorldCompletion; }
+            set
+            {
+                _hasWorldCompletion = value;
+                RaisePropertyChanged("HasWorldCompletion");
+            }
+        }
+
         /// <summary>
         /// A collection of all the crafting disciplines.
         /// See <see cref="CraftingDiscipline"/>.
@@ -431,6 +443,7 @@ namespace Charrmander.Model
                         new CharrElement("Level", d.Level)
                     )
                 ),
+                new CharrElement("HasWorldCompletion", HasWorldCompletion),
                 (Areas.Count > 0 ?
                 new CharrElement("Areas",
                     from a in Areas
