@@ -5,7 +5,8 @@
       <Version>1.5.0.0</Version>
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.5.0.zip</DownloadUrl>
       <Notes>
-        <Note></Note>
+        <Note>Fix update check TLS handshake. Sadly past versions will not be able to detect updates anymore.</Note>
+        <Note>Require .NET 4.7.2.</Note>
       </Notes>
     </Release>
   </Unreleased>
