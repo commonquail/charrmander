@@ -2,18 +2,27 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.5.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.5.0.zip</DownloadUrl>
+      <Version>1.6.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.6.0.zip</DownloadUrl>
       <Notes>
-        <Note>Manually maintained "World Completion" check box in Areas tab will display an icon in the character list when checked.</Note>
-        <Note>Update all maps since Living World season 2.</Note>
-        <Note>Fix update check TLS handshake. Sadly past versions will not be able to detect updates anymore.</Note>
-        <Note>Require .NET 4.7.2.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.5.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.5.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Manually maintained "World Completion" check box in Areas tab will display an icon in the character list when checked.</Note>
+          <Note>Update all maps since Living World season 2.</Note>
+          <Note>Fix update check TLS handshake. Sadly past versions will not be able to detect updates anymore.</Note>
+          <Note>Require .NET 4.7.2.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.4.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.4.0.zip</DownloadUrl>
@@ -21,8 +30,6 @@
           <Note>Revenant support.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.3.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.3.0.zip</DownloadUrl>
