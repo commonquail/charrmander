@@ -345,9 +345,9 @@ namespace Charrmander.Model
                         {
                             new CraftingDiscipline() { Name = "Armorsmith" },
                             new CraftingDiscipline() { Name = "Artificer" },
-                            new CraftingDiscipline() { Name = "Chef" },
+                            new CraftingDiscipline() { Name = "Chef", MaxLevel = 400 },
                             new CraftingDiscipline() { Name = "Huntsman" },
-                            new CraftingDiscipline() { Name = "Jeweler" },
+                            new CraftingDiscipline() { Name = "Jeweler", MaxLevel = 400 },
                             new CraftingDiscipline() { Name = "Leatherworker" },
                             new CraftingDiscipline() { Name = "Tailor" },
                             new CraftingDiscipline() { Name = "Weaponsmith" }
