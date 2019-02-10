@@ -2,19 +2,28 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.6.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.6.0.zip</DownloadUrl>
+      <Version>1.7.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.7.0.zip</DownloadUrl>
       <Notes>
-        <Note>Add Scribe crafting discipline.</Note>
-        <Note>Replace legacy skill icon with core hero point icon.</Note>
-        <Note>Fix Chef, Jeweler max levels.</Note>
-        <Note>Fix outdated .NET dependency notice in README.</Note>
-        <Note>Fix Verdant Brink vistas, Auric Basin PoIs, and Blazeridge Steppes hearts.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.6.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.6.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Add Scribe crafting discipline.</Note>
+          <Note>Replace legacy skill icon with core hero point icon.</Note>
+          <Note>Fix Chef, Jeweler max levels.</Note>
+          <Note>Fix outdated .NET dependency notice in README.</Note>
+          <Note>Fix Verdant Brink vistas, Auric Basin PoIs, and Blazeridge Steppes hearts.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.5.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.5.0.zip</DownloadUrl>
@@ -25,8 +34,6 @@
           <Note>Require .NET 4.7.2.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.4.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.4.0.zip</DownloadUrl>
