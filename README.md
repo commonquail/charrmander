@@ -22,7 +22,7 @@ There is no installation. [The download][download] is a standalone executable th
 
 ## Dependencies
 
-.NET 4.0
+.NET 4.7.2
 
 ## Licensing
 
