@@ -8,7 +8,7 @@
     <Completion>
       <Hearts>0</Hearts>
       <Waypoints>7</Waypoints>
-      <PoIs>23</PoIs>
+      <PoIs>22</PoIs>
       <Skills>11</Skills>
       <Vistas>6</Vistas>
     </Completion>
@@ -43,7 +43,7 @@
       <MaxLevel>50</MaxLevel>
     </LevelRange>
     <Completion>
-      <Hearts>14</Hearts>
+      <Hearts>15</Hearts>
       <Waypoints>18</Waypoints>
       <PoIs>10</PoIs>
       <Skills>5</Skills>
@@ -699,7 +699,7 @@
       <Waypoints>7</Waypoints>
       <PoIs>26</PoIs>
       <Skills>11</Skills>
-      <Vistas>5</Vistas>
+      <Vistas>6</Vistas>
     </Completion>
   </Area>
   <Area>
