@@ -51,6 +51,7 @@
             <xs:element name="Huntsman" type="CraftingDisciplineType"/>
             <xs:element name="Leatherworker" type="CraftingDisciplineType"/>
             <xs:element name="Jeweler" type="CraftingDisciplineType"/>
+            <xs:element name="Scribe" type="CraftingDisciplineType"/>
             <xs:element name="Tailor" type="CraftingDisciplineType"/>
             <xs:element name="Weaponsmith" type="CraftingDisciplineType"/>
           </xs:all>
