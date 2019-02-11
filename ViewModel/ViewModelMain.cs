@@ -877,8 +877,9 @@ namespace Charrmander.ViewModel
                 }
                 catch (XmlSchemaValidationException ex)
                 {
-                    Debug.WriteLine(ex.InnerException.Message);
-                    ShowError(Properties.Resources.msgOpenFailedValidationTitle, ex.Message);
+                    ShowError(Properties.Resources.msgOpenFailedValidationTitle, String.Format(
+                        Properties.Resources.msgOpenFailedParsingBody,
+                        ex.InnerException.Message));
                 }
                 catch (XmlException ex)
                 {
