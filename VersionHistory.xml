@@ -5,13 +5,22 @@
       <Version>1.7.0.0</Version>
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.7.0.zip</DownloadUrl>
       <Notes>
-        <Note>Provide detailed information when failing to parse save-files.</Note>
-        <Note>Fix save-file corruption after adding Scribe.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.6.1.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.6.1.zip</DownloadUrl>
+        <Notes>
+          <Note>Provide detailed information when failing to parse save-files.</Note>
+          <Note>Fix save-file corruption after adding Scribe.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.6.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.6.0.zip</DownloadUrl>
@@ -23,8 +32,6 @@
           <Note>Fix Verdant Brink vistas, Auric Basin PoIs, and Blazeridge Steppes hearts.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.5.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.5.0.zip</DownloadUrl>
