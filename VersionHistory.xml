@@ -2,15 +2,24 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.7.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.7.0.zip</DownloadUrl>
+      <Version>1.8.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.8.0.zip</DownloadUrl>
       <Notes>
-        <Note>Update for LW4E6: "War Eternal"</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.7.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.7.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Update for LW4E6: "War Eternal"</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.6.1.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.6.1.zip</DownloadUrl>
@@ -19,8 +28,6 @@
           <Note>Fix save-file corruption after adding Scribe.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.6.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.6.0.zip</DownloadUrl>
