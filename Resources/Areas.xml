@@ -244,6 +244,19 @@
     </Completion>
   </Area>
   <Area>
+    <Name>Dragonfall</Name>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>4</Waypoints>
+      <PoIs>21</PoIs>
+      <Skills>0</Skills>
+      <Vistas>8</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Dredgehaunt Cliffs</Name>
     <LevelRange>
       <MinLevel>40</MinLevel>
