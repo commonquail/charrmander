@@ -19,6 +19,7 @@
         <XmlDataProvider x:Key="ProfessionsXml" XPath="Professions/Profession" Source="/Resources/Professions.xml"/>
         <XmlDataProvider x:Key="RacesXml" XPath="Races/Race" Source="/Resources/Races.xml"/>
         <XmlDataProvider x:Key="StoryXml" XPath="StoryChoices" Source="/Resources/StoryChoices.xml"/>
+        <XmlDataProvider x:Key="ExtendedStoryXml" XPath="StoryChapters" Source="/Resources/StoryChapters.xml"/>
 
         <View:GameIconConverter x:Key="GameIconConverter"/>
         <View:CompletionStateConverter x:Key="CompletionStateConverter"/>
@@ -236,13 +237,40 @@
                     <StackPanel DataContext="{Binding SelectedCharacter}">
                         <StackPanel.Resources>
                             <Style x:Key="LabelStyle" TargetType="{x:Type TextBlock}">
-                                <Setter Property="Width" Value="120"/>
+                                <Setter Property="Width" Value="130"/>
                                 <Setter Property="Padding" Value="5"/>
                             </Style>
 
                             <Style TargetType="{x:Type ComboBox}">
                                 <Setter Property="VerticalAlignment" Value="Center"/>
                             </Style>
+
+                            <Style TargetType="{x:Type Expander}">
+                                <Setter Property="BorderBrush" Value="DarkGray"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="Margin" Value="0,2"/>
+                                <Setter Property="IsExpanded" Value="False"/>
+                            </Style>
+
+                            <DataTemplate x:Key="StoryChapterCompletionTemplate">
+                                <ItemsControl ItemsSource="{Binding}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <GroupBox Header="{Binding Name}">
+                                                <ItemsControl ItemsSource="{Binding Chapters}">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <CheckBox
+                                                                IsChecked="{Binding ChapterCompleted}"
+                                                                Content="{Binding Name}"/>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </GroupBox>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </DataTemplate>
                         </StackPanel.Resources>
                         <DockPanel>
                             <TextBlock DataContext="{Binding Source={StaticResource StoryXml}, XPath=Order}"
@@ -309,6 +337,49 @@
                             <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=PlanOfAttack//Option}"
                                       SelectedValue="{Binding PlanOfAttack}"/>
                         </DockPanel>
+
+                        <Expander
+                            Header="{Binding Source={StaticResource ExtendedStoryXml}, XPath=Lw2/Storyline}">
+                            <ContentControl
+                                Content="{Binding Lw2Acts}"
+                                ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                        </Expander>
+
+                        <Expander
+                            Header="{Binding Source={StaticResource ExtendedStoryXml}, XPath=HoT/Storyline}">
+                            <ContentControl
+                                Content="{Binding HoTActs}"
+                                ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                        </Expander>
+
+                        <Expander
+                            Header="{Binding Source={StaticResource ExtendedStoryXml}, XPath=KotT/Storyline}">
+                            <ContentControl
+                                Content="{Binding KotTActs}"
+                                ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                        </Expander>
+
+                        <Expander
+                            Header="{Binding Source={StaticResource ExtendedStoryXml}, XPath=Lw3/Storyline}">
+                            <ContentControl
+                                Content="{Binding Lw3Acts}"
+                                ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                        </Expander>
+
+                        <Expander
+                            Header="{Binding Source={StaticResource ExtendedStoryXml}, XPath=PoF/Storyline}">
+                            <ContentControl
+                                Content="{Binding PoFActs}"
+                                ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                        </Expander>
+
+                        <Expander
+                            Header="{Binding Source={StaticResource ExtendedStoryXml}, XPath=Lw4/Storyline}">
+                            <ContentControl
+                                Content="{Binding Lw4Acts}"
+                                ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                        </Expander>
+
                     </StackPanel>
                 </TabItem>
 

@@ -42,6 +42,18 @@
           </xs:all>
         </xs:complexType>
       </xs:element>
+      <xs:element name="StoryChapters" minOccurs="0">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Lw2" minOccurs="0" type="StorylineType"/>
+            <xs:element name="HoT" minOccurs="0" type="StorylineType"/>
+            <xs:element name="KotT" minOccurs="0" type="StorylineType"/>
+            <xs:element name="Lw3" minOccurs="0" type="StorylineType"/>
+            <xs:element name="PoF" minOccurs="0" type="StorylineType"/>
+            <xs:element name="Lw4" minOccurs="0" type="StorylineType"/>
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="CraftingDisciplines" minOccurs="0">
         <xs:complexType>
           <xs:all>
@@ -75,6 +87,32 @@
       </xs:element>
       <xs:element name="Notes" type="xs:string" minOccurs="0"/>
     </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="StorylineType">
+    <xs:sequence>
+      <xs:element name="Act" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Chapters">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Chapter" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:all>
+                        <xs:element name="Name" type="xs:string"/>
+                        <xs:element name="Completed" type="xs:string"/>
+                      </xs:all>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="DungeonType">

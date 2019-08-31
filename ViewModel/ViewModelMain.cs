@@ -966,6 +966,13 @@ namespace Charrmander.ViewModel
                     }
                 }
 
+                LoadStorylineWithActs(charr, "Lw2", c.Lw2Acts);
+                LoadStorylineWithActs(charr, "HoT", c.HoTActs);
+                LoadStorylineWithActs(charr, "KotT", c.KotTActs);
+                LoadStorylineWithActs(charr, "Lw3", c.Lw3Acts);
+                LoadStorylineWithActs(charr, "PoF", c.PoFActs);
+                LoadStorylineWithActs(charr, "Lw4", c.Lw4Acts);
+
                 foreach (var cd in c.Dungeons)
                 {
                     foreach (var ld in charr.CElement("Dungeons").CElements("Dungeon"))
@@ -996,6 +1003,31 @@ namespace Charrmander.ViewModel
             if (CharacterList.Count > 0)
             {
                 SelectedCharacter = CharacterList[0];
+            }
+        }
+
+        private static void LoadStorylineWithActs(XElement charr, string storyline, ObservableCollection<Act> acts)
+        {
+            var chapterByNameByActName = new Dictionary<string, Dictionary<string, Chapter>>(acts.Count);
+            foreach (var act in acts)
+            {
+                var chapterByName = new Dictionary<string, Chapter>(act.Chapters.Count);
+                foreach (var chapter in act.Chapters)
+                {
+                    chapterByName[chapter.Name] = chapter;
+                }
+                chapterByNameByActName[act.Name] = chapterByName;
+            }
+
+            var storyChapters = charr.CElement("StoryChapters");
+            var xe = storyChapters.CElement(storyline);
+            foreach (var ld in xe.CDescendants("Chapter"))
+            {
+                var actName = ld.Parent.Parent.CElement("Name").Value;
+                var chapterName = ld.CElement("Name").Value;
+                bool completed = false;
+                bool.TryParse(ld.CElement("Completed").Value, out completed);
+                chapterByNameByActName[actName][chapterName].ChapterCompleted = completed;
             }
         }
 

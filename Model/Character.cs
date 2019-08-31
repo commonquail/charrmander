@@ -27,6 +27,13 @@ namespace Charrmander.Model
         private string _greatestFear = string.Empty;
         private string _planOfAttack = string.Empty;
 
+        private string _lw2 = string.Empty;
+        private string _hot = string.Empty;
+        private string _kott = string.Empty;
+        private string _lw3 = string.Empty;
+        private string _pof = string.Empty;
+        private string _lw4 = string.Empty;
+
         private bool _hasWorldCompletion = false;
 
         private ObservableCollection<CraftingDiscipline> _craftingDisciplines;
@@ -35,6 +42,13 @@ namespace Charrmander.Model
         private static int _fractalTier = 1;
 
         private string _notes;
+
+        private ObservableCollection<Act> _lw2acts = new ObservableCollection<Act>();
+        private ObservableCollection<Act> _hotacts = new ObservableCollection<Act>();
+        private ObservableCollection<Act> _kottacts = new ObservableCollection<Act>();
+        private ObservableCollection<Act> _lw3acts = new ObservableCollection<Act>();
+        private ObservableCollection<Act> _pofacts = new ObservableCollection<Act>();
+        private ObservableCollection<Act> _lw4acts = new ObservableCollection<Act>();
 
         private ObservableCollection<Dungeon> _dungeons = new ObservableCollection<Dungeon>();
 
@@ -53,6 +67,13 @@ namespace Charrmander.Model
         /// </summary>
         public const int FractalTierMin = 1;
 
+        private static readonly XElement storyChapters = XDocument.Load(
+            System.Xml.XmlReader.Create(
+                Application.GetResourceStream(
+                    new Uri("Resources/StoryChapters.xml", UriKind.Relative))
+                .Stream))
+            .Root;
+
         /// <summary>
         /// Creates a new character for the specified view model.
         /// </summary>
@@ -70,6 +91,13 @@ namespace Charrmander.Model
                 { "RaceThird",  "" }
             };
 
+            PrepareStoryChapters(_lw2acts, "Lw2");
+            PrepareStoryChapters(_hotacts, "HoT");
+            PrepareStoryChapters(_kottacts, "KotT");
+            PrepareStoryChapters(_lw3acts, "Lw3");
+            PrepareStoryChapters(_pofacts, "PoF");
+            PrepareStoryChapters(_lw4acts, "Lw4");
+
             var dungeons = XDocument.Load(System.Xml.XmlReader.Create(Application.GetResourceStream(
                 new Uri("Resources/Dungeons.xml", UriKind.Relative)).Stream)).Root.Elements("Dungeon")
                 .OrderBy(d => d.Element("StoryLevel").Value);
@@ -83,6 +111,35 @@ namespace Charrmander.Model
 
             this.PropertyChanged += _viewModel.MarkFileDirty;
         }
+
+        private void PrepareStoryChapters(ObservableCollection<Act> acts, string storyline)
+        {
+            foreach (var act in storyChapters.Element(storyline).Descendants("Act"))
+            {
+                var chapters = new ObservableCollection<Chapter>();
+                foreach (var c in act.Descendants("Chapter"))
+                {
+                    var m = new Chapter(c.Value);
+                    m.PropertyChanged += _viewModel.MarkFileDirty;
+                    chapters.Add(m);
+                }
+                var a = new Act(act.Element("Name").Value, chapters);
+                a.PropertyChanged += _viewModel.MarkFileDirty;
+                acts.Add(a);
+            }
+        }
+
+        public ObservableCollection<Act> Lw2Acts => _lw2acts;
+
+        public ObservableCollection<Act> HoTActs => _hotacts;
+
+        public ObservableCollection<Act> KotTActs => _kottacts;
+
+        public ObservableCollection<Act> Lw3Acts => _lw3acts;
+
+        public ObservableCollection<Act> PoFActs => _pofacts;
+
+        public ObservableCollection<Act> Lw4Acts => _lw4acts;
 
         public ObservableCollection<Dungeon> Dungeons
         {
@@ -438,6 +495,14 @@ namespace Charrmander.Model
                     new CharrElement("GreatestFear", GreatestFear),
                     new CharrElement("PlanOfAttack", PlanOfAttack)
                 ),
+                new CharrElement("StoryChapters",
+                    new CharrElement("Lw2", SerializeActs(Lw2Acts)),
+                    new CharrElement("HoT", SerializeActs(HoTActs)),
+                    new CharrElement("KotT", SerializeActs(KotTActs)),
+                    new CharrElement("Lw3", SerializeActs(Lw3Acts)),
+                    new CharrElement("PoF", SerializeActs(PoFActs)),
+                    new CharrElement("Lw4", SerializeActs(Lw4Acts))
+                ),
                 new CharrElement("CraftingDisciplines",
                     from d in CraftingDisciplines
                     select new CharrElement(d.Name,
@@ -471,6 +536,21 @@ namespace Charrmander.Model
             );
         }
 
+        private IEnumerable<CharrElement> SerializeActs(ObservableCollection<Act> acts)
+        {
+            return from a in acts
+                   select new CharrElement("Act",
+                       new CharrElement("Name", a.Name),
+                       new CharrElement("Chapters",
+                           from m in a.Chapters
+                           select new CharrElement("Chapter",
+                               new CharrElement("Name", m.Name),
+                               new CharrElement("Completed", m.ChapterCompleted)
+                           )
+                       )
+                   );
+        }
+
         /// <summary>
         /// IDisposable implementation.
         /// </summary>
@@ -489,6 +569,30 @@ namespace Charrmander.Model
             foreach (var dungeon in Dungeons)
             {
                 dungeon.PropertyChanged -= _viewModel.MarkFileDirty;
+            }
+            foreach (var act in Lw2Acts)
+            {
+                act.PropertyChanged -= _viewModel.MarkFileDirty;
+            }
+            foreach (var act in HoTActs)
+            {
+                act.PropertyChanged -= _viewModel.MarkFileDirty;
+            }
+            foreach (var act in KotTActs)
+            {
+                act.PropertyChanged -= _viewModel.MarkFileDirty;
+            }
+            foreach (var act in Lw3Acts)
+            {
+                act.PropertyChanged -= _viewModel.MarkFileDirty;
+            }
+            foreach (var act in PoFActs)
+            {
+                act.PropertyChanged -= _viewModel.MarkFileDirty;
+            }
+            foreach (var act in Lw4Acts)
+            {
+                act.PropertyChanged -= _viewModel.MarkFileDirty;
             }
         }
 
