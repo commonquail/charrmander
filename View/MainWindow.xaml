@@ -4,7 +4,11 @@
         xmlns:View="clr-namespace:Charrmander.View"
         xmlns:Model="clr-namespace:Charrmander.Model"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        Title="{Binding WindowTitle}" Height="390" Width="575"
+        Title="{Binding WindowTitle}"
+        Width="575"
+        SizeToContent="Height"
+        MinHeight="410"
+        MaxHeight="1080"
         Icon="/Icons/Game/MainTitle.png" AllowDrop="True" Drop="Window_Drop">
 
     <Window.InputBindings>
