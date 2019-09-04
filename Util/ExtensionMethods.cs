@@ -59,5 +59,26 @@ namespace Charrmander.Util
             }
             return ce;
         }
+
+        /// <summary>
+        /// Wrapper method for <see cref="XContainer.Descendants(XName)"/>,
+        /// returning the desired descendant elements or a new zero-length
+        /// array to avoid the need for constant <c>null</c> checks.
+        /// </summary>
+        /// <param name="xc">The <see cref="XContainer"/> containing the
+        /// descendants of interest.</param>
+        /// <param name="name">The name of the children of <c>xc</c> we're
+        /// interested in.</param>
+        /// <returns>The descendants of <c>xc</c> identified by <c>name</c> or
+        /// <c>new CharrElement[0];</c></returns>
+        public static IEnumerable<XElement> CDescendants(this XContainer xc, string name)
+        {
+            var cd = xc.Descendants(CharrElement.Charr + name);
+            if (cd == null)
+            {
+                cd = new CharrElement[0];
+            }
+            return cd;
+        }
     }
 }

@@ -966,6 +966,13 @@ namespace Charrmander.ViewModel
                     }
                 }
 
+                LoadStorylineWithActs(charr, "Lw2", c.Lw2Acts);
+                LoadStorylineWithActs(charr, "HoT", c.HoTActs);
+                LoadStorylineWithActs(charr, "KotT", c.KotTActs);
+                LoadStorylineWithActs(charr, "Lw3", c.Lw3Acts);
+                LoadStorylineWithActs(charr, "PoF", c.PoFActs);
+                LoadStorylineWithActs(charr, "Lw4", c.Lw4Acts);
+
                 foreach (var cd in c.Dungeons)
                 {
                     foreach (var ld in charr.CElement("Dungeons").CElements("Dungeon"))
@@ -996,6 +1003,42 @@ namespace Charrmander.ViewModel
             if (CharacterList.Count > 0)
             {
                 SelectedCharacter = CharacterList[0];
+            }
+
+            UpdateStoryChapterCompletion();
+            // Forcefully update the story chapter summary.
+            // Here, in chronological order of release to match typical eye
+            // movement.
+            RaisePropertyChanged("HasCompletedLw2");
+            RaisePropertyChanged("HasCompletedHoT");
+            RaisePropertyChanged("HasCompletedKotT");
+            RaisePropertyChanged("HasCompletedLw3");
+            RaisePropertyChanged("HasCompletedPoF");
+            RaisePropertyChanged("HasCompletedLw4");
+        }
+
+        private static void LoadStorylineWithActs(XElement charr, string storyline, ObservableCollection<Act> acts)
+        {
+            var chapterByNameByActName = new Dictionary<string, Dictionary<string, Chapter>>(acts.Count);
+            foreach (var act in acts)
+            {
+                var chapterByName = new Dictionary<string, Chapter>(act.Chapters.Count);
+                foreach (var chapter in act.Chapters)
+                {
+                    chapterByName[chapter.Name] = chapter;
+                }
+                chapterByNameByActName[act.Name] = chapterByName;
+            }
+
+            var storyChapters = charr.CElement("StoryChapters");
+            var xe = storyChapters.CElement(storyline);
+            foreach (var ld in xe.CDescendants("Chapter"))
+            {
+                var actName = ld.Parent.Parent.CElement("Name").Value;
+                var chapterName = ld.CElement("Name").Value;
+                bool completed = false;
+                bool.TryParse(ld.CElement("Completed").Value, out completed);
+                chapterByNameByActName[actName][chapterName].ChapterCompleted = completed;
             }
         }
 
@@ -1554,6 +1597,161 @@ namespace Charrmander.ViewModel
                 catch (NullReferenceException)
                 {
                     StatusBarUpdateCheck = Properties.Resources.suUpdateCheckFailedReading;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Recalculates completion of all story chapters.
+        /// </summary>
+        internal void UpdateStoryChapterCompletion()
+        {
+            HasKeyLw2 = SelectedCharacter.Lw2Acts[5].Chapters[2].ChapterCompleted;
+            HasKeyHoT = SelectedCharacter.HoTActs[2].Chapters[0].ChapterCompleted;
+            // Chronologically reverse order of release date.
+            // Assumption: characters are more likely to record new completions
+            // of newer content, e.g. because they've already completed all old
+            // content.
+            HasCompletedLw4 = CalculateStoryChapterCompletion(SelectedCharacter.Lw4Acts);
+            HasCompletedPoF = CalculateStoryChapterCompletion(SelectedCharacter.PoFActs);
+            HasCompletedLw3 = CalculateStoryChapterCompletion(SelectedCharacter.Lw3Acts);
+            HasCompletedKotT = CalculateStoryChapterCompletion(SelectedCharacter.KotTActs);
+            HasCompletedHoT = CalculateStoryChapterCompletion(SelectedCharacter.HoTActs);
+            HasCompletedLw2 = CalculateStoryChapterCompletion(SelectedCharacter.Lw2Acts);
+        }
+
+
+        private Area.CompletionState CalculateStoryChapterCompletion(Collection<Act> acts)
+        {
+            if (acts.SelectMany(a => a.Chapters).All(c => c.ChapterCompleted))
+            {
+                return Area.CompletionState.Completed;
+            }
+
+            if (acts.SelectMany(a => a.Chapters).Any(c => c.ChapterCompleted))
+            {
+                return Area.CompletionState.Visited;
+            }
+
+            return Area.CompletionState.Unvisited;
+        }
+
+        private Area.CompletionState _hasCompletedLw2;
+
+        public Area.CompletionState HasCompletedLw2
+        {
+            get { return _hasCompletedLw2; }
+            private set
+            {
+                if (value != _hasCompletedLw2)
+                {
+                    _hasCompletedLw2 = value;
+                    RaisePropertyChanged("HasCompletedLw2");
+                }
+            }
+        }
+
+        private Area.CompletionState _hasCompletedHoT;
+
+        public Area.CompletionState HasCompletedHoT
+        {
+            get { return _hasCompletedHoT; }
+            private set
+            {
+                if (value != _hasCompletedHoT)
+                {
+                    _hasCompletedHoT = value;
+                    RaisePropertyChanged("HasCompletedHoT");
+                }
+            }
+        }
+
+        private Area.CompletionState _hasCompletedKotT;
+
+        public Area.CompletionState HasCompletedKotT
+        {
+            get { return _hasCompletedKotT; }
+            private set
+            {
+                if (value != _hasCompletedKotT)
+                {
+                    _hasCompletedKotT = value;
+                    RaisePropertyChanged("HasCompletedKotT");
+                }
+            }
+        }
+
+        private Area.CompletionState _hasCompletedLw3;
+
+        public Area.CompletionState HasCompletedLw3
+        {
+            get { return _hasCompletedLw3; }
+            private set
+            {
+                if (value != _hasCompletedLw3)
+                {
+                    _hasCompletedLw3 = value;
+                    RaisePropertyChanged("HasCompletedLw3");
+                }
+            }
+        }
+
+        private Area.CompletionState _hasCompletedPoF;
+
+        public Area.CompletionState HasCompletedPoF
+        {
+            get { return _hasCompletedPoF; }
+            private set
+            {
+                if (value != _hasCompletedPoF)
+                {
+                    _hasCompletedPoF = value;
+                    RaisePropertyChanged("HasCompletedPoF");
+                }
+            }
+        }
+
+        private Area.CompletionState _hasCompletedLw4;
+
+        public Area.CompletionState HasCompletedLw4
+        {
+            get { return _hasCompletedLw4; }
+            private set
+            {
+                if (value != _hasCompletedLw4)
+                {
+                    _hasCompletedLw4 = value;
+                    RaisePropertyChanged("HasCompletedLw4");
+                }
+            }
+        }
+
+        private bool _hasKeyLw2;
+
+        public bool HasKeyLw2
+        {
+            get { return _hasKeyLw2; }
+            private set
+            {
+                if (value != _hasKeyLw2)
+                {
+                    _hasKeyLw2 = value;
+                    RaisePropertyChanged("HasKeyLw2");
+                }
+            }
+        }
+
+        private bool _hasKeyHoT;
+
+        public bool HasKeyHoT
+        {
+            get { return _hasKeyHoT; }
+            private set
+            {
+                if (value != _hasKeyHoT)
+                {
+                    _hasKeyHoT = value;
+                    RaisePropertyChanged("HasKeyHoT");
                 }
             }
         }

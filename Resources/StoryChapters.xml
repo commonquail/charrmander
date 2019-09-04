@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<StoryChapters>
+  <Lw2>
+    <Storyline>Living World Season 2</Storyline>
+    <Acts>
+      <Act>
+        <Name>Gates of Maguuma</Name>
+        <Chapters>
+          <Chapter>Disturbance in Brisban Wildlands</Chapter>
+          <Chapter>Fallen Hopes</Chapter>
+          <Chapter>Tracking the Master of Peace</Chapter>
+          <Chapter>Cornered</Chapter>
+          <Chapter>Prosperity's Mystery</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Entanglement</Name>
+        <Chapters>
+          <Chapter>Scarlet's Secret Room</Chapter>
+          <Chapter>Discovering Scarlet's Breakthrough</Chapter>
+          <Chapter>The Concordia Incident</Chapter>
+          <Chapter>Trouble at Fort Salma</Chapter>
+          <Chapter>The Machine</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>The Dragon's Reach: Part 1</Name>
+        <Chapters>
+          <Chapter>Rallying Call</Chapter>
+          <Chapter>Uprooting the Iron Marches</Chapter>
+          <Chapter>The Waypoint Conundrum</Chapter>
+          <Chapter>Summit Invitations</Chapter>
+          <Chapter>Plan of Attack</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>The Dragon's Reach: Part 2</Name>
+        <Chapters>
+          <Chapter>Party Politics</Chapter>
+          <Chapter>Recalibrating the Waypoints</Chapter>
+          <Chapter>Taimi and the Asura</Chapter>
+          <Chapter>The World Summit</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Echoes of the Past</Name>
+        <Chapters>
+          <Chapter>The Ghosts of Fort Salma</Chapter>
+          <Chapter>Reunion with the Pact</Chapter>
+          <Chapter>Caithe's Reconnaissance Squad</Chapter>
+          <Chapter>Hidden Arcana</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Tangled Paths</Name>
+        <Chapters>
+          <Chapter>Return to Camp Resolve</Chapter>
+          <Chapter>Tracking the Aspect Masters</Chapter>
+          <Chapter>Into the Labyrinth &#128477;</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Seeds of Truth</Name>
+        <Chapters>
+          <Chapter>The Newly Awakened</Chapter>
+          <Chapter>Meeting the Asura</Chapter>
+          <Chapter>No Refuge</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Point of No Return</Name>
+        <Chapters>
+          <Chapter>Arcana Obscura</Chapter>
+          <Chapter>Pact Assaulted</Chapter>
+          <Chapter>The Mystery Cave</Chapter>
+        </Chapters>
+      </Act>
+    </Acts>
+  </Lw2>
+  <HoT>
+    <Storyline>Heart of Thorns</Storyline>
+    <Acts>
+      <Act>
+        <Name>Act 1</Name>
+        <Chapters>
+          <Chapter>Prologue: Rally to Maguuma</Chapter>
+          <Chapter>Torn from the Sky</Chapter>
+          <Chapter>Establishing a Foothold</Chapter>
+          <Chapter>The Jungle Provides</Chapter>
+          <Chapter>In Their Footsteps</Chapter>
+          <Chapter>Prisoners of the Dragon</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Act 2</Name>
+        <Chapters>
+          <Chapter>Prized Possessions</Chapter>
+          <Chapter>City of Hope</Chapter>
+          <Chapter>The Predator's Path</Chapter>
+          <Chapter>Strange Observations</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Act 3</Name>
+        <Chapters>
+          <Chapter>Roots of Terror &#128477;</Chapter>
+          <Chapter>The Way In</Chapter>
+          <Chapter>Buried Insight</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Act 4</Name>
+        <Chapters>
+          <Chapter>Sign Cutting</Chapter>
+          <Chapter>Bitter Harvest</Chapter>
+          <Chapter>Hearts and Minds</Chapter>
+        </Chapters>
+      </Act>
+    </Acts>
+  </HoT>
+  <KotT>
+    <Storyline>Knight of the Thorn</Storyline>
+    <Acts>
+      <Act>
+        <Name>Act 1</Name>
+        <Chapters>
+          <Chapter>Prologue</Chapter>
+          <Chapter>Obtaining the materials</Chapter>
+          <Chapter>The First Vision</Chapter>
+          <Chapter>The Second Vision</Chapter>
+          <Chapter>The Sword Regrown</Chapter>
+          <Chapter>Knight of the Thorn</Chapter>
+        </Chapters>
+      </Act>
+    </Acts>
+  </KotT>
+  <Lw3>
+    <Storyline>Living World Season 3</Storyline>
+    <Acts>
+      <Act>
+        <Name>Out of the Shadows</Name>
+        <Chapters>
+          <Chapter>Eir's Memorial in Hoelbrak</Chapter>
+          <Chapter>Research in Rata Novus</Chapter>
+          <Chapter>Blood and Stone</Chapter>
+          <Chapter>Reaper of Magic</Chapter>
+          <Chapter>A Shadow's Deeds</Chapter>
+          <Chapter>Confessor's Stronghold</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Rising Flames</Name>
+        <Chapters>
+          <Chapter>Taimi's Game</Chapter>
+          <Chapter>Destroying Destroyers</Chapter>
+          <Chapter>Igneous Breach</Chapter>
+          <Chapter>Trip to the Circus</Chapter>
+          <Chapter>Machine in the Flame</Chapter>
+          <Chapter>Old Foes, Old Ghosts</Chapter>
+          <Chapter>Dragon Vigil</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>A Crack in the Ice</Name>
+        <Chapters>
+          <Chapter>Precocious Aurene</Chapter>
+          <Chapter>Journey to Bitterfrost Frontier</Chapter>
+          <Chapter>Frozen in Ice</Chapter>
+          <Chapter>Elixir Recipe</Chapter>
+          <Chapter>Elixir Cookin'</Chapter>
+          <Chapter>The Bitter Cold</Chapter>
+          <Chapter>Frozen Out</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>The Head of the Snake</Name>
+        <Chapters>
+          <Chapter>A Meeting of Ministers</Chapter>
+          <Chapter>Eyes on Lake Doric</Chapter>
+          <Chapter>Sabotage Fort Evennia</Chapter>
+          <Chapter>Breaking the Siege</Chapter>
+          <Chapter>Regrouping with the Queen</Chapter>
+          <Chapter>Confessor's End</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Flashpoint</Name>
+        <Chapters>
+          <Chapter>Taimi's Pet Project</Chapter>
+          <Chapter>Arrival and Survival</Chapter>
+          <Chapter>In Pursuit of a God</Chapter>
+          <Chapter>Elder Druid Protection</Chapter>
+          <Chapter>Heart of the Volcano</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>One Path Ends</Name>
+        <Chapters>
+          <Chapter>"Where's Balthazar?"</Chapter>
+          <Chapter>Shining Blade Secrets</Chapter>
+          <Chapter>On Orrian Shores</Chapter>
+          <Chapter>The Flow of Magic</Chapter>
+          <Chapter>The Last Chance</Chapter>
+        </Chapters>
+      </Act>
+    </Acts>
+  </Lw3>
+  <PoF>
+    <Storyline>Path of Fire</Storyline>
+    <Acts>
+      <Act>
+        <Name>Act 1</Name>
+        <Chapters>
+          <Chapter>Sparking the Flame (Prologue)</Chapter>
+          <Chapter>Sparking the Flame</Chapter>
+          <Chapter>Blazing a Trail</Chapter>
+          <Chapter>Night of Fires</Chapter>
+          <Chapter>The Sacrifice</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Act 2</Name>
+        <Chapters>
+          <Chapter>Crystalline Memories</Chapter>
+          <Chapter>Hallowed Ground</Chapter>
+          <Chapter>Facing the Truth</Chapter>
+          <Chapter>The Way Forward</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Act 3</Name>
+        <Chapters>
+          <Chapter>The Departing</Chapter>
+          <Chapter>Enemy of My Enemy</Chapter>
+          <Chapter>Beast of War</Chapter>
+          <Chapter>To Kill a God</Chapter>
+          <Chapter>Small Victory (Epilogue)</Chapter>
+        </Chapters>
+      </Act>
+    </Acts>
+  </PoF>
+  <Lw4>
+    <Storyline>Living World Season 4</Storyline>
+    <Acts>
+      <Act>
+        <Name>Daybreak</Name>
+        <Chapters>
+          <Chapter>Eye of the Brandstorm</Chapter>
+          <Chapter>Under the Stars</Chapter>
+          <Chapter>Champion's Dawn</Chapter>
+          <Chapter>Convincing the Corsair</Chapter>
+          <Chapter>The Hero of Istan</Chapter>
+          <Chapter>The First City</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>A Bug in the System</Name>
+        <Chapters>
+          <Chapter>Tracking the Scientist</Chapter>
+          <Chapter>The Test Subject</Chapter>
+          <Chapter>A Kindness Repaid</Chapter>
+          <Chapter>The Road to Rata Primus</Chapter>
+          <Chapter>The Charge</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Long Live the Lich</Name>
+        <Chapters>
+          <Chapter>Seized</Chapter>
+          <Chapter>Forearmed Is Forewarned</Chapter>
+          <Chapter>Tactical Triage</Chapter>
+          <Chapter>I'm Brave, You Know</Chapter>
+          <Chapter>Be My Guest</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>A Star to Guide Us</Name>
+        <Chapters>
+          <Chapter>A Shattered Nation</Chapter>
+          <Chapter>Chaos Theory</Chapter>
+          <Chapter>Legacy</Chapter>
+          <Chapter>From the Ashes</Chapter>
+          <Chapter>Storm Tracking</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>All or Nothing</Name>
+        <Chapters>
+          <Chapter>Scion &amp; Champion></Chapter>
+          <Chapter>Dragonsblood</Chapter>
+          <Chapter>The Crystal Blooms</Chapter>
+          <Chapter>Resonance</Chapter>
+          <Chapter>The Crystal Dragon</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>War Eternal</Name>
+        <Chapters>
+          <Chapter>The End</Chapter>
+          <Chapter>Landfall</Chapter>
+          <Chapter>Glory of Dragons</Chapter>
+          <Chapter>Bleed</Chapter>
+          <Chapter>Descent</Chapter>
+        </Chapters>
+      </Act>
+    </Acts>
+  </Lw4>
+</StoryChapters>
