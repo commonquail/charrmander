@@ -12,14 +12,21 @@
   <Public>
     <Latest>
       <Release>
+        <Version>1.9.1.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.9.1.zip</DownloadUrl>
+        <Notes>
+          <Note>Fix story chapter completion summary not updating when switching character.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
+      <Release>
         <Version>1.9.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.9.0.zip</DownloadUrl>
         <Notes>
           <Note>Manually track completion of non-core story chapters, e.g. for BLC key farming or Knight of the Thorn.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.8.1.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.8.1.zip</DownloadUrl>
