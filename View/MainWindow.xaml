@@ -263,7 +263,9 @@
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
                                                 <GroupBox Header="{Binding Name}">
-                                                    <ItemsControl ItemsSource="{Binding Chapters}">
+                                                    <ItemsControl
+                                                        ItemsSource="{Binding Chapters}"
+                                                        IsTabStop="False">
                                                         <ItemsControl.ItemTemplate>
                                                             <DataTemplate>
                                                                 <CheckBox
