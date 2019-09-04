@@ -1004,17 +1004,6 @@ namespace Charrmander.ViewModel
             {
                 SelectedCharacter = CharacterList[0];
             }
-
-            UpdateStoryChapterCompletion();
-            // Forcefully update the story chapter summary.
-            // Here, in chronological order of release to match typical eye
-            // movement.
-            RaisePropertyChanged("HasCompletedLw2");
-            RaisePropertyChanged("HasCompletedHoT");
-            RaisePropertyChanged("HasCompletedKotT");
-            RaisePropertyChanged("HasCompletedLw3");
-            RaisePropertyChanged("HasCompletedPoF");
-            RaisePropertyChanged("HasCompletedLw4");
         }
 
         private static void LoadStorylineWithActs(XElement charr, string storyline, ObservableCollection<Act> acts)
@@ -1506,6 +1495,17 @@ namespace Charrmander.ViewModel
             RaisePropertyChanged("PoIIcon");
             RaisePropertyChanged("SkillIcon");
             RaisePropertyChanged("VistaIcon");
+
+            UpdateStoryChapterCompletion();
+            // Forcefully update the story chapter summary.
+            // Here, in chronological order of release to match typical eye
+            // movement.
+            RaisePropertyChanged("HasCompletedLw2");
+            RaisePropertyChanged("HasCompletedHoT");
+            RaisePropertyChanged("HasCompletedKotT");
+            RaisePropertyChanged("HasCompletedLw3");
+            RaisePropertyChanged("HasCompletedPoF");
+            RaisePropertyChanged("HasCompletedLw4");
         }
 
         /// <summary>
