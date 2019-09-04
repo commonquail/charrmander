@@ -41,6 +41,11 @@ namespace Charrmander.View
         {
             (DataContext as ViewModelMain).UpdateBiographyOptions();
         }
+
+        private void StoryChapterCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            (DataContext as ViewModelMain).UpdateStoryChapterCompletion();
+        }
     }
 
     /// <summary>
@@ -108,6 +113,22 @@ namespace Charrmander.View
             }
 
             return res;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
+    }
+
+    /// <summary>
+    /// Converts a check box checked state to a key if <c>True</c>, empty string otherwise.
+    /// </summary>
+    public class KeyRewardBoolConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return (bool)value ? "\U0001F5DD" : string.Empty;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

@@ -27,6 +27,7 @@
 
         <View:GameIconConverter x:Key="GameIconConverter"/>
         <View:CompletionStateConverter x:Key="CompletionStateConverter"/>
+        <View:KeyRewardBoolConverter x:Key="KeyRewardBoolConverter"/>
     </Window.Resources>
 
     <Grid>
@@ -267,6 +268,8 @@
                                                             <DataTemplate>
                                                                 <CheckBox
                                                                     IsChecked="{Binding ChapterCompleted}"
+                                                                    Unchecked="StoryChapterCheckBox_Checked"
+                                                                    Checked="StoryChapterCheckBox_Checked"
                                                                     Content="{Binding Name}"/>
                                                             </DataTemplate>
                                                         </ItemsControl.ItemTemplate>
@@ -343,43 +346,135 @@
                                       SelectedValue="{Binding PlanOfAttack}"/>
                             </DockPanel>
 
-                            <Expander
-                                Header="{Binding Source={StaticResource ExtendedStoryXml}, XPath=Lw2/Storyline}">
+                            <Expander>
+                                <Expander.Header>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} {1} {2}">
+                                                <Binding
+                                                    Source="{StaticResource ExtendedStoryXml}"
+                                                    XPath="Lw2/Storyline" />
+                                                <Binding
+                                                    RelativeSource="{RelativeSource AncestorType=Window}"
+                                                    Path="DataContext.HasCompletedLw2"
+                                                    Converter="{StaticResource CompletionStateConverter}"/>
+                                                <Binding
+                                                    RelativeSource="{RelativeSource AncestorType=Window}"
+                                                    Path="DataContext.HasKeyLw2"
+                                                    Converter="{StaticResource KeyRewardBoolConverter}"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </Expander.Header>
                                 <ContentControl
                                     Content="{Binding Lw2Acts}"
                                     ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
-                            <Expander
-                                Header="{Binding Source={StaticResource ExtendedStoryXml}, XPath=HoT/Storyline}">
+                            <Expander>
+                                <Expander.Header>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} {1} {2}">
+                                                <Binding
+                                                    Source="{StaticResource ExtendedStoryXml}"
+                                                    XPath="HoT/Storyline" />
+                                                <Binding
+                                                    RelativeSource="{RelativeSource AncestorType=Window}"
+                                                    Path="DataContext.HasCompletedHoT"
+                                                    Converter="{StaticResource CompletionStateConverter}"/>
+                                                <Binding
+                                                    RelativeSource="{RelativeSource AncestorType=Window}"
+                                                    Path="DataContext.HasKeyHoT"
+                                                    Converter="{StaticResource KeyRewardBoolConverter}"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </Expander.Header>
                                 <ContentControl
                                     Content="{Binding HoTActs}"
                                     ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
-                            <Expander
-                                Header="{Binding Source={StaticResource ExtendedStoryXml}, XPath=KotT/Storyline}">
+                            <Expander>
+                                <Expander.Header>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding
+                                                    Source="{StaticResource ExtendedStoryXml}"
+                                                    XPath="KotT/Storyline" />
+                                                <Binding
+                                                    RelativeSource="{RelativeSource AncestorType=Window}"
+                                                    Path="DataContext.HasCompletedKotT"
+                                                    Converter="{StaticResource CompletionStateConverter}"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </Expander.Header>
                                 <ContentControl
                                     Content="{Binding KotTActs}"
                                     ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
-                            <Expander
-                                Header="{Binding Source={StaticResource ExtendedStoryXml}, XPath=Lw3/Storyline}">
+                            <Expander>
+                                <Expander.Header>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding
+                                                    Source="{StaticResource ExtendedStoryXml}"
+                                                    XPath="Lw3/Storyline" />
+                                                <Binding
+                                                    RelativeSource="{RelativeSource AncestorType=Window}"
+                                                    Path="DataContext.HasCompletedLw3"
+                                                    Converter="{StaticResource CompletionStateConverter}"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </Expander.Header>
                                 <ContentControl
                                     Content="{Binding Lw3Acts}"
                                     ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
-                            <Expander
-                                Header="{Binding Source={StaticResource ExtendedStoryXml}, XPath=PoF/Storyline}">
+                            <Expander>
+                                <Expander.Header>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding
+                                                    Source="{StaticResource ExtendedStoryXml}"
+                                                    XPath="PoF/Storyline" />
+                                                <Binding
+                                                    RelativeSource="{RelativeSource AncestorType=Window}"
+                                                    Path="DataContext.HasCompletedPoF"
+                                                    Converter="{StaticResource CompletionStateConverter}"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </Expander.Header>
                                 <ContentControl
                                     Content="{Binding PoFActs}"
                                     ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
-                            <Expander
-                                Header="{Binding Source={StaticResource ExtendedStoryXml}, XPath=Lw4/Storyline}">
+                            <Expander>
+                                <Expander.Header>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding
+                                                    Source="{StaticResource ExtendedStoryXml}"
+                                                    XPath="Lw4/Storyline" />
+                                                <Binding
+                                                    RelativeSource="{RelativeSource AncestorType=Window}"
+                                                    Path="DataContext.HasCompletedLw4"
+                                                    Converter="{StaticResource CompletionStateConverter}"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </Expander.Header>
                                 <ContentControl
                                     Content="{Binding Lw4Acts}"
                                     ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
