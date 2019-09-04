@@ -1,5 +1,4 @@
 #!/bin/bash
-ms_build="$WINDIR/Microsoft.NET/Framework/v4.0.30319/msbuild.exe"
 
 main()
 {
@@ -14,14 +13,14 @@ fatal()
 
 validate_deps()
 {
-    [[ -f "$ms_build" ]] || fatal "$ms_build does not exist"
+    [[ -f "$MS_BUILD" ]] || fatal "$MS_BUILD does not exist"
 
     type 7z > /dev/null 2>&1 || fatal "7z (7-Zip) not found"
 }
 
 clean()
 {
-	"$ms_build" \
+	"$MS_BUILD" \
 		-nologo \
 		Charrmander.sln \
 		-target:Clean \
@@ -31,7 +30,7 @@ clean()
 
 build()
 {
-    "$ms_build" \
+    "$MS_BUILD" \
         -nologo \
         Charrmander.sln \
         -target:Build \
