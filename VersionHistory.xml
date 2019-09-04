@@ -12,14 +12,21 @@
   <Public>
     <Latest>
       <Release>
+        <Version>1.9.2.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.9.2.zip</DownloadUrl>
+        <Notes>
+          <Note>Fix story chapter name typos.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
+      <Release>
         <Version>1.9.1.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.9.1.zip</DownloadUrl>
         <Notes>
           <Note>Fix story chapter completion summary not updating when switching character.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.9.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.9.0.zip</DownloadUrl>

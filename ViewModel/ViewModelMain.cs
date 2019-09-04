@@ -1014,19 +1014,24 @@ namespace Charrmander.ViewModel
                 var chapterByName = new Dictionary<string, Chapter>(act.Chapters.Count);
                 foreach (var chapter in act.Chapters)
                 {
-                    chapterByName[chapter.Name] = chapter;
+                    chapterByName[chapter.Name.ToLower()] = chapter;
                 }
-                chapterByNameByActName[act.Name] = chapterByName;
+                chapterByNameByActName[act.Name.ToLower()] = chapterByName;
             }
 
             var storyChapters = charr.CElement("StoryChapters");
             var xe = storyChapters.CElement(storyline);
             foreach (var ld in xe.CDescendants("Chapter"))
             {
-                var actName = ld.Parent.Parent.CElement("Name").Value;
-                var chapterName = ld.CElement("Name").Value;
+                var actName = ld.Parent.Parent.CElement("Name").Value.ToLower();
+                var chapterName = ld.CElement("Name").Value.ToLower();
                 bool completed = false;
                 bool.TryParse(ld.CElement("Completed").Value, out completed);
+                // "Scion & Champion>"
+                if (chapterName.EndsWith(">"))
+                {
+                    chapterName = chapterName.Substring(0, chapterName.Length - 1);
+                }
                 chapterByNameByActName[actName][chapterName].ChapterCompleted = completed;
             }
         }
