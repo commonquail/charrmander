@@ -2,16 +2,25 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.10.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.10.0.zip</DownloadUrl>
+      <Version>1.11.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.11.0.zip</DownloadUrl>
       <Notes>
-        <Note>Begin "The Icebrood Saga".</Note>
-        <Note>Always display current version in status bar.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.10.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.10.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Begin "The Icebrood Saga".</Note>
+          <Note>Always display current version in status bar.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.9.2.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.9.2.zip</DownloadUrl>
@@ -19,8 +28,6 @@
           <Note>Fix story chapter name typos.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.9.1.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.9.1.zip</DownloadUrl>
