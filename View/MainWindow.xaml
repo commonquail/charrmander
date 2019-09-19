@@ -21,6 +21,7 @@
         <BitmapImage x:Key="IconMenuSave" UriSource="/Icons/Save.bmp"/>
 
         <XmlNamespaceMappingCollection x:Key="Namespaces">
+            <XmlNamespaceMapping Uri="https://areas.charr" Prefix="as"/>
             <XmlNamespaceMapping Uri="https://storychapters.charr" Prefix="sc"/>
         </XmlNamespaceMappingCollection>
 

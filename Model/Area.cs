@@ -19,6 +19,8 @@ namespace Charrmander.Model
 
         private CompletionState _areaState = CompletionState.Unvisited;
 
+        public static XNamespace XmlNamespace = "https://areas.charr";
+
         public enum CompletionState
         {
             Unvisited = 0,
@@ -49,25 +51,26 @@ namespace Charrmander.Model
         /// <returns>A new instance of <c>Area</c>.</returns>
         public static Area FromXML(XElement area)
         {
-            var a = new Area(area.Element("Name").Value)
+            var cpl = area.Element(XmlNamespace + "Completion");
+            var a = new Area(area.Element(XmlNamespace + "Name").Value)
             {
-                Hearts = area.Element("Completion").Element("Hearts").Value,
-                Waypoints = area.Element("Completion").Element("Waypoints").Value,
-                PoIs = area.Element("Completion").Element("PoIs").Value,
-                Skills = area.Element("Completion").Element("Skills").Value,
-                Vistas = area.Element("Completion").Element("Vistas").Value
+                Hearts = cpl.Element(XmlNamespace + "Hearts").Value,
+                Waypoints = cpl.Element(XmlNamespace + "Waypoints").Value,
+                PoIs = cpl.Element(XmlNamespace + "PoIs").Value,
+                Skills = cpl.Element(XmlNamespace + "Skills").Value,
+                Vistas = cpl.Element(XmlNamespace + "Vistas").Value
             };
 
-            var levelRange = area.Element("LevelRange");
+            var levelRange = area.Element(XmlNamespace + "LevelRange");
             if (levelRange != null)
             {
-                var minLevel = levelRange.Element("MinLevel");
+                var minLevel = levelRange.Element(XmlNamespace + "MinLevel");
                 if (minLevel != null)
                 {
                     a.MinLevel = minLevel.Value;
                 }
 
-                var maxLevel = levelRange.Element("MaxLevel");
+                var maxLevel = levelRange.Element(XmlNamespace + "MaxLevel");
                 if (maxLevel != null)
                 {
                     a.MaxLevel = maxLevel.Value;
