@@ -23,8 +23,7 @@ namespace Charrmander.View
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                var viewModel = this.DataContext as ViewModelMain;
-                if (viewModel != null)
+                if (this.DataContext is ViewModelMain viewModel)
                 {
                     viewModel.Open(files[0]);
                 }

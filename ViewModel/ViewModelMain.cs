@@ -1793,6 +1793,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         public void Dispose()
         {
+            _bgUpdater.Dispose();
             if (_updateViewModel != null)
             {
                 _updateViewModel.Close();

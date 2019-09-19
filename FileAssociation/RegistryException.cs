@@ -36,6 +36,7 @@ namespace BrendanGrant.Helpers.FileAssociation
    /// <summary>
    /// This exception is thrown when there is an error when reading, writing or modifying file assocation info.
    /// </summary>
+   [Serializable]
    public class RegistryException : ApplicationException
    {
       /// <summary>
