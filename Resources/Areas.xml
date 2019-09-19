@@ -365,6 +365,19 @@
     </Completion>
   </Area>
   <Area>
+    <Name>Grothmar Valley</Name>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>3</Waypoints>
+      <PoIs>31</PoIs>
+      <Skills>0</Skills>
+      <Vistas>10</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Harathi Hinterlands</Name>
     <LevelRange>
       <MinLevel>35</MinLevel>

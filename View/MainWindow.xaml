@@ -482,6 +482,27 @@
                                     ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
+                            <Expander>
+                                <Expander.Header>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding
+                                                    Source="{StaticResource ExtendedStoryXml}"
+                                                    XPath="Tis/Storyline" />
+                                                <Binding
+                                                    RelativeSource="{RelativeSource AncestorType=Window}"
+                                                    Path="DataContext.HasCompletedTis"
+                                                    Converter="{StaticResource CompletionStateConverter}"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </Expander.Header>
+                                <ContentControl
+                                    Content="{Binding TisActs}"
+                                    ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                            </Expander>
+
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>

@@ -33,6 +33,7 @@ namespace Charrmander.Model
         private string _lw3 = string.Empty;
         private string _pof = string.Empty;
         private string _lw4 = string.Empty;
+        private string _tis = string.Empty;
 
         private bool _hasWorldCompletion = false;
 
@@ -49,6 +50,7 @@ namespace Charrmander.Model
         private ObservableCollection<Act> _lw3acts = new ObservableCollection<Act>();
         private ObservableCollection<Act> _pofacts = new ObservableCollection<Act>();
         private ObservableCollection<Act> _lw4acts = new ObservableCollection<Act>();
+        private ObservableCollection<Act> _tisacts = new ObservableCollection<Act>();
 
         private ObservableCollection<Dungeon> _dungeons = new ObservableCollection<Dungeon>();
 
@@ -97,6 +99,7 @@ namespace Charrmander.Model
             PrepareStoryChapters(_lw3acts, "Lw3");
             PrepareStoryChapters(_pofacts, "PoF");
             PrepareStoryChapters(_lw4acts, "Lw4");
+            PrepareStoryChapters(_tisacts, "Tis");
 
             var dungeons = XDocument.Load(System.Xml.XmlReader.Create(Application.GetResourceStream(
                 new Uri("Resources/Dungeons.xml", UriKind.Relative)).Stream)).Root.Elements("Dungeon")
@@ -140,6 +143,8 @@ namespace Charrmander.Model
         public ObservableCollection<Act> PoFActs => _pofacts;
 
         public ObservableCollection<Act> Lw4Acts => _lw4acts;
+
+        public ObservableCollection<Act> TisActs => _tisacts;
 
         public ObservableCollection<Dungeon> Dungeons
         {
@@ -501,7 +506,8 @@ namespace Charrmander.Model
                     new CharrElement("KotT", SerializeActs(KotTActs)),
                     new CharrElement("Lw3", SerializeActs(Lw3Acts)),
                     new CharrElement("PoF", SerializeActs(PoFActs)),
-                    new CharrElement("Lw4", SerializeActs(Lw4Acts))
+                    new CharrElement("Lw4", SerializeActs(Lw4Acts)),
+                    new CharrElement("Tis", SerializeActs(TisActs))
                 ),
                 new CharrElement("CraftingDisciplines",
                     from d in CraftingDisciplines
@@ -591,6 +597,10 @@ namespace Charrmander.Model
                 act.PropertyChanged -= _viewModel.MarkFileDirty;
             }
             foreach (var act in Lw4Acts)
+            {
+                act.PropertyChanged -= _viewModel.MarkFileDirty;
+            }
+            foreach (var act in TisActs)
             {
                 act.PropertyChanged -= _viewModel.MarkFileDirty;
             }
