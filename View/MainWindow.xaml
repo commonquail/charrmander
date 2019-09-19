@@ -715,7 +715,11 @@
             </TabControl>
         </DockPanel>
         <StatusBar Height="23" VerticalAlignment="Bottom">
-            <TextBlock Text="{Binding StatusBarUpdateCheck}" ToolTip="{Binding StatusBarUpdateCheck}"/>
+            <DockPanel Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type StatusBar}}}">
+                <TextBlock Text="{Binding StatusBarUpdateCheck}" ToolTip="{Binding StatusBarUpdateCheck}"/>
+                <TextBlock Text="{Binding CurrentVersion}" ToolTip="{Binding CurrentVersion}" DockPanel.Dock="Right" Margin="8,0"/>
+                <Rectangle/>
+            </DockPanel>
         </StatusBar>
     </Grid>
 </Window>

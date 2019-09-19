@@ -6,6 +6,7 @@
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.10.0.zip</DownloadUrl>
       <Notes>
         <Note>Begin "The Icebrood Saga".</Note>
+        <Note>Always display current version in status bar.</Note>
       </Notes>
     </Release>
   </Unreleased>
