@@ -972,6 +972,7 @@ namespace Charrmander.ViewModel
                 LoadStorylineWithActs(charr, "Lw3", c.Lw3Acts);
                 LoadStorylineWithActs(charr, "PoF", c.PoFActs);
                 LoadStorylineWithActs(charr, "Lw4", c.Lw4Acts);
+                LoadStorylineWithActs(charr, "Tis", c.TisActs);
 
                 foreach (var cd in c.Dungeons)
                 {
@@ -1511,6 +1512,7 @@ namespace Charrmander.ViewModel
             RaisePropertyChanged("HasCompletedLw3");
             RaisePropertyChanged("HasCompletedPoF");
             RaisePropertyChanged("HasCompletedLw4");
+            RaisePropertyChanged("HasCompletedTis");
         }
 
         /// <summary>
@@ -1617,6 +1619,7 @@ namespace Charrmander.ViewModel
             // Assumption: characters are more likely to record new completions
             // of newer content, e.g. because they've already completed all old
             // content.
+            HasCompletedTis = CalculateStoryChapterCompletion(SelectedCharacter.TisActs);
             HasCompletedLw4 = CalculateStoryChapterCompletion(SelectedCharacter.Lw4Acts);
             HasCompletedPoF = CalculateStoryChapterCompletion(SelectedCharacter.PoFActs);
             HasCompletedLw3 = CalculateStoryChapterCompletion(SelectedCharacter.Lw3Acts);
@@ -1727,6 +1730,21 @@ namespace Charrmander.ViewModel
                 {
                     _hasCompletedLw4 = value;
                     RaisePropertyChanged("HasCompletedLw4");
+                }
+            }
+        }
+
+        private Area.CompletionState _hasCompletedTis;
+
+        public Area.CompletionState HasCompletedTis
+        {
+            get { return _hasCompletedTis; }
+            private set
+            {
+                if (value != _hasCompletedTis)
+                {
+                    _hasCompletedTis = value;
+                    RaisePropertyChanged("HasCompletedTis");
                 }
             }
         }

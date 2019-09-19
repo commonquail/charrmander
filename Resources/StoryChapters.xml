@@ -305,4 +305,19 @@
       </Act>
     </Acts>
   </Lw4>
+  <Tis>
+    <Storyline>The Icebrood Saga</Storyline>
+    <Acts>
+      <Act>
+        <Name>Prologue: Bound by Blood</Name>
+        <Chapters>
+          <Chapter>Coming Home</Chapter>
+          <Chapter>Revels &amp; Rivals</Chapter>
+          <Chapter>Bad Blood</Chapter>
+          <Chapter>Deeper and Deeper</Chapter>
+          <Chapter>A Race to Arms</Chapter>
+        </Chapters>
+      </Act>
+    </Acts>
+  </Tis>
 </StoryChapters>
