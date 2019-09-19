@@ -44,6 +44,8 @@ namespace Charrmander.ViewModel
 
         private string _windowTitle = "Charrmander";
 
+        private readonly Version _curVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+
         private string _statusBarUpdateCheck;
 
         private bool _unsavedChanges = false;
@@ -151,6 +153,11 @@ namespace Charrmander.ViewModel
                     RaisePropertyChanged("WindowTitle");
                 }
             }
+        }
+
+        public string CurrentVersion
+        {
+            get { return _curVersion.ToString(); }
         }
 
         /// <summary>
@@ -1577,16 +1584,17 @@ namespace Charrmander.ViewModel
                         latest = doc.Root.Element("Latest").Element("Release");
                     }
 
-                    Version curVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
                     Version newVersion = new Version(latest.Element("Version").Value);
 
-                    if (newVersion.IsNewerThan(curVersion))
+                    if (newVersion.IsNewerThan(_curVersion))
                     {
                         StatusBarUpdateCheck = Properties.Resources.suUpdateCheckNewVersion;
-                        UpdateWindow = new UpdateAvailableViewModel();
-                        UpdateWindow.CurrentVersion = curVersion;
-                        UpdateWindow.LatestVersion = newVersion;
-                        UpdateWindow.LatestVersionPath = latest.Element("DownloadUrl").Value;
+                        UpdateWindow = new UpdateAvailableViewModel
+                        {
+                            CurrentVersion = _curVersion,
+                            LatestVersion = newVersion,
+                            LatestVersionPath = latest.Element("DownloadUrl").Value
+                        };
                         if (released != null)
                         {
                             UpdateWindow.VersionHistory = released.Descendants("Release");
