@@ -117,16 +117,17 @@ namespace Charrmander.Model
 
         private void PrepareStoryChapters(ObservableCollection<Act> acts, string storyline)
         {
-            foreach (var act in storyChapters.Element(storyline).Descendants("Act"))
+            XNamespace ns = "https://storychapters.charr";
+            foreach (var act in storyChapters.Element(ns + storyline).Descendants(ns + "Act"))
             {
                 var chapters = new ObservableCollection<Chapter>();
-                foreach (var c in act.Descendants("Chapter"))
+                foreach (var c in act.Descendants(ns + "Chapter"))
                 {
                     var m = new Chapter(c.Value);
                     m.PropertyChanged += _viewModel.MarkFileDirty;
                     chapters.Add(m);
                 }
-                var a = new Act(act.Element("Name").Value, chapters);
+                var a = new Act(act.Element(ns + "Name").Value, chapters);
                 a.PropertyChanged += _viewModel.MarkFileDirty;
                 acts.Add(a);
             }

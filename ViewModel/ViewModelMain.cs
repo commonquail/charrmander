@@ -78,7 +78,7 @@ namespace Charrmander.ViewModel
                 new Uri("Resources/Areas.xml", UriKind.Relative)).Stream));
 
             AreaReferenceList = new ObservableCollection<Area>(
-                from a in doc.Root.Elements("Area")
+                from a in doc.Root.Elements(Area.XmlNamespace + "Area")
                 select Area.FromXML(a));
 
             var races = XDocument.Load(XmlReader.Create(Application.GetResourceStream(

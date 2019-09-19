@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+  id="Areas"
+  targetNamespace="https://areas.charr"
+  xmlns="https://areas.charr"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  >
+  <xs:element name="Areas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Area">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" type="xs:string" />
+              <xs:element minOccurs="0" name="LevelRange">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="MinLevel" type="xs:nonNegativeInteger" />
+                    <xs:element name="MaxLevel" minOccurs="0" type="xs:nonNegativeInteger" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Completion">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Hearts" type="xs:nonNegativeInteger" />
+                    <xs:element name="Waypoints" type="xs:nonNegativeInteger" />
+                    <xs:element name="PoIs" type="xs:nonNegativeInteger" />
+                    <xs:element name="Skills" type="xs:nonNegativeInteger" />
+                    <xs:element name="Vistas" type="xs:nonNegativeInteger" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
