@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+  id="StoryChapters"
+  targetNamespace="https://storychapters.charr"
+  xmlns="https://storychapters.charr"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  >
+
+  <xs:element name="StoryChapters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Lw2" type="StorylineType"/>
+        <xs:element name="HoT" type="StorylineType"/>
+        <xs:element name="KotT" type="StorylineType"/>
+        <xs:element name="Lw3" type="StorylineType"/>
+        <xs:element name="PoF" type="StorylineType"/>
+        <xs:element name="Lw4" type="StorylineType"/>
+        <xs:element name="Tis" type="StorylineType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="StorylineType">
+    <xs:sequence>
+      <xs:element name="Storyline" type="xs:string" />
+      <xs:element name="Acts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Act">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Name" type="xs:string" />
+                  <xs:element name="Chapters">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="Chapter" type="xs:string" />
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

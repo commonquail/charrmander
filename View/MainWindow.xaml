@@ -20,10 +20,18 @@
         <BitmapImage x:Key="IconMenuOpen" UriSource="/Icons/Open.bmp"/>
         <BitmapImage x:Key="IconMenuSave" UriSource="/Icons/Save.bmp"/>
 
+        <XmlNamespaceMappingCollection x:Key="Namespaces">
+            <XmlNamespaceMapping Uri="https://storychapters.charr" Prefix="sc"/>
+        </XmlNamespaceMappingCollection>
+
         <XmlDataProvider x:Key="ProfessionsXml" XPath="Professions/Profession" Source="/Resources/Professions.xml"/>
         <XmlDataProvider x:Key="RacesXml" XPath="Races/Race" Source="/Resources/Races.xml"/>
         <XmlDataProvider x:Key="StoryXml" XPath="StoryChoices" Source="/Resources/StoryChoices.xml"/>
-        <XmlDataProvider x:Key="ExtendedStoryXml" XPath="StoryChapters" Source="/Resources/StoryChapters.xml"/>
+        <XmlDataProvider
+            x:Key="ExtendedStoryXml"
+            XPath="sc:StoryChapters"
+            Source="/Resources/StoryChapters.xml"
+            XmlNamespaceManager="{StaticResource Namespaces}"/>
 
         <View:GameIconConverter x:Key="GameIconConverter"/>
         <View:CompletionStateConverter x:Key="CompletionStateConverter"/>
@@ -355,7 +363,7 @@
                                             <MultiBinding StringFormat="{}{0} {1} {2}">
                                                 <Binding
                                                     Source="{StaticResource ExtendedStoryXml}"
-                                                    XPath="Lw2/Storyline" />
+                                                    XPath="sc:Lw2/sc:Storyline" />
                                                 <Binding
                                                     RelativeSource="{RelativeSource AncestorType=Window}"
                                                     Path="DataContext.HasCompletedLw2"
@@ -380,7 +388,7 @@
                                             <MultiBinding StringFormat="{}{0} {1} {2}">
                                                 <Binding
                                                     Source="{StaticResource ExtendedStoryXml}"
-                                                    XPath="HoT/Storyline" />
+                                                    XPath="sc:HoT/sc:Storyline" />
                                                 <Binding
                                                     RelativeSource="{RelativeSource AncestorType=Window}"
                                                     Path="DataContext.HasCompletedHoT"
@@ -405,7 +413,7 @@
                                             <MultiBinding StringFormat="{}{0} {1}">
                                                 <Binding
                                                     Source="{StaticResource ExtendedStoryXml}"
-                                                    XPath="KotT/Storyline" />
+                                                    XPath="sc:KotT/sc:Storyline" />
                                                 <Binding
                                                     RelativeSource="{RelativeSource AncestorType=Window}"
                                                     Path="DataContext.HasCompletedKotT"
@@ -426,7 +434,7 @@
                                             <MultiBinding StringFormat="{}{0} {1}">
                                                 <Binding
                                                     Source="{StaticResource ExtendedStoryXml}"
-                                                    XPath="Lw3/Storyline" />
+                                                    XPath="sc:Lw3/sc:Storyline" />
                                                 <Binding
                                                     RelativeSource="{RelativeSource AncestorType=Window}"
                                                     Path="DataContext.HasCompletedLw3"
@@ -447,7 +455,7 @@
                                             <MultiBinding StringFormat="{}{0} {1}">
                                                 <Binding
                                                     Source="{StaticResource ExtendedStoryXml}"
-                                                    XPath="PoF/Storyline" />
+                                                    XPath="sc:PoF/sc:Storyline" />
                                                 <Binding
                                                     RelativeSource="{RelativeSource AncestorType=Window}"
                                                     Path="DataContext.HasCompletedPoF"
@@ -468,7 +476,7 @@
                                             <MultiBinding StringFormat="{}{0} {1}">
                                                 <Binding
                                                     Source="{StaticResource ExtendedStoryXml}"
-                                                    XPath="Lw4/Storyline" />
+                                                    XPath="sc:Lw4/sc:Storyline" />
                                                 <Binding
                                                     RelativeSource="{RelativeSource AncestorType=Window}"
                                                     Path="DataContext.HasCompletedLw4"
@@ -489,7 +497,7 @@
                                             <MultiBinding StringFormat="{}{0} {1}">
                                                 <Binding
                                                     Source="{StaticResource ExtendedStoryXml}"
-                                                    XPath="Tis/Storyline" />
+                                                    XPath="sc:Tis/sc:Storyline" />
                                                 <Binding
                                                     RelativeSource="{RelativeSource AncestorType=Window}"
                                                     Path="DataContext.HasCompletedTis"
