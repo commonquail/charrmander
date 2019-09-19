@@ -43,6 +43,7 @@ namespace BrendanGrant.Helpers.FileAssociation
       /// <param name="uFlags">Flags that indicate the meaning of the dwItem1 and dwItem2 parameters.</param>
       /// <param name="dwItem1">First event-dependent value.</param>
       /// <param name="dwItem2">Second event-dependent value.</param>
+      [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass")]
       [DllImport("shell32.dll")]
       private static extern void SHChangeNotify(
           UInt32 wEventId,
