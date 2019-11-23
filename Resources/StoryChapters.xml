@@ -318,6 +318,15 @@
           <Chapter>A Race to Arms</Chapter>
         </Chapters>
       </Act>
+      <Act>
+        <Name>Whisper in the Dark</Name>
+        <Chapters>
+          <Chapter>Silence</Chapter>
+          <Chapter>What's Left Behind</Chapter>
+          <Chapter>The Wind and Nothing More</Chapter>
+          <Chapter>The Invitation</Chapter>
+        </Chapters>
+      </Act>
     </Acts>
   </Tis>
 </StoryChapters>
