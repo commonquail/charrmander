@@ -27,6 +27,19 @@
     </Completion>
   </Area>
   <Area>
+    <Name>Bjora Marches</Name>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>1</Waypoints>
+      <PoIs>15</PoIs>
+      <Skills>0</Skills>
+      <Vistas>4</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Black Citadel</Name>
     <Completion>
       <Hearts>0</Hearts>
