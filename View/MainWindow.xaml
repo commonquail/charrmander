@@ -94,6 +94,11 @@
                     <DataGridTextColumn Header="Name" Width="*"
                                         Binding="{Binding Name, Converter={StaticResource NamelessCharacterConverter}}"/>
                     <DataGridTemplateColumn MinWidth="22" MaxWidth="22">
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="ToolTipService.ToolTip" Value="World completion"/>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
                         <DataGridTemplateColumn.CellStyle>
                             <Style TargetType="DataGridCell" BasedOn="{StaticResource {x:Type DataGridCell}}">
                                 <Setter Property="ToolTip" Value="World completion"/>
