@@ -17,6 +17,7 @@ using System.Linq;
 using BrendanGrant.Helpers.FileAssociation;
 using System.Collections;
 using System.Data;
+using System.Windows.Data;
 
 namespace Charrmander.ViewModel
 {
@@ -50,7 +51,13 @@ namespace Charrmander.ViewModel
 
         private bool _unsavedChanges = false;
 
-        private ObservableCollection<Character> _characterList;
+        /// <summary>
+        /// The source collection for <see cref="SortedCharacterList"/>, as an
+        /// <see cref="ObservableCollection"/> to propagate both element and
+        /// collection change events.
+        /// </summary>
+        private readonly ObservableCollection<Character> _characterList = new ObservableCollection<Character>();
+
         private Character _selectedCharacter;
         private Area _selectedAreaReference;
         private Area _selectedAreaCharacter;
@@ -74,6 +81,11 @@ namespace Charrmander.ViewModel
 
         public ViewModelMain(string filePath)
         {
+            _characterList.CollectionChanged += MarkFileDirty;
+            // Ensure Source is set immediately, so any change events from the
+            // source collection propagates all the way through.
+            SortedCharacterList.Source = _characterList;
+
             var doc = XDocument.Load(XmlReader.Create(Application.GetResourceStream(
                 new Uri("Resources/Areas.xml", UriKind.Relative)).Stream));
 
@@ -216,32 +228,18 @@ namespace Charrmander.ViewModel
         }
 
         /// <summary>
-        /// An <see cref="ObservableCollection"/> of <see cref="Character"/> objects loaded by the application.
+        /// The view of the character list, sorted by default on
+        /// <see cref="Character.DefaultSortOrder"/>, and backed by
+        /// <see cref="_characterList"/>.
         /// </summary>
-        public ObservableCollection<Character> CharacterList
+        public CollectionViewSource SortedCharacterList { get; } = new CollectionViewSource
         {
-            get
+            IsLiveSortingRequested = true,
+            SortDescriptions =
             {
-                if (_characterList == null)
-                {
-                    CharacterList = new ObservableCollection<Character>();
-                }
-                return _characterList;
-            }
-            set
-            {
-                if (value != _characterList)
-                {
-                    if (_characterList != null)
-                    {
-                        _characterList.CollectionChanged -= MarkFileDirty;
-                    }
-                    _characterList = value;
-                    _characterList.CollectionChanged += MarkFileDirty;
-                    RaisePropertyChanged("CharacterList");
-                }
-            }
-        }
+                new SortDescription(nameof(Character.DefaultSortOrder), ListSortDirection.Ascending),
+            },
+        };
 
         /// <summary>
         /// The master list of areas, generated at runtime from an embedded XML file.
@@ -801,7 +799,7 @@ namespace Charrmander.ViewModel
         private void NewCharacter()
         {
             var c = new Character(this);
-            CharacterList.Add(c);
+            _characterList.Add(c);
             if (SelectedCharacter == null)
             {
                 SelectedCharacter = c;
@@ -909,7 +907,13 @@ namespace Charrmander.ViewModel
         private void Parse(XDocument doc)
         {
             var characters = doc.Root.CElements("Character");
-            ObservableCollection<Character> newCharacterList = new ObservableCollection<Character>();
+
+            // Replace the contents of the character list with the soon to be
+            // loaded content. Preserve the original collection instance to
+            // avoid breaking the binding (and resetting the current sort
+            // setting).
+            // https://stackoverflow.com/a/44198356/482758
+            _characterList.Clear();
 
             foreach (var charr in characters)
             {
@@ -923,6 +927,9 @@ namespace Charrmander.ViewModel
                 int level = 0;
                 int.TryParse(charr.CElement("Level").Value, out level);
                 c.Level = level;
+
+                int.TryParse(charr.CElement("DefaultSortOrder").Value, out int defaultSortOrder);
+                c.DefaultSortOrder = Math.Max(defaultSortOrder, Character.MinSortOrder);
 
                 // Biography choices.
                 var biographies = charr.CElement("Biographies");
@@ -1005,12 +1012,22 @@ namespace Charrmander.ViewModel
                 c.Notes = charr.CElement("Notes").Value;
 
                 // All done.
-                newCharacterList.Add(c);
+                _characterList.Add(c);
             }
-            CharacterList = newCharacterList;
-            if (CharacterList.Count > 0)
+
+            SelectFirstCharacter();
+        }
+
+        private void SelectFirstCharacter()
+        {
+            var iter = SortedCharacterList.View?.GetEnumerator();
+            if (iter != null && iter.MoveNext())
             {
-                SelectedCharacter = CharacterList[0];
+                SelectedCharacter = (Character) iter.Current;
+            }
+            else
+            {
+                SelectedCharacter = null;
             }
         }
 
@@ -1114,8 +1131,8 @@ namespace Charrmander.ViewModel
             {
                 new XDocument(
                     new CharrElement("Charrmander",
-                        (CharacterList.Count > 0 ?
-                        from c in CharacterList
+                        (_characterList.Count > 0 ?
+                        from c in _characterList
                         select c.ToXML() : null)
                     )
                 ).Save(xw);
@@ -1175,18 +1192,11 @@ namespace Charrmander.ViewModel
 
             if (c != null)
             {
-                CharacterList.Remove(c);
+                _characterList.Remove(c);
                 c.Dispose();
             }
 
-            if (CharacterList.Count > 0)
-            {
-                SelectedCharacter = CharacterList[0];
-            }
-            else
-            {
-                SelectedCharacter = null;
-            }
+            SelectFirstCharacter();
         }
 
         /// <summary>
@@ -1265,7 +1275,7 @@ namespace Charrmander.ViewModel
         /// <returns>Returns all named characters.</returns>
         private IEnumerable<Character> GetNamedCharacters()
         {
-            return from c in CharacterList
+            return from c in _characterList
                 where !string.IsNullOrWhiteSpace(c.Name)
                 select c;
         }

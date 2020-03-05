@@ -72,7 +72,9 @@
                 <View:NamelessCharacterConverter x:Key="NamelessCharacterConverter"/>
             </DockPanel.Resources>
 
-            <DataGrid Width="200" ItemsSource="{Binding CharacterList}" SelectedItem="{Binding SelectedCharacter}"
+            <DataGrid Width="200" ItemsSource="{Binding SortedCharacterList.View}"
+                      SelectedItem="{Binding SelectedCharacter}"
+                      CanUserSortColumns="True"
                       AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False" SelectionMode="Single">
 
                 <DataGrid.RowStyle>
@@ -90,10 +92,28 @@
                 </DataGrid.ContextMenu>
 
                 <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Header="#"
+                        MinWidth="22"
+                        MaxWidth="22"
+                        Binding="{Binding DefaultSortOrder}"
+                        SortDirection="Ascending"
+                        >
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="ToolTipService.ToolTip" Value="Sort order"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
                     <DataGridTextColumn Header="Level" MaxWidth="37" Binding="{Binding Level}"/>
                     <DataGridTextColumn Header="Name" Width="*"
                                         Binding="{Binding Name, Converter={StaticResource NamelessCharacterConverter}}"/>
                     <DataGridTemplateColumn MinWidth="22" MaxWidth="22">
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="ToolTipService.ToolTip" Value="World completion"/>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
                         <DataGridTemplateColumn.CellStyle>
                             <Style TargetType="DataGridCell" BasedOn="{StaticResource {x:Type DataGridCell}}">
                                 <Setter Property="ToolTip" Value="World completion"/>
@@ -193,6 +213,15 @@
                                         Maximum="{Binding Source={x:Static Model:Character.MaxLevel}}"
                                         SmallChange="1" LargeChange="10"
                                         Ticks="0, 10, 20, 30, 40, 50, 60, 70, 80"/>
+                            </DockPanel>
+
+                            <DockPanel>
+                                <TextBlock Text="Sort order:"/>
+                                <xctk:IntegerUpDown
+                                    Text="{Binding DefaultSortOrder, UpdateSourceTrigger=PropertyChanged}"
+                                    Minimum="{x:Static Model:Character.MinSortOrder}"
+                                    Maximum="{x:Static Model:Character.MaxSortOrder}"
+                                    DefaultValue="1"/>
                             </DockPanel>
 
                         </StackPanel>

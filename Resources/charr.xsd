@@ -20,6 +20,7 @@
       <xs:element name="Race" type="xs:string" minOccurs="0"/>
       <xs:element name="Profession" type="xs:string" minOccurs="0"/>
       <xs:element name="Level" type="xs:string" minOccurs="0"/>
+      <xs:element name="DefaultSortOrder" type="xs:int" minOccurs="0"/>
       <xs:element name="Biographies" minOccurs="0">
         <xs:complexType>
           <xs:all>

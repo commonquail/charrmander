@@ -18,6 +18,7 @@ namespace Charrmander.Model
         private string _race = string.Empty;
         private string _profession = string.Empty;
         private int _level = 0;
+        private int _defaultSortOrder = 1;
 
         private IDictionary<string, string> _biographies;
 
@@ -53,6 +54,18 @@ namespace Charrmander.Model
         private ObservableCollection<Act> _tisacts = new ObservableCollection<Act>();
 
         private ObservableCollection<Dungeon> _dungeons = new ObservableCollection<Dungeon>();
+
+        /// <summary>
+        /// Maximum sort order; greater than max account character slot of 69
+        /// (situationally 70) but effectively "limited" to 1 account to
+        /// conserve UI space.
+        /// </summary>
+        public const int MaxSortOrder = 99;
+
+        /// <summary>
+        /// Minimum sort order.
+        /// </summary>
+        public const int MinSortOrder = 1;
 
         /// <summary>
         /// Maximum character level.
@@ -150,6 +163,24 @@ namespace Charrmander.Model
         public ObservableCollection<Dungeon> Dungeons
         {
             get { return _dungeons; }
+        }
+
+        /// <summary>
+        /// The persisted sort order, sorted on by default at launch. The order
+        /// of 2 characters with identical sort order is unspecified.
+        /// </summary>
+        public int DefaultSortOrder
+        {
+            get { return _defaultSortOrder; }
+            set
+            {
+                if (value != _defaultSortOrder &&
+                    value >= MinSortOrder && value <= MaxSortOrder)
+                {
+                    _defaultSortOrder = value;
+                    RaisePropertyChanged(nameof(DefaultSortOrder));
+                }
+            }
         }
 
         /// <summary>
@@ -483,6 +514,7 @@ namespace Charrmander.Model
         public CharrElement ToXML()
         {
             return new CharrElement("Character",
+                new CharrElement("DefaultSortOrder", DefaultSortOrder),
                 new CharrElement("Name", Name),
                 new CharrElement("Race", Race),
                 new CharrElement("Profession", Profession),
