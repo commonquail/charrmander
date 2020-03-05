@@ -5,7 +5,7 @@
       <Version>1.13.0.0</Version>
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.13.0.zip</DownloadUrl>
       <Notes>
-        <Note></Note>
+        <Note>Permanently re-order the character list by assigning each character a "sort order" that weighs it relative to all others. Sort order is specified in the "Personal" tab and takes integer values from 1 to 99, inclusive. Multiple characters may have the same sort order but then their relative order is unspecified.</Note>
       </Notes>
     </Release>
   </Unreleased>
