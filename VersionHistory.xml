@@ -2,15 +2,24 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.14.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.14.0.zip</DownloadUrl>
+      <Version>1.15.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.15.0.zip</DownloadUrl>
       <Notes>
-        <Note>Continue "The Icebrood Saga" with "Visions of the Past".</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.14.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.14.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Continue "The Icebrood Saga" with "Visions of the Past".</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.13.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.13.0.zip</DownloadUrl>
@@ -18,8 +27,6 @@
           <Note>Permanently re-order the character list by assigning each character a "sort order" that weighs it relative to all others. Sort order is specified in the "Personal" tab and takes integer values from 1 to 99, inclusive. Multiple characters may have the same sort order but then their relative order is unspecified.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.12.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.12.0.zip</DownloadUrl>
