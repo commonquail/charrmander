@@ -45,7 +45,7 @@ namespace Charrmander.ViewModel
 
         private string _windowTitle = "Charrmander";
 
-        private readonly Version _curVersion = new Version(1, 14, 0, 0);
+        private readonly Version _curVersion = new Version(1, 15, 0, 0);
 
         private string _statusBarUpdateCheck;
 
