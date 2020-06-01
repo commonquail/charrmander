@@ -168,6 +168,19 @@
     </Completion>
   </Area>
   <Area>
+    <Name>Drizzlewood Coast</Name>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>1</Waypoints>
+      <PoIs>22</PoIs>
+      <Skills>0</Skills>
+      <Vistas>10</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Diessa Plateau</Name>
     <LevelRange>
       <MinLevel>15</MinLevel>

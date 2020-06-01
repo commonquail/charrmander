@@ -344,6 +344,16 @@
           <Chapter>Darkrime Delves</Chapter>
         </Chapters>
       </Act>
+      <Act>
+        <Name>No Quarter</Name>
+        <Chapters>
+          <Chapter>Pointed Parley</Chapter>
+          <Chapter>Shoulder to Shoulder</Chapter>
+          <Chapter>Snapping Steel</Chapter>
+          <Chapter>Distract, Destroy, Distrust</Chapter>
+          <Chapter>Turnabout</Chapter>
+        </Chapters>
+      </Act>
     </Acts>
   </Tis>
 </StoryChapters>
