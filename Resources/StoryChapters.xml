@@ -354,6 +354,16 @@
           <Chapter>Turnabout</Chapter>
         </Chapters>
       </Act>
+      <Act>
+        <Name>Jormag Rising</Name>
+        <Chapters>
+          <Chapter>Behind Enemy Lines</Chapter>
+          <Chapter>Wrench in the Works</Chapter>
+          <Chapter>A Simple Negotiation</Chapter>
+          <Chapter>Pantheon of the Wild</Chapter>
+          <Chapter>One Charr, One Dragon, One Champion</Chapter>
+        </Chapters>
+      </Act>
     </Acts>
   </Tis>
 </StoryChapters>
