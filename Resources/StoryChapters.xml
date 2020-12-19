@@ -364,6 +364,15 @@
           <Chapter>One Charr, One Dragon, One Champion</Chapter>
         </Chapters>
       </Act>
+      <Act>
+        <Name>Champions, chapter 1 - Truce</Name>
+        <Chapters>
+          <Chapter>Primordus Rising</Chapter>
+          <Chapter>Tidings and Misgivings</Chapter>
+          <Chapter>Defending Tyria</Chapter>
+          <Chapter>Calm in the Storm</Chapter>
+        </Chapters>
+      </Act>
     </Acts>
   </Tis>
 </StoryChapters>
