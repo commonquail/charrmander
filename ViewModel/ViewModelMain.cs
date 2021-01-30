@@ -1050,6 +1050,14 @@ namespace Charrmander.ViewModel
             {
                 var actName = ld.Parent.Parent.CElement("Name").Value.ToLower();
                 var chapterName = ld.CElement("Name").Value.ToLower();
+                if (chapterName.Equals("calm in the storm"))
+                {
+                    // "Calm in the Storm" was a placeholder story step in
+                    // TIS: Champions between chapters. When a new chapter
+                    // came out the step was "moved"; it could not be
+                    // meaningfully completed. Just remove it altogether.
+                    continue;
+                }
                 bool completed = false;
                 bool.TryParse(ld.CElement("Completed").Value, out completed);
                 // "Scion & Champion>"

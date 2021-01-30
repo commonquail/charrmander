@@ -370,7 +370,13 @@
           <Chapter>Primordus Rising</Chapter>
           <Chapter>Tidings and Misgivings</Chapter>
           <Chapter>Defending Tyria</Chapter>
-          <Chapter>Calm in the Storm</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Champions, chapter 2 - Power</Name>
+        <Chapters>
+          <Chapter>Roaring Flames</Chapter>
+          <Chapter>Jormag's World</Chapter>
         </Chapters>
       </Act>
     </Acts>
