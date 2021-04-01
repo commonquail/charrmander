@@ -153,6 +153,12 @@
   <data name="msgRegisterExtensionBody" xml:space="preserve">
     <value>This operation will write to the system registry. Do you wish to proceed?</value>
   </data>
+  <data name="msgRegisterExtensionFailedBody" xml:space="preserve">
+    <value>Failed to create registry key: {0}</value>
+  </data>
+  <data name="msgRegisterExtensionFailedTitle" xml:space="preserve">
+    <value>Register File Error</value>
+  </data>
   <data name="msgRegisterExtensionTitle" xml:space="preserve">
     <value>Register File Association</value>
   </data>

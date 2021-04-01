@@ -169,6 +169,24 @@ namespace Charrmander.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to create registry key: {0}.
+        /// </summary>
+        internal static string msgRegisterExtensionFailedBody {
+            get {
+                return ResourceManager.GetString("msgRegisterExtensionFailedBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register File Error.
+        /// </summary>
+        internal static string msgRegisterExtensionFailedTitle {
+            get {
+                return ResourceManager.GetString("msgRegisterExtensionFailedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register File Association.
         /// </summary>
         internal static string msgRegisterExtensionTitle {
