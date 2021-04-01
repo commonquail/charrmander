@@ -2,19 +2,28 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.20.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.20.0.zip</DownloadUrl>
+      <Version>1.21.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.21.0.zip</DownloadUrl>
       <Notes>
-        <Note>Allow typing spaces into character names with multiple components. Erroneous leading and trailing spaces will still be stripped.</Note>
-        <Note>Integrate Windows "Jump List" support. If the Charrmander.exe file 1) is in the taskbar, and 2) has been associated with .charr files via the Tools menu item, every .charr file opened with that Charrmander.exe file will appear in that taskbar entry's "Recent" file group available via right-clicking. This will work as long as Charrmander.exe remains in the same location. If Charrmander.exe is subsequently moved, the file type association must be repeated and the jump list will reset.</Note>
-        <Note>Always add new characters at the end of the list.</Note>
-        <Note>Fix file type association in Tools menu.</Note>
-        <Note>Fix "Jormag's Madness" name.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.20.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.20.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Allow typing spaces into character names with multiple components. Erroneous leading and trailing spaces will still be stripped.</Note>
+          <Note>Integrate Windows "Jump List" support. If the Charrmander.exe file 1) is in the taskbar, and 2) has been associated with .charr files via the Tools menu item, every .charr file opened with that Charrmander.exe file will appear in that taskbar entry's "Recent" file group available via right-clicking. This will work as long as Charrmander.exe remains in the same location. If Charrmander.exe is subsequently moved, the file type association must be repeated and the jump list will reset.</Note>
+          <Note>Always add new characters at the end of the list.</Note>
+          <Note>Fix file type association in Tools menu.</Note>
+          <Note>Fix "Jormag's Madness" name.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.19.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.19.0.zip</DownloadUrl>
@@ -22,8 +31,6 @@
           <Note>Continue "The Icebrood Saga" with "Champions, Ch. 3 - Balance".</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.18.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.18.0.zip</DownloadUrl>
