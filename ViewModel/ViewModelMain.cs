@@ -1,7 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using System.Xml;
@@ -14,8 +13,6 @@ using System.IO;
 using System.Xml.Schema;
 using System.Collections.Generic;
 using System.Linq;
-using BrendanGrant.Helpers.FileAssociation;
-using System.Collections;
 using System.Data;
 using System.Windows.Data;
 
@@ -1233,20 +1230,10 @@ namespace Charrmander.ViewModel
             }
 
             string exePath = Environment.GetCommandLineArgs()[0];
-            FileAssociationInfo fai = new FileAssociationInfo(Properties.Resources.cfgFileExtension);
-            if (fai.Exists)
-            {
-                fai.Delete();
-            }
-            fai.Create("Charrmander", PerceivedTypes.None, "text/xml", new string[] { "notepad.exe" });
-
-            ProgramAssociationInfo pai = new ProgramAssociationInfo(fai.ProgID);
-            if (pai.Exists)
-            {
-                pai.Delete();
-            }
-            pai.Create("Charrmander GW2 Character File.", new ProgramVerb("Open", exePath + " %1"));
-            pai.DefaultIcon = new ProgramIcon(exePath);
+            CurrentUserFileAssoc(Properties.Resources.cfgFileExtension, "Charrmander");
+            CurrentUserFileAssoc(@"Charrmander", "Charrmander GW2 Character File");
+            CurrentUserFileAssoc(@"Charrmander\shell\open\command", $"\"{exePath}\" \"%L\"");
+            CurrentUserFileAssoc(@"Charrmander\DefaultIcon", exePath + ",0");
         }
 
         /// <summary>
@@ -1821,5 +1808,40 @@ namespace Charrmander.ViewModel
                 _completionOverview.Close();
             }
         }
+
+        /// <summary>
+        /// Sets a per-user file type association.
+        /// If <paramref name="subKeyName"/> is a file extension, <paramref name="defaultValue"/> should be a <c>ProgID</c>.
+        /// Otherwise, the first path component of <paramref name="subKeyName"/> should be a <c>ProgId</c>,
+        /// with <paramref name="defaultValue"/> its value.
+        /// </summary>
+        /// <param name="subKeyName">The per-user file association sub-key whose "default" value to set</param>
+        /// <param name="defaultValue">The "default" value of <code>subKeyName</code></param>
+        private void CurrentUserFileAssoc(string subKeyName, string defaultValue)
+        {
+            // Location of per-user file association: https://stackoverflow.com/a/69863/482758
+            using (var key = Registry.CurrentUser.CreateSubKey(@"Software\Classes\" + subKeyName))
+            {
+                if (key == null)
+                {
+                    ShowError(Properties.Resources.msgRegisterExtensionFailedTitle,
+                        String.Format(Properties.Resources.msgRegisterExtensionFailedBody, key));
+                    return;
+                }
+                key.SetValue("", defaultValue);
+            }
+
+            const long SHCNE_ASSOCCHANGED = 0x08000000;
+            const uint SHCNF_IDLIST = 0x0000;
+            const uint SHCNF_FLUSHNOWAIT = 0x2000;
+            SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST | SHCNF_FLUSHNOWAIT, IntPtr.Zero, IntPtr.Zero);
+        }
+
+        [System.Runtime.InteropServices.DllImport("shell32.dll")]
+        private static extern void SHChangeNotify(
+            long wEventId,
+            uint uFlags,
+            IntPtr dwItem1,
+            IntPtr dwItem2);
     }
 }
