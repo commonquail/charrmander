@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 using System.Windows.Data;
+using System.Windows.Shell;
 
 namespace Charrmander.ViewModel
 {
@@ -854,6 +855,8 @@ namespace Charrmander.ViewModel
         /// <param name="filePath">The path of the file to open</param>
         private void DoOpen(string filePath)
         {
+            RecordRecentFile(filePath);
+
             XmlReaderSettings settings = new XmlReaderSettings();
 
             XmlSchemaSet xs = new XmlSchemaSet();
@@ -900,6 +903,17 @@ namespace Charrmander.ViewModel
                         Properties.Resources.msgOpenFailedNoFileBody);
                 }
             }
+        }
+
+        private void RecordRecentFile(string filePath)
+        {
+            var jp = new JumpPath
+            {
+                Path = filePath
+            };
+            var jl = JumpList.GetJumpList(Application.Current);
+            JumpList.AddToRecentCategory(jp);
+            jl.Apply();
         }
 
         /// <summary>
