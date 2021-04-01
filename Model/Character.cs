@@ -193,7 +193,7 @@ namespace Charrmander.Model
             {
                 if (value != _name && !string.IsNullOrWhiteSpace(value))
                 {
-                    _name = value.Trim();
+                    _name = value;
                     RaisePropertyChanged("Name");
                 }
             }

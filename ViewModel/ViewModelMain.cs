@@ -1660,6 +1660,10 @@ namespace Charrmander.ViewModel
             HasCompletedLw2 = CalculateStoryChapterCompletion(SelectedCharacter.Lw2Acts);
         }
 
+        internal void TrimSelectedCharacterName()
+        {
+            SelectedCharacter.Name = SelectedCharacter.Name.Trim();
+        }
 
         private Area.CompletionState CalculateStoryChapterCompletion(Collection<Act> acts)
         {
