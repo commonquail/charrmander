@@ -183,7 +183,8 @@
 
                             <DockPanel>
                                 <TextBlock Text="Name:"/>
-                                <TextBox VerticalAlignment="Center" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBox VerticalAlignment="Center" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                                         LostKeyboardFocus="CharacterNameTextBox_LostKeyboardFocus"/>
                             </DockPanel>
 
                             <DockPanel>

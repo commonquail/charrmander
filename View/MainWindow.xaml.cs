@@ -45,6 +45,20 @@ namespace Charrmander.View
         {
             (DataContext as ViewModelMain).UpdateStoryChapterCompletion();
         }
+
+        /// <summary>
+        /// When shifting focus outside of the selected character name, trim the name
+        /// because character names cannot have leading or trailing spaces.
+        /// Do not trim the name when the property is set (which otherwise seems appropriate)
+        /// because a character name can have multiple components separated by a space,
+        /// so it must be possible to type spaces.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CharacterNameTextBox_LostKeyboardFocus(object sender, RoutedEventArgs e)
+        {
+            (DataContext as ViewModelMain).TrimSelectedCharacterName();
+        }
     }
 
     /// <summary>
