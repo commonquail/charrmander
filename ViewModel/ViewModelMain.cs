@@ -796,6 +796,11 @@ namespace Charrmander.ViewModel
         private void NewCharacter()
         {
             var c = new Character(this);
+            // When adding a new character, set its default sort order to be 1 greater than the current max.
+            // This enables the following invariant: if the current sort order is by descending age,
+            // that sort order is maintained.
+            var currentMaxSortOrder = _characterList.Select(character => character.DefaultSortOrder).DefaultIfEmpty(0).Max();
+            c.DefaultSortOrder = 1 + currentMaxSortOrder;
             _characterList.Add(c);
             if (SelectedCharacter == null)
             {
