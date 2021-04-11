@@ -1,9 +1,5 @@
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.IO.Compression;
-using System.Reflection;
 using System.Windows;
 using Charrmander.View;
 using Charrmander.ViewModel;
@@ -15,49 +11,6 @@ namespace Charrmander
     /// </summary>
     public partial class App : Application
     {
-        public App()
-        {
-            AppDomain.CurrentDomain.AssemblyResolve += ResolveAssembly;
-        }
-
-        static Assembly ResolveAssembly(object sender, ResolveEventArgs args)
-        {
-            var assemblyName = typeof(App).Namespace + '.'
-                + new AssemblyName(args.Name).Name;
-
-            if (assemblyName.EndsWith(".resources"))
-            {
-                return null;
-            }
-
-            var dllArchive = assemblyName + ".dll.gz";
-
-            using (var zipped = new GZipStream(
-                Assembly.GetExecutingAssembly()
-                .GetManifestResourceStream(dllArchive) ?? Stream.Null,
-                CompressionMode.Decompress))
-            {
-                using (var outstream = new MemoryStream())
-                {
-                    CopyTo(zipped, outstream);
-                    return Assembly.Load(outstream.GetBuffer());
-                }
-            }
-        }
-
-        private static void CopyTo(Stream source, Stream destination)
-        {
-            Debug.Assert(source != null);
-            Debug.Assert(destination != null);
-
-            var buffer = new byte[2048];
-            int bytesRead;
-            while ((bytesRead = source.Read(buffer, 0, buffer.Length)) > 0)
-            {
-                destination.Write(buffer, 0, bytesRead);
-            }
-        }
-
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);

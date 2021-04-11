@@ -68,16 +68,15 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Xceed.Wpf.Toolkit">
-      <HintPath>packages\Extended.Wpf.Toolkit.2.4\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\IntegerUpDown.xaml.cs">
+      <DependentUpon>IntegerUpDown.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Area.cs" />
     <Compile Include="Model\Act.cs" />
     <Compile Include="Model\Chapter.cs" />
@@ -95,6 +94,10 @@
     <Compile Include="View\UpdateAvailableView.xaml.cs">
       <DependentUpon>UpdateAvailableView.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\IntegerUpDown.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CompletionOverviewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,7 +149,6 @@
     <None Include="VersionHistory.xsd">
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="Xceed.Wpf.Toolkit.dll.gz" />
     <Resource Include="Resources\charr.xsd">
       <SubType>Designer</SubType>
     </Resource>
