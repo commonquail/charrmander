@@ -209,6 +209,7 @@
                                                     Maximum="{x:Static Model:Character.MaxLevel}"
                                                     DefaultValue="0"/>
                                 <Slider Value="{Binding Level}" Name="sldLevel" Margin="0,2"
+                                        Focusable="False"
                                         TickPlacement="TopLeft" AutoToolTipPlacement="BottomRight"
                                         Minimum="{Binding Source={x:Static Model:Character.MinLevel}}"
                                         Maximum="{Binding Source={x:Static Model:Character.MaxLevel}}"
@@ -658,6 +659,7 @@
                     <StackPanel>
                         <StackPanel.Resources>
                             <Style TargetType="{x:Type Slider}">
+                                <Setter Property="Focusable" Value="False"/>
                                 <Setter Property="TickPlacement" Value="TopLeft"/>
                                 <Setter Property="AutoToolTipPlacement" Value="BottomRight"/>
                                 <Setter Property="Minimum" Value="{Binding Source={x:Static Model:CraftingDiscipline.MinLevel}}"/>
