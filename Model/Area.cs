@@ -1,4 +1,4 @@
-﻿using Charrmander.Util;
+using Charrmander.Util;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 

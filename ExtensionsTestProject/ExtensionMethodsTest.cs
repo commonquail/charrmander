@@ -1,4 +1,4 @@
-﻿using Charrmander.Util;
+using Charrmander.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 

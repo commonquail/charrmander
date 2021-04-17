@@ -1,4 +1,4 @@
-﻿using Charrmander.Util;
+using Charrmander.Util;
 
 namespace Charrmander.Model
 {

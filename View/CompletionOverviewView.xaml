@@ -1,4 +1,4 @@
-﻿<Window x:Class="Charrmander.View.CompletionOverviewView"
+<Window x:Class="Charrmander.View.CompletionOverviewView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Area Completion Overview" SizeToContent="WidthAndHeight" MinWidth="290">

@@ -1,4 +1,4 @@
-﻿<Window x:Class="Charrmander.View.UpdateAvailableView"
+<Window x:Class="Charrmander.View.UpdateAvailableView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Update Available"
