@@ -1,264 +1,48 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F8217C35-2528-49BB-B5D8-82C475868F17}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Charrmander</RootNamespace>
-    <AssemblyName>Charrmander</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <TargetFrameworkProfile />
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Platforms>x64</Platforms>
+    <PackageId>Charrmander</PackageId>
+    <Version>1.9.2.0</Version>
+    <Copyright>2012-2021</Copyright>
+    <Authors>Mikkel Kjeldsen</Authors>
+    <PackageProjectUrl>https://bitbucket.org/jokum/charrmander/</PackageProjectUrl>
     <ApplicationIcon>MainExecutable.ico</ApplicationIcon>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <Compile Remove="ExtensionsTestProject\**" />
+    <EmbeddedResource Remove="ExtensionsTestProject\**" />
+    <None Remove="ExtensionsTestProject\**" />
+    <Page Remove="ExtensionsTestProject\**" />
   </ItemGroup>
+
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="View\IntegerUpDown.xaml.cs">
-      <DependentUpon>IntegerUpDown.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Area.cs" />
-    <Compile Include="Model\Act.cs" />
-    <Compile Include="Model\Chapter.cs" />
-    <Compile Include="Model\Dungeon.cs" />
-    <Compile Include="Model\CraftingDiscipline.cs" />
-    <Compile Include="Util\AbstractNotifier.cs" />
-    <Compile Include="Util\CharrElement.cs" />
-    <Compile Include="Util\RelayCommand.cs" />
-    <Compile Include="ViewModel\IViewModel.cs" />
-    <Compile Include="ViewModel\UpdateAvailableViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelMain.cs" />
-    <Compile Include="View\CompletionOverviewView.xaml.cs">
-      <DependentUpon>CompletionOverviewView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UpdateAvailableView.xaml.cs">
-      <DependentUpon>UpdateAvailableView.xaml</DependentUpon>
-    </Compile>
-    <Page Include="View\IntegerUpDown.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\CompletionOverviewView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Model\Character.cs" />
-    <Compile Include="Util\ExtensionMethods.cs" />
-    <Compile Include="View\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="View\UpdateAvailableView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <None Remove="Icons\**" />
+    <Resource Include="Icons\**" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <None Remove="Resources\**" />
+    <Resource Include="Resources\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <AppDesigner Include="Properties\" />
-    <None Include="VersionHistory.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Resource Include="Resources\charr.xsd">
-      <SubType>Designer</SubType>
-    </Resource>
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Professions.xml">
-      <SubType>Designer</SubType>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Areas.xml">
-      <SubType>Designer</SubType>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Icons\Open.bmp" />
-    <Resource Include="Icons\Save.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Icons\Game\Areas\HeartDone.png" />
-    <Resource Include="Icons\Game\Areas\Heart.png" />
-    <Resource Include="Icons\Game\Areas\Waypoint.png" />
-    <Resource Include="Icons\Game\Areas\PoIDone.png" />
-    <Resource Include="Icons\Game\Areas\PoI.png" />
-    <Resource Include="Icons\Game\Areas\SkillDone.png" />
-    <Resource Include="Icons\Game\Areas\Skill.png" />
-    <Resource Include="Icons\Game\Areas\VistaDone.png" />
-    <Resource Include="Icons\Game\Areas\Vista.png" />
-    <Resource Include="Icons\Game\Areas\WaypointDone.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Icons\Game\MainTitle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="MainExecutable.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="VersionHistory.xml">
-      <SubType>Designer</SubType>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Icons\Game\Crafts\Armorsmith.png" />
-    <Resource Include="Icons\Game\Crafts\Artificer.png" />
-    <Resource Include="Icons\Game\Crafts\Chef.png" />
-    <Resource Include="Icons\Game\Crafts\Huntsman.png" />
-    <Resource Include="Icons\Game\Crafts\Jeweler.png" />
-    <Resource Include="Icons\Game\Crafts\Leatherworker.png" />
-    <Resource Include="Icons\Game\Crafts\Tailor.png" />
-    <Resource Include="Icons\Game\Crafts\Weaponsmith.png" />
-    <Resource Include="Icons\Game\Professions\Elementalist.png" />
-    <Resource Include="Icons\Game\Professions\Engineer.png" />
-    <Resource Include="Icons\Game\Professions\Guardian.png" />
-    <Resource Include="Icons\Game\Professions\Mesmer.png" />
-    <Resource Include="Icons\Game\Professions\Necromancer.png" />
-    <Resource Include="Icons\Game\Professions\Ranger.png" />
-    <Resource Include="Icons\Game\Professions\Revenant.png" />
-    <Resource Include="Icons\Game\Professions\Thief.png" />
-    <Resource Include="Icons\Game\Professions\Warrior.png" />
-    <Resource Include="Icons\Game\Races\Asura.png" />
-    <Resource Include="Icons\Game\Races\Charr.png" />
-    <Resource Include="Icons\Game\Races\Human.png" />
-    <Resource Include="Icons\Game\Races\Norn.png" />
-    <Resource Include="Icons\Game\Races\Sylvari.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Races.xml">
-      <SubType>Designer</SubType>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Biographies.xml">
-      <SubType>Designer</SubType>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Dungeons.xml">
-      <SubType>Designer</SubType>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\StoryChoices.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Icons\Game\WorldCompletionDone.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Icons\Game\Crafts\Scribe.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\StoryChapters.xml" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
