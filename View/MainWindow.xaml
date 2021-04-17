@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:View="clr-namespace:Charrmander.View"
         xmlns:Model="clr-namespace:Charrmander.Model"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="{Binding WindowTitle}"
         Width="575"
         SizeToContent="Height"
@@ -37,6 +36,7 @@
         <View:GameIconConverter x:Key="GameIconConverter"/>
         <View:CompletionStateConverter x:Key="CompletionStateConverter"/>
         <View:KeyRewardBoolConverter x:Key="KeyRewardBoolConverter"/>
+        <View:IntFromBlankTextConverter x:Key="IntFromBlankTextConverter"/>
     </Window.Resources>
 
     <Grid>
@@ -203,11 +203,13 @@
                                 <TextBlock Text="Level:"/>
                                 <TextBlock Text="{Binding Source={x:Static Model:Character.MaxLevel}, StringFormat='/ {0}'}"
                                            DockPanel.Dock="Right" Width="Auto"/>
-                                <xctk:IntegerUpDown DockPanel.Dock="Right" Width="45"
-                                                    Text="{Binding Value, ElementName=sldLevel, UpdateSourceTrigger=PropertyChanged}"
-                                                    Minimum="{x:Static Model:Character.MinLevel}"
-                                                    Maximum="{x:Static Model:Character.MaxLevel}"
-                                                    DefaultValue="0"/>
+                                <View:IntegerUpDown
+                                    DockPanel.Dock="Right"
+                                    Width="45"
+                                    Value="{Binding Value, ElementName=sldLevel, UpdateSourceTrigger=PropertyChanged}"
+                                    Minimum="{x:Static Model:Character.MinLevel}"
+                                    Maximum="{x:Static Model:Character.MaxLevel}"
+                                    />
                                 <Slider Value="{Binding Level}" Name="sldLevel" Margin="0,2"
                                         Focusable="False"
                                         TickPlacement="TopLeft" AutoToolTipPlacement="BottomRight"
@@ -219,11 +221,11 @@
 
                             <DockPanel>
                                 <TextBlock Text="Sort order:"/>
-                                <xctk:IntegerUpDown
-                                    Text="{Binding DefaultSortOrder, UpdateSourceTrigger=PropertyChanged}"
+                                <View:IntegerUpDown
+                                    Value="{Binding DefaultSortOrder, UpdateSourceTrigger=PropertyChanged}"
                                     Minimum="{x:Static Model:Character.MinSortOrder}"
                                     Maximum="{x:Static Model:Character.MaxSortOrder}"
-                                    DefaultValue="1"/>
+                                    />
                             </DockPanel>
 
                         </StackPanel>
@@ -591,12 +593,10 @@
                                 <Style TargetType="{x:Type Image}">
                                     <Setter Property="Width" Value="20"/>
                                 </Style>
-                                <Style TargetType="{x:Type xctk:IntegerUpDown}">
+                                <Style TargetType="{x:Type View:IntegerUpDown}">
                                     <Setter Property="Width" Value="50"/>
-                                    <Setter Property="Height" Value="22"/>
                                     <Setter Property="Margin" Value="2,4"/>
                                     <Setter Property="Minimum" Value="0"/>
-                                    <Setter Property="DefaultValue" Value="0"/>
                                 </Style>
                                 <Style TargetType="{x:Type Label}">
                                     <Setter Property="ContentStringFormat" Value="{}/{0,3}"/>
@@ -613,35 +613,35 @@
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding HeartIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <xctk:IntegerUpDown Text="{Binding Hearts, UpdateSourceTrigger=PropertyChanged}"/>
+                                <View:IntegerUpDown Value="{Binding Hearts, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntFromBlankTextConverter}}"/>
                                 <Label Content="{Binding Hearts}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding WaypointIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <xctk:IntegerUpDown Text="{Binding Waypoints, UpdateSourceTrigger=PropertyChanged}"/>
+                                <View:IntegerUpDown Value="{Binding Waypoints, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntFromBlankTextConverter}}"/>
                                 <Label Content="{Binding Waypoints}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding PoIIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <xctk:IntegerUpDown Text="{Binding PoIs, UpdateSourceTrigger=PropertyChanged}"/>
+                                <View:IntegerUpDown Value="{Binding PoIs, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntFromBlankTextConverter}}"/>
                                 <Label Content="{Binding PoIs}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding SkillIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <xctk:IntegerUpDown Text="{Binding Skills, UpdateSourceTrigger=PropertyChanged}"/>
+                                <View:IntegerUpDown Value="{Binding Skills, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntFromBlankTextConverter}}"/>
                                 <Label Content="{Binding Skills}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding VistaIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
-                                <xctk:IntegerUpDown Text="{Binding Vistas, UpdateSourceTrigger=PropertyChanged}"/>
+                                <View:IntegerUpDown Value="{Binding Vistas, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntFromBlankTextConverter}}"/>
                                 <Label Content="{Binding Vistas}"/>
                             </StackPanel>
 
@@ -672,21 +672,22 @@
                                 <ItemsControl ItemsSource="{Binding}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <DockPanel>
+                                            <DockPanel Margin="0 2">
                                                 <Image Source="{Binding Name, Converter={StaticResource GameIconConverter},
                                                     ConverterParameter=Crafts}" ToolTip="{Binding Name}" Height="20" Width="20" />
 
                                                 <TextBlock Text="{Binding MaxLevel,
                                                     StringFormat=' / {0}'}" DockPanel.Dock="Right" Margin="0,5"/>
 
-                                                <xctk:IntegerUpDown
-                                                    Text="{Binding Value, ElementName=sldCraftingDiscipline,
-                                                    UpdateSourceTrigger=PropertyChanged}"
+                                                <View:IntegerUpDown
+                                                    Value="{Binding Value, ElementName=sldCraftingDiscipline,
+                                                        UpdateSourceTrigger=PropertyChanged}"
                                                     Minimum="{x:Static Model:CraftingDiscipline.MinLevel}"
                                                     Maximum="{Binding MaxLevel}"
-                                                    DefaultValue="0"
                                                     DockPanel.Dock="Right"
-                                                    Width="55" Height="22" VerticalAlignment="Center"/>
+                                                    Width="55"
+                                                    VerticalAlignment="Center"
+                                                    />
 
                                                 <Slider Value="{Binding Level}" Name="sldCraftingDiscipline"
                                                         Maximum="{Binding MaxLevel}" Margin="6,2"/>
@@ -708,9 +709,19 @@
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Fractal Tier:" Width="80" VerticalAlignment="Center"/>
-                            <xctk:IntegerUpDown Minimum="1" DefaultValue="1" Width="50" Height="22"
-                                                Text="{Binding SelectedCharacter.FractalTier, UpdateSourceTrigger=PropertyChanged}"
-                                                ToolTip="Highest tier reached in Fractals of the Mists."/>
+                            <View:IntegerUpDown
+                                Minimum="1"
+                                Width="50"
+                                ToolTip="Highest tier reached in Fractals of the Mists."
+                                >
+                                <View:IntegerUpDown.Value>
+                                    <Binding Path="SelectedCharacter.FractalTier">
+                                        <Binding.Converter>
+                                            <View:IntFromBlankTextConverter/>
+                                        </Binding.Converter>
+                                    </Binding>
+                                </View:IntegerUpDown.Value>
+                            </View:IntegerUpDown>
                         </StackPanel>
                         <GroupBox Header="Dungeon Story Mode Completion">
                             <ContentControl Content="{Binding SelectedCharacter.Dungeons}">

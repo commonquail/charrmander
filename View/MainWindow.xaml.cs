@@ -2,7 +2,6 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Input;
 using Charrmander.ViewModel;
 using Charrmander.Model;
 
@@ -147,6 +146,23 @@ namespace Charrmander.View
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             throw new NotSupportedException();
+        }
+    }
+
+    /// <summary>
+    /// Converts a blank or null string to <c>0</c>.
+    /// </summary>
+    public class IntFromBlankTextConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            var str = value.ToString();
+            return string.IsNullOrWhiteSpace(str) ? 0 : int.Parse(str);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return value.ToString();
         }
     }
 }
