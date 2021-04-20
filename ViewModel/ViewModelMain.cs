@@ -16,6 +16,7 @@ using System.Linq;
 using System.Data;
 using System.Windows.Data;
 using System.Windows.Shell;
+using System.Runtime.Versioning;
 
 namespace Charrmander.ViewModel
 {
@@ -1240,6 +1241,16 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void RegisterExtension()
         {
+            if (!OperatingSystem.IsWindows())
+            {
+                MessageBox.Show(
+                    Properties.Resources.msgOsUnsupportedBody,
+                    Properties.Resources.msgOsUnsupportedTitle,
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+                return;
+            }
+
             if (MessageBox.Show(Properties.Resources.msgRegisterExtensionBody,
                 Properties.Resources.msgRegisterExtensionTitle,
                 MessageBoxButton.YesNo,
@@ -1840,6 +1851,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         /// <param name="subKeyName">The per-user file association sub-key whose "default" value to set</param>
         /// <param name="defaultValue">The "default" value of <code>subKeyName</code></param>
+        [SupportedOSPlatform("windows")]
         private void CurrentUserFileAssoc(string subKeyName, string defaultValue)
         {
             // Location of per-user file association: https://stackoverflow.com/a/69863/482758
@@ -1857,14 +1869,19 @@ namespace Charrmander.ViewModel
             const long SHCNE_ASSOCCHANGED = 0x08000000;
             const uint SHCNF_IDLIST = 0x0000;
             const uint SHCNF_FLUSHNOWAIT = 0x2000;
-            SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST | SHCNF_FLUSHNOWAIT, IntPtr.Zero, IntPtr.Zero);
+            NativeMethods.SHChangeNotify(SHCNE_ASSOCCHANGED, SHCNF_IDLIST | SHCNF_FLUSHNOWAIT, IntPtr.Zero, IntPtr.Zero);
         }
+    }
+
+    internal static class NativeMethods
+    {
 
         [System.Runtime.InteropServices.DllImport("shell32.dll")]
-        private static extern void SHChangeNotify(
+        internal static extern void SHChangeNotify(
             long wEventId,
             uint uFlags,
             IntPtr dwItem1,
             IntPtr dwItem2);
+
     }
 }

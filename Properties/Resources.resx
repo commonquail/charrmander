@@ -150,6 +150,12 @@
   <data name="msgOpenFailedValidationTitle" xml:space="preserve">
     <value>Validation Error</value>
   </data>
+  <data name="msgOsUnsupportedBody" xml:space="preserve">
+    <value>This functionality is not supported on the current platform. It may be incomplete or nonsensical.</value>
+  </data>
+  <data name="msgOsUnsupportedTitle" xml:space="preserve">
+    <value>Platform unsupported</value>
+  </data>
   <data name="msgRegisterExtensionBody" xml:space="preserve">
     <value>This operation will write to the system registry. Do you wish to proceed?</value>
   </data>
