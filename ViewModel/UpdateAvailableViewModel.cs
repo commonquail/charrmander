@@ -60,7 +60,7 @@ namespace Charrmander.ViewModel
                 if (value != _curVersion)
                 {
                     _curVersion = value;
-                    RaisePropertyChanged("CurrentVersion");
+                    RaisePropertyChanged(nameof(CurrentVersion));
                 }
             }
         }
@@ -76,7 +76,7 @@ namespace Charrmander.ViewModel
                 if (value != _latestVersion)
                 {
                     _latestVersion = value;
-                    RaisePropertyChanged("LatestVersion");
+                    RaisePropertyChanged(nameof(LatestVersion));
                 }
             }
         }
@@ -94,7 +94,7 @@ namespace Charrmander.ViewModel
                 if (value != _downloadUrl)
                 {
                     _downloadUrl = value;
-                    RaisePropertyChanged("LatestVersionPath");
+                    RaisePropertyChanged(nameof(LatestVersionPath));
                 }
             }
         }
@@ -111,7 +111,7 @@ namespace Charrmander.ViewModel
                 if (value != _versionHistory)
                 {
                     _versionHistory = value;
-                    RaisePropertyChanged("VersionHistory");
+                    RaisePropertyChanged(nameof(VersionHistory));
                 }
             }
         }

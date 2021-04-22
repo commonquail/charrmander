@@ -96,7 +96,7 @@ namespace Charrmander.Model
                 if (value != _minLevel)
                 {
                     _minLevel = value;
-                    RaisePropertyChanged("MinLevel");
+                    RaisePropertyChanged(nameof(MinLevel));
                 }
             }
         }
@@ -112,7 +112,7 @@ namespace Charrmander.Model
                 if (value != _maxLevel)
                 {
                     _maxLevel = value;
-                    RaisePropertyChanged("MaxLevel");
+                    RaisePropertyChanged(nameof(MaxLevel));
                 }
             }
         }
@@ -138,7 +138,7 @@ namespace Charrmander.Model
                 if (value != _areaState)
                 {
                     _areaState = value;
-                    RaisePropertyChanged("State");
+                    RaisePropertyChanged(nameof(State));
                 }
             }
         }

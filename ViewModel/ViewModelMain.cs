@@ -161,7 +161,7 @@ namespace Charrmander.ViewModel
                 if (value != _windowTitle)
                 {
                     _windowTitle = value;
-                    RaisePropertyChanged("WindowTitle");
+                    RaisePropertyChanged(nameof(WindowTitle));
                 }
             }
         }
@@ -182,7 +182,7 @@ namespace Charrmander.ViewModel
                 if (value != _statusBarUpdateCheck)
                 {
                     _statusBarUpdateCheck = value;
-                    RaisePropertyChanged("StatusBarUpdateCheck");
+                    RaisePropertyChanged(nameof(StatusBarUpdateCheck));
                 }
             }
         }
@@ -218,7 +218,7 @@ namespace Charrmander.ViewModel
                 if (value != _unsavedChanges)
                 {
                     _unsavedChanges = value;
-                    RaisePropertyChanged("UnsavedChanges");
+                    RaisePropertyChanged(nameof(UnsavedChanges));
                 }
                 WindowTitle = String.Format(Properties.Resources.wnWindowTitle,
                     _unsavedChanges ? "*" : string.Empty,
@@ -269,7 +269,7 @@ namespace Charrmander.ViewModel
                         ChangedAreaOrCharacter();
                     }
                     IsCharacterDetailEnabled = value != null;
-                    RaisePropertyChanged("SelectedCharacter");
+                    RaisePropertyChanged(nameof(SelectedCharacter));
                 }
             }
         }
@@ -289,7 +289,7 @@ namespace Charrmander.ViewModel
                     {
                         ChangedAreaOrCharacter();
                     }
-                    RaisePropertyChanged("SelectedAreaReference");
+                    RaisePropertyChanged(nameof(SelectedAreaReference));
                 }
             }
         }
@@ -305,7 +305,7 @@ namespace Charrmander.ViewModel
                 if (value != _selectedAreaCharacter)
                 {
                     _selectedAreaCharacter = value;
-                    RaisePropertyChanged("SelectedAreaCharacter");
+                    RaisePropertyChanged(nameof(SelectedAreaCharacter));
                 }
             }
         }
@@ -321,7 +321,7 @@ namespace Charrmander.ViewModel
                 if (value != _isCharacterDetailEnabled)
                 {
                     _isCharacterDetailEnabled = value;
-                    RaisePropertyChanged("IsCharacterDetailEnabled");
+                    RaisePropertyChanged(nameof(IsCharacterDetailEnabled));
                 }
             }
         }
@@ -340,7 +340,7 @@ namespace Charrmander.ViewModel
                 if (value != _isBiographyVisible)
                 {
                     _isBiographyVisible = value;
-                    RaisePropertyChanged("IsBiographyVisible");
+                    RaisePropertyChanged(nameof(IsBiographyVisible));
                 }
             }
         }
@@ -356,7 +356,7 @@ namespace Charrmander.ViewModel
                 if (value != _selectedBiographyOptionsProfession)
                 {
                     _selectedBiographyOptionsProfession = value;
-                    RaisePropertyChanged("BiographyOptionsProfession");
+                    RaisePropertyChanged(nameof(BiographyOptionsProfession));
                 }
             }
         }
@@ -372,7 +372,7 @@ namespace Charrmander.ViewModel
                 if (value != _selectedBiographyOptionsPersonality)
                 {
                     _selectedBiographyOptionsPersonality = value;
-                    RaisePropertyChanged("BiographyOptionsPersonality");
+                    RaisePropertyChanged(nameof(BiographyOptionsPersonality));
                 }
             }
         }
@@ -388,7 +388,7 @@ namespace Charrmander.ViewModel
                 if (value != _selectedBiographyOptionsRaceFirst)
                 {
                     _selectedBiographyOptionsRaceFirst = value;
-                    RaisePropertyChanged("BiographyOptionsRaceFirst");
+                    RaisePropertyChanged(nameof(BiographyOptionsRaceFirst));
                 }
             }
         }
@@ -404,7 +404,7 @@ namespace Charrmander.ViewModel
                 if (value != _selectedBiographyOptionsRaceSecond)
                 {
                     _selectedBiographyOptionsRaceSecond = value;
-                    RaisePropertyChanged("BiographyOptionsRaceSecond");
+                    RaisePropertyChanged(nameof(BiographyOptionsRaceSecond));
                 }
             }
         }
@@ -420,7 +420,7 @@ namespace Charrmander.ViewModel
                 if (value != _selectedBiographyOptionsRaceThird)
                 {
                     _selectedBiographyOptionsRaceThird = value;
-                    RaisePropertyChanged("BiographyOptionsRaceThird");
+                    RaisePropertyChanged(nameof(BiographyOptionsRaceThird));
                 }
             }
         }
@@ -447,8 +447,8 @@ namespace Charrmander.ViewModel
                 if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Hearts && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Hearts = value;
-                    RaisePropertyChanged("HeartIcon");
-                    RaisePropertyChanged("Hearts");
+                    RaisePropertyChanged(nameof(HeartIcon));
+                    RaisePropertyChanged(nameof(Hearts));
                     UpdateAreaState(SelectedAreaReference, SelectedCharacter);
                 }
             }
@@ -472,8 +472,8 @@ namespace Charrmander.ViewModel
                 if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Waypoints && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Waypoints = value;
-                    RaisePropertyChanged("Waypoints");
-                    RaisePropertyChanged("WaypointIcon");
+                    RaisePropertyChanged(nameof(Waypoints));
+                    RaisePropertyChanged(nameof(WaypointIcon));
                     UpdateAreaState(SelectedAreaReference, SelectedCharacter);
                 }
             }
@@ -497,8 +497,8 @@ namespace Charrmander.ViewModel
                 if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.PoIs && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.PoIs = value;
-                    RaisePropertyChanged("PoIs");
-                    RaisePropertyChanged("PoIIcon");
+                    RaisePropertyChanged(nameof(PoIs));
+                    RaisePropertyChanged(nameof(PoIIcon));
                     UpdateAreaState(SelectedAreaReference, SelectedCharacter);
                 }
             }
@@ -522,8 +522,8 @@ namespace Charrmander.ViewModel
                 if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Skills && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Skills = value;
-                    RaisePropertyChanged("Skills");
-                    RaisePropertyChanged("SkillIcon");
+                    RaisePropertyChanged(nameof(Skills));
+                    RaisePropertyChanged(nameof(SkillIcon));
                     UpdateAreaState(SelectedAreaReference, SelectedCharacter);
                 }
             }
@@ -547,8 +547,8 @@ namespace Charrmander.ViewModel
                 if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Vistas && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Vistas = value;
-                    RaisePropertyChanged("Vistas");
-                    RaisePropertyChanged("VistaIcon");
+                    RaisePropertyChanged(nameof(Vistas));
+                    RaisePropertyChanged(nameof(VistaIcon));
                     UpdateAreaState(SelectedAreaReference, SelectedCharacter);
                 }
             }
@@ -1532,29 +1532,29 @@ namespace Charrmander.ViewModel
                 UpdateAreaState(ra, SelectedCharacter);
             }
 
-            RaisePropertyChanged("Hearts");
-            RaisePropertyChanged("Waypoints");
-            RaisePropertyChanged("PoIs");
-            RaisePropertyChanged("Skills");
-            RaisePropertyChanged("Vistas");
+            RaisePropertyChanged(nameof(Hearts));
+            RaisePropertyChanged(nameof(Waypoints));
+            RaisePropertyChanged(nameof(PoIs));
+            RaisePropertyChanged(nameof(Skills));
+            RaisePropertyChanged(nameof(Vistas));
 
-            RaisePropertyChanged("HeartIcon");
-            RaisePropertyChanged("WaypointIcon");
-            RaisePropertyChanged("PoIIcon");
-            RaisePropertyChanged("SkillIcon");
-            RaisePropertyChanged("VistaIcon");
+            RaisePropertyChanged(nameof(HeartIcon));
+            RaisePropertyChanged(nameof(WaypointIcon));
+            RaisePropertyChanged(nameof(PoIIcon));
+            RaisePropertyChanged(nameof(SkillIcon));
+            RaisePropertyChanged(nameof(VistaIcon));
 
             UpdateStoryChapterCompletion();
             // Forcefully update the story chapter summary.
             // Here, in chronological order of release to match typical eye
             // movement.
-            RaisePropertyChanged("HasCompletedLw2");
-            RaisePropertyChanged("HasCompletedHoT");
-            RaisePropertyChanged("HasCompletedKotT");
-            RaisePropertyChanged("HasCompletedLw3");
-            RaisePropertyChanged("HasCompletedPoF");
-            RaisePropertyChanged("HasCompletedLw4");
-            RaisePropertyChanged("HasCompletedTis");
+            RaisePropertyChanged(nameof(HasCompletedLw2));
+            RaisePropertyChanged(nameof(HasCompletedHoT));
+            RaisePropertyChanged(nameof(HasCompletedKotT));
+            RaisePropertyChanged(nameof(HasCompletedLw3));
+            RaisePropertyChanged(nameof(HasCompletedPoF));
+            RaisePropertyChanged(nameof(HasCompletedLw4));
+            RaisePropertyChanged(nameof(HasCompletedTis));
         }
 
         /// <summary>
@@ -1701,7 +1701,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasCompletedLw2)
                 {
                     _hasCompletedLw2 = value;
-                    RaisePropertyChanged("HasCompletedLw2");
+                    RaisePropertyChanged(nameof(HasCompletedLw2));
                 }
             }
         }
@@ -1716,7 +1716,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasCompletedHoT)
                 {
                     _hasCompletedHoT = value;
-                    RaisePropertyChanged("HasCompletedHoT");
+                    RaisePropertyChanged(nameof(HasCompletedHoT));
                 }
             }
         }
@@ -1731,7 +1731,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasCompletedKotT)
                 {
                     _hasCompletedKotT = value;
-                    RaisePropertyChanged("HasCompletedKotT");
+                    RaisePropertyChanged(nameof(HasCompletedKotT));
                 }
             }
         }
@@ -1746,7 +1746,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasCompletedLw3)
                 {
                     _hasCompletedLw3 = value;
-                    RaisePropertyChanged("HasCompletedLw3");
+                    RaisePropertyChanged(nameof(HasCompletedLw3));
                 }
             }
         }
@@ -1761,7 +1761,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasCompletedPoF)
                 {
                     _hasCompletedPoF = value;
-                    RaisePropertyChanged("HasCompletedPoF");
+                    RaisePropertyChanged(nameof(HasCompletedPoF));
                 }
             }
         }
@@ -1776,7 +1776,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasCompletedLw4)
                 {
                     _hasCompletedLw4 = value;
-                    RaisePropertyChanged("HasCompletedLw4");
+                    RaisePropertyChanged(nameof(HasCompletedLw4));
                 }
             }
         }
@@ -1791,7 +1791,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasCompletedTis)
                 {
                     _hasCompletedTis = value;
-                    RaisePropertyChanged("HasCompletedTis");
+                    RaisePropertyChanged(nameof(HasCompletedTis));
                 }
             }
         }
@@ -1806,7 +1806,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasKeyLw2)
                 {
                     _hasKeyLw2 = value;
-                    RaisePropertyChanged("HasKeyLw2");
+                    RaisePropertyChanged(nameof(HasKeyLw2));
                 }
             }
         }
@@ -1821,7 +1821,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasKeyHoT)
                 {
                     _hasKeyHoT = value;
-                    RaisePropertyChanged("HasKeyHoT");
+                    RaisePropertyChanged(nameof(HasKeyHoT));
                 }
             }
         }

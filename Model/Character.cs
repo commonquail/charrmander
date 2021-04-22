@@ -194,7 +194,7 @@ namespace Charrmander.Model
                 if (value != _name && !string.IsNullOrWhiteSpace(value))
                 {
                     _name = value;
-                    RaisePropertyChanged("Name");
+                    RaisePropertyChanged(nameof(Name));
                 }
             }
         }
@@ -211,7 +211,7 @@ namespace Charrmander.Model
                 if (value != _race && !string.IsNullOrWhiteSpace(value))
                 {
                     _race = value;
-                    RaisePropertyChanged("Race");
+                    RaisePropertyChanged(nameof(Race));
                 }
             }
         }
@@ -227,7 +227,7 @@ namespace Charrmander.Model
                 if (value != _profession && !string.IsNullOrWhiteSpace(value))
                 {
                     _profession = value;
-                    RaisePropertyChanged("Profession");
+                    RaisePropertyChanged(nameof(Profession));
                 }
             }
         }
@@ -244,7 +244,7 @@ namespace Charrmander.Model
                     value >= MinLevel && value <= MaxLevel)
                 {
                     _level = value;
-                    RaisePropertyChanged("Level");
+                    RaisePropertyChanged(nameof(Level));
                 }
             }
         }
@@ -260,7 +260,7 @@ namespace Charrmander.Model
                 if (value != _biographies["Profession"] && !string.IsNullOrWhiteSpace(value))
                 {
                     _biographies["Profession"] = value;
-                    RaisePropertyChanged("BiographyProfession");
+                    RaisePropertyChanged(nameof(BiographyProfession));
                 }
             }
         }
@@ -276,7 +276,7 @@ namespace Charrmander.Model
                 if (value != _biographies["Personality"] && !string.IsNullOrWhiteSpace(value))
                 {
                     _biographies["Personality"] = value;
-                    RaisePropertyChanged("BiographyPersonality");
+                    RaisePropertyChanged(nameof(BiographyPersonality));
                 }
             }
         }
@@ -294,7 +294,7 @@ namespace Charrmander.Model
                 if (value != _biographies["RaceFirst"] && !string.IsNullOrWhiteSpace(value))
                 {
                     _biographies["RaceFirst"] = value;
-                    RaisePropertyChanged("BiographyRaceFirst");
+                    RaisePropertyChanged(nameof(BiographyRaceFirst));
                 }
             }
         }
@@ -312,7 +312,7 @@ namespace Charrmander.Model
                 if (value != _biographies["RaceSecond"] && !string.IsNullOrWhiteSpace(value))
                 {
                     _biographies["RaceSecond"] = value;
-                    RaisePropertyChanged("BiographyRaceSecond");
+                    RaisePropertyChanged(nameof(BiographyRaceSecond));
                 }
             }
         }
@@ -330,7 +330,7 @@ namespace Charrmander.Model
                 if (value != _biographies["RaceThird"] && !string.IsNullOrWhiteSpace(value))
                 {
                     _biographies["RaceThird"] = value;
-                    RaisePropertyChanged("BiographyRaceThird");
+                    RaisePropertyChanged(nameof(BiographyRaceThird));
                 }
             }
         }
@@ -346,7 +346,7 @@ namespace Charrmander.Model
                 if (value != _order && !string.IsNullOrWhiteSpace(value))
                 {
                     _order = value;
-                    RaisePropertyChanged("Order");
+                    RaisePropertyChanged(nameof(Order));
                 }
             }
         }
@@ -362,7 +362,7 @@ namespace Charrmander.Model
                 if (value != _racialSympathy && !string.IsNullOrWhiteSpace(value))
                 {
                     _racialSympathy = value;
-                    RaisePropertyChanged("RacialSympathy");
+                    RaisePropertyChanged(nameof(RacialSympathy));
                 }
             }
         }
@@ -378,7 +378,7 @@ namespace Charrmander.Model
                 if (value != _retributionAlly && !string.IsNullOrWhiteSpace(value))
                 {
                     _retributionAlly = value;
-                    RaisePropertyChanged("RetributionAlly");
+                    RaisePropertyChanged(nameof(RetributionAlly));
                 }
             }
         }
@@ -394,7 +394,7 @@ namespace Charrmander.Model
                 if (value != _greatestFear && !string.IsNullOrWhiteSpace(value))
                 {
                     _greatestFear = value;
-                    RaisePropertyChanged("GreatestFear");
+                    RaisePropertyChanged(nameof(GreatestFear));
                 }
             }
         }
@@ -410,7 +410,7 @@ namespace Charrmander.Model
                 if (value != _planOfAttack && !string.IsNullOrWhiteSpace(value))
                 {
                     _planOfAttack = value;
-                    RaisePropertyChanged("PlanOfAttack");
+                    RaisePropertyChanged(nameof(PlanOfAttack));
                 }
             }
         }
@@ -421,7 +421,7 @@ namespace Charrmander.Model
             set
             {
                 _hasWorldCompletion = value;
-                RaisePropertyChanged("HasWorldCompletion");
+                RaisePropertyChanged(nameof(HasWorldCompletion));
             }
         }
 
@@ -484,7 +484,7 @@ namespace Charrmander.Model
                 if (value != _fractalTier && value >= FractalTierMin)
                 {
                     _fractalTier = value;
-                    RaisePropertyChanged("FractalTier");
+                    RaisePropertyChanged(nameof(FractalTier));
                 }
             }
         }
@@ -500,7 +500,7 @@ namespace Charrmander.Model
                 if (value != _notes)
                 {
                     _notes = value;
-                    RaisePropertyChanged("Notes");
+                    RaisePropertyChanged(nameof(Notes));
                 }
             }
         }

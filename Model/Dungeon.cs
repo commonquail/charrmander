@@ -38,7 +38,7 @@ namespace Charrmander.Model
                 if (value != _storyCompleted)
                 {
                     _storyCompleted = value;
-                    RaisePropertyChanged("StoryCompleted");
+                    RaisePropertyChanged(nameof(StoryCompleted));
                 }
             }
         }
