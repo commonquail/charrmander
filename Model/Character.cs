@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
-using System.Windows;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace Charrmander.Model
@@ -75,9 +75,8 @@ namespace Charrmander.Model
         public const int FractalTierMin = 1;
 
         private static readonly XElement storyChapters = XDocument.Load(
-            System.Xml.XmlReader.Create(
-                Application.GetResourceStream(
-                    new Uri("Resources/StoryChapters.xml", UriKind.Relative))
+            XmlReader.Create(
+                App.GetPackResourceStream("Resources/StoryChapters.xml")
                 .Stream))
             .Root;
 
@@ -106,8 +105,9 @@ namespace Charrmander.Model
             PrepareStoryChapters(_lw4acts, "Lw4");
             PrepareStoryChapters(_tisacts, "Tis");
 
-            var dungeons = XDocument.Load(System.Xml.XmlReader.Create(Application.GetResourceStream(
-                new Uri("Resources/Dungeons.xml", UriKind.Relative)).Stream)).Root.Elements("Dungeon")
+            var dungeons = XDocument.Load(XmlReader.Create(
+                App.GetPackResourceStream("Resources/Dungeons.xml").Stream))
+                .Root.Elements("Dungeon")
                 .OrderBy(d => d.Element("StoryLevel").Value);
 
             foreach (var dungeon in dungeons)

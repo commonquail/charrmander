@@ -3,6 +3,7 @@ using Charrmander.ViewModel;
 using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Resources;
 
 namespace Charrmander
 {
@@ -50,6 +51,13 @@ namespace Charrmander
             window.DataContext = viewModel;
             viewModel.CheckUpdate();
             window.Show();
+        }
+
+        internal static StreamResourceInfo GetPackResourceStream(string localPath)
+        {
+            return GetResourceStream(
+                new Uri("pack://application:,,,/Charrmander;component/" + localPath,
+                UriKind.Absolute));
         }
     }
 }

@@ -85,18 +85,18 @@ namespace Charrmander.ViewModel
             // source collection propagates all the way through.
             SortedCharacterList.Source = _characterList;
 
-            var doc = XDocument.Load(XmlReader.Create(Application.GetResourceStream(
-                new Uri("Resources/Areas.xml", UriKind.Relative)).Stream));
+            var doc = XDocument.Load(XmlReader.Create(
+                App.GetPackResourceStream("Resources/Areas.xml").Stream));
 
             AreaReferenceList = new ObservableCollection<Area>(
                 from a in doc.Root.Elements(Area.XmlNamespace + "Area")
                 select Area.FromXML(a));
 
-            var races = XDocument.Load(XmlReader.Create(Application.GetResourceStream(
-                new Uri("Resources/Races.xml", UriKind.Relative)).Stream)).Root.Elements("Race");
+            var races = XDocument.Load(XmlReader.Create(
+                App.GetPackResourceStream("Resources/Races.xml").Stream)).Root.Elements("Race");
 
-            var biographies = XDocument.Load(XmlReader.Create(Application.GetResourceStream(
-                new Uri("Resources/Biographies.xml", UriKind.Relative)).Stream));
+            var biographies = XDocument.Load(XmlReader.Create(
+                App.GetPackResourceStream("Resources/Biographies.xml").Stream));
 
             _biographyOptionsProfession = new Dictionary<string, object>(8);
             foreach (XElement xe in biographies.Root.Element("Professions").Elements())
@@ -863,8 +863,8 @@ namespace Charrmander.ViewModel
             var schemas = new XmlSchemaSet();
             settings.CloseInput = true;
             schemas.Add(Properties.Resources.xNamespace,
-                XmlReader.Create(Application.GetResourceStream(
-                    new Uri(Properties.Resources.cfgXsdpath, UriKind.Relative)).Stream, settings));
+                XmlReader.Create(App.GetPackResourceStream(
+                    Properties.Resources.cfgXsdpath).Stream, settings));
 
             settings = new XmlReaderSettings
             {
