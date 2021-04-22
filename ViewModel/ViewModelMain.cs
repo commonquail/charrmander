@@ -988,7 +988,7 @@ namespace Charrmander.ViewModel
                         Vistas = area.CElement("Completion").CElement("Vistas").Value
                     };
 
-                    if (AreaReferenceList.Count(aa => aa.Name == a.Name) > 0)
+                    if (AreaReferenceList.Any(aa => aa.Name == a.Name))
                     {
                         c.Areas.Add(a);
                     }
