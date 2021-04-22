@@ -1,17 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29215.179
+VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Charrmander", "Charrmander.csproj", "{F8217C35-2528-49BB-B5D8-82C475868F17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Charrmander", "Charrmander.csproj", "{F8217C35-2528-49BB-B5D8-82C475868F17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionsTestProject", "ExtensionsTestProject\ExtensionsTestProject.csproj", "{37BD3753-CF18-40DA-AB6C-7C7678F900AA}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0270263B-C59A-4DFD-B336-BB879BF6F5E4}"
-	ProjectSection(SolutionItems) = preProject
-		Charrmander.vsmdi = Charrmander.vsmdi
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtensionsTestProject", "ExtensionsTestProject\ExtensionsTestProject.csproj", "{37BD3753-CF18-40DA-AB6C-7C7678F900AA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F8217C35-2528-49BB-B5D8-82C475868F17} = {F8217C35-2528-49BB-B5D8-82C475868F17}
 	EndProjectSection
 EndProject
 Global
@@ -24,18 +20,15 @@ Global
 		{F8217C35-2528-49BB-B5D8-82C475868F17}.Debug|x64.Build.0 = Debug|x64
 		{F8217C35-2528-49BB-B5D8-82C475868F17}.Release|x64.ActiveCfg = Release|x64
 		{F8217C35-2528-49BB-B5D8-82C475868F17}.Release|x64.Build.0 = Release|x64
-		{37BD3753-CF18-40DA-AB6C-7C7678F900AA}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{37BD3753-CF18-40DA-AB6C-7C7678F900AA}.Debug|x64.Build.0 = Debug|Any CPU
-		{37BD3753-CF18-40DA-AB6C-7C7678F900AA}.Release|x64.ActiveCfg = Release|Any CPU
-		{37BD3753-CF18-40DA-AB6C-7C7678F900AA}.Release|x64.Build.0 = Release|Any CPU
+		{37BD3753-CF18-40DA-AB6C-7C7678F900AA}.Debug|x64.ActiveCfg = Debug|x64
+		{37BD3753-CF18-40DA-AB6C-7C7678F900AA}.Debug|x64.Build.0 = Debug|x64
+		{37BD3753-CF18-40DA-AB6C-7C7678F900AA}.Release|x64.ActiveCfg = Release|x64
+		{37BD3753-CF18-40DA-AB6C-7C7678F900AA}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2846E336-CB9F-467C-84CF-68730E003282}
-	EndGlobalSection
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = Charrmander.vsmdi
 	EndGlobalSection
 EndGlobal

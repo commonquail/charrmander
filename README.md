@@ -22,7 +22,7 @@ There is no installation. [The download][download] is a standalone executable th
 
 ## Dependencies
 
-.NET 4.7.2
+[.NET 5 Desktop Runtime][dotnet] for x64.
 
 ## Licensing
 
@@ -30,4 +30,5 @@ See `LICENCE.md`.
 
 [GW2]: https://www.guildwars2.com/
 [patch-12-12-14]: http://wiki.guildwars2.com/wiki/Game_updates/2012-12-14
+[dotnet]: https://dotnet.microsoft.com/download/dotnet/5.0/runtime
 [download]: https://bitbucket.org/jokum/charrmander/downloads

@@ -13,37 +13,26 @@ fatal()
 
 validate_deps()
 {
-    [[ -f "$MS_BUILD" ]] || fatal "$MS_BUILD does not exist"
-
+    type dotnet.exe > /dev/null 2>&1 || fatal "dotnet.exe not found"
     type 7z > /dev/null 2>&1 || fatal "7z (7-Zip) not found"
 }
 
 clean()
 {
-	"$MS_BUILD" \
-		-nologo \
-		Charrmander.sln \
-		-target:Clean \
-		-maxcpucount \
-		-logger:FileLogger,Microsoft.Build.Engine
+    dotnet.exe clean Charrmander.sln
 }
 
 build()
 {
-    "$MS_BUILD" \
-        -nologo \
-        Charrmander.sln \
-        -target:Build \
-        -property:Configuration=Release \
-        -maxcpucount \
-        -logger:FileLogger,Microsoft.Build.Engine
+    dotnet.exe test Charrmander.sln
+    dotnet.exe publish -p:PublishProfile=Properties/PublishProfiles/Release.pubxml Charrmander.sln
 }
 
 archive()
 {
     7z a \
         "charrmander-$(git describe --abbrev=0).zip" \
-        "./bin/Release/Charrmander.exe"
+        "./bin/x64/Release/net5.0-windows/win-x64/publish/Charrmander.exe"
 }
 
 main

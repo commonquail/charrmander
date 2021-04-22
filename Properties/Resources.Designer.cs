@@ -160,6 +160,24 @@ namespace Charrmander.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This functionality is not supported on the current platform. It may be incomplete or nonsensical..
+        /// </summary>
+        internal static string msgOsUnsupportedBody {
+            get {
+                return ResourceManager.GetString("msgOsUnsupportedBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Platform unsupported.
+        /// </summary>
+        internal static string msgOsUnsupportedTitle {
+            get {
+                return ResourceManager.GetString("msgOsUnsupportedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This operation will write to the system registry. Do you wish to proceed?.
         /// </summary>
         internal static string msgRegisterExtensionBody {
