@@ -55,7 +55,7 @@ namespace Charrmander.Util
             var ce = xe.Elements(CharrElement.Charr + name);
             if (ce == null)
             {
-                ce = new CharrElement[0];
+                ce = Array.Empty<CharrElement>();
             }
             return ce;
         }
@@ -76,7 +76,7 @@ namespace Charrmander.Util
             var cd = xc.Descendants(CharrElement.Charr + name);
             if (cd == null)
             {
-                cd = new CharrElement[0];
+                cd = Array.Empty<CharrElement>();
             }
             return cd;
         }
