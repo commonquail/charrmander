@@ -941,11 +941,10 @@ namespace Charrmander.ViewModel
                     Profession = charr.CElement("Profession").Value
                 };
 
-                int level = 0;
-                int.TryParse(charr.CElement("Level").Value, out level);
+                _ = int.TryParse(charr.CElement("Level").Value, out int level);
                 c.Level = level;
 
-                int.TryParse(charr.CElement("DefaultSortOrder").Value, out int defaultSortOrder);
+                _ = int.TryParse(charr.CElement("DefaultSortOrder").Value, out int defaultSortOrder);
                 c.DefaultSortOrder = Math.Max(defaultSortOrder, Character.MinSortOrder);
 
                 // Biography choices.
@@ -967,15 +966,13 @@ namespace Charrmander.ViewModel
                 var craftingDisciplines = charr.CElement("CraftingDisciplines");
                 foreach (var discipline in c.CraftingDisciplines)
                 {
-                    int craftLevel = 0;
-                    int.TryParse(craftingDisciplines.CElement(discipline.Name).CElement("Level").Value,
-                        out craftLevel);
+                    _ = int.TryParse(craftingDisciplines.CElement(discipline.Name).CElement("Level").Value,
+                        out int craftLevel);
                     discipline.Level = craftLevel;
                 }
 
                 // World completion.
-                bool worldCompleted;
-                bool.TryParse(charr.CElement("HasWorldCompletion").Value, out worldCompleted);
+                _ = bool.TryParse(charr.CElement("HasWorldCompletion").Value, out bool worldCompleted);
                 c.HasWorldCompletion = worldCompleted;
 
                 // Area completion.
@@ -1011,16 +1008,15 @@ namespace Charrmander.ViewModel
                     {
                         if (cd.Name == ld.CElement("Name").Value)
                         {
-                            bool completed = false;
-                            bool.TryParse(ld.CElement("StoryCompleted").Value, out completed);
+                            _ = bool.TryParse(ld.CElement("StoryCompleted").Value, out bool completed);
                             cd.StoryCompleted = completed;
                             break;
                         }
                     }
                 }
 
-                int fractalTier = Character.FractalTierMin;
-                int.TryParse(charr.CElement("FractalTier").Value, out fractalTier);
+                _ = int.TryParse(charr.CElement("FractalTier").Value, out int fractalTier);
+                fractalTier = Math.Max(fractalTier, Character.FractalTierMin);
                 if (fractalTier > c.FractalTier)
                 {
                     c.FractalTier = fractalTier;
@@ -1075,8 +1071,7 @@ namespace Charrmander.ViewModel
                     // meaningfully completed. Just remove it altogether.
                     continue;
                 }
-                bool completed = false;
-                bool.TryParse(ld.CElement("Completed").Value, out completed);
+                _ = bool.TryParse(ld.CElement("Completed").Value, out bool completed);
                 // "Scion & Champion>"
                 if (chapterName.EndsWith(">"))
                 {

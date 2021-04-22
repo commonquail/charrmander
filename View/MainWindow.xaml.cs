@@ -107,7 +107,10 @@ namespace Charrmander.View
             }
             else if (value is string)
             {
-                Enum.TryParse<Area.CompletionState>(value as string, out state);
+                if (Enum.TryParse(value as string, out Area.CompletionState s))
+                {
+                    state = s;
+                }
             }
 
             switch (state)
