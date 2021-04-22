@@ -753,7 +753,7 @@ namespace Charrmander.ViewModel
             {
                 if (_cmdRegisterExtensions == null)
                 {
-                    _cmdRegisterExtensions = new RelayCommand(param => this.RegisterExtension());
+                    _cmdRegisterExtensions = new RelayCommand(param => RegisterExtension());
                 }
                 return _cmdRegisterExtensions;
             }
@@ -906,7 +906,7 @@ namespace Charrmander.ViewModel
             }
         }
 
-        private void RecordRecentFile(string filePath)
+        private static void RecordRecentFile(string filePath)
         {
             var jp = new JumpPath
             {
@@ -1234,7 +1234,7 @@ namespace Charrmander.ViewModel
         /// This application is defined by the current path of the executable,
         /// meaning this has to be re-run if the executable is moved.
         /// </summary>
-        private void RegisterExtension()
+        private static void RegisterExtension()
         {
             if (!OperatingSystem.IsWindows())
             {
@@ -1434,7 +1434,7 @@ namespace Charrmander.ViewModel
         /// <param name="body">The message box message.</param>
         /// <param name="severity">A <see cref="MessageBoxImage"/> indicating
         /// the severity, default <c>MessageBoxImage.Error</c></param>
-        private void ShowError(string caption, string body, MessageBoxImage severity = MessageBoxImage.Error)
+        private static void ShowError(string caption, string body, MessageBoxImage severity = MessageBoxImage.Error)
         {
             MessageBox.Show(body, caption, MessageBoxButton.OK, severity);
         }
@@ -1453,7 +1453,7 @@ namespace Charrmander.ViewModel
         /// <param name="referenceArea">The area whose <c>State</c> to
         /// update.</param>
         /// <param name="c">The character whose completion state to get</param>
-        private void UpdateAreaState(Area referenceArea, Character c)
+        private static void UpdateAreaState(Area referenceArea, Character c)
         {
             bool found = false;
             foreach (var ca in c.Areas)
@@ -1671,7 +1671,7 @@ namespace Charrmander.ViewModel
             SelectedCharacter.Name = SelectedCharacter.Name.Trim();
         }
 
-        private Area.CompletionState CalculateStoryChapterCompletion(Collection<Act> acts)
+        private static Area.CompletionState CalculateStoryChapterCompletion(Collection<Act> acts)
         {
             if (acts.SelectMany(a => a.Chapters).All(c => c.ChapterCompleted))
             {
@@ -1847,7 +1847,7 @@ namespace Charrmander.ViewModel
         /// <param name="subKeyName">The per-user file association sub-key whose "default" value to set</param>
         /// <param name="defaultValue">The "default" value of <code>subKeyName</code></param>
         [SupportedOSPlatform("windows")]
-        private void CurrentUserFileAssoc(string subKeyName, string defaultValue)
+        private static void CurrentUserFileAssoc(string subKeyName, string defaultValue)
         {
             // Location of per-user file association: https://stackoverflow.com/a/69863/482758
             using (var key = Registry.CurrentUser.CreateSubKey(@"Software\Classes\" + subKeyName))

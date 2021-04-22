@@ -194,7 +194,7 @@ namespace Charrmander.Model
         /// <param name="item">The field corresponding to the desired area
         /// completion item.</param>
         /// <returns>The value of <c>item</c>, "0" if null or empty.</returns>
-        private string GetCompletionItem(string item)
+        private static string GetCompletionItem(string item)
         {
             return string.IsNullOrWhiteSpace(item) ? "0" : item;
         }

@@ -575,7 +575,7 @@ namespace Charrmander.Model
             );
         }
 
-        private IEnumerable<CharrElement> SerializeActs(ObservableCollection<Act> acts)
+        private static IEnumerable<CharrElement> SerializeActs(ObservableCollection<Act> acts)
         {
             return from a in acts
                    select new CharrElement("Act",
