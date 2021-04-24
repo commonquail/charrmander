@@ -32,18 +32,15 @@ namespace Charrmander.View
 
         private void DataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            var datagrid = sender as DataGrid;
-            if (datagrid != null)
+            if (sender is DataGrid datagrid)
             {
                 // check if the current column is the target
                 if (datagrid.Columns.Count > 0)
                 {
                     // assuming it's a Text-type column
-                    var column = (e.Column as DataGridTextColumn);
-                    if (column != null)
+                    if (e.Column is DataGridBoundColumn column)
                     {
-                        var binding = column.Binding as Binding;
-                        if (binding != null)
+                        if (column.Binding is Binding binding)
                         {
                             // add a converter to the binding
                             binding.Converter = new CompletionStateConverter();

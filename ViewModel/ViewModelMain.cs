@@ -1389,8 +1389,9 @@ namespace Charrmander.ViewModel
         /// </summary>
         public void UpdateBiographyOptions()
         {
-            if (SelectedCharacter == null || string.IsNullOrEmpty(SelectedCharacter.Profession)
-                || string.IsNullOrEmpty(SelectedCharacter.Race))
+            string charProfession = SelectedCharacter?.Profession;
+            string charRace = SelectedCharacter?.Race;
+            if (string.IsNullOrEmpty(charProfession) || string.IsNullOrEmpty(charRace))
             {
                 IsBiographyVisible = Visibility.Collapsed;
                 BiographyOptionsProfession = null;
@@ -1402,32 +1403,28 @@ namespace Charrmander.ViewModel
             else
             {
                 IsBiographyVisible = Visibility.Visible;
-                // Non-rangers all have simple lists of options.
-                var nonRanger = _biographyOptionsProfession[SelectedCharacter.Profession]
-                    as ObservableCollection<string>;
-                if (nonRanger != null)
-                {
-                    BiographyOptionsProfession = nonRanger;
-                }
-                else
+                var profOption = _biographyOptionsProfession[charProfession];
+                switch (profOption)
                 {
                     // Ranger requires special handling. It has a race
                     // dependency and so is nested one level further.
-                    var ranger = _biographyOptionsProfession[SelectedCharacter.Profession]
-                        as IDictionary<string, ObservableCollection<string>>;
-                    if (ranger != null)
-                    {
-                        BiographyOptionsProfession = ranger[SelectedCharacter.Race];
-                    }
+                    case IDictionary<string, ObservableCollection<string>> ranger:
+                        BiographyOptionsProfession = ranger[charRace];
+                        break;
+                    // Non-rangers all have simple lists of options.
+                    case ObservableCollection<string> other:
+                        BiographyOptionsProfession = other;
+                        break;
                 }
 
                 // Personality (this one is constant).
                 BiographyOptionsPersonality = _biographyOptionsPersonality;
 
                 // Race.
-                BiographyOptionsRaceFirst = _biographyOptionsRace[SelectedCharacter.Race]["First"];
-                BiographyOptionsRaceSecond = _biographyOptionsRace[SelectedCharacter.Race]["Second"];
-                BiographyOptionsRaceThird = _biographyOptionsRace[SelectedCharacter.Race]["Third"];
+                var raceOption = _biographyOptionsRace[charRace];
+                BiographyOptionsRaceFirst = raceOption["First"];
+                BiographyOptionsRaceSecond = raceOption["Second"];
+                BiographyOptionsRaceThird = raceOption["Third"];
             }
         }
 

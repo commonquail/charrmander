@@ -101,16 +101,18 @@ namespace Charrmander.View
         {
             string res = string.Empty;
             Area.CompletionState state = Area.CompletionState.Unvisited;
-            if (value is Area.CompletionState)
+            switch (value)
             {
-                state = (Area.CompletionState)value;
-            }
-            else if (value is string)
-            {
-                if (Enum.TryParse(value as string, out Area.CompletionState s))
-                {
-                    state = s;
-                }
+                case Area.CompletionState v:
+                    state = v;
+                    break;
+                case string v:
+                    if (Enum.TryParse(v, out Area.CompletionState s))
+                    {
+                        state = s;
+                    }
+
+                    break;
             }
 
             switch (state)
