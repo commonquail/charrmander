@@ -866,9 +866,11 @@ namespace Charrmander.ViewModel
                 XmlReader.Create(Application.GetResourceStream(
                     new Uri(Properties.Resources.cfgXsdpath, UriKind.Relative)).Stream, settings));
 
-            settings = new XmlReaderSettings();
-            settings.ValidationType = ValidationType.Schema;
-            settings.Schemas = xs;
+            settings = new XmlReaderSettings
+            {
+                ValidationType = ValidationType.Schema,
+                Schemas = xs
+            };
             settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
             settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
             settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
@@ -1143,9 +1145,11 @@ namespace Charrmander.ViewModel
         /// <param name="filePath">The file path to write to; doesn't have to exist.</param>
         private void DoSave(string filePath)
         {
-            XmlWriterSettings xws = new XmlWriterSettings();
-            xws.OmitXmlDeclaration = false;
-            xws.Indent = true;
+            XmlWriterSettings xws = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = false,
+                Indent = true
+            };
 
             using (XmlWriter xw = XmlWriter.Create(filePath, xws))
             {

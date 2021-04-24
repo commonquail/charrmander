@@ -28,8 +28,10 @@ namespace Charrmander.ViewModel
         /// </summary>
         public UpdateAvailableViewModel()
         {
-            _window = new UpdateAvailableView();
-            _window.DataContext = this;
+            _window = new UpdateAvailableView
+            {
+                DataContext = this
+            };
             _window.Show();
 
             EventHandler handler = null;
