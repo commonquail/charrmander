@@ -12,7 +12,7 @@ namespace Charrmander.Model
 {
     class Character : AbstractNotifier, IDisposable
     {
-        private IViewModel _viewModel;
+        private readonly IViewModel _viewModel;
 
         private string _name = string.Empty;
         private string _race = string.Empty;
@@ -20,21 +20,13 @@ namespace Charrmander.Model
         private int _level = 0;
         private int _defaultSortOrder = 1;
 
-        private IDictionary<string, string> _biographies;
+        private readonly IDictionary<string, string> _biographies;
 
         private string _order = string.Empty;
         private string _racialSympathy = string.Empty;
         private string _retributionAlly = string.Empty;
         private string _greatestFear = string.Empty;
         private string _planOfAttack = string.Empty;
-
-        private string _lw2 = string.Empty;
-        private string _hot = string.Empty;
-        private string _kott = string.Empty;
-        private string _lw3 = string.Empty;
-        private string _pof = string.Empty;
-        private string _lw4 = string.Empty;
-        private string _tis = string.Empty;
 
         private bool _hasWorldCompletion = false;
 
@@ -45,15 +37,15 @@ namespace Charrmander.Model
 
         private string _notes;
 
-        private ObservableCollection<Act> _lw2acts = new ObservableCollection<Act>();
-        private ObservableCollection<Act> _hotacts = new ObservableCollection<Act>();
-        private ObservableCollection<Act> _kottacts = new ObservableCollection<Act>();
-        private ObservableCollection<Act> _lw3acts = new ObservableCollection<Act>();
-        private ObservableCollection<Act> _pofacts = new ObservableCollection<Act>();
-        private ObservableCollection<Act> _lw4acts = new ObservableCollection<Act>();
-        private ObservableCollection<Act> _tisacts = new ObservableCollection<Act>();
+        private readonly ObservableCollection<Act> _lw2acts = new ObservableCollection<Act>();
+        private readonly ObservableCollection<Act> _hotacts = new ObservableCollection<Act>();
+        private readonly ObservableCollection<Act> _kottacts = new ObservableCollection<Act>();
+        private readonly ObservableCollection<Act> _lw3acts = new ObservableCollection<Act>();
+        private readonly ObservableCollection<Act> _pofacts = new ObservableCollection<Act>();
+        private readonly ObservableCollection<Act> _lw4acts = new ObservableCollection<Act>();
+        private readonly ObservableCollection<Act> _tisacts = new ObservableCollection<Act>();
 
-        private ObservableCollection<Dungeon> _dungeons = new ObservableCollection<Dungeon>();
+        private readonly ObservableCollection<Dungeon> _dungeons = new ObservableCollection<Dungeon>();
 
         /// <summary>
         /// Maximum sort order; greater than max account character slot of 69

@@ -6,7 +6,7 @@ namespace Charrmander.Model
 {
     class Area : AbstractNotifier
     {
-        private static Regex _NaNMatch;
+        private static readonly Regex _NaNMatch;
 
         private string _minLevel = "0";
         private string _maxLevel = "80";

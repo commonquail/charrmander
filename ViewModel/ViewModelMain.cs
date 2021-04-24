@@ -35,7 +35,7 @@ namespace Charrmander.ViewModel
         private RelayCommand _cmdCompleteArea;
         private RelayCommand _cmdCompletionOverview;
 
-        private BackgroundWorker _bgUpdater = new BackgroundWorker();
+        private readonly BackgroundWorker _bgUpdater = new BackgroundWorker();
 
         private UpdateAvailableViewModel _updateViewModel;
         private CompletionOverviewView _completionOverview;
@@ -65,9 +65,9 @@ namespace Charrmander.ViewModel
 
         private Visibility _isBiographyVisible = Visibility.Collapsed;
 
-        private IDictionary<string, object> _biographyOptionsProfession;
-        private ObservableCollection<string> _biographyOptionsPersonality;
-        private IDictionary<string, IDictionary<string, ObservableCollection<string>>> _biographyOptionsRace;
+        private readonly IDictionary<string, object> _biographyOptionsProfession;
+        private readonly ObservableCollection<string> _biographyOptionsPersonality;
+        private readonly IDictionary<string, IDictionary<string, ObservableCollection<string>>> _biographyOptionsRace;
 
         private ObservableCollection<string>
             _selectedBiographyOptionsProfession,

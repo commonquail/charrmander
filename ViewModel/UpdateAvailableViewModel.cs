@@ -10,7 +10,7 @@ namespace Charrmander.ViewModel
 {
     class UpdateAvailableViewModel : AbstractNotifier
     {
-        Window _window;
+        readonly Window _window;
 
         private RelayCommand _cmdDownload;
         private RelayCommand _cmdClose;
