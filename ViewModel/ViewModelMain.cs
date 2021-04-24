@@ -1077,7 +1077,7 @@ namespace Charrmander.ViewModel
                 // "Scion & Champion>"
                 if (chapterName.EndsWith(">"))
                 {
-                    chapterName = chapterName.Substring(0, chapterName.Length - 1);
+                    chapterName = chapterName[0..^1];
                 }
                 chapterByNameByActName[actName][chapterName].ChapterCompleted = completed;
             }
