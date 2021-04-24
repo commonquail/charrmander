@@ -877,34 +877,32 @@ namespace Charrmander.ViewModel
             settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
 
             XDocument doc = null;
-            using (XmlReader r = XmlReader.Create(filePath, settings))
+            using XmlReader r = XmlReader.Create(filePath, settings);
+            try
             {
-                try
-                {
-                    // Load and parse the file. Only if load and parse succeed
-                    // should the file handle be updated.
-                    doc = XDocument.Load(r);
-                    Parse(doc);
-                    _currentFile = new FileInfo(filePath);
-                    UnsavedChanges = false;
-                }
-                catch (XmlSchemaValidationException ex)
-                {
-                    ShowError(Properties.Resources.msgOpenFailedValidationTitle, String.Format(
-                        Properties.Resources.msgOpenFailedParsingBody,
-                        ex.InnerException.Message));
-                }
-                catch (XmlException ex)
-                {
-                    ShowError(Properties.Resources.msgOpenFailedParsingTitle,
-                        String.Format(Properties.Resources.msgOpenFailedParsingBody,
-                        ex.Message));
-                }
-                catch (FileNotFoundException)
-                {
-                    ShowError(Properties.Resources.msgOpenFailedNoFileTitle,
-                        Properties.Resources.msgOpenFailedNoFileBody);
-                }
+                // Load and parse the file. Only if load and parse succeed
+                // should the file handle be updated.
+                doc = XDocument.Load(r);
+                Parse(doc);
+                _currentFile = new FileInfo(filePath);
+                UnsavedChanges = false;
+            }
+            catch (XmlSchemaValidationException ex)
+            {
+                ShowError(Properties.Resources.msgOpenFailedValidationTitle, String.Format(
+                    Properties.Resources.msgOpenFailedParsingBody,
+                    ex.InnerException.Message));
+            }
+            catch (XmlException ex)
+            {
+                ShowError(Properties.Resources.msgOpenFailedParsingTitle,
+                    String.Format(Properties.Resources.msgOpenFailedParsingBody,
+                    ex.Message));
+            }
+            catch (FileNotFoundException)
+            {
+                ShowError(Properties.Resources.msgOpenFailedNoFileTitle,
+                    Properties.Resources.msgOpenFailedNoFileBody);
             }
         }
 
@@ -1151,18 +1149,16 @@ namespace Charrmander.ViewModel
                 Indent = true
             };
 
-            using (XmlWriter xw = XmlWriter.Create(filePath, xws))
-            {
-                new XDocument(
-                    new CharrElement("Charrmander",
-                        (_characterList.Count > 0 ?
-                        from c in _characterList
-                        select c.ToXML() : null)
-                    )
-                ).Save(xw);
-                _currentFile = new FileInfo(filePath);
-                UnsavedChanges = false;
-            }
+            using XmlWriter xw = XmlWriter.Create(filePath, xws);
+            new XDocument(
+                new CharrElement("Charrmander",
+                    (_characterList.Count > 0 ?
+                    from c in _characterList
+                    select c.ToXML() : null)
+                )
+            ).Save(xw);
+            _currentFile = new FileInfo(filePath);
+            UnsavedChanges = false;
         }
 
         /// <summary>
