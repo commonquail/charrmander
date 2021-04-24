@@ -34,12 +34,12 @@ namespace Charrmander.ViewModel
             };
             _window.Show();
 
-            EventHandler handler = null;
-            handler = delegate
+            void handler(object sender, EventArgs e)
             {
                 this.RequestClose -= handler;
                 _window.Close();
-            };
+            }
+
             this.RequestClose += handler;
         }
 
