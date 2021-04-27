@@ -35,7 +35,7 @@ namespace Charrmander.ViewModel
         private RelayCommand _cmdCompleteArea;
         private RelayCommand _cmdCompletionOverview;
 
-        private readonly BackgroundWorker _bgUpdater = new BackgroundWorker();
+        private readonly BackgroundWorker _bgUpdater = new();
 
         private UpdateAvailableViewModel _updateViewModel;
         private CompletionOverviewView _completionOverview;
@@ -44,7 +44,7 @@ namespace Charrmander.ViewModel
 
         private string _windowTitle = "Charrmander";
 
-        private readonly Version _curVersion = new Version(1, 20, 0, 0);
+        private readonly Version _curVersion = new(1, 20, 0, 0);
 
         private string _statusBarUpdateCheck;
 
@@ -55,7 +55,7 @@ namespace Charrmander.ViewModel
         /// <see cref="ObservableCollection"/> to propagate both element and
         /// collection change events.
         /// </summary>
-        private readonly ObservableCollection<Character> _characterList = new ObservableCollection<Character>();
+        private readonly ObservableCollection<Character> _characterList = new();
 
         private Character _selectedCharacter;
         private Area _selectedAreaReference;
@@ -830,7 +830,7 @@ namespace Charrmander.ViewModel
 
             if (filePath == null)
             {
-                OpenFileDialog open = new OpenFileDialog();
+                var open = new OpenFileDialog();
                 open.Filter += Properties.Resources.cfgFileFilter;
                 if (open.ShowDialog().Value)
                 {
@@ -858,18 +858,18 @@ namespace Charrmander.ViewModel
         {
             RecordRecentFile(filePath);
 
-            XmlReaderSettings settings = new XmlReaderSettings();
+            var settings = new XmlReaderSettings();
 
-            XmlSchemaSet xs = new XmlSchemaSet();
+            var schemas = new XmlSchemaSet();
             settings.CloseInput = true;
-            xs.Add(Properties.Resources.xNamespace,
+            schemas.Add(Properties.Resources.xNamespace,
                 XmlReader.Create(Application.GetResourceStream(
                     new Uri(Properties.Resources.cfgXsdpath, UriKind.Relative)).Stream, settings));
 
             settings = new XmlReaderSettings
             {
                 ValidationType = ValidationType.Schema,
-                Schemas = xs
+                Schemas = schemas
             };
             settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
             settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
@@ -934,7 +934,7 @@ namespace Charrmander.ViewModel
 
             foreach (var charr in characters)
             {
-                Character c = new Character(this)
+                var c = new Character(this)
                 {
                     Name = charr.CElement("Name").Value,
                     Race = charr.CElement("Race").Value,
@@ -979,7 +979,7 @@ namespace Charrmander.ViewModel
                 var areas = charr.CElement("Areas").CElements("Area");
                 foreach (var area in areas)
                 {
-                    Area a = new Area(area.CElement("Name").Value)
+                    var a = new Area(area.CElement("Name").Value)
                     {
                         Hearts = area.CElement("Completion").CElement("Hearts").Value,
                         Waypoints = area.CElement("Completion").CElement("Waypoints").Value,
@@ -1119,7 +1119,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void SaveAs()
         {
-            SaveFileDialog save = new SaveFileDialog();
+            var save = new SaveFileDialog();
 
             if (_currentFile == null)
             {
@@ -1143,7 +1143,7 @@ namespace Charrmander.ViewModel
         /// <param name="filePath">The file path to write to; doesn't have to exist.</param>
         private void DoSave(string filePath)
         {
-            XmlWriterSettings xws = new XmlWriterSettings
+            var xws = new XmlWriterSettings
             {
                 OmitXmlDeclaration = false,
                 Indent = true
@@ -1561,7 +1561,7 @@ namespace Charrmander.ViewModel
             /// We don't want to deal with the namespace for the version
             /// history file, we're not validating it anyway.
             XDocument doc = null;
-            using (XmlTextReader tr = new XmlTextReader(Properties.Resources.cfgUpdateCheckUri))
+            using (var tr = new XmlTextReader(Properties.Resources.cfgUpdateCheckUri))
             {
                 tr.Namespaces = false;
                 doc = XDocument.Load(tr);
@@ -1611,7 +1611,7 @@ namespace Charrmander.ViewModel
                         latest = doc.Root.Element("Latest").Element("Release");
                     }
 
-                    Version newVersion = new Version(latest.Element("Version").Value);
+                    var newVersion = new Version(latest.Element("Version").Value);
 
                     if (newVersion.IsNewerThan(_curVersion))
                     {

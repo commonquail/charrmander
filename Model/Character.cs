@@ -37,15 +37,15 @@ namespace Charrmander.Model
 
         private string _notes;
 
-        private readonly ObservableCollection<Act> _lw2acts = new ObservableCollection<Act>();
-        private readonly ObservableCollection<Act> _hotacts = new ObservableCollection<Act>();
-        private readonly ObservableCollection<Act> _kottacts = new ObservableCollection<Act>();
-        private readonly ObservableCollection<Act> _lw3acts = new ObservableCollection<Act>();
-        private readonly ObservableCollection<Act> _pofacts = new ObservableCollection<Act>();
-        private readonly ObservableCollection<Act> _lw4acts = new ObservableCollection<Act>();
-        private readonly ObservableCollection<Act> _tisacts = new ObservableCollection<Act>();
+        private readonly ObservableCollection<Act> _lw2acts = new();
+        private readonly ObservableCollection<Act> _hotacts = new();
+        private readonly ObservableCollection<Act> _kottacts = new();
+        private readonly ObservableCollection<Act> _lw3acts = new();
+        private readonly ObservableCollection<Act> _pofacts = new();
+        private readonly ObservableCollection<Act> _lw4acts = new();
+        private readonly ObservableCollection<Act> _tisacts = new();
 
-        private readonly ObservableCollection<Dungeon> _dungeons = new ObservableCollection<Dungeon>();
+        private readonly ObservableCollection<Dungeon> _dungeons = new();
 
         /// <summary>
         /// Maximum sort order; greater than max account character slot of 69
