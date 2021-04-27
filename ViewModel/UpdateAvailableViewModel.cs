@@ -168,11 +168,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void OnRequestClose()
         {
-            EventHandler handler = this.RequestClose;
-            if (handler != null)
-            {
-                handler(this, EventArgs.Empty);
-            }
+            this.RequestClose?.Invoke(this, EventArgs.Empty);
         }
     }
 }
