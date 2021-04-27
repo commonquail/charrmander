@@ -28,7 +28,7 @@ namespace Charrmander.View
                 }
             }
         }
-        
+
         /// <summary>
         /// When race or profession is changed, update the biography choice
         /// options.

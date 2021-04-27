@@ -16,7 +16,7 @@ namespace Charrmander.Util
         #region Fields
 
         readonly Action<object> _execute;
-        readonly Predicate<object> _canExecute;        
+        readonly Predicate<object> _canExecute;
 
         #endregion // Fields
 
@@ -39,7 +39,7 @@ namespace Charrmander.Util
         public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
             _execute = execute ?? throw new ArgumentNullException(nameof(execute));
-            _canExecute = canExecute;           
+            _canExecute = canExecute;
         }
 
         #endregion // Constructors

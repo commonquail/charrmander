@@ -23,7 +23,7 @@ namespace Charrmander.ViewModel
     class ViewModelMain : AbstractNotifier, IViewModel, IDisposable
     {
         #region Fields
-        
+
         private RelayCommand _cmdNew;
         private RelayCommand _cmdOpen;
         private RelayCommand _cmdSave;
@@ -1036,7 +1036,7 @@ namespace Charrmander.ViewModel
             var iter = SortedCharacterList.View?.GetEnumerator();
             if (iter != null && iter.MoveNext())
             {
-                SelectedCharacter = (Character) iter.Current;
+                SelectedCharacter = (Character)iter.Current;
             }
             else
             {
@@ -1292,8 +1292,8 @@ namespace Charrmander.ViewModel
         private IEnumerable<Character> GetNamedCharacters()
         {
             return from c in _characterList
-                where !string.IsNullOrWhiteSpace(c.Name)
-                select c;
+                   where !string.IsNullOrWhiteSpace(c.Name)
+                   select c;
         }
 
         /// <summary>
@@ -1324,13 +1324,13 @@ namespace Charrmander.ViewModel
 
             var areas = from a in AreaReferenceList
                         select new Area(a.Name)
-                            {
-                                Hearts = a.Hearts,
-                                Waypoints = a.Waypoints,
-                                PoIs = a.PoIs,
-                                Skills = a.Skills,
-                                Vistas = a.Vistas
-                            };
+                        {
+                            Hearts = a.Hearts,
+                            Waypoints = a.Waypoints,
+                            PoIs = a.PoIs,
+                            Skills = a.Skills,
+                            Vistas = a.Vistas
+                        };
 
             foreach (var a in areas)
             {
