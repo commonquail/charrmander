@@ -1,22 +1,22 @@
-using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Windows;
-using System.Windows.Input;
-using System.Xml;
-using System.Xml.Linq;
 using Charrmander.Model;
 using Charrmander.Util;
 using Charrmander.View;
 using Microsoft.Win32;
-using System.IO;
-using System.Xml.Schema;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
-using System.Windows.Data;
-using System.Windows.Shell;
+using System.IO;
+using System.Linq;
 using System.Runtime.Versioning;
+using System.Windows;
+using System.Windows.Data;
+using System.Windows.Input;
+using System.Windows.Shell;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Schema;
 
 namespace Charrmander.ViewModel
 {

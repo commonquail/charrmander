@@ -1,8 +1,8 @@
+using Charrmander.View;
+using Charrmander.ViewModel;
 using System;
 using System.ComponentModel;
 using System.Windows;
-using Charrmander.View;
-using Charrmander.ViewModel;
 
 namespace Charrmander
 {

@@ -1,10 +1,10 @@
+using Charrmander.Util;
+using Charrmander.View;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using System.Xml.Linq;
-using Charrmander.Util;
-using Charrmander.View;
 
 namespace Charrmander.ViewModel
 {

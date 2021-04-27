@@ -1,9 +1,9 @@
+using Charrmander.Model;
+using Charrmander.ViewModel;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using Charrmander.ViewModel;
-using Charrmander.Model;
 
 namespace Charrmander.View
 {
