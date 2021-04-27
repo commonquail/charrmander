@@ -1,5 +1,4 @@
 using Charrmander.Util;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Charrmander.Model
