@@ -1,16 +1,16 @@
+using Charrmander.Util;
+using Charrmander.View;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using System.Xml.Linq;
-using Charrmander.Util;
-using Charrmander.View;
 
 namespace Charrmander.ViewModel
 {
     class UpdateAvailableViewModel : AbstractNotifier
     {
-        Window _window;
+        readonly Window _window;
 
         private RelayCommand _cmdDownload;
         private RelayCommand _cmdClose;
@@ -28,16 +28,18 @@ namespace Charrmander.ViewModel
         /// </summary>
         public UpdateAvailableViewModel()
         {
-            _window = new UpdateAvailableView();
-            _window.DataContext = this;
+            _window = new UpdateAvailableView
+            {
+                DataContext = this
+            };
             _window.Show();
 
-            EventHandler handler = null;
-            handler = delegate
+            void handler(object sender, EventArgs e)
             {
                 this.RequestClose -= handler;
                 _window.Close();
-            };
+            }
+
             this.RequestClose += handler;
         }
 
@@ -60,7 +62,7 @@ namespace Charrmander.ViewModel
                 if (value != _curVersion)
                 {
                     _curVersion = value;
-                    RaisePropertyChanged("CurrentVersion");
+                    RaisePropertyChanged(nameof(CurrentVersion));
                 }
             }
         }
@@ -76,7 +78,7 @@ namespace Charrmander.ViewModel
                 if (value != _latestVersion)
                 {
                     _latestVersion = value;
-                    RaisePropertyChanged("LatestVersion");
+                    RaisePropertyChanged(nameof(LatestVersion));
                 }
             }
         }
@@ -94,7 +96,7 @@ namespace Charrmander.ViewModel
                 if (value != _downloadUrl)
                 {
                     _downloadUrl = value;
-                    RaisePropertyChanged("LatestVersionPath");
+                    RaisePropertyChanged(nameof(LatestVersionPath));
                 }
             }
         }
@@ -111,7 +113,7 @@ namespace Charrmander.ViewModel
                 if (value != _versionHistory)
                 {
                     _versionHistory = value;
-                    RaisePropertyChanged("VersionHistory");
+                    RaisePropertyChanged(nameof(VersionHistory));
                 }
             }
         }
@@ -166,11 +168,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void OnRequestClose()
         {
-            EventHandler handler = this.RequestClose;
-            if (handler != null)
-            {
-                handler(this, EventArgs.Empty);
-            }
+            this.RequestClose?.Invoke(this, EventArgs.Empty);
         }
     }
 }

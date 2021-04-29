@@ -70,7 +70,7 @@ namespace ExtensionsTestProject
         [TestMethod()]
         public void AnyIsNewerThanNull()
         {
-            Version v = new Version("0.0.0.0");
+            Version v = new("0.0.0.0");
             Version other = null;
             bool expected = true;
             bool actual;
@@ -84,8 +84,8 @@ namespace ExtensionsTestProject
         [TestMethod()]
         public void NoneIsNewerThanEqual()
         {
-            Version v = new Version("1.0.0.0");
-            Version other = new Version("1.0.0.0");
+            var v = new Version("1.0.0.0");
+            var other = new Version("1.0.0.0");
             bool expected = false;
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, other);
@@ -98,7 +98,7 @@ namespace ExtensionsTestProject
         [TestMethod()]
         public void InstanceNotNewerThanSelf()
         {
-            Version v = new Version("1.0.0.0");
+            var v = new Version("1.0.0.0");
             bool expected = false;
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, v);
@@ -111,8 +111,8 @@ namespace ExtensionsTestProject
         [TestMethod()]
         public void RevisionOneIsNewerThanRevisionZero()
         {
-            Version v = new Version("0.0.0.1");
-            Version other = new Version("0.0.0.0");
+            var v = new Version("0.0.0.1");
+            var other = new Version("0.0.0.0");
             bool expected = true;
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, other);
@@ -125,8 +125,8 @@ namespace ExtensionsTestProject
         [TestMethod()]
         public void RevisionZeroIsNotNewerThanRevisionOne()
         {
-            Version v = new Version("0.0.0.0");
-            Version other = new Version("0.0.0.1");
+            var v = new Version("0.0.0.0");
+            var other = new Version("0.0.0.1");
             bool expected = false;
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, other);
@@ -139,8 +139,8 @@ namespace ExtensionsTestProject
         [TestMethod()]
         public void BuildOneIsNewerThanRevisionNine()
         {
-            Version v = new Version("0.0.1.0");
-            Version other = new Version("0.0.0.9");
+            var v = new Version("0.0.1.0");
+            var other = new Version("0.0.0.9");
             bool expected = true;
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, other);
@@ -153,8 +153,8 @@ namespace ExtensionsTestProject
         [TestMethod()]
         public void BuildOneIsNewerThanNoRevision()
         {
-            Version v = new Version("0.0.1.0");
-            Version other = new Version("0.0.0");
+            var v = new Version("0.0.1.0");
+            var other = new Version("0.0.0");
             bool expected = true;
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, other);
@@ -167,8 +167,8 @@ namespace ExtensionsTestProject
         [TestMethod()]
         public void MajorOneIsNewerThanMinorNine()
         {
-            Version v = new Version("1.0.0.0");
-            Version other = new Version("0.9");
+            var v = new Version("1.0.0.0");
+            var other = new Version("0.9");
             bool expected = true;
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, other);

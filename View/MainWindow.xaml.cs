@@ -1,9 +1,9 @@
+using Charrmander.Model;
+using Charrmander.ViewModel;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using Charrmander.ViewModel;
-using Charrmander.Model;
 
 namespace Charrmander.View
 {
@@ -28,7 +28,7 @@ namespace Charrmander.View
                 }
             }
         }
-        
+
         /// <summary>
         /// When race or profession is changed, update the biography choice
         /// options.
@@ -101,13 +101,18 @@ namespace Charrmander.View
         {
             string res = string.Empty;
             Area.CompletionState state = Area.CompletionState.Unvisited;
-            if (value is Area.CompletionState)
+            switch (value)
             {
-                state = (Area.CompletionState)value;
-            }
-            else if (value is string)
-            {
-                Enum.TryParse<Area.CompletionState>(value as string, out state);
+                case Area.CompletionState v:
+                    state = v;
+                    break;
+                case string v:
+                    if (Enum.TryParse(v, out Area.CompletionState s))
+                    {
+                        state = s;
+                    }
+
+                    break;
             }
 
             switch (state)

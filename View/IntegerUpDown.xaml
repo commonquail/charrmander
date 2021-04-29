@@ -39,16 +39,16 @@
             Grid.RowSpan="2"
             TextAlignment="Right"
             VerticalContentAlignment="Center"
-            GotKeyboardFocus="tbVal_GotKeyboardFocus"
+            GotKeyboardFocus="Val_GotKeyboardFocus"
             LostKeyboardFocus="Val_LostKeyboardFocus"
-            PreviewKeyDown="tbVal_PreviewKeyDown"
+            PreviewKeyDown="Val_PreviewKeyDown"
             Text="{Binding Value, Mode=TwoWay,
                 NotifyOnSourceUpdated=True,
                 UpdateSourceTrigger=PropertyChanged,
                 NotifyOnValidationError=True,
                 RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:IntegerUpDown}}}"
             />
-        <RepeatButton Name="rpIncr" Grid.Column="1" Grid.Row="0" Content="5" Click="rpIncr_Click"/>
-        <RepeatButton Name="rpDecr" Grid.Column="1" Grid.Row="1" Content="6" Click="rpDecr_Click"/>
+        <RepeatButton Name="rpIncr" Grid.Column="1" Grid.Row="0" Content="5" Click="Incr_Click"/>
+        <RepeatButton Name="rpDecr" Grid.Column="1" Grid.Row="1" Content="6" Click="Decr_Click"/>
     </Grid>
 </UserControl>

@@ -1,29 +1,29 @@
-using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Windows;
-using System.Windows.Input;
-using System.Xml;
-using System.Xml.Linq;
 using Charrmander.Model;
 using Charrmander.Util;
 using Charrmander.View;
 using Microsoft.Win32;
-using System.IO;
-using System.Xml.Schema;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
-using System.Windows.Data;
-using System.Windows.Shell;
+using System.IO;
+using System.Linq;
 using System.Runtime.Versioning;
+using System.Windows;
+using System.Windows.Data;
+using System.Windows.Input;
+using System.Windows.Shell;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Schema;
 
 namespace Charrmander.ViewModel
 {
     class ViewModelMain : AbstractNotifier, IViewModel, IDisposable
     {
         #region Fields
-        
+
         private RelayCommand _cmdNew;
         private RelayCommand _cmdOpen;
         private RelayCommand _cmdSave;
@@ -35,7 +35,7 @@ namespace Charrmander.ViewModel
         private RelayCommand _cmdCompleteArea;
         private RelayCommand _cmdCompletionOverview;
 
-        private BackgroundWorker _bgUpdater = new BackgroundWorker();
+        private readonly BackgroundWorker _bgUpdater = new();
 
         private UpdateAvailableViewModel _updateViewModel;
         private CompletionOverviewView _completionOverview;
@@ -44,7 +44,7 @@ namespace Charrmander.ViewModel
 
         private string _windowTitle = "Charrmander";
 
-        private readonly Version _curVersion = new Version(1, 20, 0, 0);
+        private readonly Version _curVersion = new(1, 20, 0, 0);
 
         private string _statusBarUpdateCheck;
 
@@ -55,7 +55,7 @@ namespace Charrmander.ViewModel
         /// <see cref="ObservableCollection"/> to propagate both element and
         /// collection change events.
         /// </summary>
-        private readonly ObservableCollection<Character> _characterList = new ObservableCollection<Character>();
+        private readonly ObservableCollection<Character> _characterList = new();
 
         private Character _selectedCharacter;
         private Area _selectedAreaReference;
@@ -65,9 +65,9 @@ namespace Charrmander.ViewModel
 
         private Visibility _isBiographyVisible = Visibility.Collapsed;
 
-        private IDictionary<string, object> _biographyOptionsProfession;
-        private ObservableCollection<string> _biographyOptionsPersonality;
-        private IDictionary<string, IDictionary<string, ObservableCollection<string>>> _biographyOptionsRace;
+        private readonly IDictionary<string, object> _biographyOptionsProfession;
+        private readonly ObservableCollection<string> _biographyOptionsPersonality;
+        private readonly IDictionary<string, IDictionary<string, ObservableCollection<string>>> _biographyOptionsRace;
 
         private ObservableCollection<string>
             _selectedBiographyOptionsProfession,
@@ -161,7 +161,7 @@ namespace Charrmander.ViewModel
                 if (value != _windowTitle)
                 {
                     _windowTitle = value;
-                    RaisePropertyChanged("WindowTitle");
+                    RaisePropertyChanged(nameof(WindowTitle));
                 }
             }
         }
@@ -182,7 +182,7 @@ namespace Charrmander.ViewModel
                 if (value != _statusBarUpdateCheck)
                 {
                     _statusBarUpdateCheck = value;
-                    RaisePropertyChanged("StatusBarUpdateCheck");
+                    RaisePropertyChanged(nameof(StatusBarUpdateCheck));
                 }
             }
         }
@@ -218,7 +218,7 @@ namespace Charrmander.ViewModel
                 if (value != _unsavedChanges)
                 {
                     _unsavedChanges = value;
-                    RaisePropertyChanged("UnsavedChanges");
+                    RaisePropertyChanged(nameof(UnsavedChanges));
                 }
                 WindowTitle = String.Format(Properties.Resources.wnWindowTitle,
                     _unsavedChanges ? "*" : string.Empty,
@@ -269,7 +269,7 @@ namespace Charrmander.ViewModel
                         ChangedAreaOrCharacter();
                     }
                     IsCharacterDetailEnabled = value != null;
-                    RaisePropertyChanged("SelectedCharacter");
+                    RaisePropertyChanged(nameof(SelectedCharacter));
                 }
             }
         }
@@ -289,7 +289,7 @@ namespace Charrmander.ViewModel
                     {
                         ChangedAreaOrCharacter();
                     }
-                    RaisePropertyChanged("SelectedAreaReference");
+                    RaisePropertyChanged(nameof(SelectedAreaReference));
                 }
             }
         }
@@ -305,7 +305,7 @@ namespace Charrmander.ViewModel
                 if (value != _selectedAreaCharacter)
                 {
                     _selectedAreaCharacter = value;
-                    RaisePropertyChanged("SelectedAreaCharacter");
+                    RaisePropertyChanged(nameof(SelectedAreaCharacter));
                 }
             }
         }
@@ -321,7 +321,7 @@ namespace Charrmander.ViewModel
                 if (value != _isCharacterDetailEnabled)
                 {
                     _isCharacterDetailEnabled = value;
-                    RaisePropertyChanged("IsCharacterDetailEnabled");
+                    RaisePropertyChanged(nameof(IsCharacterDetailEnabled));
                 }
             }
         }
@@ -340,7 +340,7 @@ namespace Charrmander.ViewModel
                 if (value != _isBiographyVisible)
                 {
                     _isBiographyVisible = value;
-                    RaisePropertyChanged("IsBiographyVisible");
+                    RaisePropertyChanged(nameof(IsBiographyVisible));
                 }
             }
         }
@@ -356,7 +356,7 @@ namespace Charrmander.ViewModel
                 if (value != _selectedBiographyOptionsProfession)
                 {
                     _selectedBiographyOptionsProfession = value;
-                    RaisePropertyChanged("BiographyOptionsProfession");
+                    RaisePropertyChanged(nameof(BiographyOptionsProfession));
                 }
             }
         }
@@ -372,7 +372,7 @@ namespace Charrmander.ViewModel
                 if (value != _selectedBiographyOptionsPersonality)
                 {
                     _selectedBiographyOptionsPersonality = value;
-                    RaisePropertyChanged("BiographyOptionsPersonality");
+                    RaisePropertyChanged(nameof(BiographyOptionsPersonality));
                 }
             }
         }
@@ -388,7 +388,7 @@ namespace Charrmander.ViewModel
                 if (value != _selectedBiographyOptionsRaceFirst)
                 {
                     _selectedBiographyOptionsRaceFirst = value;
-                    RaisePropertyChanged("BiographyOptionsRaceFirst");
+                    RaisePropertyChanged(nameof(BiographyOptionsRaceFirst));
                 }
             }
         }
@@ -404,7 +404,7 @@ namespace Charrmander.ViewModel
                 if (value != _selectedBiographyOptionsRaceSecond)
                 {
                     _selectedBiographyOptionsRaceSecond = value;
-                    RaisePropertyChanged("BiographyOptionsRaceSecond");
+                    RaisePropertyChanged(nameof(BiographyOptionsRaceSecond));
                 }
             }
         }
@@ -420,7 +420,7 @@ namespace Charrmander.ViewModel
                 if (value != _selectedBiographyOptionsRaceThird)
                 {
                     _selectedBiographyOptionsRaceThird = value;
-                    RaisePropertyChanged("BiographyOptionsRaceThird");
+                    RaisePropertyChanged(nameof(BiographyOptionsRaceThird));
                 }
             }
         }
@@ -447,8 +447,8 @@ namespace Charrmander.ViewModel
                 if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Hearts && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Hearts = value;
-                    RaisePropertyChanged("HeartIcon");
-                    RaisePropertyChanged("Hearts");
+                    RaisePropertyChanged(nameof(HeartIcon));
+                    RaisePropertyChanged(nameof(Hearts));
                     UpdateAreaState(SelectedAreaReference, SelectedCharacter);
                 }
             }
@@ -472,8 +472,8 @@ namespace Charrmander.ViewModel
                 if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Waypoints && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Waypoints = value;
-                    RaisePropertyChanged("Waypoints");
-                    RaisePropertyChanged("WaypointIcon");
+                    RaisePropertyChanged(nameof(Waypoints));
+                    RaisePropertyChanged(nameof(WaypointIcon));
                     UpdateAreaState(SelectedAreaReference, SelectedCharacter);
                 }
             }
@@ -497,8 +497,8 @@ namespace Charrmander.ViewModel
                 if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.PoIs && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.PoIs = value;
-                    RaisePropertyChanged("PoIs");
-                    RaisePropertyChanged("PoIIcon");
+                    RaisePropertyChanged(nameof(PoIs));
+                    RaisePropertyChanged(nameof(PoIIcon));
                     UpdateAreaState(SelectedAreaReference, SelectedCharacter);
                 }
             }
@@ -522,8 +522,8 @@ namespace Charrmander.ViewModel
                 if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Skills && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Skills = value;
-                    RaisePropertyChanged("Skills");
-                    RaisePropertyChanged("SkillIcon");
+                    RaisePropertyChanged(nameof(Skills));
+                    RaisePropertyChanged(nameof(SkillIcon));
                     UpdateAreaState(SelectedAreaReference, SelectedCharacter);
                 }
             }
@@ -547,8 +547,8 @@ namespace Charrmander.ViewModel
                 if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Vistas && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Vistas = value;
-                    RaisePropertyChanged("Vistas");
-                    RaisePropertyChanged("VistaIcon");
+                    RaisePropertyChanged(nameof(Vistas));
+                    RaisePropertyChanged(nameof(VistaIcon));
                     UpdateAreaState(SelectedAreaReference, SelectedCharacter);
                 }
             }
@@ -753,7 +753,7 @@ namespace Charrmander.ViewModel
             {
                 if (_cmdRegisterExtensions == null)
                 {
-                    _cmdRegisterExtensions = new RelayCommand(param => this.RegisterExtension());
+                    _cmdRegisterExtensions = new RelayCommand(param => RegisterExtension());
                 }
                 return _cmdRegisterExtensions;
             }
@@ -830,7 +830,7 @@ namespace Charrmander.ViewModel
 
             if (filePath == null)
             {
-                OpenFileDialog open = new OpenFileDialog();
+                var open = new OpenFileDialog();
                 open.Filter += Properties.Resources.cfgFileFilter;
                 if (open.ShowDialog().Value)
                 {
@@ -858,55 +858,55 @@ namespace Charrmander.ViewModel
         {
             RecordRecentFile(filePath);
 
-            XmlReaderSettings settings = new XmlReaderSettings();
+            var settings = new XmlReaderSettings();
 
-            XmlSchemaSet xs = new XmlSchemaSet();
+            var schemas = new XmlSchemaSet();
             settings.CloseInput = true;
-            xs.Add(Properties.Resources.xNamespace,
+            schemas.Add(Properties.Resources.xNamespace,
                 XmlReader.Create(Application.GetResourceStream(
                     new Uri(Properties.Resources.cfgXsdpath, UriKind.Relative)).Stream, settings));
 
-            settings = new XmlReaderSettings();
-            settings.ValidationType = ValidationType.Schema;
-            settings.Schemas = xs;
+            settings = new XmlReaderSettings
+            {
+                ValidationType = ValidationType.Schema,
+                Schemas = schemas
+            };
             settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
             settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
             settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
             settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
 
             XDocument doc = null;
-            using (XmlReader r = XmlReader.Create(filePath, settings))
+            using XmlReader r = XmlReader.Create(filePath, settings);
+            try
             {
-                try
-                {
-                    // Load and parse the file. Only if load and parse succeed
-                    // should the file handle be updated.
-                    doc = XDocument.Load(r);
-                    Parse(doc);
-                    _currentFile = new FileInfo(filePath);
-                    UnsavedChanges = false;
-                }
-                catch (XmlSchemaValidationException ex)
-                {
-                    ShowError(Properties.Resources.msgOpenFailedValidationTitle, String.Format(
-                        Properties.Resources.msgOpenFailedParsingBody,
-                        ex.InnerException.Message));
-                }
-                catch (XmlException ex)
-                {
-                    ShowError(Properties.Resources.msgOpenFailedParsingTitle,
-                        String.Format(Properties.Resources.msgOpenFailedParsingBody,
-                        ex.Message));
-                }
-                catch (FileNotFoundException)
-                {
-                    ShowError(Properties.Resources.msgOpenFailedNoFileTitle,
-                        Properties.Resources.msgOpenFailedNoFileBody);
-                }
+                // Load and parse the file. Only if load and parse succeed
+                // should the file handle be updated.
+                doc = XDocument.Load(r);
+                Parse(doc);
+                _currentFile = new FileInfo(filePath);
+                UnsavedChanges = false;
+            }
+            catch (XmlSchemaValidationException ex)
+            {
+                ShowError(Properties.Resources.msgOpenFailedValidationTitle, String.Format(
+                    Properties.Resources.msgOpenFailedParsingBody,
+                    ex.InnerException.Message));
+            }
+            catch (XmlException ex)
+            {
+                ShowError(Properties.Resources.msgOpenFailedParsingTitle,
+                    String.Format(Properties.Resources.msgOpenFailedParsingBody,
+                    ex.Message));
+            }
+            catch (FileNotFoundException)
+            {
+                ShowError(Properties.Resources.msgOpenFailedNoFileTitle,
+                    Properties.Resources.msgOpenFailedNoFileBody);
             }
         }
 
-        private void RecordRecentFile(string filePath)
+        private static void RecordRecentFile(string filePath)
         {
             var jp = new JumpPath
             {
@@ -934,18 +934,17 @@ namespace Charrmander.ViewModel
 
             foreach (var charr in characters)
             {
-                Character c = new Character(this)
+                var c = new Character(this)
                 {
                     Name = charr.CElement("Name").Value,
                     Race = charr.CElement("Race").Value,
                     Profession = charr.CElement("Profession").Value
                 };
 
-                int level = 0;
-                int.TryParse(charr.CElement("Level").Value, out level);
+                _ = int.TryParse(charr.CElement("Level").Value, out int level);
                 c.Level = level;
 
-                int.TryParse(charr.CElement("DefaultSortOrder").Value, out int defaultSortOrder);
+                _ = int.TryParse(charr.CElement("DefaultSortOrder").Value, out int defaultSortOrder);
                 c.DefaultSortOrder = Math.Max(defaultSortOrder, Character.MinSortOrder);
 
                 // Biography choices.
@@ -967,22 +966,20 @@ namespace Charrmander.ViewModel
                 var craftingDisciplines = charr.CElement("CraftingDisciplines");
                 foreach (var discipline in c.CraftingDisciplines)
                 {
-                    int craftLevel = 0;
-                    int.TryParse(craftingDisciplines.CElement(discipline.Name).CElement("Level").Value,
-                        out craftLevel);
+                    _ = int.TryParse(craftingDisciplines.CElement(discipline.Name).CElement("Level").Value,
+                        out int craftLevel);
                     discipline.Level = craftLevel;
                 }
 
                 // World completion.
-                bool worldCompleted;
-                bool.TryParse(charr.CElement("HasWorldCompletion").Value, out worldCompleted);
+                _ = bool.TryParse(charr.CElement("HasWorldCompletion").Value, out bool worldCompleted);
                 c.HasWorldCompletion = worldCompleted;
 
                 // Area completion.
                 var areas = charr.CElement("Areas").CElements("Area");
                 foreach (var area in areas)
                 {
-                    Area a = new Area(area.CElement("Name").Value)
+                    var a = new Area(area.CElement("Name").Value)
                     {
                         Hearts = area.CElement("Completion").CElement("Hearts").Value,
                         Waypoints = area.CElement("Completion").CElement("Waypoints").Value,
@@ -991,7 +988,7 @@ namespace Charrmander.ViewModel
                         Vistas = area.CElement("Completion").CElement("Vistas").Value
                     };
 
-                    if (AreaReferenceList.Count(aa => aa.Name == a.Name) > 0)
+                    if (AreaReferenceList.Any(aa => aa.Name == a.Name))
                     {
                         c.Areas.Add(a);
                     }
@@ -1011,16 +1008,15 @@ namespace Charrmander.ViewModel
                     {
                         if (cd.Name == ld.CElement("Name").Value)
                         {
-                            bool completed = false;
-                            bool.TryParse(ld.CElement("StoryCompleted").Value, out completed);
+                            _ = bool.TryParse(ld.CElement("StoryCompleted").Value, out bool completed);
                             cd.StoryCompleted = completed;
                             break;
                         }
                     }
                 }
 
-                int fractalTier = Character.FractalTierMin;
-                int.TryParse(charr.CElement("FractalTier").Value, out fractalTier);
+                _ = int.TryParse(charr.CElement("FractalTier").Value, out int fractalTier);
+                fractalTier = Math.Max(fractalTier, Character.FractalTierMin);
                 if (fractalTier > c.FractalTier)
                 {
                     c.FractalTier = fractalTier;
@@ -1040,7 +1036,7 @@ namespace Charrmander.ViewModel
             var iter = SortedCharacterList.View?.GetEnumerator();
             if (iter != null && iter.MoveNext())
             {
-                SelectedCharacter = (Character) iter.Current;
+                SelectedCharacter = (Character)iter.Current;
             }
             else
             {
@@ -1075,12 +1071,11 @@ namespace Charrmander.ViewModel
                     // meaningfully completed. Just remove it altogether.
                     continue;
                 }
-                bool completed = false;
-                bool.TryParse(ld.CElement("Completed").Value, out completed);
+                _ = bool.TryParse(ld.CElement("Completed").Value, out bool completed);
                 // "Scion & Champion>"
                 if (chapterName.EndsWith(">"))
                 {
-                    chapterName = chapterName.Substring(0, chapterName.Length - 1);
+                    chapterName = chapterName[0..^1];
                 }
                 chapterByNameByActName[actName][chapterName].ChapterCompleted = completed;
             }
@@ -1124,7 +1119,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void SaveAs()
         {
-            SaveFileDialog save = new SaveFileDialog();
+            var save = new SaveFileDialog();
 
             if (_currentFile == null)
             {
@@ -1148,22 +1143,22 @@ namespace Charrmander.ViewModel
         /// <param name="filePath">The file path to write to; doesn't have to exist.</param>
         private void DoSave(string filePath)
         {
-            XmlWriterSettings xws = new XmlWriterSettings();
-            xws.OmitXmlDeclaration = false;
-            xws.Indent = true;
-
-            using (XmlWriter xw = XmlWriter.Create(filePath, xws))
+            var xws = new XmlWriterSettings
             {
-                new XDocument(
-                    new CharrElement("Charrmander",
-                        (_characterList.Count > 0 ?
-                        from c in _characterList
-                        select c.ToXML() : null)
-                    )
-                ).Save(xw);
-                _currentFile = new FileInfo(filePath);
-                UnsavedChanges = false;
-            }
+                OmitXmlDeclaration = false,
+                Indent = true
+            };
+
+            using XmlWriter xw = XmlWriter.Create(filePath, xws);
+            new XDocument(
+                new CharrElement("Charrmander",
+                    (_characterList.Count > 0 ?
+                    from c in _characterList
+                    select c.ToXML() : null)
+                )
+            ).Save(xw);
+            _currentFile = new FileInfo(filePath);
+            UnsavedChanges = false;
         }
 
         /// <summary>
@@ -1173,11 +1168,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void OnRequestClose()
         {
-            EventHandler handler = this.RequestClose;
-            if (handler != null)
-            {
-                handler(this, EventArgs.Empty);
-            }
+            this.RequestClose?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -1239,7 +1230,7 @@ namespace Charrmander.ViewModel
         /// This application is defined by the current path of the executable,
         /// meaning this has to be re-run if the executable is moved.
         /// </summary>
-        private void RegisterExtension()
+        private static void RegisterExtension()
         {
             if (!OperatingSystem.IsWindows())
             {
@@ -1301,8 +1292,8 @@ namespace Charrmander.ViewModel
         private IEnumerable<Character> GetNamedCharacters()
         {
             return from c in _characterList
-                where !string.IsNullOrWhiteSpace(c.Name)
-                select c;
+                   where !string.IsNullOrWhiteSpace(c.Name)
+                   select c;
         }
 
         /// <summary>
@@ -1333,13 +1324,13 @@ namespace Charrmander.ViewModel
 
             var areas = from a in AreaReferenceList
                         select new Area(a.Name)
-                            {
-                                Hearts = a.Hearts,
-                                Waypoints = a.Waypoints,
-                                PoIs = a.PoIs,
-                                Skills = a.Skills,
-                                Vistas = a.Vistas
-                            };
+                        {
+                            Hearts = a.Hearts,
+                            Waypoints = a.Waypoints,
+                            PoIs = a.PoIs,
+                            Skills = a.Skills,
+                            Vistas = a.Vistas
+                        };
 
             foreach (var a in areas)
             {
@@ -1390,8 +1381,9 @@ namespace Charrmander.ViewModel
         /// </summary>
         public void UpdateBiographyOptions()
         {
-            if (SelectedCharacter == null || string.IsNullOrEmpty(SelectedCharacter.Profession)
-                || string.IsNullOrEmpty(SelectedCharacter.Race))
+            string charProfession = SelectedCharacter?.Profession;
+            string charRace = SelectedCharacter?.Race;
+            if (string.IsNullOrEmpty(charProfession) || string.IsNullOrEmpty(charRace))
             {
                 IsBiographyVisible = Visibility.Collapsed;
                 BiographyOptionsProfession = null;
@@ -1403,32 +1395,28 @@ namespace Charrmander.ViewModel
             else
             {
                 IsBiographyVisible = Visibility.Visible;
-                // Non-rangers all have simple lists of options.
-                var nonRanger = _biographyOptionsProfession[SelectedCharacter.Profession]
-                    as ObservableCollection<string>;
-                if (nonRanger != null)
-                {
-                    BiographyOptionsProfession = nonRanger;
-                }
-                else
+                var profOption = _biographyOptionsProfession[charProfession];
+                switch (profOption)
                 {
                     // Ranger requires special handling. It has a race
                     // dependency and so is nested one level further.
-                    var ranger = _biographyOptionsProfession[SelectedCharacter.Profession]
-                        as IDictionary<string, ObservableCollection<string>>;
-                    if (ranger != null)
-                    {
-                        BiographyOptionsProfession = ranger[SelectedCharacter.Race];
-                    }
+                    case IDictionary<string, ObservableCollection<string>> ranger:
+                        BiographyOptionsProfession = ranger[charRace];
+                        break;
+                    // Non-rangers all have simple lists of options.
+                    case ObservableCollection<string> other:
+                        BiographyOptionsProfession = other;
+                        break;
                 }
 
                 // Personality (this one is constant).
                 BiographyOptionsPersonality = _biographyOptionsPersonality;
 
                 // Race.
-                BiographyOptionsRaceFirst = _biographyOptionsRace[SelectedCharacter.Race]["First"];
-                BiographyOptionsRaceSecond = _biographyOptionsRace[SelectedCharacter.Race]["Second"];
-                BiographyOptionsRaceThird = _biographyOptionsRace[SelectedCharacter.Race]["Third"];
+                var raceOption = _biographyOptionsRace[charRace];
+                BiographyOptionsRaceFirst = raceOption["First"];
+                BiographyOptionsRaceSecond = raceOption["Second"];
+                BiographyOptionsRaceThird = raceOption["Third"];
             }
         }
 
@@ -1439,7 +1427,7 @@ namespace Charrmander.ViewModel
         /// <param name="body">The message box message.</param>
         /// <param name="severity">A <see cref="MessageBoxImage"/> indicating
         /// the severity, default <c>MessageBoxImage.Error</c></param>
-        private void ShowError(string caption, string body, MessageBoxImage severity = MessageBoxImage.Error)
+        private static void ShowError(string caption, string body, MessageBoxImage severity = MessageBoxImage.Error)
         {
             MessageBox.Show(body, caption, MessageBoxButton.OK, severity);
         }
@@ -1458,7 +1446,7 @@ namespace Charrmander.ViewModel
         /// <param name="referenceArea">The area whose <c>State</c> to
         /// update.</param>
         /// <param name="c">The character whose completion state to get</param>
-        private void UpdateAreaState(Area referenceArea, Character c)
+        private static void UpdateAreaState(Area referenceArea, Character c)
         {
             bool found = false;
             foreach (var ca in c.Areas)
@@ -1532,29 +1520,29 @@ namespace Charrmander.ViewModel
                 UpdateAreaState(ra, SelectedCharacter);
             }
 
-            RaisePropertyChanged("Hearts");
-            RaisePropertyChanged("Waypoints");
-            RaisePropertyChanged("PoIs");
-            RaisePropertyChanged("Skills");
-            RaisePropertyChanged("Vistas");
+            RaisePropertyChanged(nameof(Hearts));
+            RaisePropertyChanged(nameof(Waypoints));
+            RaisePropertyChanged(nameof(PoIs));
+            RaisePropertyChanged(nameof(Skills));
+            RaisePropertyChanged(nameof(Vistas));
 
-            RaisePropertyChanged("HeartIcon");
-            RaisePropertyChanged("WaypointIcon");
-            RaisePropertyChanged("PoIIcon");
-            RaisePropertyChanged("SkillIcon");
-            RaisePropertyChanged("VistaIcon");
+            RaisePropertyChanged(nameof(HeartIcon));
+            RaisePropertyChanged(nameof(WaypointIcon));
+            RaisePropertyChanged(nameof(PoIIcon));
+            RaisePropertyChanged(nameof(SkillIcon));
+            RaisePropertyChanged(nameof(VistaIcon));
 
             UpdateStoryChapterCompletion();
             // Forcefully update the story chapter summary.
             // Here, in chronological order of release to match typical eye
             // movement.
-            RaisePropertyChanged("HasCompletedLw2");
-            RaisePropertyChanged("HasCompletedHoT");
-            RaisePropertyChanged("HasCompletedKotT");
-            RaisePropertyChanged("HasCompletedLw3");
-            RaisePropertyChanged("HasCompletedPoF");
-            RaisePropertyChanged("HasCompletedLw4");
-            RaisePropertyChanged("HasCompletedTis");
+            RaisePropertyChanged(nameof(HasCompletedLw2));
+            RaisePropertyChanged(nameof(HasCompletedHoT));
+            RaisePropertyChanged(nameof(HasCompletedKotT));
+            RaisePropertyChanged(nameof(HasCompletedLw3));
+            RaisePropertyChanged(nameof(HasCompletedPoF));
+            RaisePropertyChanged(nameof(HasCompletedLw4));
+            RaisePropertyChanged(nameof(HasCompletedTis));
         }
 
         /// <summary>
@@ -1569,7 +1557,7 @@ namespace Charrmander.ViewModel
             /// We don't want to deal with the namespace for the version
             /// history file, we're not validating it anyway.
             XDocument doc = null;
-            using (XmlTextReader tr = new XmlTextReader(Properties.Resources.cfgUpdateCheckUri))
+            using (var tr = new XmlTextReader(Properties.Resources.cfgUpdateCheckUri))
             {
                 tr.Namespaces = false;
                 doc = XDocument.Load(tr);
@@ -1619,7 +1607,7 @@ namespace Charrmander.ViewModel
                         latest = doc.Root.Element("Latest").Element("Release");
                     }
 
-                    Version newVersion = new Version(latest.Element("Version").Value);
+                    var newVersion = new Version(latest.Element("Version").Value);
 
                     if (newVersion.IsNewerThan(_curVersion))
                     {
@@ -1676,7 +1664,7 @@ namespace Charrmander.ViewModel
             SelectedCharacter.Name = SelectedCharacter.Name.Trim();
         }
 
-        private Area.CompletionState CalculateStoryChapterCompletion(Collection<Act> acts)
+        private static Area.CompletionState CalculateStoryChapterCompletion(Collection<Act> acts)
         {
             if (acts.SelectMany(a => a.Chapters).All(c => c.ChapterCompleted))
             {
@@ -1701,7 +1689,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasCompletedLw2)
                 {
                     _hasCompletedLw2 = value;
-                    RaisePropertyChanged("HasCompletedLw2");
+                    RaisePropertyChanged(nameof(HasCompletedLw2));
                 }
             }
         }
@@ -1716,7 +1704,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasCompletedHoT)
                 {
                     _hasCompletedHoT = value;
-                    RaisePropertyChanged("HasCompletedHoT");
+                    RaisePropertyChanged(nameof(HasCompletedHoT));
                 }
             }
         }
@@ -1731,7 +1719,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasCompletedKotT)
                 {
                     _hasCompletedKotT = value;
-                    RaisePropertyChanged("HasCompletedKotT");
+                    RaisePropertyChanged(nameof(HasCompletedKotT));
                 }
             }
         }
@@ -1746,7 +1734,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasCompletedLw3)
                 {
                     _hasCompletedLw3 = value;
-                    RaisePropertyChanged("HasCompletedLw3");
+                    RaisePropertyChanged(nameof(HasCompletedLw3));
                 }
             }
         }
@@ -1761,7 +1749,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasCompletedPoF)
                 {
                     _hasCompletedPoF = value;
-                    RaisePropertyChanged("HasCompletedPoF");
+                    RaisePropertyChanged(nameof(HasCompletedPoF));
                 }
             }
         }
@@ -1776,7 +1764,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasCompletedLw4)
                 {
                     _hasCompletedLw4 = value;
-                    RaisePropertyChanged("HasCompletedLw4");
+                    RaisePropertyChanged(nameof(HasCompletedLw4));
                 }
             }
         }
@@ -1791,7 +1779,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasCompletedTis)
                 {
                     _hasCompletedTis = value;
-                    RaisePropertyChanged("HasCompletedTis");
+                    RaisePropertyChanged(nameof(HasCompletedTis));
                 }
             }
         }
@@ -1806,7 +1794,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasKeyLw2)
                 {
                     _hasKeyLw2 = value;
-                    RaisePropertyChanged("HasKeyLw2");
+                    RaisePropertyChanged(nameof(HasKeyLw2));
                 }
             }
         }
@@ -1821,7 +1809,7 @@ namespace Charrmander.ViewModel
                 if (value != _hasKeyHoT)
                 {
                     _hasKeyHoT = value;
-                    RaisePropertyChanged("HasKeyHoT");
+                    RaisePropertyChanged(nameof(HasKeyHoT));
                 }
             }
         }
@@ -1852,7 +1840,7 @@ namespace Charrmander.ViewModel
         /// <param name="subKeyName">The per-user file association sub-key whose "default" value to set</param>
         /// <param name="defaultValue">The "default" value of <code>subKeyName</code></param>
         [SupportedOSPlatform("windows")]
-        private void CurrentUserFileAssoc(string subKeyName, string defaultValue)
+        private static void CurrentUserFileAssoc(string subKeyName, string defaultValue)
         {
             // Location of per-user file association: https://stackoverflow.com/a/69863/482758
             using (var key = Registry.CurrentUser.CreateSubKey(@"Software\Classes\" + subKeyName))

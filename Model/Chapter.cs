@@ -28,7 +28,7 @@ namespace Charrmander.Model
                 if (value != _completed)
                 {
                     _completed = value;
-                    RaisePropertyChanged("ChapterCompleted");
+                    RaisePropertyChanged(nameof(ChapterCompleted));
                 }
             }
         }

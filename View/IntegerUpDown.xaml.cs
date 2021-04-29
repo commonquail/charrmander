@@ -1,8 +1,6 @@
 using System;
-using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 
 namespace Charrmander.View
@@ -78,12 +76,12 @@ namespace Charrmander.View
             ctrl.rpIncr.IsEnabled = v < ctrl.Maximum;
         }
 
-        private void rpIncr_Click(object sender, RoutedEventArgs e)
+        private void Incr_Click(object sender, RoutedEventArgs e)
         {
             Increment();
         }
 
-        private void rpDecr_Click(object sender, RoutedEventArgs e)
+        private void Decr_Click(object sender, RoutedEventArgs e)
         {
             Decrement();
         }
@@ -98,12 +96,12 @@ namespace Charrmander.View
             Value = Math.Max(Value - 1, Minimum);
         }
 
-        private void tbVal_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        private void Val_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             tbVal.Dispatcher.BeginInvoke(new Action(() => tbVal.SelectAll()));
         }
 
-        private void tbVal_PreviewKeyDown(object sender, KeyEventArgs e)
+        private void Val_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {

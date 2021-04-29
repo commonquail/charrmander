@@ -6,7 +6,7 @@ namespace Charrmander.Model
 {
     class Area : AbstractNotifier
     {
-        private static Regex _NaNMatch;
+        private static readonly Regex _NaNMatch;
 
         private string _minLevel = "0";
         private string _maxLevel = "80";
@@ -96,7 +96,7 @@ namespace Charrmander.Model
                 if (value != _minLevel)
                 {
                     _minLevel = value;
-                    RaisePropertyChanged("MinLevel");
+                    RaisePropertyChanged(nameof(MinLevel));
                 }
             }
         }
@@ -112,7 +112,7 @@ namespace Charrmander.Model
                 if (value != _maxLevel)
                 {
                     _maxLevel = value;
-                    RaisePropertyChanged("MaxLevel");
+                    RaisePropertyChanged(nameof(MaxLevel));
                 }
             }
         }
@@ -138,7 +138,7 @@ namespace Charrmander.Model
                 if (value != _areaState)
                 {
                     _areaState = value;
-                    RaisePropertyChanged("State");
+                    RaisePropertyChanged(nameof(State));
                 }
             }
         }
@@ -194,7 +194,7 @@ namespace Charrmander.Model
         /// <param name="item">The field corresponding to the desired area
         /// completion item.</param>
         /// <returns>The value of <c>item</c>, "0" if null or empty.</returns>
-        private string GetCompletionItem(string item)
+        private static string GetCompletionItem(string item)
         {
             return string.IsNullOrWhiteSpace(item) ? "0" : item;
         }

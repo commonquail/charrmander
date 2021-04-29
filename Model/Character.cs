@@ -1,18 +1,18 @@
+using Charrmander.Util;
+using Charrmander.ViewModel;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
-using System.Xml.Linq;
-using Charrmander.Util;
-using Charrmander.ViewModel;
-using System.Collections.Generic;
 using System.Windows;
+using System.Xml.Linq;
 
 namespace Charrmander.Model
 {
     class Character : AbstractNotifier, IDisposable
     {
-        private IViewModel _viewModel;
+        private readonly IViewModel _viewModel;
 
         private string _name = string.Empty;
         private string _race = string.Empty;
@@ -20,21 +20,13 @@ namespace Charrmander.Model
         private int _level = 0;
         private int _defaultSortOrder = 1;
 
-        private IDictionary<string, string> _biographies;
+        private readonly IDictionary<string, string> _biographies;
 
         private string _order = string.Empty;
         private string _racialSympathy = string.Empty;
         private string _retributionAlly = string.Empty;
         private string _greatestFear = string.Empty;
         private string _planOfAttack = string.Empty;
-
-        private string _lw2 = string.Empty;
-        private string _hot = string.Empty;
-        private string _kott = string.Empty;
-        private string _lw3 = string.Empty;
-        private string _pof = string.Empty;
-        private string _lw4 = string.Empty;
-        private string _tis = string.Empty;
 
         private bool _hasWorldCompletion = false;
 
@@ -45,15 +37,15 @@ namespace Charrmander.Model
 
         private string _notes;
 
-        private ObservableCollection<Act> _lw2acts = new ObservableCollection<Act>();
-        private ObservableCollection<Act> _hotacts = new ObservableCollection<Act>();
-        private ObservableCollection<Act> _kottacts = new ObservableCollection<Act>();
-        private ObservableCollection<Act> _lw3acts = new ObservableCollection<Act>();
-        private ObservableCollection<Act> _pofacts = new ObservableCollection<Act>();
-        private ObservableCollection<Act> _lw4acts = new ObservableCollection<Act>();
-        private ObservableCollection<Act> _tisacts = new ObservableCollection<Act>();
+        private readonly ObservableCollection<Act> _lw2acts = new();
+        private readonly ObservableCollection<Act> _hotacts = new();
+        private readonly ObservableCollection<Act> _kottacts = new();
+        private readonly ObservableCollection<Act> _lw3acts = new();
+        private readonly ObservableCollection<Act> _pofacts = new();
+        private readonly ObservableCollection<Act> _lw4acts = new();
+        private readonly ObservableCollection<Act> _tisacts = new();
 
-        private ObservableCollection<Dungeon> _dungeons = new ObservableCollection<Dungeon>();
+        private readonly ObservableCollection<Dungeon> _dungeons = new();
 
         /// <summary>
         /// Maximum sort order; greater than max account character slot of 69
@@ -194,7 +186,7 @@ namespace Charrmander.Model
                 if (value != _name && !string.IsNullOrWhiteSpace(value))
                 {
                     _name = value;
-                    RaisePropertyChanged("Name");
+                    RaisePropertyChanged(nameof(Name));
                 }
             }
         }
@@ -211,7 +203,7 @@ namespace Charrmander.Model
                 if (value != _race && !string.IsNullOrWhiteSpace(value))
                 {
                     _race = value;
-                    RaisePropertyChanged("Race");
+                    RaisePropertyChanged(nameof(Race));
                 }
             }
         }
@@ -227,7 +219,7 @@ namespace Charrmander.Model
                 if (value != _profession && !string.IsNullOrWhiteSpace(value))
                 {
                     _profession = value;
-                    RaisePropertyChanged("Profession");
+                    RaisePropertyChanged(nameof(Profession));
                 }
             }
         }
@@ -244,7 +236,7 @@ namespace Charrmander.Model
                     value >= MinLevel && value <= MaxLevel)
                 {
                     _level = value;
-                    RaisePropertyChanged("Level");
+                    RaisePropertyChanged(nameof(Level));
                 }
             }
         }
@@ -260,7 +252,7 @@ namespace Charrmander.Model
                 if (value != _biographies["Profession"] && !string.IsNullOrWhiteSpace(value))
                 {
                     _biographies["Profession"] = value;
-                    RaisePropertyChanged("BiographyProfession");
+                    RaisePropertyChanged(nameof(BiographyProfession));
                 }
             }
         }
@@ -276,7 +268,7 @@ namespace Charrmander.Model
                 if (value != _biographies["Personality"] && !string.IsNullOrWhiteSpace(value))
                 {
                     _biographies["Personality"] = value;
-                    RaisePropertyChanged("BiographyPersonality");
+                    RaisePropertyChanged(nameof(BiographyPersonality));
                 }
             }
         }
@@ -294,7 +286,7 @@ namespace Charrmander.Model
                 if (value != _biographies["RaceFirst"] && !string.IsNullOrWhiteSpace(value))
                 {
                     _biographies["RaceFirst"] = value;
-                    RaisePropertyChanged("BiographyRaceFirst");
+                    RaisePropertyChanged(nameof(BiographyRaceFirst));
                 }
             }
         }
@@ -312,7 +304,7 @@ namespace Charrmander.Model
                 if (value != _biographies["RaceSecond"] && !string.IsNullOrWhiteSpace(value))
                 {
                     _biographies["RaceSecond"] = value;
-                    RaisePropertyChanged("BiographyRaceSecond");
+                    RaisePropertyChanged(nameof(BiographyRaceSecond));
                 }
             }
         }
@@ -330,7 +322,7 @@ namespace Charrmander.Model
                 if (value != _biographies["RaceThird"] && !string.IsNullOrWhiteSpace(value))
                 {
                     _biographies["RaceThird"] = value;
-                    RaisePropertyChanged("BiographyRaceThird");
+                    RaisePropertyChanged(nameof(BiographyRaceThird));
                 }
             }
         }
@@ -346,7 +338,7 @@ namespace Charrmander.Model
                 if (value != _order && !string.IsNullOrWhiteSpace(value))
                 {
                     _order = value;
-                    RaisePropertyChanged("Order");
+                    RaisePropertyChanged(nameof(Order));
                 }
             }
         }
@@ -362,7 +354,7 @@ namespace Charrmander.Model
                 if (value != _racialSympathy && !string.IsNullOrWhiteSpace(value))
                 {
                     _racialSympathy = value;
-                    RaisePropertyChanged("RacialSympathy");
+                    RaisePropertyChanged(nameof(RacialSympathy));
                 }
             }
         }
@@ -378,7 +370,7 @@ namespace Charrmander.Model
                 if (value != _retributionAlly && !string.IsNullOrWhiteSpace(value))
                 {
                     _retributionAlly = value;
-                    RaisePropertyChanged("RetributionAlly");
+                    RaisePropertyChanged(nameof(RetributionAlly));
                 }
             }
         }
@@ -394,7 +386,7 @@ namespace Charrmander.Model
                 if (value != _greatestFear && !string.IsNullOrWhiteSpace(value))
                 {
                     _greatestFear = value;
-                    RaisePropertyChanged("GreatestFear");
+                    RaisePropertyChanged(nameof(GreatestFear));
                 }
             }
         }
@@ -410,7 +402,7 @@ namespace Charrmander.Model
                 if (value != _planOfAttack && !string.IsNullOrWhiteSpace(value))
                 {
                     _planOfAttack = value;
-                    RaisePropertyChanged("PlanOfAttack");
+                    RaisePropertyChanged(nameof(PlanOfAttack));
                 }
             }
         }
@@ -421,7 +413,7 @@ namespace Charrmander.Model
             set
             {
                 _hasWorldCompletion = value;
-                RaisePropertyChanged("HasWorldCompletion");
+                RaisePropertyChanged(nameof(HasWorldCompletion));
             }
         }
 
@@ -484,7 +476,7 @@ namespace Charrmander.Model
                 if (value != _fractalTier && value >= FractalTierMin)
                 {
                     _fractalTier = value;
-                    RaisePropertyChanged("FractalTier");
+                    RaisePropertyChanged(nameof(FractalTier));
                 }
             }
         }
@@ -500,7 +492,7 @@ namespace Charrmander.Model
                 if (value != _notes)
                 {
                     _notes = value;
-                    RaisePropertyChanged("Notes");
+                    RaisePropertyChanged(nameof(Notes));
                 }
             }
         }
@@ -575,7 +567,7 @@ namespace Charrmander.Model
             );
         }
 
-        private IEnumerable<CharrElement> SerializeActs(ObservableCollection<Act> acts)
+        private static IEnumerable<CharrElement> SerializeActs(ObservableCollection<Act> acts)
         {
             return from a in acts
                    select new CharrElement("Act",

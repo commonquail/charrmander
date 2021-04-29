@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Charrmander.Util;
 
 namespace Charrmander.Model
@@ -25,7 +21,7 @@ namespace Charrmander.Model
                 if (value != _name)
                 {
                     _name = value;
-                    RaisePropertyChanged("Name");
+                    RaisePropertyChanged(nameof(Name));
                 }
             }
         }
@@ -42,7 +38,7 @@ namespace Charrmander.Model
                     value >= MinLevel && value <= MaxLevel)
                 {
                     _level = value;
-                    RaisePropertyChanged("Level");
+                    RaisePropertyChanged(nameof(Level));
                 }
             }
         }
@@ -58,7 +54,7 @@ namespace Charrmander.Model
                 if (value != _maxLevel && value >= MinLevel)
                 {
                     _maxLevel = value;
-                    RaisePropertyChanged("MaxLevel");
+                    RaisePropertyChanged(nameof(MaxLevel));
                 }
             }
         }

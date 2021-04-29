@@ -1,8 +1,8 @@
+using Charrmander.View;
+using Charrmander.ViewModel;
 using System;
 using System.ComponentModel;
 using System.Windows;
-using Charrmander.View;
-using Charrmander.ViewModel;
 
 namespace Charrmander
 {
@@ -33,12 +33,8 @@ namespace Charrmander
              */
             var window = new MainWindow();
             var viewModel = new ViewModelMain(file);
-            EventHandler menuExitHandler = null;
-            menuExitHandler = delegate { window.Close(); };
-            viewModel.RequestClose += menuExitHandler;
-
-            CancelEventHandler xButtonHandler = null;
-            xButtonHandler = delegate(object o, CancelEventArgs ce)
+            void menuExitHandler(object sender, EventArgs e) => window.Close();
+            void xButtonHandler(object o, CancelEventArgs ce)
             {
                 if (viewModel.AbortClosing()) { ce.Cancel = true; }
                 else
@@ -47,7 +43,9 @@ namespace Charrmander
                     viewModel.RequestClose -= menuExitHandler;
                     window.Closing -= xButtonHandler;
                 }
-            };
+            }
+
+            viewModel.RequestClose += menuExitHandler;
             window.Closing += xButtonHandler;
             window.DataContext = viewModel;
             viewModel.CheckUpdate();
