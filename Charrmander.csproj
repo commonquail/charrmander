@@ -16,10 +16,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ExtensionsTestProject\**" />
-    <EmbeddedResource Remove="ExtensionsTestProject\**" />
-    <None Remove="ExtensionsTestProject\**" />
-    <Page Remove="ExtensionsTestProject\**" />
+    <Compile Remove="Tests\**" />
+    <EmbeddedResource Remove="Tests\**" />
+    <None Remove="Tests\**" />
+    <Page Remove="Tests\**" />
 
     <Compile Remove="coverage*\**" />
     <EmbeddedResource Remove="coverage*\**" />

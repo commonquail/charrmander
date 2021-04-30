@@ -5,10 +5,7 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Charrmander", "Charrmander.csproj", "{F8217C35-2528-49BB-B5D8-82C475868F17}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtensionsTestProject", "ExtensionsTestProject\ExtensionsTestProject.csproj", "{37BD3753-CF18-40DA-AB6C-7C7678F900AA}"
-	ProjectSection(ProjectDependencies) = postProject
-		{F8217C35-2528-49BB-B5D8-82C475868F17} = {F8217C35-2528-49BB-B5D8-82C475868F17}
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{37BD3753-CF18-40DA-AB6C-7C7678F900AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
