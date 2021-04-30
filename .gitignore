@@ -114,3 +114,7 @@ ehthumbs.db
 
 # Windows shortcuts
 *.lnk
+
+# Test coverage reports and history
+coverage/
+coverage-history/
