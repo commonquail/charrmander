@@ -1,4 +1,5 @@
 using Charrmander.Util;
+using FluentAssertions;
 using System;
 using Xunit;
 
@@ -17,7 +18,8 @@ namespace ExtensionsTestProject
             bool expected = true;
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, other);
-            Assert.Equal(expected, actual);
+
+            actual.Should().Be(expected);
         }
 
         /// <summary>
@@ -31,7 +33,8 @@ namespace ExtensionsTestProject
             bool expected = false;
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, other);
-            Assert.Equal(expected, actual);
+
+            actual.Should().Be(expected);
         }
 
         /// <summary>
@@ -44,7 +47,8 @@ namespace ExtensionsTestProject
             bool expected = false;
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, v);
-            Assert.Equal(expected, actual);
+
+            actual.Should().Be(expected);
         }
 
         /// <summary>
@@ -58,7 +62,8 @@ namespace ExtensionsTestProject
             bool expected = true;
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, other);
-            Assert.Equal(expected, actual);
+
+            actual.Should().Be(expected);
         }
 
         /// <summary>
@@ -72,7 +77,8 @@ namespace ExtensionsTestProject
             bool expected = false;
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, other);
-            Assert.Equal(expected, actual);
+
+            actual.Should().Be(expected);
         }
 
         /// <summary>
@@ -86,7 +92,8 @@ namespace ExtensionsTestProject
             bool expected = true;
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, other);
-            Assert.Equal(expected, actual);
+
+            actual.Should().Be(expected);
         }
 
         /// <summary>
@@ -100,7 +107,8 @@ namespace ExtensionsTestProject
             bool expected = true;
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, other);
-            Assert.Equal(expected, actual);
+
+            actual.Should().Be(expected);
         }
 
         /// <summary>
@@ -114,7 +122,8 @@ namespace ExtensionsTestProject
             bool expected = true;
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, other);
-            Assert.Equal(expected, actual);
+
+            actual.Should().Be(expected);
         }
     }
 }
