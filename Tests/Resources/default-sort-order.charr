@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Charrmander xmlns="http://charr.org">
+  <Character>
+    <DefaultSortOrder>10</DefaultSortOrder>
+    <Name>c1</Name>
+  </Character>
+  <Character>
+    <DefaultSortOrder>1</DefaultSortOrder>
+    <Name>c2</Name>
+  </Character>
+  <Character>
+    <DefaultSortOrder>3</DefaultSortOrder>
+    <Name>c3</Name>
+  </Character>
+  <Character>
+    <DefaultSortOrder>2</DefaultSortOrder>
+    <Name>c4</Name>
+  </Character>
+</Charrmander>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Charrmander xmlns="http://charr.org">
+  <Character>
+    <Name>minimalish</Name>
+    <Race>Sylvari</Race>
+    <Profession>Necromancer</Profession>
+    <Level>80</Level>
+    <Biographies>
+      <Profession>Ghostly Wraith</Profession>
+      <Personality>Ferocity</Personality>
+      <RaceFirst>The Shield of the Moon</RaceFirst>
+      <RaceSecond>Where life goes, so too, should you.</RaceSecond>
+      <RaceThird>Cycle of Dusk</RaceThird>
+    </Biographies>
+    <StoryChoices>
+      <Order>Order of Whispers</Order>
+      <RacialSympathy>Hylek</RacialSympathy>
+      <RetributionAlly>OoW: Gorr</RetributionAlly>
+      <GreatestFear>Dishonored by allies</GreatestFear>
+      <PlanOfAttack>Priory: Missing Squad</PlanOfAttack>
+    </StoryChoices>
+    <StoryChapters>
+      <Lw2>
+        <Act>
+          <Name>Gates of Maguuma</Name>
+          <Chapters>
+            <Chapter>
+              <Name>Disturbance in Brisban Wildlands</Name>
+              <Completed>false</Completed>
+            </Chapter>
+            <Chapter>
+              <Name>Fallen Hopes</Name>
+              <Completed>false</Completed>
+            </Chapter>
+          </Chapters>
+        </Act>
+        <Act>
+          <Name>Entanglement</Name>
+          <Chapters>
+            <Chapter>
+              <Name>Scarlet's Secret Room</Name>
+              <Completed>false</Completed>
+            </Chapter>
+          </Chapters>
+        </Act>
+      </Lw2>
+      <HoT>
+        <Act>
+          <Name>Act 1</Name>
+          <Chapters>
+            <Chapter>
+              <Name>Prologue: Rally to Maguuma</Name>
+              <Completed>true</Completed>
+            </Chapter>
+            <Chapter>
+              <Name>Torn from the Sky</Name>
+              <Completed>false</Completed>
+            </Chapter>
+          </Chapters>
+        </Act>
+        <Act>
+          <Name>Act 3</Name>
+          <Chapters>
+            <Chapter>
+              <Name>Roots of Terror 🗝</Name>
+              <Completed>true</Completed>
+            </Chapter>
+          </Chapters>
+        </Act>
+      </HoT>
+      <KotT>
+        <Act>
+          <Name>Act 1</Name>
+          <Chapters>
+            <Chapter>
+              <Name>Prologue</Name>
+              <Completed>true</Completed>
+            </Chapter>
+            <Chapter>
+              <Name>Obtaining the materials</Name>
+              <Completed>true</Completed>
+            </Chapter>
+            <Chapter>
+              <Name>The First Vision</Name>
+              <Completed>true</Completed>
+            </Chapter>
+            <Chapter>
+              <Name>The Second Vision</Name>
+              <Completed>true</Completed>
+            </Chapter>
+            <Chapter>
+              <Name>The Sword Regrown</Name>
+              <Completed>true</Completed>
+            </Chapter>
+            <Chapter>
+              <Name>Knight of the Thorn</Name>
+              <Completed>true</Completed>
+            </Chapter>
+          </Chapters>
+        </Act>
+      </KotT>
+      <Lw3>
+        <Act>
+          <Name>Out of the Shadows</Name>
+          <Chapters>
+            <Chapter>
+              <Name>Eir's Memorial in Hoelbrak</Name>
+              <Completed>true</Completed>
+            </Chapter>
+            <Chapter>
+              <Name>Research in Rata Novus</Name>
+              <Completed>false</Completed>
+            </Chapter>
+          </Chapters>
+        </Act>
+      </Lw3>
+      <PoF>
+        <Act>
+          <Name>Act 1</Name>
+          <Chapters>
+            <Chapter>
+              <Name>Sparking the Flame (Prologue)</Name>
+              <Completed>true</Completed>
+            </Chapter>
+            <Chapter>
+              <Name>Sparking the Flame</Name>
+              <Completed>false</Completed>
+            </Chapter>
+          </Chapters>
+        </Act>
+      </PoF>
+      <Lw4>
+        <Act>
+          <Name>Daybreak</Name>
+          <Chapters>
+            <Chapter>
+              <Name>Eye of the Brandstorm</Name>
+              <Completed>true</Completed>
+            </Chapter>
+            <Chapter>
+              <Name>Under the Stars</Name>
+              <Completed>false</Completed>
+            </Chapter>
+          </Chapters>
+        </Act>
+      </Lw4>
+      <Tis>
+        <Act>
+          <Name>Prologue: Bound by Blood</Name>
+          <Chapters>
+            <Chapter>
+              <Name>Coming Home</Name>
+              <Completed>true</Completed>
+            </Chapter>
+            <Chapter>
+              <Name>Revels &amp; Rivals</Name>
+              <Completed>false</Completed>
+            </Chapter>
+          </Chapters>
+        </Act>
+      </Tis>
+    </StoryChapters>
+    <CraftingDisciplines>
+      <Armorsmith>
+        <Level>0</Level>
+      </Armorsmith>
+      <Artificer>
+        <Level>-1</Level>
+      </Artificer>
+      <Chef>
+        <Level>500</Level>
+      </Chef>
+      <Huntsman>
+        <Level>600</Level>
+      </Huntsman>
+      <Jeweler>
+        <Level>400</Level>
+      </Jeweler>
+      <Leatherworker>
+        <Level>24</Level>
+      </Leatherworker>
+      <Scribe>
+        <Level>400</Level>
+      </Scribe>
+      <Tailor>
+        <Level>0</Level>
+      </Tailor>
+      <Weaponsmith>
+        <Level>0</Level>
+      </Weaponsmith>
+    </CraftingDisciplines>
+    <HasWorldCompletion>true</HasWorldCompletion>
+    <Areas>
+      <Area>
+        <Name>Blazeridge Steppes</Name>
+        <Completion>
+          <Hearts>15</Hearts>
+          <Waypoints>18</Waypoints>
+          <PoIs>10</PoIs>
+          <Skills>5</Skills>
+          <Vistas>5</Vistas>
+        </Completion>
+      </Area>
+      <Area>
+        <Name>Wayfarer Foothills</Name>
+        <Completion>
+          <Hearts>0</Hearts>
+          <Waypoints>4</Waypoints>
+          <PoIs>0</PoIs>
+          <Skills>0</Skills>
+          <Vistas>0</Vistas>
+        </Completion>
+      </Area>
+    </Areas>
+    <FractalTier>100</FractalTier>
+    <Dungeons>
+      <Dungeon>
+        <Name>Ascalonian Catacombs</Name>
+        <StoryCompleted>true</StoryCompleted>
+      </Dungeon>
+      <Dungeon>
+        <Name>Caudecus's Manor</Name>
+        <StoryCompleted>false</StoryCompleted>
+      </Dungeon>
+    </Dungeons>
+    <Notes>hello,
+world!</Notes>
+  </Character>
+</Charrmander>
