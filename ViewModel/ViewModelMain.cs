@@ -661,7 +661,7 @@ namespace Charrmander.ViewModel
             {
                 if (_cmdOpen == null)
                 {
-                    _cmdOpen = new RelayCommand(param => this.Open());
+                    _cmdOpen = new RelayCommand(param => Open(null));
                 }
                 return _cmdOpen;
             }
@@ -818,7 +818,7 @@ namespace Charrmander.ViewModel
         /// the file. The same thing happens if <c>filePath</c> is already open.
         /// </summary>
         /// <param name="filePath">The path to the file to open.</param>
-        public void Open(string filePath = null)
+        public void Open(string filePath)
         {
             if (UnsavedChanges && MessageBox.Show(Properties.Resources.msgUnsavedOpenBody,
                     Properties.Resources.msgUnsavedOpenTitle,
@@ -1425,11 +1425,9 @@ namespace Charrmander.ViewModel
         /// </summary>
         /// <param name="caption">The message box caption.</param>
         /// <param name="body">The message box message.</param>
-        /// <param name="severity">A <see cref="MessageBoxImage"/> indicating
-        /// the severity, default <c>MessageBoxImage.Error</c></param>
-        private static void ShowError(string caption, string body, MessageBoxImage severity = MessageBoxImage.Error)
+        private static void ShowError(string caption, string body)
         {
-            MessageBox.Show(body, caption, MessageBoxButton.OK, severity);
+            MessageBox.Show(body, caption, MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         /// <summary>
