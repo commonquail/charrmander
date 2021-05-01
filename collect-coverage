@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -o errexit
+
+main()
+{
+    local test_results_dir=ExtensionsTestProject/TestResults
+    local coverage_report_dir=coverage
+    local coverage_history_dir=coverage-history
+
+    rm -rf "$test_results_dir"
+    dotnet test --collect:"xplat code coverage"
+    reportgenerator \
+        -reports:"$test_results_dir"/*/coverage.cobertura.xml \
+        -reporttypes:'Html;HtmlChart' \
+        -targetdir:"$coverage_report_dir" \
+        -historydir:"$coverage_history_dir"
+}
+
+main
