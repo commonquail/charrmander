@@ -2,18 +2,27 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.21.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.21.0.zip</DownloadUrl>
+      <Version>1.22.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.22.0.zip</DownloadUrl>
       <Notes>
-        <Note>Charrmander now requires the .NET 5 Desktop Runtime for x64. Get it from https://dotnet.microsoft.com/download/dotnet/5.0/runtime.</Note>
-        <Note>Number up-down boxes have been rebuilt from scratch, halving the resulting executable file size. Functionality should be comparable but report oddities.</Note>
-        <Note>Sliders can no longer be activated with the Tab key. Sliders are not efficient input mechanisms so them taking keyboard focus is an obstacle.</Note>
-        <Note>Continue "The Icebrood Saga" with "Champions, Ch. 4 - Judgment".</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.21.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.21.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Charrmander now requires the .NET 5 Desktop Runtime for x64. Get it from https://dotnet.microsoft.com/download/dotnet/5.0/runtime.</Note>
+          <Note>Number up-down boxes have been rebuilt from scratch, halving the resulting executable file size. Functionality should be comparable but report oddities.</Note>
+          <Note>Sliders can no longer be activated with the Tab key. Sliders are not efficient input mechanisms so them taking keyboard focus is an obstacle.</Note>
+          <Note>Continue "The Icebrood Saga" with "Champions, Ch. 4 - Judgment".</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.20.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.20.0.zip</DownloadUrl>
@@ -25,8 +34,6 @@
           <Note>Fix "Jormag's Madness" name.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.19.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.19.0.zip</DownloadUrl>
