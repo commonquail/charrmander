@@ -20,6 +20,11 @@
     <EmbeddedResource Remove="ExtensionsTestProject\**" />
     <None Remove="ExtensionsTestProject\**" />
     <Page Remove="ExtensionsTestProject\**" />
+
+    <Compile Remove="coverage*\**" />
+    <EmbeddedResource Remove="coverage*\**" />
+    <None Remove="coverage*\**" />
+    <Page Remove="coverage*\**" />
   </ItemGroup>
 
   <ItemGroup>
