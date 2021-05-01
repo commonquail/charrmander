@@ -8,6 +8,7 @@
         <Note>Charrmander now requires the .NET 5 Desktop Runtime for x64. Get it from https://dotnet.microsoft.com/download/dotnet/5.0/runtime.</Note>
         <Note>Number up-down boxes have been rebuilt from scratch, halving the resulting executable file size. Functionality should be comparable but report oddities.</Note>
         <Note>Sliders can no longer be activated with the Tab key. Sliders are not efficient input mechanisms so them taking keyboard focus is an obstacle.</Note>
+        <Note>Continue "The Icebrood Saga" with "Champions, Ch. 4 - Judgment".</Note>
       </Notes>
     </Release>
   </Unreleased>
