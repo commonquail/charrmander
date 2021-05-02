@@ -13,7 +13,6 @@ using System.Runtime.Versioning;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
-using System.Windows.Shell;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
@@ -78,7 +77,7 @@ namespace Charrmander.ViewModel
 
         #endregion
 
-        public ViewModelMain(string filePath)
+        public ViewModelMain()
         {
             _characterList.CollectionChanged += MarkFileDirty;
             // Ensure Source is set immediately, so any change events from the
@@ -138,11 +137,6 @@ namespace Charrmander.ViewModel
 
             _bgUpdater.DoWork += UpdateWorker_DoWork;
             _bgUpdater.RunWorkerCompleted += UpdateWorker_RunWorkerCompleted;
-
-            if (!string.IsNullOrWhiteSpace(filePath) && File.Exists(filePath))
-            {
-                DoOpen(Path.GetFullPath(filePath));
-            }
         }
 
         /// <summary>
@@ -818,14 +812,16 @@ namespace Charrmander.ViewModel
         /// the file. The same thing happens if <c>filePath</c> is already open.
         /// </summary>
         /// <param name="filePath">The path to the file to open.</param>
-        public void Open(string filePath)
+        /// <returns>True if <paramref name="filePath"/> was attempted opened,
+        /// even if unsuccessfully; false otherwise.</returns>
+        public bool Open(string filePath)
         {
             if (UnsavedChanges && MessageBox.Show(Properties.Resources.msgUnsavedOpenBody,
                     Properties.Resources.msgUnsavedOpenTitle,
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Warning) == MessageBoxResult.No)
             {
-                return;
+                return false;
             }
 
             if (filePath == null)
@@ -837,7 +833,8 @@ namespace Charrmander.ViewModel
                     filePath = open.FileName;
                 }
             }
-            if (filePath != null &&
+            if (!string.IsNullOrWhiteSpace(filePath) &&
+                File.Exists(filePath) &&
                 (_currentFile == null || _currentFile.FullName != filePath ||
                 MessageBox.Show(Properties.Resources.msgReloadFileBody,
                     Properties.Resources.msgReloadFileTitle,
@@ -845,7 +842,9 @@ namespace Charrmander.ViewModel
                     MessageBoxImage.Warning) == MessageBoxResult.Yes))
             {
                 DoOpen(filePath);
+                return true;
             }
+            return false;
         }
 
         /// <summary>
@@ -856,10 +855,7 @@ namespace Charrmander.ViewModel
         /// <param name="filePath">The path of the file to open</param>
         private void DoOpen(string filePath)
         {
-            RecordRecentFile(filePath);
-
             var settings = new XmlReaderSettings();
-
             var schemas = new XmlSchemaSet();
             settings.CloseInput = true;
             schemas.Add(Properties.Resources.xNamespace,
@@ -904,17 +900,6 @@ namespace Charrmander.ViewModel
                 ShowError(Properties.Resources.msgOpenFailedNoFileTitle,
                     Properties.Resources.msgOpenFailedNoFileBody);
             }
-        }
-
-        private static void RecordRecentFile(string filePath)
-        {
-            var jp = new JumpPath
-            {
-                Path = filePath
-            };
-            var jl = JumpList.GetJumpList(Application.Current);
-            JumpList.AddToRecentCategory(jp);
-            jl.Apply();
         }
 
         /// <summary>
