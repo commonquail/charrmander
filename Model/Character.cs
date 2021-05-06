@@ -588,7 +588,7 @@ namespace Charrmander.Model
         public void Dispose()
         {
             this.PropertyChanged -= _viewModel.MarkFileDirty;
-            foreach (var d in _craftingDisciplines)
+            foreach (var d in CraftingDisciplines)
             {
                 d.PropertyChanged -= _viewModel.MarkFileDirty;
             }
