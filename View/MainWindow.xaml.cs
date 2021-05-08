@@ -161,8 +161,14 @@ namespace Charrmander.View
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            var str = value.ToString();
-            return string.IsNullOrWhiteSpace(str) ? 0 : int.Parse(str);
+            var str = value?.ToString();
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return 0;
+            }
+            _ = int.TryParse(str, out int res);
+
+            return res;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
