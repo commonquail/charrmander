@@ -145,7 +145,9 @@ namespace Charrmander.View
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return (bool)value ? "\U0001F5DD" : string.Empty;
+            return (value is bool hasKeyReward && hasKeyReward)
+                ? "\U0001F5DD"
+                : string.Empty;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
