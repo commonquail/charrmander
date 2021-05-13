@@ -3,6 +3,8 @@ using Charrmander.ViewModel;
 using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Resources;
+using System.Windows.Shell;
 
 namespace Charrmander
 {
@@ -15,13 +17,6 @@ namespace Charrmander
         {
             base.OnStartup(e);
 
-            var file = "";
-            string[] args = Environment.GetCommandLineArgs();
-            if (args.Length == 2)
-            {
-                file = args[1];
-            }
-
             /* Setup some close event handlers.
              * First, if the menu Exit option is selected, call the [X] button
              * event handler.
@@ -32,7 +27,7 @@ namespace Charrmander
              * model, window, and handler references.
              */
             var window = new MainWindow();
-            var viewModel = new ViewModelMain(file);
+            var viewModel = new ViewModelMain();
             void menuExitHandler(object sender, EventArgs e) => window.Close();
             void xButtonHandler(object o, CancelEventArgs ce)
             {
@@ -49,7 +44,33 @@ namespace Charrmander
             window.Closing += xButtonHandler;
             window.DataContext = viewModel;
             viewModel.CheckUpdate();
+
+            string[] args = Environment.GetCommandLineArgs();
+            string file = args.Length == 2 ? args[1] : null;
+            if (!string.IsNullOrWhiteSpace(file) && viewModel.Open(file))
+            {
+                RecordRecentFile(file);
+            }
+
             window.Show();
+        }
+
+        internal static StreamResourceInfo GetPackResourceStream(string localPath)
+        {
+            return GetResourceStream(
+                new Uri("pack://application:,,,/Charrmander;component/" + localPath,
+                UriKind.Absolute));
+        }
+
+        private static void RecordRecentFile(string filePath)
+        {
+            var jp = new JumpPath
+            {
+                Path = filePath
+            };
+            var jl = JumpList.GetJumpList(Application.Current);
+            JumpList.AddToRecentCategory(jp);
+            jl.Apply();
         }
     }
 }

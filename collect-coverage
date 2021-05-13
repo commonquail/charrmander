@@ -4,7 +4,7 @@ set -o errexit
 
 main()
 {
-    local test_results_dir=ExtensionsTestProject/TestResults
+    local test_results_dir=Tests/TestResults
     local coverage_report_dir=coverage
     local coverage_history_dir=coverage-history
 

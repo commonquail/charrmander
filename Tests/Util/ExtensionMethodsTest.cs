@@ -1,9 +1,8 @@
-using Charrmander.Util;
 using FluentAssertions;
 using System;
 using Xunit;
 
-namespace ExtensionsTestProject
+namespace Charrmander.Util
 {
     public class ExtensionMethodsTest
     {

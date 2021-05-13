@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Charrmander xmlns="http://charr.org">
+  <Character>
+    <Name>minimalish</Name>
+    <StoryChapters>
+      <Lw4>
+        <Act>
+          <Name>All or Nothing</Name>
+          <Chapters>
+            <Chapter>
+              <Name>Scion &amp; Champion></Name>
+              <Completed>true</Completed>
+            </Chapter>
+          </Chapters>
+        </Act>
+      </Lw4>
+      <Tis>
+        <Act>
+          <Name>Champions, chapter 1 - Truce</Name>
+          <Chapters>
+            <Chapter>
+              <Name>Calm in the Storm</Name>
+              <Completed>true</Completed>
+            </Chapter>
+          </Chapters>
+        </Act>
+      </Tis>
+    </StoryChapters>
+  </Character>
+</Charrmander>
