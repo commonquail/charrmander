@@ -1,9 +1,6 @@
-using Charrmander.Model;
 using Charrmander.ViewModel;
-using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 
 namespace Charrmander.View
 {
@@ -57,125 +54,6 @@ namespace Charrmander.View
         private void CharacterNameTextBox_LostKeyboardFocus(object sender, RoutedEventArgs e)
         {
             (DataContext as ViewModelMain).TrimSelectedCharacterName();
-        }
-    }
-
-    /// <summary>
-    /// Converts the <see cref="Character.Name"/> property if it is unset.
-    /// </summary>
-    public class NamelessCharacterConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            return string.IsNullOrWhiteSpace((value as string)) ? "[Unnamed]" : value;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            throw new NotSupportedException();
-        }
-    }
-
-    /// <summary>
-    /// Converts the <see cref="Character.Profession"/> property to the corresponding icon.
-    /// </summary>
-    public class GameIconConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            return "/Icons/Game/" + parameter + "/" + value + ".png";
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            throw new NotSupportedException();
-        }
-    }
-
-    /// <summary>
-    /// Converts <see cref="CompletionState"/>s into stars imitating area progression icons.
-    /// </summary>
-    public class CompletionStateConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            string res = string.Empty;
-            CompletionState state = CompletionState.NotBegun;
-            switch (value)
-            {
-                case CompletionState v:
-                    state = v;
-                    break;
-                case string v:
-                    if (Enum.TryParse(v, out CompletionState s))
-                    {
-                        state = s;
-                    }
-
-                    break;
-            }
-
-            switch (state)
-            {
-                case CompletionState.NotBegun:
-                    break;
-                case CompletionState.Begun:
-                    res = "\u2606"; // White star.
-                    break;
-                case CompletionState.Completed:
-                    res = "\u2605"; // Black star.
-                    break;
-                default:
-                    break;
-            }
-
-            return res;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            throw new NotSupportedException();
-        }
-    }
-
-    /// <summary>
-    /// Converts a check box checked state to a key if <c>True</c>, empty string otherwise.
-    /// </summary>
-    public class KeyRewardBoolConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            return (value is bool hasKeyReward && hasKeyReward)
-                ? "\U0001F5DD"
-                : string.Empty;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            throw new NotSupportedException();
-        }
-    }
-
-    /// <summary>
-    /// Converts a blank or null string to <c>0</c>.
-    /// </summary>
-    public class IntFromBlankTextConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            var str = value?.ToString();
-            if (string.IsNullOrWhiteSpace(str))
-            {
-                return 0;
-            }
-            _ = int.TryParse(str, out int res);
-
-            return res;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            return value.ToString();
         }
     }
 }
