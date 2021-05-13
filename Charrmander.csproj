@@ -13,6 +13,7 @@
     <PackageProjectUrl>https://bitbucket.org/jokum/charrmander/</PackageProjectUrl>
     <ApplicationIcon>MainExecutable.ico</ApplicationIcon>
     <NeutralLanguage>en</NeutralLanguage>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
