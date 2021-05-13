@@ -17,16 +17,9 @@ namespace Charrmander.Model
         private string _skills = string.Empty;
         private string _vistas = string.Empty;
 
-        private CompletionState _areaState = CompletionState.Unvisited;
+        private CompletionState _areaState = CompletionState.NotBegun;
 
         public static XNamespace XmlNamespace = "https://areas.charr";
-
-        public enum CompletionState
-        {
-            Unvisited = 0,
-            Visited = 1,
-            Completed = 2,
-        }
 
         static Area()
         {

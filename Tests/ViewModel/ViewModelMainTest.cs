@@ -7,7 +7,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Windows;
 using Xunit;
-using static Charrmander.Model.Area;
 
 namespace Charrmander.ViewModel
 {
@@ -260,22 +259,22 @@ namespace Charrmander.ViewModel
             selectedCharacter.Lw2Acts
                 .SelectMany(ChaptersOfAct)
                 .Should().NotContain(IsCompletedChapter);
-            vm.HasCompletedLw2.Should().Be(CompletionState.Unvisited);
+            vm.HasCompletedLw2.Should().Be(CompletionState.NotBegun);
 
             selectedCharacter.HoTActs
                 .SelectMany(ChaptersOfAct)
                 .Should().Contain(IsCompletedChapter);
-            vm.HasCompletedHoT.Should().Be(CompletionState.Visited);
+            vm.HasCompletedHoT.Should().Be(CompletionState.Begun);
 
             selectedCharacter.KotTActs
                 .SelectMany(ChaptersOfAct)
                 .Should().OnlyContain(IsCompletedChapter);
             vm.HasCompletedKotT.Should().Be(CompletionState.Completed);
 
-            vm.HasCompletedLw3.Should().Be(CompletionState.Visited);
-            vm.HasCompletedPoF.Should().Be(CompletionState.Visited);
-            vm.HasCompletedLw4.Should().Be(CompletionState.Visited);
-            vm.HasCompletedTis.Should().Be(CompletionState.Visited);
+            vm.HasCompletedLw3.Should().Be(CompletionState.Begun);
+            vm.HasCompletedPoF.Should().Be(CompletionState.Begun);
+            vm.HasCompletedLw4.Should().Be(CompletionState.Begun);
+            vm.HasCompletedTis.Should().Be(CompletionState.Begun);
 
             // "Areas" tab.
             selectedCharacter.Areas.Should().Contain(a => a.Name == "Blazeridge Steppes");
@@ -406,7 +405,7 @@ namespace Charrmander.ViewModel
             vm.CommandNewCharacter.Execute(null);
             vm.SelectedAreaReference = vm.AreaReferenceList.First();
             vm.SelectedAreaCharacter.Should().NotBeNull();
-            vm.SelectedAreaReference.State.Should().Be(CompletionState.Unvisited);
+            vm.SelectedAreaReference.State.Should().Be(CompletionState.NotBegun);
             vm.CommandCompleteArea.Execute(null);
             vm.SelectedAreaReference.State.Should().Be(CompletionState.Completed);
         }

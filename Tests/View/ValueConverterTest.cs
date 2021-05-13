@@ -1,8 +1,8 @@
+using Charrmander.Model;
 using FluentAssertions;
 using System.Globalization;
 using System.Windows.Data;
 using Xunit;
-using static Charrmander.Model.Area;
 
 namespace Charrmander.View
 {
@@ -44,13 +44,13 @@ namespace Charrmander.View
         {
             Add(Converter, null, null, "");
             Add(Converter, "", null, "");
-            Add(Converter, "Unvisited", null, "");
-            Add(Converter, "Visited", null, "\u2606");
+            Add(Converter, "NotBegun", null, "");
+            Add(Converter, "Begun", null, "\u2606");
             Add(Converter, "Completed", null, "\u2605");
             Add(Converter, "foo", null, "");
             Add(Converter, CompletionState.Completed, null, "\u2605");
-            Add(Converter, CompletionState.Unvisited, null, "");
-            Add(Converter, CompletionState.Visited, null, "\u2606");
+            Add(Converter, CompletionState.NotBegun, null, "");
+            Add(Converter, CompletionState.Begun, null, "\u2606");
         }
     }
 

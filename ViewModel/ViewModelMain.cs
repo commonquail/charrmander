@@ -1445,18 +1445,18 @@ namespace Charrmander.ViewModel
                     {
                         if (referenceArea.Hearts != string.Empty)
                         {
-                            referenceArea.State = Area.CompletionState.Completed;
+                            referenceArea.State = CompletionState.Completed;
                         }
                     }
                     else
                     {
                         if (ca.Waypoints != "0" || ca.PoIs != "0" || ca.Vistas != "0")
                         {
-                            referenceArea.State = Area.CompletionState.Visited;
+                            referenceArea.State = CompletionState.Begun;
                         }
                         else
                         {
-                            referenceArea.State = Area.CompletionState.Unvisited;
+                            referenceArea.State = CompletionState.NotBegun;
                         }
                     }
                     break;
@@ -1464,7 +1464,7 @@ namespace Charrmander.ViewModel
             }
             if (!found)
             {
-                referenceArea.State = Area.CompletionState.Unvisited;
+                referenceArea.State = CompletionState.NotBegun;
             }
         }
 
@@ -1647,24 +1647,24 @@ namespace Charrmander.ViewModel
             SelectedCharacter.Name = SelectedCharacter.Name.Trim();
         }
 
-        private static Area.CompletionState CalculateStoryChapterCompletion(Collection<Act> acts)
+        private static CompletionState CalculateStoryChapterCompletion(Collection<Act> acts)
         {
             if (acts.SelectMany(a => a.Chapters).All(c => c.ChapterCompleted))
             {
-                return Area.CompletionState.Completed;
+                return CompletionState.Completed;
             }
 
             if (acts.SelectMany(a => a.Chapters).Any(c => c.ChapterCompleted))
             {
-                return Area.CompletionState.Visited;
+                return CompletionState.Begun;
             }
 
-            return Area.CompletionState.Unvisited;
+            return CompletionState.NotBegun;
         }
 
-        private Area.CompletionState _hasCompletedLw2;
+        private CompletionState _hasCompletedLw2;
 
-        public Area.CompletionState HasCompletedLw2
+        public CompletionState HasCompletedLw2
         {
             get { return _hasCompletedLw2; }
             private set
@@ -1677,9 +1677,9 @@ namespace Charrmander.ViewModel
             }
         }
 
-        private Area.CompletionState _hasCompletedHoT;
+        private CompletionState _hasCompletedHoT;
 
-        public Area.CompletionState HasCompletedHoT
+        public CompletionState HasCompletedHoT
         {
             get { return _hasCompletedHoT; }
             private set
@@ -1692,9 +1692,9 @@ namespace Charrmander.ViewModel
             }
         }
 
-        private Area.CompletionState _hasCompletedKotT;
+        private CompletionState _hasCompletedKotT;
 
-        public Area.CompletionState HasCompletedKotT
+        public CompletionState HasCompletedKotT
         {
             get { return _hasCompletedKotT; }
             private set
@@ -1707,9 +1707,9 @@ namespace Charrmander.ViewModel
             }
         }
 
-        private Area.CompletionState _hasCompletedLw3;
+        private CompletionState _hasCompletedLw3;
 
-        public Area.CompletionState HasCompletedLw3
+        public CompletionState HasCompletedLw3
         {
             get { return _hasCompletedLw3; }
             private set
@@ -1722,9 +1722,9 @@ namespace Charrmander.ViewModel
             }
         }
 
-        private Area.CompletionState _hasCompletedPoF;
+        private CompletionState _hasCompletedPoF;
 
-        public Area.CompletionState HasCompletedPoF
+        public CompletionState HasCompletedPoF
         {
             get { return _hasCompletedPoF; }
             private set
@@ -1737,9 +1737,9 @@ namespace Charrmander.ViewModel
             }
         }
 
-        private Area.CompletionState _hasCompletedLw4;
+        private CompletionState _hasCompletedLw4;
 
-        public Area.CompletionState HasCompletedLw4
+        public CompletionState HasCompletedLw4
         {
             get { return _hasCompletedLw4; }
             private set
@@ -1752,9 +1752,9 @@ namespace Charrmander.ViewModel
             }
         }
 
-        private Area.CompletionState _hasCompletedTis;
+        private CompletionState _hasCompletedTis;
 
-        public Area.CompletionState HasCompletedTis
+        public CompletionState HasCompletedTis
         {
             get { return _hasCompletedTis; }
             private set
