@@ -2,6 +2,7 @@ using Charrmander.Util;
 using Charrmander.View;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using System.Xml.Linq;
@@ -28,7 +29,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         public UpdateAvailableViewModel()
         {
-            _window = new UpdateAvailableView
+            _window = new UpdateAvailableView(DownloadSafely)
             {
                 DataContext = this
             };
@@ -158,7 +159,20 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void DownloadLatest()
         {
-            System.Diagnostics.Process.Start(LatestVersionPath);
+            DownloadSafely(LatestVersionPath);
+        }
+
+        private static void DownloadSafely(string url)
+        {
+            if (url == null)
+            {
+                return;
+            }
+
+            Process.Start(new ProcessStartInfo(url)
+            {
+                UseShellExecute = true,
+            });
         }
 
         /// <summary>

@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 using System.Windows;
 
 namespace Charrmander.View
@@ -8,14 +8,17 @@ namespace Charrmander.View
     /// </summary>
     public partial class UpdateAvailableView : Window
     {
-        public UpdateAvailableView()
+        private readonly Action<string> downloader;
+
+        public UpdateAvailableView(Action<string> Downloader)
         {
             InitializeComponent();
+            this.downloader = Downloader;
         }
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            downloader(e.Uri.AbsoluteUri);
             e.Handled = true;
         }
     }
