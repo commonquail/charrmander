@@ -1,4 +1,4 @@
-﻿using Charrmander.Model;
+using Charrmander.Model;
 using System;
 using System.Windows.Data;
 
