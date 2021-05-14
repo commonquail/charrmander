@@ -11,7 +11,7 @@ namespace Charrmander.Util
             : base(Charr + elementName, content)
         {
         }
-        public CharrElement(string elementName, Object content)
+        public CharrElement(string elementName, object? content)
             : base(Charr + elementName, content)
         {
         }

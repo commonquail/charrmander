@@ -28,7 +28,7 @@ namespace Charrmander
              */
             var window = new MainWindow();
             var viewModel = new ViewModelMain();
-            void menuExitHandler(object sender, EventArgs e) => window.Close();
+            void menuExitHandler(object? sender, EventArgs e) => window.Close();
             void xButtonHandler(object o, CancelEventArgs ce)
             {
                 if (viewModel.AbortClosing()) { ce.Cancel = true; }
@@ -46,7 +46,7 @@ namespace Charrmander
             viewModel.CheckUpdate();
 
             string[] args = Environment.GetCommandLineArgs();
-            string file = args.Length == 2 ? args[1] : null;
+            string? file = args.Length == 2 ? args[1] : null;
             if (!string.IsNullOrWhiteSpace(file) && viewModel.Open(file))
             {
                 RecordRecentFile(file);

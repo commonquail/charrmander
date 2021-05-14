@@ -30,12 +30,9 @@ namespace Charrmander.Model
 
         private bool _hasWorldCompletion = false;
 
-        private ObservableCollection<CraftingDiscipline> _craftingDisciplines;
-        private ObservableCollection<Area> _areas;
-
         private static int _fractalTier = 1;
 
-        private string _notes;
+        private string _notes = string.Empty;
 
         private readonly ObservableCollection<Act> _lw2acts = new();
         private readonly ObservableCollection<Act> _hotacts = new();
@@ -78,7 +75,7 @@ namespace Charrmander.Model
             XmlReader.Create(
                 App.GetPackResourceStream("Resources/StoryChapters.xml")
                 .Stream))
-            .Root;
+            .Root!;
 
         /// <summary>
         /// Creates a new character for the specified view model.
@@ -107,14 +104,35 @@ namespace Charrmander.Model
 
             var dungeons = XDocument.Load(XmlReader.Create(
                 App.GetPackResourceStream("Resources/Dungeons.xml").Stream))
-                .Root.Elements("Dungeon")
-                .OrderBy(d => d.Element("StoryLevel").Value);
+                .Root!.Elements("Dungeon")
+                .Select(d => new Dungeon(d.Element("Name")!.Value, d.Element("StoryLevel")!.Value))
+                .OrderBy(d => d.StoryLevel);
 
             foreach (var dungeon in dungeons)
             {
-                var d = new Dungeon(dungeon.Element("Name").Value, dungeon.Element("StoryLevel").Value);
+                dungeon.PropertyChanged += _viewModel.MarkFileDirty;
+                _dungeons.Add(dungeon);
+            }
+
+            CraftingDisciplines = new ObservableCollection<CraftingDiscipline>()
+            {
+                new CraftingDiscipline() { Name = "Armorsmith" },
+                new CraftingDiscipline() { Name = "Artificer" },
+                new CraftingDiscipline() { Name = "Chef" },
+                new CraftingDiscipline() { Name = "Huntsman" },
+                new CraftingDiscipline() { Name = "Jeweler", MaxLevel = 400 },
+                new CraftingDiscipline() { Name = "Leatherworker" },
+                new CraftingDiscipline() { Name = "Scribe", MaxLevel = 400 },
+                new CraftingDiscipline() { Name = "Tailor" },
+                new CraftingDiscipline() { Name = "Weaponsmith" }
+            };
+
+            Areas = new();
+            Areas.CollectionChanged += Areas_CollectionChanged;
+
+            foreach (var d in CraftingDisciplines)
+            {
                 d.PropertyChanged += _viewModel.MarkFileDirty;
-                _dungeons.Add(d);
             }
 
             this.PropertyChanged += _viewModel.MarkFileDirty;
@@ -123,7 +141,7 @@ namespace Charrmander.Model
         private void PrepareStoryChapters(ObservableCollection<Act> acts, string storyline)
         {
             XNamespace ns = "https://storychapters.charr";
-            foreach (var act in storyChapters.Element(ns + storyline).Descendants(ns + "Act"))
+            foreach (var act in storyChapters.Element(ns + storyline)!.Descendants(ns + "Act"))
             {
                 var chapters = new ObservableCollection<Chapter>();
                 foreach (var c in act.Descendants(ns + "Chapter"))
@@ -132,7 +150,7 @@ namespace Charrmander.Model
                     m.PropertyChanged += _viewModel.MarkFileDirty;
                     chapters.Add(m);
                 }
-                var a = new Act(act.Element(ns + "Name").Value, chapters);
+                var a = new Act(act.Element(ns + "Name")!.Value, chapters);
                 a.PropertyChanged += _viewModel.MarkFileDirty;
                 acts.Add(a);
             }
@@ -421,48 +439,12 @@ namespace Charrmander.Model
         /// A collection of all the crafting disciplines.
         /// See <see cref="CraftingDiscipline"/>.
         /// </summary>
-        public ObservableCollection<CraftingDiscipline> CraftingDisciplines
-        {
-            get
-            {
-                if (_craftingDisciplines == null)
-                {
-                    _craftingDisciplines = new ObservableCollection<CraftingDiscipline>()
-                        {
-                            new CraftingDiscipline() { Name = "Armorsmith" },
-                            new CraftingDiscipline() { Name = "Artificer" },
-                            new CraftingDiscipline() { Name = "Chef" },
-                            new CraftingDiscipline() { Name = "Huntsman" },
-                            new CraftingDiscipline() { Name = "Jeweler", MaxLevel = 400 },
-                            new CraftingDiscipline() { Name = "Leatherworker" },
-                            new CraftingDiscipline() { Name = "Scribe", MaxLevel = 400 },
-                            new CraftingDiscipline() { Name = "Tailor" },
-                            new CraftingDiscipline() { Name = "Weaponsmith" }
-                        };
-                    foreach (var d in _craftingDisciplines)
-                    {
-                        d.PropertyChanged += _viewModel.MarkFileDirty;
-                    }
-                }
-                return _craftingDisciplines;
-            }
-        }
+        public ObservableCollection<CraftingDiscipline> CraftingDisciplines { get; }
 
         /// <summary>
         /// A collection of the areas this character has information about.
         /// </summary>
-        public ObservableCollection<Area> Areas
-        {
-            get
-            {
-                if (_areas == null)
-                {
-                    _areas = new ObservableCollection<Area>();
-                    _areas.CollectionChanged += Areas_CollectionChanged;
-                }
-                return _areas;
-            }
-        }
+        public ObservableCollection<Area> Areas { get; }
 
         /// <summary>
         /// The character's Fractal of the Mists tier.
@@ -541,7 +523,6 @@ namespace Charrmander.Model
                     )
                 ),
                 new CharrElement("HasWorldCompletion", HasWorldCompletion),
-                (Areas.Count > 0 ?
                 new CharrElement("Areas",
                     from a in Areas
                     select new CharrElement("Area",
@@ -554,7 +535,7 @@ namespace Charrmander.Model
                             new CharrElement("Vistas", a.Vistas)
                         )
                     )
-                ) : null),
+                ),
                 new CharrElement("FractalTier", FractalTier),
                 new CharrElement("Dungeons",
                     from d in Dungeons
@@ -636,7 +617,7 @@ namespace Charrmander.Model
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e">Contains the items added or removed.</param>
-        private void Areas_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        private void Areas_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
             {

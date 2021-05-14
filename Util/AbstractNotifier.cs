@@ -25,7 +25,7 @@ namespace Charrmander.Util
         /// <summary>
         /// Raised when a property on this object has a new value.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
         /// Raises this object's PropertyChanged event.
@@ -34,13 +34,7 @@ namespace Charrmander.Util
         protected void RaisePropertyChanged(string propertyName)
         {
             this.VerifyPropertyName(propertyName);
-
-            PropertyChangedEventHandler handler = this.PropertyChanged;
-            if (handler != null)
-            {
-                var e = new PropertyChangedEventArgs(propertyName);
-                handler(this, e);
-            }
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
