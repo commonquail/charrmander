@@ -4,7 +4,7 @@ namespace Charrmander.Model
 {
     class CraftingDiscipline : AbstractNotifier
     {
-        private string _name;
+        private string _name = string.Empty;
         private int _level = CraftingDiscipline.MinLevel;
         private int _maxLevel = 500;
 

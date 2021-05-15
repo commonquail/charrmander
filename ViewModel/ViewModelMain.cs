@@ -23,29 +23,29 @@ namespace Charrmander.ViewModel
     {
         #region Fields
 
-        private RelayCommand _cmdNew;
-        private RelayCommand _cmdOpen;
-        private RelayCommand _cmdSave;
-        private RelayCommand _cmdSaveAs;
-        private RelayCommand _cmdClose;
-        private RelayCommand _cmdCheckUpdate;
-        private RelayCommand _cmdDeleteCharacter;
-        private RelayCommand _cmdRegisterExtensions;
-        private RelayCommand _cmdCompleteArea;
-        private RelayCommand _cmdCompletionOverview;
+        private RelayCommand _cmdNew = default!;
+        private RelayCommand _cmdOpen = default!;
+        private RelayCommand _cmdSave = default!;
+        private RelayCommand _cmdSaveAs = default!;
+        private RelayCommand _cmdClose = default!;
+        private RelayCommand _cmdCheckUpdate = default!;
+        private RelayCommand _cmdDeleteCharacter = default!;
+        private RelayCommand _cmdRegisterExtensions = default!;
+        private RelayCommand _cmdCompleteArea = default!;
+        private RelayCommand _cmdCompletionOverview = default!;
 
         private readonly BackgroundWorker _bgUpdater = new();
 
-        private UpdateAvailableViewModel _updateViewModel;
-        private CompletionOverviewView _completionOverview;
+        private UpdateAvailableViewModel _updateViewModel = default!;
+        private CompletionOverviewView _completionOverview = default!;
 
-        private FileInfo _currentFile = null;
+        private FileInfo? _currentFile;
 
         private string _windowTitle = "Charrmander";
 
         private readonly Version _curVersion = new(1, 21, 0, 0);
 
-        private string _statusBarUpdateCheck;
+        private string _statusBarUpdateCheck = default!;
 
         private bool _unsavedChanges = false;
 
@@ -56,9 +56,9 @@ namespace Charrmander.ViewModel
         /// </summary>
         private readonly ObservableCollection<Character> _characterList = new();
 
-        private Character _selectedCharacter;
-        private Area _selectedAreaReference;
-        private Area _selectedAreaCharacter;
+        private Character? _selectedCharacter;
+        private Area? _selectedAreaReference;
+        private Area? _selectedAreaCharacter;
 
         private bool _isCharacterDetailEnabled = false;
 
@@ -68,7 +68,7 @@ namespace Charrmander.ViewModel
         private readonly ObservableCollection<string> _biographyOptionsPersonality;
         private readonly IDictionary<string, IDictionary<string, ObservableCollection<string>>> _biographyOptionsRace;
 
-        private ObservableCollection<string>
+        private ObservableCollection<string>?
             _selectedBiographyOptionsProfession,
             _selectedBiographyOptionsPersonality,
             _selectedBiographyOptionsRaceFirst,
@@ -88,17 +88,17 @@ namespace Charrmander.ViewModel
                 App.GetPackResourceStream("Resources/Areas.xml").Stream));
 
             AreaReferenceList = new ObservableCollection<Area>(
-                from a in doc.Root.Elements(Area.XmlNamespace + "Area")
+                from a in doc.Root!.Elements(Area.XmlNamespace + "Area")
                 select Area.FromXML(a));
 
             var races = XDocument.Load(XmlReader.Create(
-                App.GetPackResourceStream("Resources/Races.xml").Stream)).Root.Elements("Race");
+                App.GetPackResourceStream("Resources/Races.xml").Stream)).Root!.Elements("Race");
 
             var biographies = XDocument.Load(XmlReader.Create(
                 App.GetPackResourceStream("Resources/Biographies.xml").Stream));
 
             _biographyOptionsProfession = new Dictionary<string, object>(8);
-            foreach (XElement xe in biographies.Root.Element("Professions").Elements())
+            foreach (XElement xe in biographies.Root!.Element("Professions")!.Elements())
             {
                 // Rangers need an extra level of nesting becauseo of a racial
                 // dependency.
@@ -107,9 +107,9 @@ namespace Charrmander.ViewModel
                     var d = new Dictionary<string, ObservableCollection<string>>();
                     foreach (var race in races)
                     {
-                        string key = race.Element("Name").Value;
+                        string key = race.Element("Name")!.Value;
                         d[key] = new ObservableCollection<string>(
-                            from bo in xe.Element(key).Elements() select bo.Value);
+                            from bo in xe.Element(key)!.Elements() select bo.Value);
                     }
                     _biographyOptionsProfession[xe.Name.LocalName] = d;
                 }
@@ -121,10 +121,10 @@ namespace Charrmander.ViewModel
             }
 
             _biographyOptionsPersonality = new ObservableCollection<string>(
-                from p in biographies.Root.Element("Personalities").Elements() select p.Value);
+                from p in biographies.Root!.Element("Personalities")!.Elements() select p.Value);
 
             _biographyOptionsRace = new Dictionary<string, IDictionary<string, ObservableCollection<string>>>(5);
-            foreach (XElement xe in biographies.Root.Element("Races").Elements())
+            foreach (XElement xe in biographies.Root!.Element("Races")!.Elements())
             {
                 var d = new Dictionary<string, ObservableCollection<string>>(3);
                 foreach (var choice in xe.Elements())
@@ -142,7 +142,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// Perform this event when the view wishes to close. For instance, dispose the view.
         /// </summary>
-        public event EventHandler RequestClose;
+        public event EventHandler? RequestClose;
 
         /// <summary>
         /// The title of the main window.
@@ -243,7 +243,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// The <see cref="Character"/> in <see cref="CharacterList"/> that is currently selected.
         /// </summary>
-        public Character SelectedCharacter
+        public Character? SelectedCharacter
         {
             get { return _selectedCharacter; }
             set
@@ -271,7 +271,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// The <see cref="Area"/> in <see cref="AreaReferenceList"/> that is currently selected.
         /// </summary>
-        public Area SelectedAreaReference
+        public Area? SelectedAreaReference
         {
             get { return _selectedAreaReference; }
             set
@@ -291,7 +291,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// The <see cref="Area"/> in <see cref="SelectedCharacter.Areas"/> that is currently selected.
         /// </summary>
-        public Area SelectedAreaCharacter
+        public Area? SelectedAreaCharacter
         {
             get { return _selectedAreaCharacter; }
             set
@@ -342,7 +342,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// The profession biography options.
         /// </summary>
-        public ObservableCollection<string> BiographyOptionsProfession
+        public ObservableCollection<string>? BiographyOptionsProfession
         {
             get { return _selectedBiographyOptionsProfession; }
             private set
@@ -358,7 +358,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// The personality biography options.
         /// </summary>
-        public ObservableCollection<string> BiographyOptionsPersonality
+        public ObservableCollection<string>? BiographyOptionsPersonality
         {
             get { return _selectedBiographyOptionsPersonality; }
             private set
@@ -374,7 +374,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// The biography options for the first racial choice.
         /// </summary>
-        public ObservableCollection<string> BiographyOptionsRaceFirst
+        public ObservableCollection<string>? BiographyOptionsRaceFirst
         {
             get { return _selectedBiographyOptionsRaceFirst; }
             private set
@@ -390,7 +390,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// The biography options for the second racial choice.
         /// </summary>
-        public ObservableCollection<string> BiographyOptionsRaceSecond
+        public ObservableCollection<string>? BiographyOptionsRaceSecond
         {
             get { return _selectedBiographyOptionsRaceSecond; }
             private set
@@ -406,7 +406,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// The biography options for the third racial choice.
         /// </summary>
-        public ObservableCollection<string> BiographyOptionsRaceThird
+        public ObservableCollection<string>? BiographyOptionsRaceThird
         {
             get { return _selectedBiographyOptionsRaceThird; }
             private set
@@ -430,7 +430,9 @@ namespace Charrmander.ViewModel
         {
             get
             {
-                if (SelectedCharacter != null && SelectedAreaReference != null)
+                if (SelectedCharacter != null
+                    && SelectedAreaReference != null
+                    && SelectedAreaCharacter != null)
                 {
                     return SelectedAreaCharacter.Hearts;
                 }
@@ -438,7 +440,10 @@ namespace Charrmander.ViewModel
             }
             set
             {
-                if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Hearts && !string.IsNullOrWhiteSpace(value))
+                if (SelectedCharacter != null
+                    && SelectedAreaReference != null
+                    && SelectedAreaCharacter != null
+                    && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Hearts = value;
                     RaisePropertyChanged(nameof(HeartIcon));
@@ -455,7 +460,9 @@ namespace Charrmander.ViewModel
         {
             get
             {
-                if (SelectedCharacter != null && SelectedAreaReference != null)
+                if (SelectedCharacter != null
+                    && SelectedAreaReference != null
+                    && SelectedAreaCharacter != null)
                 {
                     return SelectedAreaCharacter.Waypoints;
                 }
@@ -463,7 +470,10 @@ namespace Charrmander.ViewModel
             }
             set
             {
-                if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Waypoints && !string.IsNullOrWhiteSpace(value))
+                if (SelectedCharacter != null
+                    && SelectedAreaReference != null
+                    && SelectedAreaCharacter != null
+                    && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Waypoints = value;
                     RaisePropertyChanged(nameof(Waypoints));
@@ -480,7 +490,9 @@ namespace Charrmander.ViewModel
         {
             get
             {
-                if (SelectedCharacter != null && SelectedAreaReference != null)
+                if (SelectedCharacter != null
+                    && SelectedAreaReference != null
+                    && SelectedAreaCharacter != null)
                 {
                     return SelectedAreaCharacter.PoIs;
                 }
@@ -488,7 +500,10 @@ namespace Charrmander.ViewModel
             }
             set
             {
-                if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.PoIs && !string.IsNullOrWhiteSpace(value))
+                if (SelectedCharacter != null
+                    && SelectedAreaReference != null
+                    && SelectedAreaCharacter != null
+                    && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.PoIs = value;
                     RaisePropertyChanged(nameof(PoIs));
@@ -505,7 +520,9 @@ namespace Charrmander.ViewModel
         {
             get
             {
-                if (SelectedCharacter != null && SelectedAreaReference != null)
+                if (SelectedCharacter != null
+                    && SelectedAreaReference != null
+                    && SelectedAreaCharacter != null)
                 {
                     return SelectedAreaCharacter.Skills;
                 }
@@ -513,7 +530,10 @@ namespace Charrmander.ViewModel
             }
             set
             {
-                if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Skills && !string.IsNullOrWhiteSpace(value))
+                if (SelectedCharacter != null
+                    && SelectedAreaReference != null
+                    && SelectedAreaCharacter != null
+                    && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Skills = value;
                     RaisePropertyChanged(nameof(Skills));
@@ -530,7 +550,9 @@ namespace Charrmander.ViewModel
         {
             get
             {
-                if (SelectedCharacter != null && SelectedAreaReference != null)
+                if (SelectedCharacter != null
+                    && SelectedAreaReference != null
+                    && SelectedAreaCharacter != null)
                 {
                     return SelectedAreaCharacter.Vistas;
                 }
@@ -538,7 +560,10 @@ namespace Charrmander.ViewModel
             }
             set
             {
-                if (SelectedAreaCharacter != null && value != SelectedAreaCharacter.Vistas && !string.IsNullOrWhiteSpace(value))
+                if (SelectedCharacter != null
+                    && SelectedAreaReference != null
+                    && SelectedAreaCharacter != null
+                    && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Vistas = value;
                     RaisePropertyChanged(nameof(Vistas));
@@ -655,7 +680,7 @@ namespace Charrmander.ViewModel
             {
                 if (_cmdOpen == null)
                 {
-                    _cmdOpen = new RelayCommand(param => Open(null));
+                    _cmdOpen = new RelayCommand(_ => Open(null));
                 }
                 return _cmdOpen;
             }
@@ -814,7 +839,7 @@ namespace Charrmander.ViewModel
         /// <param name="filePath">The path to the file to open.</param>
         /// <returns>True if <paramref name="filePath"/> was attempted opened,
         /// even if unsuccessfully; false otherwise.</returns>
-        public bool Open(string filePath)
+        public bool Open(string? filePath)
         {
             if (UnsavedChanges && MessageBox.Show(Properties.Resources.msgUnsavedOpenBody,
                     Properties.Resources.msgUnsavedOpenTitle,
@@ -828,7 +853,7 @@ namespace Charrmander.ViewModel
             {
                 var open = new OpenFileDialog();
                 open.Filter += Properties.Resources.cfgFileFilter;
-                if (open.ShowDialog().Value)
+                if (open.ShowDialog() ?? false)
                 {
                     filePath = open.FileName;
                 }
@@ -872,13 +897,12 @@ namespace Charrmander.ViewModel
             settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
             settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
 
-            XDocument doc = null;
             using XmlReader r = XmlReader.Create(filePath, settings);
             try
             {
                 // Load and parse the file. Only if load and parse succeed
                 // should the file handle be updated.
-                doc = XDocument.Load(r);
+                var doc = XDocument.Load(r);
                 Parse(doc);
                 _currentFile = new FileInfo(filePath);
                 UnsavedChanges = false;
@@ -887,7 +911,7 @@ namespace Charrmander.ViewModel
             {
                 ShowError(Properties.Resources.msgOpenFailedValidationTitle, String.Format(
                     Properties.Resources.msgOpenFailedParsingBody,
-                    ex.InnerException.Message));
+                    ex.InnerException?.Message ?? string.Empty));
             }
             catch (XmlException ex)
             {
@@ -908,7 +932,8 @@ namespace Charrmander.ViewModel
         /// <param name="doc">The document to parse.</param>
         private void Parse(XDocument doc)
         {
-            var characters = doc.Root.CElements("Character");
+            // XML already schema-validated.
+            var characters = doc.Root!.CElements("Character");
 
             // Replace the contents of the character list with the soon to be
             // loaded content. Preserve the original collection instance to
@@ -1046,7 +1071,7 @@ namespace Charrmander.ViewModel
             var xe = storyChapters.CElement(storyline);
             foreach (var ld in xe.CDescendants("Chapter"))
             {
-                var actName = ld.Parent.Parent.CElement("Name").Value.ToLower();
+                var actName = ld.Parent!.Parent!.CElement("Name").Value.ToLower();
                 var chapterName = ld.CElement("Name").Value.ToLower();
                 if (chapterName.Equals("calm in the storm"))
                 {
@@ -1077,7 +1102,7 @@ namespace Charrmander.ViewModel
         /// for instance an XML element or a text element.</param>
         /// <param name="e">Contains information about the type of validation
         /// error that occurred.</param>
-        private static void ValidationCallBack(object sender, ValidationEventArgs e)
+        private static void ValidationCallBack(object? sender, ValidationEventArgs e)
         {
             throw new XmlSchemaValidationException(Properties.Resources.msgOpenFailedValidationBody, e.Exception);
         }
@@ -1116,7 +1141,7 @@ namespace Charrmander.ViewModel
             }
             save.DefaultExt = Properties.Resources.cfgFileExtension;
             save.Filter += Properties.Resources.cfgFileFilter;
-            if (save.ShowDialog().Value)
+            if (save.ShowDialog() ?? false)
             {
                 DoSave(save.FileName);
             }
@@ -1189,7 +1214,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void DeleteCharacter()
         {
-            Character c = SelectedCharacter;
+            Character? c = SelectedCharacter;
 
             if (c != null)
             {
@@ -1249,11 +1274,16 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void MarkAreaCompleted()
         {
-            SelectedAreaCharacter.Hearts = SelectedAreaReference.Hearts;
-            SelectedAreaCharacter.Waypoints = SelectedAreaReference.Waypoints;
-            SelectedAreaCharacter.PoIs = SelectedAreaReference.PoIs;
-            SelectedAreaCharacter.Skills = SelectedAreaReference.Skills;
-            SelectedAreaCharacter.Vistas = SelectedAreaReference.Vistas;
+            var selectedAreaCharacter = SelectedAreaCharacter;
+            var selectedAreaReference = SelectedAreaReference;
+            if (selectedAreaCharacter != null && selectedAreaReference != null)
+            {
+                selectedAreaCharacter.Hearts = selectedAreaReference.Hearts;
+                selectedAreaCharacter.Waypoints = selectedAreaReference.Waypoints;
+                selectedAreaCharacter.PoIs = selectedAreaReference.PoIs;
+                selectedAreaCharacter.Skills = selectedAreaReference.Skills;
+                selectedAreaCharacter.Vistas = selectedAreaReference.Vistas;
+            }
 
             // Call this to signal an update of the relevant UI components.
             ChangedAreaOrCharacter();
@@ -1349,7 +1379,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void MarkFileDirty(object sender, EventArgs e)
+        public void MarkFileDirty(object? sender, EventArgs e)
         {
             UnsavedChanges = true;
         }
@@ -1366,8 +1396,8 @@ namespace Charrmander.ViewModel
         /// </summary>
         public void UpdateBiographyOptions()
         {
-            string charProfession = SelectedCharacter?.Profession;
-            string charRace = SelectedCharacter?.Race;
+            string? charProfession = SelectedCharacter?.Profession;
+            string? charRace = SelectedCharacter?.Race;
             if (string.IsNullOrEmpty(charProfession) || string.IsNullOrEmpty(charRace))
             {
                 IsBiographyVisible = Visibility.Collapsed;
@@ -1474,6 +1504,11 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void ChangedAreaOrCharacter()
         {
+            if (SelectedCharacter == null)
+            {
+                return;
+            }
+
             /// An area was selected. Find the matching area in
             /// SelectedCharacter.Areas, or create a new one if it doesn't
             /// exist yet.
@@ -1535,17 +1570,13 @@ namespace Charrmander.ViewModel
         /// <param name="sender"></param>
         /// <param name="e">This event is passed to
         /// <see cref="UpdateWorker_RunWorkerCompleted"/>.</param>
-        private void UpdateWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void UpdateWorker_DoWork(object? sender, DoWorkEventArgs e)
         {
-            /// We don't want to deal with the namespace for the version
-            /// history file, we're not validating it anyway.
-            XDocument doc = null;
-            using (var tr = new XmlTextReader(Properties.Resources.cfgUpdateCheckUri))
-            {
-                tr.Namespaces = false;
-                doc = XDocument.Load(tr);
-            }
-            e.Result = doc;
+            using var tr = new XmlTextReader(Properties.Resources.cfgUpdateCheckUri);
+            // We don't want to deal with the namespace for the version
+            // history file, we're not validating it anyway.
+            tr.Namespaces = false;
+            e.Result = XDocument.Load(tr);
         }
 
         /// <summary>
@@ -1555,7 +1586,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e">This event is passed from <see cref="UpdateWorker_DoWork"/>.</param>
-        private void UpdateWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void UpdateWorker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Error != null)
             {
@@ -1575,34 +1606,35 @@ namespace Charrmander.ViewModel
             { }
             else
             {
-                try
-                {
-                    XDocument doc = (XDocument)e.Result;
-
-                    var publishedReleases = doc.Root.Element("Public");
-                    XElement latest = publishedReleases.Element("Latest").Element("Release");
-
-                    var newVersion = new Version(latest.Element("Version").Value);
-
-                    if (newVersion.IsNewerThan(_curVersion))
-                    {
-                        StatusBarUpdateCheck = Properties.Resources.suUpdateCheckNewVersion;
-                        UpdateWindow = new UpdateAvailableViewModel
-                        {
-                            CurrentVersion = _curVersion,
-                            LatestVersion = newVersion,
-                            LatestVersionPath = latest.Element("DownloadUrl").Value
-                        };
-                        UpdateWindow.VersionHistory = publishedReleases.Descendants("Release");
-                    }
-                    else
-                    {
-                        StatusBarUpdateCheck = Properties.Resources.suUpdateCheckNoUpdates;
-                    }
-                }
-                catch (NullReferenceException)
+                XDocument? doc = e.Result as XDocument;
+                var publishedReleases = doc?.Root?.Element("Public");
+                if (publishedReleases == null)
                 {
                     StatusBarUpdateCheck = Properties.Resources.suUpdateCheckFailedReading;
+                    return;
+                }
+
+                XElement? latest = publishedReleases.Element("Latest")?.Element("Release");
+                string? newVersionValue = latest?.Element("Version")?.Value;
+                if (newVersionValue == null)
+                {
+                    StatusBarUpdateCheck = Properties.Resources.suUpdateCheckFailedReading;
+                    return;
+                }
+
+                var newVersion = new Version(newVersionValue);
+                if (newVersion.IsNewerThan(_curVersion))
+                {
+                    StatusBarUpdateCheck = Properties.Resources.suUpdateCheckNewVersion;
+                    UpdateWindow = new UpdateAvailableViewModel(
+                        _curVersion,
+                        newVersion,
+                        latest?.Element("DownloadUrl")?.Value,
+                        publishedReleases.Descendants("Release"));
+                }
+                else
+                {
+                    StatusBarUpdateCheck = Properties.Resources.suUpdateCheckNoUpdates;
                 }
             }
         }
@@ -1612,24 +1644,34 @@ namespace Charrmander.ViewModel
         /// </summary>
         internal void UpdateStoryChapterCompletion()
         {
-            HasKeyLw2 = SelectedCharacter.Lw2Acts[5].Chapters[2].ChapterCompleted;
-            HasKeyHoT = SelectedCharacter.HoTActs[2].Chapters[0].ChapterCompleted;
+            Character? selectedCharacter = SelectedCharacter;
+            if (selectedCharacter == null)
+            {
+                return;
+            }
+            HasKeyLw2 = selectedCharacter.Lw2Acts[5].Chapters[2].ChapterCompleted;
+            HasKeyHoT = selectedCharacter.HoTActs[2].Chapters[0].ChapterCompleted;
             // Chronologically reverse order of release date.
             // Assumption: characters are more likely to record new completions
             // of newer content, e.g. because they've already completed all old
             // content.
-            HasCompletedTis = CalculateStoryChapterCompletion(SelectedCharacter.TisActs);
-            HasCompletedLw4 = CalculateStoryChapterCompletion(SelectedCharacter.Lw4Acts);
-            HasCompletedPoF = CalculateStoryChapterCompletion(SelectedCharacter.PoFActs);
-            HasCompletedLw3 = CalculateStoryChapterCompletion(SelectedCharacter.Lw3Acts);
-            HasCompletedKotT = CalculateStoryChapterCompletion(SelectedCharacter.KotTActs);
-            HasCompletedHoT = CalculateStoryChapterCompletion(SelectedCharacter.HoTActs);
-            HasCompletedLw2 = CalculateStoryChapterCompletion(SelectedCharacter.Lw2Acts);
+            HasCompletedTis = CalculateStoryChapterCompletion(selectedCharacter.TisActs);
+            HasCompletedLw4 = CalculateStoryChapterCompletion(selectedCharacter.Lw4Acts);
+            HasCompletedPoF = CalculateStoryChapterCompletion(selectedCharacter.PoFActs);
+            HasCompletedLw3 = CalculateStoryChapterCompletion(selectedCharacter.Lw3Acts);
+            HasCompletedKotT = CalculateStoryChapterCompletion(selectedCharacter.KotTActs);
+            HasCompletedHoT = CalculateStoryChapterCompletion(selectedCharacter.HoTActs);
+            HasCompletedLw2 = CalculateStoryChapterCompletion(selectedCharacter.Lw2Acts);
         }
 
         internal void TrimSelectedCharacterName()
         {
-            SelectedCharacter.Name = SelectedCharacter.Name.Trim();
+            Character? selectedCharacter = SelectedCharacter;
+            if (selectedCharacter == null)
+            {
+                return;
+            }
+            selectedCharacter.Name = selectedCharacter.Name.Trim();
         }
 
         private static CompletionState CalculateStoryChapterCompletion(Collection<Act> acts)

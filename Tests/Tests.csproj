@@ -7,6 +7,8 @@
     <IsPublishable>false</IsPublishable>
 
     <Platforms>x64</Platforms>
+
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

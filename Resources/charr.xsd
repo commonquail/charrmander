@@ -75,7 +75,7 @@
       <xs:element name="Areas" minOccurs="0">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="Area" maxOccurs="unbounded" type="AreaType"/>
+            <xs:element name="Area" minOccurs="0" maxOccurs="unbounded" type="AreaType"/>
           </xs:sequence>
         </xs:complexType>
       </xs:element>

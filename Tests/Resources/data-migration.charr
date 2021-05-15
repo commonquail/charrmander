@@ -2,6 +2,7 @@
 <Charrmander xmlns="http://charr.org">
   <Character>
     <Name>minimalish</Name>
+    <Areas></Areas>
     <StoryChapters>
       <Lw4>
         <Act>

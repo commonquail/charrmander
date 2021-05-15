@@ -22,7 +22,7 @@ namespace Charrmander.View
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return value.ToString();
+            return value.ToString() ?? string.Empty;
         }
     }
 }

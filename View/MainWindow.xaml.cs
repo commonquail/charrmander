@@ -34,12 +34,12 @@ namespace Charrmander.View
         /// <param name="e"></param>
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            (DataContext as ViewModelMain).UpdateBiographyOptions();
+            (DataContext as ViewModelMain)?.UpdateBiographyOptions();
         }
 
         private void StoryChapterCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            (DataContext as ViewModelMain).UpdateStoryChapterCompletion();
+            (DataContext as ViewModelMain)?.UpdateStoryChapterCompletion();
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Charrmander.View
         /// <param name="e"></param>
         private void CharacterNameTextBox_LostKeyboardFocus(object sender, RoutedEventArgs e)
         {
-            (DataContext as ViewModelMain).TrimSelectedCharacterName();
+            (DataContext as ViewModelMain)?.TrimSelectedCharacterName();
         }
     }
 }

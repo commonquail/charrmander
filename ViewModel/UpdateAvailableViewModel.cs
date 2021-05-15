@@ -13,13 +13,10 @@ namespace Charrmander.ViewModel
     {
         readonly Window _window;
 
-        private RelayCommand _cmdDownload;
-        private RelayCommand _cmdClose;
-
-        private Version _curVersion;
-        private Version _latestVersion;
-        private string _downloadUrl;
-        private IEnumerable<XElement> _versionHistory;
+        private readonly Version _curVersion = default!;
+        private readonly Version _latestVersion = default!;
+        private readonly string? _downloadUrl;
+        private readonly IEnumerable<XElement> _versionHistory = default!;
 
         /// <summary>
         /// Creates a new <see cref="UpdateAvailableViewModel"/>. This view
@@ -27,7 +24,11 @@ namespace Charrmander.ViewModel
         /// checking itself. It works strictly with properties set statically
         /// by the caller.
         /// </summary>
-        public UpdateAvailableViewModel()
+        public UpdateAvailableViewModel(
+            Version curVersion,
+            Version latestVersion,
+            string? downloadUrl,
+            IEnumerable<XElement> versionHistory)
         {
             _window = new UpdateAvailableView(DownloadSafely)
             {
@@ -35,13 +36,17 @@ namespace Charrmander.ViewModel
             };
             _window.Show();
 
-            void handler(object sender, EventArgs e)
+            void handler(object? sender, EventArgs e)
             {
                 this.RequestClose -= handler;
                 _window.Close();
             }
 
             this.RequestClose += handler;
+            this.CurrentVersion = curVersion;
+            this.LatestVersion = latestVersion;
+            this.LatestVersionPath = downloadUrl;
+            this.VersionHistory = versionHistory;
         }
 
         /// <summary>
@@ -57,14 +62,11 @@ namespace Charrmander.ViewModel
         /// </summary>
         public Version CurrentVersion
         {
-            get { return _curVersion; }
-            set
+            get => _curVersion;
+            private init
             {
-                if (value != _curVersion)
-                {
-                    _curVersion = value;
-                    RaisePropertyChanged(nameof(CurrentVersion));
-                }
+                _curVersion = value;
+                RaisePropertyChanged(nameof(CurrentVersion));
             }
         }
 
@@ -73,14 +75,11 @@ namespace Charrmander.ViewModel
         /// </summary>
         public Version LatestVersion
         {
-            get { return _latestVersion; }
-            set
+            get => _latestVersion;
+            init
             {
-                if (value != _latestVersion)
-                {
-                    _latestVersion = value;
-                    RaisePropertyChanged(nameof(LatestVersion));
-                }
+                _latestVersion = value;
+                RaisePropertyChanged(nameof(LatestVersion));
             }
         }
 
@@ -89,16 +88,13 @@ namespace Charrmander.ViewModel
         /// to the instance of this class.
         /// This is not of type <see cref="Uri"/> because it's only ever needed as a string.
         /// </summary>
-        public string LatestVersionPath
+        public string? LatestVersionPath
         {
-            get { return _downloadUrl; }
-            set
+            get => _downloadUrl;
+            init
             {
-                if (value != _downloadUrl)
-                {
-                    _downloadUrl = value;
-                    RaisePropertyChanged(nameof(LatestVersionPath));
-                }
+                _downloadUrl = value;
+                RaisePropertyChanged(nameof(LatestVersionPath));
             }
         }
 
@@ -108,14 +104,11 @@ namespace Charrmander.ViewModel
         /// </summary>
         public IEnumerable<XElement> VersionHistory
         {
-            get { return _versionHistory; }
-            set
+            get => _versionHistory;
+            init
             {
-                if (value != _versionHistory)
-                {
-                    _versionHistory = value;
-                    RaisePropertyChanged(nameof(VersionHistory));
-                }
+                _versionHistory = value;
+                RaisePropertyChanged(nameof(VersionHistory));
             }
         }
 
@@ -129,14 +122,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         public ICommand CommandDownload
         {
-            get
-            {
-                if (_cmdDownload == null)
-                {
-                    _cmdDownload = new RelayCommand(param => this.DownloadLatest());
-                }
-                return _cmdDownload;
-            }
+            get => new RelayCommand(_ => this.DownloadLatest());
         }
 
         /// <summary>
@@ -144,14 +130,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         public ICommand CommandClose
         {
-            get
-            {
-                if (_cmdClose == null)
-                {
-                    _cmdClose = new RelayCommand(param => this.OnRequestClose());
-                }
-                return _cmdClose;
-            }
+            get => new RelayCommand(_ => this.OnRequestClose());
         }
 
         /// <summary>
@@ -162,7 +141,7 @@ namespace Charrmander.ViewModel
             DownloadSafely(LatestVersionPath);
         }
 
-        private static void DownloadSafely(string url)
+        private static void DownloadSafely(string? url)
         {
             if (url == null)
             {

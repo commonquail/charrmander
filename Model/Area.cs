@@ -44,14 +44,14 @@ namespace Charrmander.Model
         /// <returns>A new instance of <c>Area</c>.</returns>
         public static Area FromXML(XElement area)
         {
-            var cpl = area.Element(XmlNamespace + "Completion");
-            var a = new Area(area.Element(XmlNamespace + "Name").Value)
+            var cpl = area.Element(XmlNamespace + "Completion")!;
+            var a = new Area(area.Element(XmlNamespace + "Name")!.Value)
             {
-                Hearts = cpl.Element(XmlNamespace + "Hearts").Value,
-                Waypoints = cpl.Element(XmlNamespace + "Waypoints").Value,
-                PoIs = cpl.Element(XmlNamespace + "PoIs").Value,
-                Skills = cpl.Element(XmlNamespace + "Skills").Value,
-                Vistas = cpl.Element(XmlNamespace + "Vistas").Value
+                Hearts = cpl.Element(XmlNamespace + "Hearts")!.Value,
+                Waypoints = cpl.Element(XmlNamespace + "Waypoints")!.Value,
+                PoIs = cpl.Element(XmlNamespace + "PoIs")!.Value,
+                Skills = cpl.Element(XmlNamespace + "Skills")!.Value,
+                Vistas = cpl.Element(XmlNamespace + "Vistas")!.Value
             };
 
             var levelRange = area.Element(XmlNamespace + "LevelRange");

@@ -64,7 +64,7 @@ namespace Charrmander.ViewModel
             vm.Open("Resources/minimal-one-character.charr");
 
             vm.UnsavedChanges.Should().BeFalse();
-            vm.SelectedCharacter.Name += "foo";
+            vm.SelectedCharacter!.Name += "foo";
 
             vm.UnsavedChanges.Should().BeTrue();
         }
@@ -92,7 +92,7 @@ namespace Charrmander.ViewModel
             var vm = new ViewModelMain();
             vm.Open("Resources/default-sort-order.charr");
 
-            vm.SelectedCharacter.Name.Should().Be("c2");
+            vm.SelectedCharacter!.Name.Should().Be("c2");
             vm.CommandDeleteCharacter.Execute(null);
             vm.SelectedCharacter.Name.Should().Be("c4");
         }
@@ -110,7 +110,7 @@ namespace Charrmander.ViewModel
             var vm = new ViewModelMain();
             vm.CommandNewCharacter.Execute(null);
 
-            var selectedCharacter = vm.SelectedCharacter;
+            var selectedCharacter = vm.SelectedCharacter!;
             selectedCharacter.Race = "Charr";
             vm.UpdateBiographyOptions();
 
@@ -128,7 +128,7 @@ namespace Charrmander.ViewModel
             var vm = new ViewModelMain();
             vm.CommandNewCharacter.Execute(null);
 
-            var selectedCharacter = vm.SelectedCharacter;
+            var selectedCharacter = vm.SelectedCharacter!;
             selectedCharacter.Profession = "Warrior";
             vm.UpdateBiographyOptions();
 
@@ -146,7 +146,7 @@ namespace Charrmander.ViewModel
             var vm = new ViewModelMain();
             vm.CommandNewCharacter.Execute(null);
 
-            var selectedCharacter = vm.SelectedCharacter;
+            var selectedCharacter = vm.SelectedCharacter!;
             selectedCharacter.Race = "Charr";
             selectedCharacter.Profession = "Warrior";
             vm.UpdateBiographyOptions();
@@ -178,7 +178,7 @@ namespace Charrmander.ViewModel
             var vm = new ViewModelMain();
             vm.CommandNewCharacter.Execute(null);
 
-            var selectedCharacter = vm.SelectedCharacter;
+            var selectedCharacter = vm.SelectedCharacter!;
             selectedCharacter.Race = "Sylvari";
             selectedCharacter.Profession = "Ranger";
             vm.UpdateBiographyOptions();
@@ -217,7 +217,7 @@ namespace Charrmander.ViewModel
             vm.WindowTitle.Should().Be("minimal-one-character.charr - Charrmander");
             vm.CurrentVersion.Should().MatchRegex(@"^\d+.\d+.\d+.\d+$");
 
-            var selectedCharacter = vm.SelectedCharacter;
+            var selectedCharacter = vm.SelectedCharacter!;
             selectedCharacter.Should().NotBeNull();
 
             // "Personal" tab.
@@ -374,7 +374,7 @@ namespace Charrmander.ViewModel
             var vm = new ViewModelMain();
             vm.Open("Resources/data-migration.charr");
 
-            var selectedCharacter = vm.SelectedCharacter;
+            var selectedCharacter = vm.SelectedCharacter!;
             selectedCharacter.Should().NotBeNull();
 
             selectedCharacter.TisActs
