@@ -39,7 +39,7 @@ namespace Charrmander.View
             InitializeComponent();
         }
 
-        override public void OnApplyTemplate()
+        public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             Dispatcher.BeginInvoke(

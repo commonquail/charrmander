@@ -43,7 +43,7 @@ namespace Charrmander.Util
                 }
             }
 
-            new public void RaisePropertyChanged(string property) =>
+            public new void RaisePropertyChanged(string property) =>
                 base.RaisePropertyChanged(property);
         }
     }
