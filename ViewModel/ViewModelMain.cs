@@ -1165,7 +1165,7 @@ namespace Charrmander.ViewModel
 
             string exePath = Environment.GetCommandLineArgs()[0];
             CurrentUserFileAssoc(Properties.Resources.cfgFileExtension, "Charrmander");
-            CurrentUserFileAssoc(@"Charrmander", "Charrmander GW2 Character File");
+            CurrentUserFileAssoc("Charrmander", "Charrmander GW2 Character File");
             CurrentUserFileAssoc(@"Charrmander\shell\open\command", $"\"{exePath}\" \"%L\"");
             CurrentUserFileAssoc(@"Charrmander\DefaultIcon", exePath + ",0");
         }
