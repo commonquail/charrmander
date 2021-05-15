@@ -1873,13 +1873,11 @@ namespace Charrmander.ViewModel
 
     internal static class NativeMethods
     {
-
         [System.Runtime.InteropServices.DllImport("shell32.dll")]
         internal static extern void SHChangeNotify(
             long wEventId,
             uint uFlags,
             IntPtr dwItem1,
             IntPtr dwItem2);
-
     }
 }
