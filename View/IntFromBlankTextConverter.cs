@@ -10,7 +10,7 @@ namespace Charrmander.View
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            var str = value?.ToString();
+            var str = value.ToString();
             if (string.IsNullOrWhiteSpace(str))
             {
                 return 0;

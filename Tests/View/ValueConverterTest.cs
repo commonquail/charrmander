@@ -30,8 +30,11 @@ namespace Charrmander.View
         }
     }
 
+    // IValueConverter.Convert has zero nullable parameters but debugging
+    // clearly shows that "parameter" is nullable. "value" may also be nullable
+    // in pathological cases but none observed.
     internal abstract class ConverterSignature<ConcreteValueConverter>
-        : TheoryData<ConcreteValueConverter, object, object, object>
+        : TheoryData<ConcreteValueConverter, object, object?, object>
         where ConcreteValueConverter : IValueConverter, new()
     {
         protected readonly ConcreteValueConverter Converter = new();
@@ -42,7 +45,6 @@ namespace Charrmander.View
     {
         public CompletionStateConverterTestData()
         {
-            Add(Converter, null, null, "");
             Add(Converter, "", null, "");
             Add(Converter, "NotBegun", null, "");
             Add(Converter, "Begun", null, "\u2606");
@@ -59,9 +61,7 @@ namespace Charrmander.View
     {
         public GameIconConverterTestData()
         {
-            Add(Converter, null, null, "/Icons/Game//.png");
             Add(Converter, "foo", null, "/Icons/Game//foo.png");
-            Add(Converter, null, "bar", "/Icons/Game/bar/.png");
             Add(Converter, "foo", "", "/Icons/Game//foo.png");
             Add(Converter, "", "bar", "/Icons/Game/bar/.png");
             Add(Converter, "Jeweler", "Crafts", "/Icons/Game/Crafts/Jeweler.png");
@@ -73,7 +73,6 @@ namespace Charrmander.View
     {
         public IntFromBlankTextConverterTestData()
         {
-            Add(Converter, null, null, 0);
             Add(Converter, "", null, 0);
             Add(Converter, "foo", null, 0);
             Add(Converter, "0", null, 0);
@@ -87,7 +86,6 @@ namespace Charrmander.View
     {
         public KeyRewardBoolConverterTestData()
         {
-            Add(Converter, null, null, "");
             Add(Converter, false, null, "");
             Add(Converter, true, null, "\U0001F5DD");
         }
@@ -98,7 +96,6 @@ namespace Charrmander.View
     {
         public NamelessCharacterConverterTestData()
         {
-            Add(Converter, null, null, "[Unnamed]");
             Add(Converter, "", null, "[Unnamed]");
             Add(Converter, "foo", null, "foo");
         }

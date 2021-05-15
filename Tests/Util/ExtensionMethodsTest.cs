@@ -7,7 +7,6 @@ namespace Charrmander.Util
     public class ExtensionMethodsTest
     {
         [Theory]
-        [InlineData("0.0.0.0", null, true, @"""any is newer than null""")]
         [InlineData("1.0.0.0", "1.0.0.0", false, @"""self is not newer than self""")]
         [InlineData("0.0.0.1", "0.0.0.0", true, @"""revision one is newer than revision zero""")]
         [InlineData("0.0.0.0", "0.0.0.1", false, @"""revision zero is not newer than revision one""")]
@@ -18,7 +17,7 @@ namespace Charrmander.Util
         public void lhs_is_newer_than_rhs(string lhs, string rhs, bool expected, string reason)
         {
             var v = new Version(lhs);
-            var other = rhs == null ? null : new Version(rhs);
+            var other = new Version(rhs);
             bool actual;
             actual = ExtensionMethods.IsNewerThan(v, other);
 
