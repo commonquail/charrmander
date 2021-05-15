@@ -1162,9 +1162,9 @@ namespace Charrmander.ViewModel
             using XmlWriter xw = XmlWriter.Create(filePath, xws);
             new XDocument(
                 new CharrElement("Charrmander",
-                    (_characterList.Count > 0 ?
+                    _characterList.Count > 0 ?
                     from c in _characterList
-                    select c.ToXML() : null)
+                    select c.ToXML() : null
                 )
             ).Save(xw);
             _currentFile = new FileInfo(filePath);

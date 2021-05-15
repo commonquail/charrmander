@@ -11,7 +11,8 @@ namespace Charrmander.View
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return string.IsNullOrWhiteSpace((value as string)) ? "[Unnamed]" : value;
+            string? str = value as string;
+            return string.IsNullOrWhiteSpace(str) ? "[Unnamed]" : str;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
