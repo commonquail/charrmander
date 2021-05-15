@@ -656,158 +656,69 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// Command to create a new character.
         /// </summary>
-        public ICommand CommandNewCharacter
-        {
-            get
-            {
-                if (_cmdNew == null)
-                {
-                    _cmdNew = new RelayCommand(_ => this.NewCharacter());
-                }
-                return _cmdNew;
-            }
-        }
+        public ICommand CommandNewCharacter =>
+            _cmdNew ??= new RelayCommand(_ => NewCharacter());
 
         /// <summary>
         /// Command to open a character file.
         /// </summary>
-        public ICommand CommandOpen
-        {
-            get
-            {
-                if (_cmdOpen == null)
-                {
-                    _cmdOpen = new RelayCommand(_ => Open(null));
-                }
-                return _cmdOpen;
-            }
-        }
+        public ICommand CommandOpen =>
+            _cmdOpen ??= new RelayCommand(_ => Open(null));
 
         /// <summary>
         /// Command to save the current character file.
         /// </summary>
-        public ICommand CommandSave
-        {
-            get
-            {
-                if (_cmdSave == null)
-                {
-                    _cmdSave = new RelayCommand(_ => this.Save(), _ => this.UnsavedChanges);
-                }
-                return _cmdSave;
-            }
-        }
+        public ICommand CommandSave =>
+            _cmdSave ??= new RelayCommand(_ => Save(), _ => UnsavedChanges);
 
         /// <summary>
         /// Command to save the current character file at a specified location.
         /// </summary>
-        public ICommand CommandSaveAs
-        {
-            get
-            {
-                if (_cmdSaveAs == null)
-                {
-                    _cmdSaveAs = new RelayCommand(_ => this.SaveAs());
-                }
-                return _cmdSaveAs;
-            }
-        }
+        public ICommand CommandSaveAs =>
+            _cmdSaveAs ??= new RelayCommand(_ => SaveAs());
 
         /// <summary>
         /// Command to exit the application.
         /// </summary>
-        public ICommand CommandExit
-        {
-            get
-            {
-                if (_cmdClose == null)
-                {
-                    _cmdClose = new RelayCommand(_ => this.OnRequestClose());
-                }
-                return _cmdClose;
-            }
-        }
+        public ICommand CommandExit =>
+            _cmdClose ??= new RelayCommand(_ => OnRequestClose());
 
         /// <summary>
         /// Command to check for updates.
         /// </summary>
-        public ICommand CommandCheckUpdate
-        {
-            get
-            {
-                if (_cmdCheckUpdate == null)
-                {
-                    _cmdCheckUpdate = new RelayCommand(_ => this.CheckUpdate());
-                }
-                return _cmdCheckUpdate;
-            }
-        }
+        public ICommand CommandCheckUpdate =>
+            _cmdCheckUpdate ??= new RelayCommand(_ => CheckUpdate());
 
         /// <summary>
         /// Command to delete a character.
         /// </summary>
-        public ICommand CommandDeleteCharacter
-        {
-            get
-            {
-                if (_cmdDeleteCharacter == null)
-                {
-                    _cmdDeleteCharacter = new RelayCommand(
-                        _ => this.DeleteCharacter(),
-                        _ => this.CanDeleteCharacter());
-                }
-                return _cmdDeleteCharacter;
-            }
-        }
+        public ICommand CommandDeleteCharacter =>
+            _cmdDeleteCharacter ??= new RelayCommand(
+                _ => DeleteCharacter(),
+                _ => CanDeleteCharacter());
 
         /// <summary>
         /// Command to register the file extension.
         /// </summary>
-        public ICommand CommandRegisterExtension
-        {
-            get
-            {
-                if (_cmdRegisterExtensions == null)
-                {
-                    _cmdRegisterExtensions = new RelayCommand(_ => RegisterExtension());
-                }
-                return _cmdRegisterExtensions;
-            }
-        }
+        public ICommand CommandRegisterExtension =>
+            _cmdRegisterExtensions ??= new RelayCommand(
+                _ => RegisterExtension());
 
         /// <summary>
         /// Command to mark the selected area as completed.
         /// </summary>
-        public ICommand CommandCompleteArea
-        {
-            get
-            {
-                if (_cmdCompleteArea == null)
-                {
-                    _cmdCompleteArea = new RelayCommand(
-                        _ => this.MarkAreaCompleted(),
-                        _ => this.CanMarkAreaCompleted());
-                }
-                return _cmdCompleteArea;
-            }
-        }
+        public ICommand CommandCompleteArea =>
+            _cmdCompleteArea ??= new RelayCommand(
+                _ => MarkAreaCompleted(),
+                _ => CanMarkAreaCompleted());
 
         /// <summary>
         /// Command to mark the selected area as completed.
         /// </summary>
-        public ICommand CommandCompletionOverview
-        {
-            get
-            {
-                if (_cmdCompletionOverview == null)
-                {
-                    _cmdCompletionOverview = new RelayCommand(
-                        _ => this.ShowCompletionOverview(),
-                        _ => this.CanShowCompletionOverview());
-                }
-                return _cmdCompletionOverview;
-            }
-        }
+        public ICommand CommandCompletionOverview =>
+            _cmdCompletionOverview ??= new RelayCommand(
+                _ => ShowCompletionOverview(),
+                _ => CanShowCompletionOverview());
 
         #endregion
 
