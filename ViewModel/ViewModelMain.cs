@@ -895,7 +895,7 @@ namespace Charrmander.ViewModel
             settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
             settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
             settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
-            settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
+            settings.ValidationEventHandler += ValidationCallBack;
 
             using XmlReader r = XmlReader.Create(filePath, settings);
             try
