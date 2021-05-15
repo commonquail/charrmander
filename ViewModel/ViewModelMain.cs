@@ -1502,9 +1502,7 @@ namespace Charrmander.ViewModel
                         Properties.Resources.suUpdateCheckFailedUnknown, e.Error.Message);
                 }
             }
-            else if (e.Cancelled)
-            { }
-            else
+            else if (!e.Cancelled)
             {
                 XDocument? doc = e.Result as XDocument;
                 var publishedReleases = doc?.Root?.Element("Public");
