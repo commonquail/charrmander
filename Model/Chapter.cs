@@ -2,7 +2,7 @@ using Charrmander.Util;
 
 namespace Charrmander.Model
 {
-    class Chapter : AbstractNotifier
+    internal class Chapter : AbstractNotifier
     {
         private bool _completed = false;
 
@@ -14,7 +14,7 @@ namespace Charrmander.Model
         /// <summary>
         /// The name of this story chapter.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <summary>
         /// The state of completion of this story chapter.

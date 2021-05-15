@@ -2,7 +2,7 @@ using Charrmander.Util;
 
 namespace Charrmander.Model
 {
-    class Dungeon : AbstractNotifier
+    internal class Dungeon : AbstractNotifier
     {
         private bool _storyCompleted = false;
 
@@ -19,12 +19,12 @@ namespace Charrmander.Model
         /// <summary>
         /// The name of this dungeon.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <summary>
         /// This dungeon's minimum story level.
         /// </summary>
-        public string StoryLevel { get; private set; }
+        public string StoryLevel { get; }
 
         /// <summary>
         /// The state of completion of this dungeon's story mode. <c>True</c>

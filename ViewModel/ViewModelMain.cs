@@ -19,7 +19,7 @@ using System.Xml.Schema;
 
 namespace Charrmander.ViewModel
 {
-    class ViewModelMain : AbstractNotifier, IViewModel, IDisposable
+    internal class ViewModelMain : AbstractNotifier, IViewModel, IDisposable
     {
         #region Fields
 
@@ -191,10 +191,7 @@ namespace Charrmander.ViewModel
             {
                 if (value != _updateViewModel)
                 {
-                    if (_updateViewModel != null)
-                    {
-                        _updateViewModel.Close();
-                    }
+                    _updateViewModel?.Close();
                     _updateViewModel = value;
                 }
             }
@@ -659,155 +656,69 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// Command to create a new character.
         /// </summary>
-        public ICommand CommandNewCharacter
-        {
-            get
-            {
-                if (_cmdNew == null)
-                {
-                    _cmdNew = new RelayCommand(param => this.NewCharacter());
-                }
-                return _cmdNew;
-            }
-        }
+        public ICommand CommandNewCharacter =>
+            _cmdNew ??= new RelayCommand(_ => NewCharacter());
 
         /// <summary>
         /// Command to open a character file.
         /// </summary>
-        public ICommand CommandOpen
-        {
-            get
-            {
-                if (_cmdOpen == null)
-                {
-                    _cmdOpen = new RelayCommand(_ => Open(null));
-                }
-                return _cmdOpen;
-            }
-        }
+        public ICommand CommandOpen =>
+            _cmdOpen ??= new RelayCommand(_ => Open(null));
 
         /// <summary>
         /// Command to save the current character file.
         /// </summary>
-        public ICommand CommandSave
-        {
-            get
-            {
-                if (_cmdSave == null)
-                {
-                    _cmdSave = new RelayCommand(param => this.Save(), param => this.UnsavedChanges);
-                }
-                return _cmdSave;
-            }
-        }
+        public ICommand CommandSave =>
+            _cmdSave ??= new RelayCommand(_ => Save(), _ => UnsavedChanges);
 
         /// <summary>
         /// Command to save the current character file at a specified location.
         /// </summary>
-        public ICommand CommandSaveAs
-        {
-            get
-            {
-                if (_cmdSaveAs == null)
-                {
-                    _cmdSaveAs = new RelayCommand(param => this.SaveAs());
-                }
-                return _cmdSaveAs;
-            }
-        }
+        public ICommand CommandSaveAs =>
+            _cmdSaveAs ??= new RelayCommand(_ => SaveAs());
 
         /// <summary>
         /// Command to exit the application.
         /// </summary>
-        public ICommand CommandExit
-        {
-            get
-            {
-                if (_cmdClose == null)
-                {
-                    _cmdClose = new RelayCommand(param => this.OnRequestClose());
-                }
-                return _cmdClose;
-            }
-        }
+        public ICommand CommandExit =>
+            _cmdClose ??= new RelayCommand(_ => OnRequestClose());
 
         /// <summary>
         /// Command to check for updates.
         /// </summary>
-        public ICommand CommandCheckUpdate
-        {
-            get
-            {
-                if (_cmdCheckUpdate == null)
-                {
-                    _cmdCheckUpdate = new RelayCommand(param => this.CheckUpdate());
-                }
-                return _cmdCheckUpdate;
-            }
-        }
+        public ICommand CommandCheckUpdate =>
+            _cmdCheckUpdate ??= new RelayCommand(_ => CheckUpdate());
 
         /// <summary>
         /// Command to delete a character.
         /// </summary>
-        public ICommand CommandDeleteCharacter
-        {
-            get
-            {
-                if (_cmdDeleteCharacter == null)
-                {
-                    _cmdDeleteCharacter = new RelayCommand(
-                        param => this.DeleteCharacter(),
-                        param => this.CanDeleteCharacter());
-                }
-                return _cmdDeleteCharacter;
-            }
-        }
+        public ICommand CommandDeleteCharacter =>
+            _cmdDeleteCharacter ??= new RelayCommand(
+                _ => DeleteCharacter(),
+                _ => CanDeleteCharacter());
 
         /// <summary>
         /// Command to register the file extension.
         /// </summary>
-        public ICommand CommandRegisterExtension
-        {
-            get
-            {
-                if (_cmdRegisterExtensions == null)
-                {
-                    _cmdRegisterExtensions = new RelayCommand(param => RegisterExtension());
-                }
-                return _cmdRegisterExtensions;
-            }
-        }
+        public ICommand CommandRegisterExtension =>
+            _cmdRegisterExtensions ??= new RelayCommand(
+                _ => RegisterExtension());
 
         /// <summary>
         /// Command to mark the selected area as completed.
         /// </summary>
-        public ICommand CommandCompleteArea
-        {
-            get
-            {
-                if (_cmdCompleteArea == null)
-                {
-                    _cmdCompleteArea = new RelayCommand(param => this.MarkAreaCompleted(), param => this.CanMarkAreaCompleted());
-                }
-                return _cmdCompleteArea;
-            }
-        }
+        public ICommand CommandCompleteArea =>
+            _cmdCompleteArea ??= new RelayCommand(
+                _ => MarkAreaCompleted(),
+                _ => CanMarkAreaCompleted());
 
         /// <summary>
         /// Command to mark the selected area as completed.
         /// </summary>
-        public ICommand CommandCompletionOverview
-        {
-            get
-            {
-                if (_cmdCompletionOverview == null)
-                {
-                    _cmdCompletionOverview = new RelayCommand(param => this.ShowCompletionOverview(),
-                        param => this.CanShowCompletionOverview());
-                }
-                return _cmdCompletionOverview;
-            }
-        }
+        public ICommand CommandCompletionOverview =>
+            _cmdCompletionOverview ??= new RelayCommand(
+                _ => ShowCompletionOverview(),
+                _ => CanShowCompletionOverview());
 
         #endregion
 
@@ -895,7 +806,7 @@ namespace Charrmander.ViewModel
             settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
             settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
             settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
-            settings.ValidationEventHandler += new ValidationEventHandler(ValidationCallBack);
+            settings.ValidationEventHandler += ValidationCallBack;
 
             using XmlReader r = XmlReader.Create(filePath, settings);
             try
@@ -1043,15 +954,7 @@ namespace Charrmander.ViewModel
 
         private void SelectFirstCharacter()
         {
-            var iter = SortedCharacterList.View?.GetEnumerator();
-            if (iter != null && iter.MoveNext())
-            {
-                SelectedCharacter = (Character)iter.Current;
-            }
-            else
-            {
-                SelectedCharacter = null;
-            }
+            SelectedCharacter = SortedCharacterList.View.Cast<Character>().FirstOrDefault();
         }
 
         private static void LoadStorylineWithActs(XElement charr, string storyline, ObservableCollection<Act> acts)
@@ -1113,7 +1016,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void Save()
         {
-            if (_currentFile != null && _currentFile.Exists && !_currentFile.IsReadOnly)
+            if (_currentFile?.Exists == true && !_currentFile.IsReadOnly)
             {
                 DoSave(_currentFile.FullName);
             }
@@ -1162,9 +1065,9 @@ namespace Charrmander.ViewModel
             using XmlWriter xw = XmlWriter.Create(filePath, xws);
             new XDocument(
                 new CharrElement("Charrmander",
-                    (_characterList.Count > 0 ?
+                    _characterList.Count > 0 ?
                     from c in _characterList
-                    select c.ToXML() : null)
+                    select c.ToXML() : null
                 )
             ).Save(xw);
             _currentFile = new FileInfo(filePath);
@@ -1262,7 +1165,7 @@ namespace Charrmander.ViewModel
 
             string exePath = Environment.GetCommandLineArgs()[0];
             CurrentUserFileAssoc(Properties.Resources.cfgFileExtension, "Charrmander");
-            CurrentUserFileAssoc(@"Charrmander", "Charrmander GW2 Character File");
+            CurrentUserFileAssoc("Charrmander", "Charrmander GW2 Character File");
             CurrentUserFileAssoc(@"Charrmander\shell\open\command", $"\"{exePath}\" \"%L\"");
             CurrentUserFileAssoc(@"Charrmander\DefaultIcon", exePath + ",0");
         }
@@ -1323,10 +1226,7 @@ namespace Charrmander.ViewModel
             var column = new DataColumn("Area", t);
             table.Columns.Add(column);
 
-            if (_completionOverview != null)
-            {
-                _completionOverview.Close();
-            }
+            _completionOverview?.Close();
 
             var namedCharacters = GetNamedCharacters().ToList();
             foreach (var c in namedCharacters)
@@ -1602,9 +1502,7 @@ namespace Charrmander.ViewModel
                         Properties.Resources.suUpdateCheckFailedUnknown, e.Error.Message);
                 }
             }
-            else if (e.Cancelled)
-            { }
-            else
+            else if (!e.Cancelled)
             {
                 XDocument? doc = e.Result as XDocument;
                 var publishedReleases = doc?.Root?.Element("Public");
@@ -1831,14 +1729,8 @@ namespace Charrmander.ViewModel
         public void Dispose()
         {
             _bgUpdater.Dispose();
-            if (_updateViewModel != null)
-            {
-                _updateViewModel.Close();
-            }
-            if (_completionOverview != null)
-            {
-                _completionOverview.Close();
-            }
+            _updateViewModel?.Close();
+            _completionOverview?.Close();
         }
 
         /// <summary>
@@ -1848,7 +1740,7 @@ namespace Charrmander.ViewModel
         /// with <paramref name="defaultValue"/> its value.
         /// </summary>
         /// <param name="subKeyName">The per-user file association sub-key whose "default" value to set</param>
-        /// <param name="defaultValue">The "default" value of <code>subKeyName</code></param>
+        /// <param name="defaultValue">The "default" value of <c>subKeyName</c></param>
         [SupportedOSPlatform("windows")]
         private static void CurrentUserFileAssoc(string subKeyName, string defaultValue)
         {
@@ -1873,13 +1765,11 @@ namespace Charrmander.ViewModel
 
     internal static class NativeMethods
     {
-
         [System.Runtime.InteropServices.DllImport("shell32.dll")]
         internal static extern void SHChangeNotify(
             long wEventId,
             uint uFlags,
             IntPtr dwItem1,
             IntPtr dwItem2);
-
     }
 }

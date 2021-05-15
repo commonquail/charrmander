@@ -9,9 +9,9 @@ using System.Xml.Linq;
 
 namespace Charrmander.ViewModel
 {
-    class UpdateAvailableViewModel : AbstractNotifier
+    internal class UpdateAvailableViewModel : AbstractNotifier
     {
-        readonly Window _window;
+        private readonly Window _window;
 
         private readonly Version _curVersion = default!;
         private readonly Version _latestVersion = default!;

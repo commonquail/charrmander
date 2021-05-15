@@ -5,7 +5,7 @@ using System.Windows.Input;
 namespace Charrmander.Util
 {
     /// <summary>
-    /// A command whose sole purpose is to 
+    /// A command whose sole purpose is to
     /// relay its functionality to other
     /// objects by invoking delegates. The
     /// default return value for the CanExecute
@@ -13,8 +13,8 @@ namespace Charrmander.Util
     /// </summary>
     public class RelayCommand : ICommand
     {
-        readonly Action<object?> _execute;
-        readonly Predicate<object?> _canExecute;
+        private readonly Action<object?> _execute;
+        private readonly Predicate<object?> _canExecute;
 
         /// <summary>
         /// Creates a new command that can always execute.

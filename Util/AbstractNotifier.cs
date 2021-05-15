@@ -3,11 +3,11 @@ using System.Diagnostics;
 
 namespace Charrmander.Util
 {
-    class AbstractNotifier : INotifyPropertyChanged
+    internal class AbstractNotifier : INotifyPropertyChanged
     {
         /// <summary>
         /// Warns the developer if this object does not have
-        /// a public property with the specified name. This 
+        /// a public property with the specified name. This
         /// method does not exist in a Release build.
         /// </summary>
         [Conditional("DEBUG")]

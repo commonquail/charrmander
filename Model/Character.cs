@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace Charrmander.Model
 {
-    class Character : AbstractNotifier, IDisposable
+    internal class Character : AbstractNotifier, IDisposable
     {
         private readonly IViewModel _viewModel;
 
@@ -33,16 +33,6 @@ namespace Charrmander.Model
         private static int _fractalTier = 1;
 
         private string _notes = string.Empty;
-
-        private readonly ObservableCollection<Act> _lw2acts = new();
-        private readonly ObservableCollection<Act> _hotacts = new();
-        private readonly ObservableCollection<Act> _kottacts = new();
-        private readonly ObservableCollection<Act> _lw3acts = new();
-        private readonly ObservableCollection<Act> _pofacts = new();
-        private readonly ObservableCollection<Act> _lw4acts = new();
-        private readonly ObservableCollection<Act> _tisacts = new();
-
-        private readonly ObservableCollection<Dungeon> _dungeons = new();
 
         /// <summary>
         /// Maximum sort order; greater than max account character slot of 69
@@ -94,13 +84,13 @@ namespace Charrmander.Model
                 { "RaceThird",  "" }
             };
 
-            PrepareStoryChapters(_lw2acts, "Lw2");
-            PrepareStoryChapters(_hotacts, "HoT");
-            PrepareStoryChapters(_kottacts, "KotT");
-            PrepareStoryChapters(_lw3acts, "Lw3");
-            PrepareStoryChapters(_pofacts, "PoF");
-            PrepareStoryChapters(_lw4acts, "Lw4");
-            PrepareStoryChapters(_tisacts, "Tis");
+            PrepareStoryChapters(Lw2Acts, "Lw2");
+            PrepareStoryChapters(HoTActs, "HoT");
+            PrepareStoryChapters(KotTActs, "KotT");
+            PrepareStoryChapters(Lw3Acts, "Lw3");
+            PrepareStoryChapters(PoFActs, "PoF");
+            PrepareStoryChapters(Lw4Acts, "Lw4");
+            PrepareStoryChapters(TisActs, "Tis");
 
             var dungeons = XDocument.Load(XmlReader.Create(
                 App.GetPackResourceStream("Resources/Dungeons.xml").Stream))
@@ -111,7 +101,7 @@ namespace Charrmander.Model
             foreach (var dungeon in dungeons)
             {
                 dungeon.PropertyChanged += _viewModel.MarkFileDirty;
-                _dungeons.Add(dungeon);
+                Dungeons.Add(dungeon);
             }
 
             CraftingDisciplines = new ObservableCollection<CraftingDiscipline>()
@@ -156,24 +146,21 @@ namespace Charrmander.Model
             }
         }
 
-        public ObservableCollection<Act> Lw2Acts => _lw2acts;
+        public ObservableCollection<Act> Lw2Acts { get; } = new();
 
-        public ObservableCollection<Act> HoTActs => _hotacts;
+        public ObservableCollection<Act> HoTActs { get; } = new();
 
-        public ObservableCollection<Act> KotTActs => _kottacts;
+        public ObservableCollection<Act> KotTActs { get; } = new();
 
-        public ObservableCollection<Act> Lw3Acts => _lw3acts;
+        public ObservableCollection<Act> Lw3Acts { get; } = new();
 
-        public ObservableCollection<Act> PoFActs => _pofacts;
+        public ObservableCollection<Act> PoFActs { get; } = new();
 
-        public ObservableCollection<Act> Lw4Acts => _lw4acts;
+        public ObservableCollection<Act> Lw4Acts { get; } = new();
 
-        public ObservableCollection<Act> TisActs => _tisacts;
+        public ObservableCollection<Act> TisActs { get; } = new();
 
-        public ObservableCollection<Dungeon> Dungeons
-        {
-            get { return _dungeons; }
-        }
+        public ObservableCollection<Dungeon> Dungeons { get; } = new();
 
         /// <summary>
         /// The persisted sort order, sorted on by default at launch. The order
@@ -635,6 +622,5 @@ namespace Charrmander.Model
                 }
             }
         }
-
     }
 }

@@ -16,6 +16,5 @@ namespace Charrmander.Model
             var levelRangeSubstring = $"{someArea.MinLevel}-{someArea.MaxLevel}";
             someArea.LevelRange.Should().Contain(levelRangeSubstring);
         }
-
     }
 }

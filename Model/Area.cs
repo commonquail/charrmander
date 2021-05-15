@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Charrmander.Model
 {
-    class Area : AbstractNotifier
+    internal class Area : AbstractNotifier
     {
         private static readonly Regex _NaNMatch;
 

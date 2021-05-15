@@ -50,12 +50,7 @@ namespace Charrmander.Util
         /// <c>new CharrElement[0];</c></returns>
         public static IEnumerable<XElement> CElements(this XElement xe, string name)
         {
-            var ce = xe.Elements(CharrElement.Charr + name);
-            if (ce == null)
-            {
-                ce = Array.Empty<CharrElement>();
-            }
-            return ce;
+            return xe.Elements(CharrElement.Charr + name) ?? Array.Empty<CharrElement>();
         }
 
         /// <summary>
@@ -71,12 +66,7 @@ namespace Charrmander.Util
         /// <c>new CharrElement[0];</c></returns>
         public static IEnumerable<XElement> CDescendants(this XContainer xc, string name)
         {
-            var cd = xc.Descendants(CharrElement.Charr + name);
-            if (cd == null)
-            {
-                cd = Array.Empty<CharrElement>();
-            }
-            return cd;
+            return xc.Descendants(CharrElement.Charr + name) ?? Array.Empty<CharrElement>();
         }
     }
 }

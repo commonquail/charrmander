@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace Charrmander.Model
 {
-    class Act : AbstractNotifier
+    internal class Act : AbstractNotifier
     {
         public Act(string name, ObservableCollection<Chapter> chapters)
         {
@@ -14,11 +14,11 @@ namespace Charrmander.Model
         /// <summary>
         /// The name of this story act.
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <summary>
         /// This story act's chapters.
         /// </summary>
-        public ObservableCollection<Chapter> Chapters { get; private set; }
+        public ObservableCollection<Chapter> Chapters { get; }
     }
 }

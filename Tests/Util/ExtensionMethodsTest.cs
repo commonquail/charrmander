@@ -18,8 +18,7 @@ namespace Charrmander.Util
         {
             var v = new Version(lhs);
             var other = new Version(rhs);
-            bool actual;
-            actual = ExtensionMethods.IsNewerThan(v, other);
+            bool actual = v.IsNewerThan(other);
 
             actual.Should().Be(expected, reason);
         }
