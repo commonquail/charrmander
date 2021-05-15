@@ -5,12 +5,12 @@
 root = true
 # All files
 [*]
+charset = utf-8
 indent_style = space
 # Code files
 [*.{cs,csx}]
 indent_size = 4
 insert_final_newline = true
-charset = utf-8-bom
 ###############################
 # .NET Coding Conventions     #
 ###############################
