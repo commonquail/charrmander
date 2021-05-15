@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace Charrmander.Util
 {
-    class AbstractNotifier : INotifyPropertyChanged
+    internal class AbstractNotifier : INotifyPropertyChanged
     {
         /// <summary>
         /// Warns the developer if this object does not have

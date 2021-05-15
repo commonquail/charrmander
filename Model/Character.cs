@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace Charrmander.Model
 {
-    class Character : AbstractNotifier, IDisposable
+    internal class Character : AbstractNotifier, IDisposable
     {
         private readonly IViewModel _viewModel;
 

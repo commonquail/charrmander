@@ -2,7 +2,7 @@ using Charrmander.Util;
 
 namespace Charrmander.Model
 {
-    class CraftingDiscipline : AbstractNotifier
+    internal class CraftingDiscipline : AbstractNotifier
     {
         private string _name = string.Empty;
         private int _level = CraftingDiscipline.MinLevel;

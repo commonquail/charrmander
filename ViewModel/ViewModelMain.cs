@@ -19,7 +19,7 @@ using System.Xml.Schema;
 
 namespace Charrmander.ViewModel
 {
-    class ViewModelMain : AbstractNotifier, IViewModel, IDisposable
+    internal class ViewModelMain : AbstractNotifier, IViewModel, IDisposable
     {
         #region Fields
 

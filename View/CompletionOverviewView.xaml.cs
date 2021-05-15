@@ -10,7 +10,7 @@ namespace Charrmander.View
     /// </summary>
     public partial class CompletionOverviewView : Window
     {
-        readonly Style style;
+        private readonly Style style;
 
         public CompletionOverviewView(DataTable table)
         {

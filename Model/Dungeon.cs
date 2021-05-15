@@ -2,7 +2,7 @@ using Charrmander.Util;
 
 namespace Charrmander.Model
 {
-    class Dungeon : AbstractNotifier
+    internal class Dungeon : AbstractNotifier
     {
         private bool _storyCompleted = false;
 

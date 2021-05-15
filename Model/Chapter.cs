@@ -2,7 +2,7 @@ using Charrmander.Util;
 
 namespace Charrmander.Model
 {
-    class Chapter : AbstractNotifier
+    internal class Chapter : AbstractNotifier
     {
         private bool _completed = false;
 
