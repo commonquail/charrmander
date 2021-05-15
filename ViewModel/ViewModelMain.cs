@@ -191,10 +191,7 @@ namespace Charrmander.ViewModel
             {
                 if (value != _updateViewModel)
                 {
-                    if (_updateViewModel != null)
-                    {
-                        _updateViewModel.Close();
-                    }
+                    _updateViewModel?.Close();
                     _updateViewModel = value;
                 }
             }
@@ -1043,15 +1040,7 @@ namespace Charrmander.ViewModel
 
         private void SelectFirstCharacter()
         {
-            var iter = SortedCharacterList.View?.GetEnumerator();
-            if (iter != null && iter.MoveNext())
-            {
-                SelectedCharacter = (Character)iter.Current;
-            }
-            else
-            {
-                SelectedCharacter = null;
-            }
+            SelectedCharacter = SortedCharacterList.View.Cast<Character>().FirstOrDefault();
         }
 
         private static void LoadStorylineWithActs(XElement charr, string storyline, ObservableCollection<Act> acts)
@@ -1113,7 +1102,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         private void Save()
         {
-            if (_currentFile != null && _currentFile.Exists && !_currentFile.IsReadOnly)
+            if (_currentFile?.Exists == true && !_currentFile.IsReadOnly)
             {
                 DoSave(_currentFile.FullName);
             }
@@ -1323,10 +1312,7 @@ namespace Charrmander.ViewModel
             var column = new DataColumn("Area", t);
             table.Columns.Add(column);
 
-            if (_completionOverview != null)
-            {
-                _completionOverview.Close();
-            }
+            _completionOverview?.Close();
 
             var namedCharacters = GetNamedCharacters().ToList();
             foreach (var c in namedCharacters)
@@ -1831,14 +1817,8 @@ namespace Charrmander.ViewModel
         public void Dispose()
         {
             _bgUpdater.Dispose();
-            if (_updateViewModel != null)
-            {
-                _updateViewModel.Close();
-            }
-            if (_completionOverview != null)
-            {
-                _completionOverview.Close();
-            }
+            _updateViewModel?.Close();
+            _completionOverview?.Close();
         }
 
         /// <summary>
