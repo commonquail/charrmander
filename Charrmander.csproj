@@ -14,6 +14,7 @@
     <ApplicationIcon>MainExecutable.ico</ApplicationIcon>
     <NeutralLanguage>en</NeutralLanguage>
     <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
