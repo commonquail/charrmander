@@ -1578,17 +1578,9 @@ namespace Charrmander.ViewModel
                 try
                 {
                     XDocument doc = (XDocument)e.Result;
-                    XElement latest = null;
 
-                    var released = doc.Root.Element("Public");
-                    if (released != null)
-                    {
-                        latest = released.Element("Latest").Element("Release");
-                    }
-                    else
-                    {
-                        latest = doc.Root.Element("Latest").Element("Release");
-                    }
+                    var publishedReleases = doc.Root.Element("Public");
+                    XElement latest = publishedReleases.Element("Latest").Element("Release");
 
                     var newVersion = new Version(latest.Element("Version").Value);
 
@@ -1601,14 +1593,7 @@ namespace Charrmander.ViewModel
                             LatestVersion = newVersion,
                             LatestVersionPath = latest.Element("DownloadUrl").Value
                         };
-                        if (released != null)
-                        {
-                            UpdateWindow.VersionHistory = released.Descendants("Release");
-                        }
-                        else
-                        {
-                            UpdateWindow.VersionHistory = doc.Root.Descendants("Release");
-                        }
+                        UpdateWindow.VersionHistory = publishedReleases.Descendants("Release");
                     }
                     else
                     {
