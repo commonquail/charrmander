@@ -1740,7 +1740,7 @@ namespace Charrmander.ViewModel
         /// with <paramref name="defaultValue"/> its value.
         /// </summary>
         /// <param name="subKeyName">The per-user file association sub-key whose "default" value to set</param>
-        /// <param name="defaultValue">The "default" value of <code>subKeyName</code></param>
+        /// <param name="defaultValue">The "default" value of <c>subKeyName</c></param>
         [SupportedOSPlatform("windows")]
         private static void CurrentUserFileAssoc(string subKeyName, string defaultValue)
         {
