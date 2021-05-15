@@ -662,7 +662,7 @@ namespace Charrmander.ViewModel
             {
                 if (_cmdNew == null)
                 {
-                    _cmdNew = new RelayCommand(param => this.NewCharacter());
+                    _cmdNew = new RelayCommand(_ => this.NewCharacter());
                 }
                 return _cmdNew;
             }
@@ -692,7 +692,7 @@ namespace Charrmander.ViewModel
             {
                 if (_cmdSave == null)
                 {
-                    _cmdSave = new RelayCommand(param => this.Save(), param => this.UnsavedChanges);
+                    _cmdSave = new RelayCommand(_ => this.Save(), _ => this.UnsavedChanges);
                 }
                 return _cmdSave;
             }
@@ -707,7 +707,7 @@ namespace Charrmander.ViewModel
             {
                 if (_cmdSaveAs == null)
                 {
-                    _cmdSaveAs = new RelayCommand(param => this.SaveAs());
+                    _cmdSaveAs = new RelayCommand(_ => this.SaveAs());
                 }
                 return _cmdSaveAs;
             }
@@ -722,7 +722,7 @@ namespace Charrmander.ViewModel
             {
                 if (_cmdClose == null)
                 {
-                    _cmdClose = new RelayCommand(param => this.OnRequestClose());
+                    _cmdClose = new RelayCommand(_ => this.OnRequestClose());
                 }
                 return _cmdClose;
             }
@@ -737,7 +737,7 @@ namespace Charrmander.ViewModel
             {
                 if (_cmdCheckUpdate == null)
                 {
-                    _cmdCheckUpdate = new RelayCommand(param => this.CheckUpdate());
+                    _cmdCheckUpdate = new RelayCommand(_ => this.CheckUpdate());
                 }
                 return _cmdCheckUpdate;
             }
@@ -753,8 +753,8 @@ namespace Charrmander.ViewModel
                 if (_cmdDeleteCharacter == null)
                 {
                     _cmdDeleteCharacter = new RelayCommand(
-                        param => this.DeleteCharacter(),
-                        param => this.CanDeleteCharacter());
+                        _ => this.DeleteCharacter(),
+                        _ => this.CanDeleteCharacter());
                 }
                 return _cmdDeleteCharacter;
             }
@@ -769,7 +769,7 @@ namespace Charrmander.ViewModel
             {
                 if (_cmdRegisterExtensions == null)
                 {
-                    _cmdRegisterExtensions = new RelayCommand(param => RegisterExtension());
+                    _cmdRegisterExtensions = new RelayCommand(_ => RegisterExtension());
                 }
                 return _cmdRegisterExtensions;
             }
@@ -784,7 +784,9 @@ namespace Charrmander.ViewModel
             {
                 if (_cmdCompleteArea == null)
                 {
-                    _cmdCompleteArea = new RelayCommand(param => this.MarkAreaCompleted(), param => this.CanMarkAreaCompleted());
+                    _cmdCompleteArea = new RelayCommand(
+                        _ => this.MarkAreaCompleted(),
+                        _ => this.CanMarkAreaCompleted());
                 }
                 return _cmdCompleteArea;
             }
@@ -799,8 +801,9 @@ namespace Charrmander.ViewModel
             {
                 if (_cmdCompletionOverview == null)
                 {
-                    _cmdCompletionOverview = new RelayCommand(param => this.ShowCompletionOverview(),
-                        param => this.CanShowCompletionOverview());
+                    _cmdCompletionOverview = new RelayCommand(
+                        _ => this.ShowCompletionOverview(),
+                        _ => this.CanShowCompletionOverview());
                 }
                 return _cmdCompletionOverview;
             }
