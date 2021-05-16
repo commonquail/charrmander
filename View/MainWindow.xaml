@@ -4,6 +4,11 @@
         xmlns:View="clr-namespace:Charrmander.View"
         xmlns:Model="clr-namespace:Charrmander.Model"
         xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        xmlns:viewmodel="clr-namespace:Charrmander.ViewModel"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        d:DataContext="{d:DesignInstance Type=viewmodel:ViewModelMain, IsDesignTimeCreatable=False}"
         Title="{Binding WindowTitle}"
         Width="575"
         SizeToContent="Height"
@@ -334,7 +339,7 @@
                                             <TextBlock Text="{Binding XPath=Level}"/>
                                         </StackPanel>
                                     </TextBlock.ToolTip>
-                            </TextBlock>
+                                </TextBlock>
                                 <ComboBox ItemsSource="{Binding Source={StaticResource StoryXml}, XPath=Order//Option}"
                                       SelectedValue="{Binding Order}"/>
                             </DockPanel>
@@ -761,7 +766,10 @@
                                         <ItemsControl ItemsSource="{Binding}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
-                                                    <StackPanel Orientation="Horizontal">
+                                                    <StackPanel
+                                                        d:DataContext="{d:DesignInstance Type=Model:Dungeon, IsDesignTimeCreatable=False}"
+                                                        Orientation="Horizontal"
+                                                        >
                                                         <CheckBox IsChecked="{Binding StoryCompleted}">
                                                             <CheckBox.Content>
                                                                 <TextBlock>
