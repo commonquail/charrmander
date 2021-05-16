@@ -32,6 +32,13 @@
           </xs:all>
         </xs:complexType>
       </xs:element>
+      <xs:element name="UnlockedEliteSpecializations" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Specialization" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="StoryChoices" minOccurs="0">
         <xs:complexType>
           <xs:all>

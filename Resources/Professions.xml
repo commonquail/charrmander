@@ -2,29 +2,47 @@
 <Professions>
   <Profession>
     <Name>Elementalist</Name>
+    <Specialization>Tempest</Specialization>
+    <Specialization>Weaver</Specialization>
   </Profession>
   <Profession>
     <Name>Engineer</Name>
+    <Specialization>Scrapper</Specialization>
+    <Specialization>Holosmith</Specialization>
   </Profession>
   <Profession>
     <Name>Guardian</Name>
+    <Specialization>Dragonhunter</Specialization>
+    <Specialization>Firebrand</Specialization>
   </Profession>
   <Profession>
     <Name>Mesmer</Name>
+    <Specialization>Chronomancer</Specialization>
+    <Specialization>Mirage</Specialization>
   </Profession>
   <Profession>
     <Name>Necromancer</Name>
+    <Specialization>Reaper</Specialization>
+    <Specialization>Scourge</Specialization>
   </Profession>
   <Profession>
     <Name>Ranger</Name>
+    <Specialization>Druid</Specialization>
+    <Specialization>Soulbeast</Specialization>
   </Profession>
   <Profession>
     <Name>Revenant</Name>
+    <Specialization>Herald</Specialization>
+    <Specialization>Renegade</Specialization>
   </Profession>
   <Profession>
     <Name>Thief</Name>
+    <Specialization>Daredevil</Specialization>
+    <Specialization>Deadeye</Specialization>
   </Profession>
   <Profession>
     <Name>Warrior</Name>
+    <Specialization>Berserker</Specialization>
+    <Specialization>Spellbreaker</Specialization>
   </Profession>
 </Professions>

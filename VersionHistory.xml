@@ -9,6 +9,7 @@
         <Note>In the completion overview, list characters in the same order as in the main window.</Note>
         <Note>Give area completion state its own column so it can be sorted on and so area names look less messy.</Note>
         <Note>Lower the max window height so desktops with DPI scaling can better fit the window. Since "The Icebrood Saga" finished, the old max height was insufficient to avoid scrolling anyway.</Note>
+        <Note>Track unlocked elite specializations on the "Personal" tab after selecting a profession.</Note>
       </Notes>
     </Release>
   </Unreleased>
