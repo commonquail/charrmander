@@ -154,7 +154,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <Image Height="20" Width="20" Source="{Binding XPath=Name,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Professions}"/>
-                                <TextBlock Text="{Binding XPath=Name, StringFormat={} {0}}" VerticalAlignment="Center"/>
+                                <TextBlock Margin="3 0" Text="{Binding XPath=Name}" VerticalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
 
@@ -162,7 +162,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <Image Height="20" Width="20"
                                        Source="{Binding XPath=Name, Converter={StaticResource GameIconConverter}, ConverterParameter=Races}"/>
-                                <TextBlock Text="{Binding XPath=Name, StringFormat={} {0}}" VerticalAlignment="Center"/>
+                                <TextBlock Margin="3 0" Text="{Binding XPath=Name}" VerticalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
                     </TabItem.Resources>
