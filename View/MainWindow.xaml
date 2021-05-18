@@ -307,27 +307,21 @@
                                 </Style>
 
                                 <DataTemplate x:Key="StoryChapterCompletionTemplate">
-                                    <ItemsControl ItemsSource="{Binding}">
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <GroupBox Header="{Binding Name}">
-                                                    <ItemsControl
-                                                        ItemsSource="{Binding Chapters}"
-                                                        IsTabStop="False">
-                                                        <ItemsControl.ItemTemplate>
-                                                            <DataTemplate>
-                                                                <CheckBox
-                                                                    IsChecked="{Binding ChapterCompleted}"
-                                                                    Unchecked="StoryChapterCheckBox_Checked"
-                                                                    Checked="StoryChapterCheckBox_Checked"
-                                                                    Content="{Binding Name}"/>
-                                                            </DataTemplate>
-                                                        </ItemsControl.ItemTemplate>
-                                                    </ItemsControl>
-                                                </GroupBox>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
+                                    <GroupBox Header="{Binding Name}">
+                                        <ItemsControl
+                                            ItemsSource="{Binding Chapters}"
+                                            IsTabStop="False">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox
+                                                        IsChecked="{Binding ChapterCompleted}"
+                                                        Unchecked="StoryChapterCheckBox_Checked"
+                                                        Checked="StoryChapterCheckBox_Checked"
+                                                        Content="{Binding Name}"/>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </GroupBox>
                                 </DataTemplate>
                             </StackPanel.Resources>
                             <DockPanel>
@@ -416,9 +410,9 @@
                                         </TextBlock.Text>
                                     </TextBlock>
                                 </Expander.Header>
-                                <ContentControl
-                                    Content="{Binding Lw2Acts}"
-                                    ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                                <ItemsControl
+                                    ItemsSource="{Binding Lw2Acts}"
+                                    ItemTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
                             <Expander>
@@ -441,9 +435,9 @@
                                         </TextBlock.Text>
                                     </TextBlock>
                                 </Expander.Header>
-                                <ContentControl
-                                    Content="{Binding HoTActs}"
-                                    ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                                <ItemsControl
+                                    ItemsSource="{Binding HoTActs}"
+                                    ItemTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
                             <Expander>
@@ -462,9 +456,9 @@
                                         </TextBlock.Text>
                                     </TextBlock>
                                 </Expander.Header>
-                                <ContentControl
-                                    Content="{Binding KotTActs}"
-                                    ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                                <ItemsControl
+                                    ItemsSource="{Binding KotTActs}"
+                                    ItemTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
                             <Expander>
@@ -483,9 +477,9 @@
                                         </TextBlock.Text>
                                     </TextBlock>
                                 </Expander.Header>
-                                <ContentControl
-                                    Content="{Binding Lw3Acts}"
-                                    ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                                <ItemsControl
+                                    ItemsSource="{Binding Lw3Acts}"
+                                    ItemTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
                             <Expander>
@@ -504,9 +498,9 @@
                                         </TextBlock.Text>
                                     </TextBlock>
                                 </Expander.Header>
-                                <ContentControl
-                                    Content="{Binding PoFActs}"
-                                    ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                                <ItemsControl
+                                    ItemsSource="{Binding PoFActs}"
+                                    ItemTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
                             <Expander>
@@ -525,9 +519,9 @@
                                         </TextBlock.Text>
                                     </TextBlock>
                                 </Expander.Header>
-                                <ContentControl
-                                    Content="{Binding Lw4Acts}"
-                                    ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                                <ItemsControl
+                                    ItemsSource="{Binding Lw4Acts}"
+                                    ItemTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
                             <Expander>
@@ -546,9 +540,9 @@
                                         </TextBlock.Text>
                                     </TextBlock>
                                 </Expander.Header>
-                                <ContentControl
-                                    Content="{Binding TisActs}"
-                                    ContentTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                                <ItemsControl
+                                    ItemsSource="{Binding TisActs}"
+                                    ItemTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
                         </StackPanel>
@@ -703,41 +697,33 @@
                                 <Setter Property="LargeChange" Value="10"/>
                                 <Setter Property="Ticks" Value="0, 75, 150, 225, 300, 375, 400"/>
                             </Style>
-
-                            <DataTemplate x:Key="CraftingDisciplineTemplate">
-                                <ItemsControl ItemsSource="{Binding}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <DockPanel Margin="0 2">
-                                                <Image Source="{Binding Name, Converter={StaticResource GameIconConverter},
-                                                    ConverterParameter=Crafts}" ToolTip="{Binding Name}" Height="20" Width="20" />
-
-                                                <TextBlock Text="{Binding MaxLevel,
-                                                    StringFormat=' / {0}'}" DockPanel.Dock="Right" Margin="0,5"/>
-
-                                                <View:IntegerUpDown
-                                                    Value="{Binding Value, ElementName=sldCraftingDiscipline,
-                                                        UpdateSourceTrigger=PropertyChanged}"
-                                                    Minimum="{x:Static Model:CraftingDiscipline.MinLevel}"
-                                                    Maximum="{Binding MaxLevel}"
-                                                    DockPanel.Dock="Right"
-                                                    Width="55"
-                                                    VerticalAlignment="Center"
-                                                    />
-
-                                                <Slider Value="{Binding Level}" Name="sldCraftingDiscipline"
-                                                        Maximum="{Binding MaxLevel}" Margin="6,2"/>
-                                            </DockPanel>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </DataTemplate>
                         </StackPanel.Resources>
 
-                        <ContentControl
-                            Content="{Binding SelectedCharacter.CraftingDisciplines}"
-                            ContentTemplate="{StaticResource CraftingDisciplineTemplate}"/>
+                        <ItemsControl ItemsSource="{Binding SelectedCharacter.CraftingDisciplines}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <DockPanel Margin="0 2">
+                                        <Image Source="{Binding Name, Converter={StaticResource GameIconConverter},
+                                            ConverterParameter=Crafts}" ToolTip="{Binding Name}" Height="20" Width="20" />
 
+                                        <TextBlock Text="{Binding MaxLevel,
+                                            StringFormat=' / {0}'}" DockPanel.Dock="Right" Margin="0,5"/>
+
+                                        <View:IntegerUpDown
+                                            Value="{Binding Value, ElementName=sldCraftingDiscipline,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                            Minimum="{x:Static Model:CraftingDiscipline.MinLevel}"
+                                            Maximum="{Binding MaxLevel}"
+                                            DockPanel.Dock="Right"
+                                            Width="55"
+                                            VerticalAlignment="Center"
+                                            />
+                                        <Slider Value="{Binding Level}" Name="sldCraftingDiscipline"
+                                                Maximum="{Binding MaxLevel}" Margin="6,2"/>
+                                    </DockPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
                     </StackPanel>
                 </TabItem>
 
@@ -760,35 +746,26 @@
                             </View:IntegerUpDown>
                         </StackPanel>
                         <GroupBox Header="Dungeon Story Mode Completion">
-                            <ContentControl Content="{Binding SelectedCharacter.Dungeons}">
-                                <ContentControl.ContentTemplate>
+                            <ItemsControl ItemsSource="{Binding SelectedCharacter.Dungeons}">
+                                <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <ItemsControl ItemsSource="{Binding}">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <StackPanel
-                                                        d:DataContext="{d:DesignInstance Type=Model:Dungeon, IsDesignTimeCreatable=False}"
-                                                        Orientation="Horizontal"
-                                                        >
-                                                        <CheckBox IsChecked="{Binding StoryCompleted}">
-                                                            <CheckBox.Content>
-                                                                <TextBlock>
-                                                                    <TextBlock.Text>
-                                                                        <MultiBinding StringFormat="{}{0} {1}">
-                                                                            <Binding Path="StoryLevel"/>
-                                                                            <Binding Path="Name"/>
-                                                                        </MultiBinding>
-                                                                    </TextBlock.Text>
-                                                                </TextBlock>
-                                                            </CheckBox.Content>
-                                                        </CheckBox>
-                                                    </StackPanel>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
+                                        <StackPanel Orientation="Horizontal">
+                                            <CheckBox IsChecked="{Binding StoryCompleted}">
+                                                <CheckBox.Content>
+                                                    <TextBlock>
+                                                        <TextBlock.Text>
+                                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                                <Binding Path="StoryLevel"/>
+                                                                <Binding Path="Name"/>
+                                                            </MultiBinding>
+                                                        </TextBlock.Text>
+                                                    </TextBlock>
+                                                </CheckBox.Content>
+                                            </CheckBox>
+                                        </StackPanel>
                                     </DataTemplate>
-                                </ContentControl.ContentTemplate>
-                            </ContentControl>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </GroupBox>
                     </StackPanel>
                 </TabItem>
