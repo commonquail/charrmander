@@ -561,6 +561,10 @@
                                     <scm:SortDescription PropertyName="Name" Direction="Ascending"/>
                                 </CollectionViewSource.SortDescriptions>
                             </CollectionViewSource>
+
+                            <Style x:Key="NumberCell">
+                                <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                            </Style>
                         </DockPanel.Resources>
 
                         <DataGrid
@@ -571,7 +575,6 @@
                             CanUserResizeRows="False"
                             CanUserResizeColumns="False"
                             SelectionMode="Single"
-                            Block.TextAlignment="Right"
                             >
 
                             <DataGrid.HorizontalGridLinesBrush>
@@ -591,24 +594,28 @@
                             </DataGrid.ContextMenu>
 
                             <DataGrid.Columns>
-                                <DataGridTemplateColumn
+                                <DataGridTextColumn
+                                    Binding="{Binding State, Converter={StaticResource CompletionStateConverter}}">
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style>
+                                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn
                                     Header="Area Name"
+                                    Binding="{Binding Name}"
                                     MinWidth="130"
-                                    SortMemberPath="Name"
                                     SortDirection="Ascending"
-                                    ClipboardContentBinding="{Binding Name}"
                                     >
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding State, Converter={StaticResource CompletionStateConverter}}"/>
-                                                <TextBlock Text="{Binding Name}"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTextColumn Header="Min" Binding="{Binding MinLevel}"/>
-                                <DataGridTextColumn Header="Max" Binding="{Binding MaxLevel}"/>
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style>
+                                            <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="Min" Binding="{Binding MinLevel}" CellStyle="{StaticResource NumberCell}"/>
+                                <DataGridTextColumn Header="Max" Binding="{Binding MaxLevel}" CellStyle="{StaticResource NumberCell}"/>
                             </DataGrid.Columns>
                         </DataGrid>
 

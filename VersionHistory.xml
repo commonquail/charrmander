@@ -7,6 +7,7 @@
       <Notes>
         <Note>Fix initial sorting of area lists; apparently this never worked.</Note>
         <Note>In the completion overview, list characters in the same order as in the main window.</Note>
+        <Note>Give area completion state its own column so it can be sorted on and so area names look less messy.</Note>
       </Notes>
     </Release>
   </Unreleased>
