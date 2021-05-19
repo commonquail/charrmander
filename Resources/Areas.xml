@@ -168,19 +168,6 @@
     </Completion>
   </Area>
   <Area>
-    <Name>Drizzlewood Coast</Name>
-    <LevelRange>
-      <MinLevel>80</MinLevel>
-    </LevelRange>
-    <Completion>
-      <Hearts>0</Hearts>
-      <Waypoints>2</Waypoints>
-      <PoIs>37</PoIs>
-      <Skills>0</Skills>
-      <Vistas>16</Vistas>
-    </Completion>
-  </Area>
-  <Area>
     <Name>Diessa Plateau</Name>
     <LevelRange>
       <MinLevel>15</MinLevel>
@@ -294,6 +281,19 @@
       <PoIs>24</PoIs>
       <Skills>6</Skills>
       <Vistas>8</Vistas>
+    </Completion>
+  </Area>
+  <Area>
+    <Name>Drizzlewood Coast</Name>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>2</Waypoints>
+      <PoIs>37</PoIs>
+      <Skills>0</Skills>
+      <Vistas>16</Vistas>
     </Completion>
   </Area>
   <Area>
@@ -666,16 +666,6 @@
     </Completion>
   </Area>
   <Area>
-    <Name>The Grove</Name>
-    <Completion>
-      <Hearts>0</Hearts>
-      <Waypoints>4</Waypoints>
-      <PoIs>19</PoIs>
-      <Skills>0</Skills>
-      <Vistas>6</Vistas>
-    </Completion>
-  </Area>
-  <Area>
     <Name>Tangled Depths</Name>
     <LevelRange>
       <MinLevel>80</MinLevel>
@@ -699,6 +689,16 @@
       <PoIs>43</PoIs>
       <Skills>6</Skills>
       <Vistas>10</Vistas>
+    </Completion>
+  </Area>
+  <Area>
+    <Name>The Grove</Name>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>4</Waypoints>
+      <PoIs>19</PoIs>
+      <Skills>0</Skills>
+      <Vistas>6</Vistas>
     </Completion>
   </Area>
   <Area>

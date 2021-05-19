@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:View="clr-namespace:Charrmander.View"
         xmlns:Model="clr-namespace:Charrmander.Model"
+        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         Title="{Binding WindowTitle}"
         Width="575"
         SizeToContent="Height"
@@ -551,9 +552,27 @@
 
                 <TabItem Header="Areas">
                     <DockPanel>
-                        <DataGrid ItemsSource="{Binding AreaReferenceList}" SelectedItem="{Binding SelectedAreaReference}"
-                                  AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeRows="False" CanUserResizeColumns="False"
-                                  SelectionMode="Single" Block.TextAlignment="Right">
+
+                        <DockPanel.Resources>
+                            <CollectionViewSource
+                                x:Key="SortedAreas"
+                                Source="{Binding AreaReferenceList}">
+                                <CollectionViewSource.SortDescriptions>
+                                    <scm:SortDescription PropertyName="Name" Direction="Ascending"/>
+                                </CollectionViewSource.SortDescriptions>
+                            </CollectionViewSource>
+                        </DockPanel.Resources>
+
+                        <DataGrid
+                            ItemsSource="{Binding Source={StaticResource SortedAreas}}"
+                            SelectedItem="{Binding SelectedAreaReference}"
+                            AutoGenerateColumns="False"
+                            IsReadOnly="True"
+                            CanUserResizeRows="False"
+                            CanUserResizeColumns="False"
+                            SelectionMode="Single"
+                            Block.TextAlignment="Right"
+                            >
 
                             <DataGrid.HorizontalGridLinesBrush>
                                 <SolidColorBrush Color="LightGray"/>
@@ -572,8 +591,13 @@
                             </DataGrid.ContextMenu>
 
                             <DataGrid.Columns>
-                                <DataGridTemplateColumn Header="Area Name" MinWidth="130" SortMemberPath="Name"
-                                                        ClipboardContentBinding="{Binding Name}">
+                                <DataGridTemplateColumn
+                                    Header="Area Name"
+                                    MinWidth="130"
+                                    SortMemberPath="Name"
+                                    SortDirection="Ascending"
+                                    ClipboardContentBinding="{Binding Name}"
+                                    >
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">

@@ -1238,6 +1238,7 @@ namespace Charrmander.ViewModel
             _completionOverview.Show();
 
             var areas = from a in AreaReferenceList
+                        orderby a.Name
                         select new Area(a.Name)
                         {
                             Hearts = a.Hearts,
