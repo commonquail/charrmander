@@ -8,7 +8,7 @@
         Width="575"
         SizeToContent="Height"
         MinHeight="410"
-        MaxHeight="1080"
+        MaxHeight="720"
         Icon="/Icons/Game/MainTitle.png" AllowDrop="True" Drop="Window_Drop">
 
     <Window.InputBindings>
