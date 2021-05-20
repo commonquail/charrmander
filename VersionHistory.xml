@@ -6,6 +6,7 @@
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.22.0.zip</DownloadUrl>
       <Notes>
         <Note>Fix initial sorting of area lists; apparently this never worked.</Note>
+        <Note>In the completion overview, list characters in the same order as in the main window.</Note>
       </Notes>
     </Release>
   </Unreleased>

@@ -1209,9 +1209,8 @@ namespace Charrmander.ViewModel
         /// <returns>Returns all named characters.</returns>
         private IEnumerable<Character> GetNamedCharacters()
         {
-            return from c in _characterList
-                   where !string.IsNullOrWhiteSpace(c.Name)
-                   select c;
+            return SortedCharacterList.View.Cast<Character>()
+                .Where(c => !string.IsNullOrWhiteSpace(c.Name));
         }
 
         /// <summary>
