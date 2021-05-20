@@ -65,10 +65,10 @@ namespace Charrmander.ViewModel
         private Visibility _isBiographyVisible = Visibility.Collapsed;
 
         private readonly IDictionary<string, object> _biographyOptionsProfession;
-        private readonly ObservableCollection<string> _biographyOptionsPersonality;
-        private readonly IDictionary<string, IDictionary<string, ObservableCollection<string>>> _biographyOptionsRace;
+        private readonly IReadOnlyList<string> _biographyOptionsPersonality;
+        private readonly IDictionary<string, IDictionary<string, IReadOnlyList<string>>> _biographyOptionsRace;
 
-        private ObservableCollection<string>?
+        private IReadOnlyList<string>?
             _selectedBiographyOptionsProfession,
             _selectedBiographyOptionsPersonality,
             _selectedBiographyOptionsRaceFirst,
@@ -87,9 +87,9 @@ namespace Charrmander.ViewModel
             var doc = XDocument.Load(XmlReader.Create(
                 App.GetPackResourceStream("Resources/Areas.xml").Stream));
 
-            AreaReferenceList = new ObservableCollection<Area>(
-                from a in doc.Root!.Elements(Area.XmlNamespace + "Area")
-                select Area.FromXML(a));
+            AreaReferenceList = doc.Root!.Elements(Area.XmlNamespace + "Area")
+                .Select(Area.FromXML)
+                .ToList();
 
             var races = XDocument.Load(XmlReader.Create(
                 App.GetPackResourceStream("Resources/Races.xml").Stream)).Root!.Elements("Race");
@@ -104,33 +104,33 @@ namespace Charrmander.ViewModel
                 // dependency.
                 if (xe.Name.LocalName == "Ranger")
                 {
-                    var d = new Dictionary<string, ObservableCollection<string>>();
+                    var d = new Dictionary<string, IReadOnlyList<string>>();
                     foreach (var race in races)
                     {
                         string key = race.Element("Name")!.Value;
-                        d[key] = new ObservableCollection<string>(
-                            from bo in xe.Element(key)!.Elements() select bo.Value);
+                        d[key] = xe.Element(key)!.Elements()
+                            .Select(bo => bo.Value).ToList();
                     }
                     _biographyOptionsProfession[xe.Name.LocalName] = d;
                 }
                 else
                 {
-                    _biographyOptionsProfession[xe.Name.LocalName] = new ObservableCollection<string>(
-                        from e in xe.Elements() select e.Value);
+                    _biographyOptionsProfession[xe.Name.LocalName] =
+                        xe.Elements().Select(e => e.Value).ToList();
                 }
             }
 
-            _biographyOptionsPersonality = new ObservableCollection<string>(
-                from p in biographies.Root!.Element("Personalities")!.Elements() select p.Value);
+            _biographyOptionsPersonality =
+                biographies.Root!.Element("Personalities")!.Elements()
+                    .Select(p => p.Value).ToList();
 
-            _biographyOptionsRace = new Dictionary<string, IDictionary<string, ObservableCollection<string>>>(5);
+            _biographyOptionsRace = new Dictionary<string, IDictionary<string, IReadOnlyList<string>>>(5);
             foreach (XElement xe in biographies.Root!.Element("Races")!.Elements())
             {
-                var d = new Dictionary<string, ObservableCollection<string>>(3);
+                var d = new Dictionary<string, IReadOnlyList<string>>(3);
                 foreach (var choice in xe.Elements())
                 {
-                    d[choice.Name.LocalName] = new ObservableCollection<string>(
-                        from c in choice.Elements() select c.Value);
+                    d[choice.Name.LocalName] = choice.Elements().Select(c => c.Value).ToList();
                 }
                 _biographyOptionsRace[xe.Name.LocalName] = d;
             }
@@ -235,7 +235,7 @@ namespace Charrmander.ViewModel
         /// The master list of areas, generated at runtime from an embedded XML file.
         /// Compare <see cref="Character.Areas"/> against this.
         /// </summary>
-        public ObservableCollection<Area> AreaReferenceList { get; set; }
+        public IReadOnlyList<Area> AreaReferenceList { get; }
 
         /// <summary>
         /// The <see cref="Character"/> in <see cref="CharacterList"/> that is currently selected.
@@ -339,7 +339,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// The profession biography options.
         /// </summary>
-        public ObservableCollection<string>? BiographyOptionsProfession
+        public IReadOnlyList<string>? BiographyOptionsProfession
         {
             get { return _selectedBiographyOptionsProfession; }
             private set
@@ -355,7 +355,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// The personality biography options.
         /// </summary>
-        public ObservableCollection<string>? BiographyOptionsPersonality
+        public IReadOnlyList<string>? BiographyOptionsPersonality
         {
             get { return _selectedBiographyOptionsPersonality; }
             private set
@@ -371,7 +371,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// The biography options for the first racial choice.
         /// </summary>
-        public ObservableCollection<string>? BiographyOptionsRaceFirst
+        public IReadOnlyList<string>? BiographyOptionsRaceFirst
         {
             get { return _selectedBiographyOptionsRaceFirst; }
             private set
@@ -387,7 +387,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// The biography options for the second racial choice.
         /// </summary>
-        public ObservableCollection<string>? BiographyOptionsRaceSecond
+        public IReadOnlyList<string>? BiographyOptionsRaceSecond
         {
             get { return _selectedBiographyOptionsRaceSecond; }
             private set
@@ -403,7 +403,7 @@ namespace Charrmander.ViewModel
         /// <summary>
         /// The biography options for the third racial choice.
         /// </summary>
-        public ObservableCollection<string>? BiographyOptionsRaceThird
+        public IReadOnlyList<string>? BiographyOptionsRaceThird
         {
             get { return _selectedBiographyOptionsRaceThird; }
             private set
@@ -924,6 +924,7 @@ namespace Charrmander.ViewModel
                         Skills = area.CElement("Completion").CElement("Skills").Value,
                         Vistas = area.CElement("Completion").CElement("Vistas").Value
                     };
+                    a.PropertyChanged += MarkFileDirty;
 
                     if (AreaReferenceList.Any(aa => aa.Name == a.Name))
                     {
@@ -973,7 +974,7 @@ namespace Charrmander.ViewModel
             SelectedCharacter = SortedCharacterList.View.Cast<Character>().FirstOrDefault();
         }
 
-        private static void LoadStorylineWithActs(XElement charr, string storyline, ObservableCollection<Act> acts)
+        private static void LoadStorylineWithActs(XElement charr, string storyline, IReadOnlyList<Act> acts)
         {
             var chapterByNameByActName = new Dictionary<string, Dictionary<string, Chapter>>(acts.Count);
             foreach (var act in acts)
@@ -1327,18 +1328,15 @@ namespace Charrmander.ViewModel
             {
                 IsBiographyVisible = Visibility.Visible;
                 var profOption = _biographyOptionsProfession[charProfession];
-                switch (profOption)
+                BiographyOptionsProfession = profOption switch
                 {
                     // Ranger requires special handling. It has a race
                     // dependency and so is nested one level further.
-                    case IDictionary<string, ObservableCollection<string>> ranger:
-                        BiographyOptionsProfession = ranger[charRace];
-                        break;
+                    IDictionary<string, IReadOnlyList<string>> ranger => ranger[charRace],
                     // Non-rangers all have simple lists of options.
-                    case ObservableCollection<string> other:
-                        BiographyOptionsProfession = other;
-                        break;
-                }
+                    IReadOnlyList<string> other => other,
+                    _ => throw new ArgumentException("" + profOption),
+                };
 
                 // Personality (this one is constant).
                 BiographyOptionsPersonality = _biographyOptionsPersonality;
@@ -1442,6 +1440,7 @@ namespace Charrmander.ViewModel
                     || SelectedAreaCharacter.Name != SelectedAreaReference.Name)
                 {
                     var a = new Area(SelectedAreaReference.Name);
+                    a.PropertyChanged += MarkFileDirty;
                     SelectedCharacter.Areas.Add(a);
                     SelectedAreaCharacter = a;
                 }
@@ -1588,7 +1587,7 @@ namespace Charrmander.ViewModel
             selectedCharacter.Name = selectedCharacter.Name.Trim();
         }
 
-        private static CompletionState CalculateStoryChapterCompletion(Collection<Act> acts)
+        private static CompletionState CalculateStoryChapterCompletion(IReadOnlyList<Act> acts)
         {
             if (acts.SelectMany(a => a.Chapters).All(c => c.ChapterCompleted))
             {

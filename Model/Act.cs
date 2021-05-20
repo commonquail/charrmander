@@ -1,11 +1,11 @@
 using Charrmander.Util;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace Charrmander.Model
 {
     internal class Act : AbstractNotifier
     {
-        public Act(string name, ObservableCollection<Chapter> chapters)
+        public Act(string name, IReadOnlyList<Chapter> chapters)
         {
             Name = name;
             Chapters = chapters;
@@ -19,6 +19,6 @@ namespace Charrmander.Model
         /// <summary>
         /// This story act's chapters.
         /// </summary>
-        public ObservableCollection<Chapter> Chapters { get; }
+        public IReadOnlyList<Chapter> Chapters { get; }
     }
 }

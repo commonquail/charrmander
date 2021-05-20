@@ -2,8 +2,6 @@ using Charrmander.Util;
 using Charrmander.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
@@ -105,27 +103,27 @@ namespace Charrmander.Model
             }
             specializationsByProfession = specByProf;
 
-            PrepareStoryChapters(Lw2Acts, "Lw2");
-            PrepareStoryChapters(HoTActs, "HoT");
-            PrepareStoryChapters(KotTActs, "KotT");
-            PrepareStoryChapters(Lw3Acts, "Lw3");
-            PrepareStoryChapters(PoFActs, "PoF");
-            PrepareStoryChapters(Lw4Acts, "Lw4");
-            PrepareStoryChapters(TisActs, "Tis");
+            Lw2Acts = PrepareStoryChapters("Lw2");
+            HoTActs = PrepareStoryChapters("HoT");
+            KotTActs = PrepareStoryChapters("KotT");
+            Lw3Acts = PrepareStoryChapters("Lw3");
+            PoFActs = PrepareStoryChapters("PoF");
+            Lw4Acts = PrepareStoryChapters("Lw4");
+            TisActs = PrepareStoryChapters("Tis");
 
-            var dungeons = XDocument.Load(XmlReader.Create(
+            Dungeons = XDocument.Load(XmlReader.Create(
                 App.GetPackResourceStream("Resources/Dungeons.xml").Stream))
                 .Root!.Elements("Dungeon")
-                .Select(d => new Dungeon(d.Element("Name")!.Value, d.Element("StoryLevel")!.Value))
-                .OrderBy(d => d.StoryLevel);
+                .Select(d =>
+                {
+                    var dungeon = new Dungeon(d.Element("Name")!.Value, d.Element("StoryLevel")!.Value);
+                    dungeon.PropertyChanged += _viewModel.MarkFileDirty;
+                    return dungeon;
+                })
+                .OrderBy(d => d.StoryLevel)
+                .ToList();
 
-            foreach (var dungeon in dungeons)
-            {
-                dungeon.PropertyChanged += _viewModel.MarkFileDirty;
-                Dungeons.Add(dungeon);
-            }
-
-            CraftingDisciplines = new ObservableCollection<CraftingDiscipline>()
+            CraftingDisciplines = new List<CraftingDiscipline>()
             {
                 new CraftingDiscipline() { Name = "Armorsmith" },
                 new CraftingDiscipline() { Name = "Artificer" },
@@ -138,8 +136,7 @@ namespace Charrmander.Model
                 new CraftingDiscipline() { Name = "Weaponsmith" }
             };
 
-            Areas = new();
-            Areas.CollectionChanged += Areas_CollectionChanged;
+            Areas = new List<Area>();
 
             foreach (var d in CraftingDisciplines)
             {
@@ -149,12 +146,13 @@ namespace Charrmander.Model
             this.PropertyChanged += _viewModel.MarkFileDirty;
         }
 
-        private void PrepareStoryChapters(ObservableCollection<Act> acts, string storyline)
+        private IReadOnlyList<Act> PrepareStoryChapters(string storyline)
         {
+            var acts = new List<Act>();
             XNamespace ns = "https://storychapters.charr";
             foreach (var act in storyChapters.Element(ns + storyline)!.Descendants(ns + "Act"))
             {
-                var chapters = new ObservableCollection<Chapter>();
+                var chapters = new List<Chapter>();
                 foreach (var c in act.Descendants(ns + "Chapter"))
                 {
                     var m = new Chapter(c.Value);
@@ -165,6 +163,7 @@ namespace Charrmander.Model
                 a.PropertyChanged += _viewModel.MarkFileDirty;
                 acts.Add(a);
             }
+            return acts;
         }
 
         private readonly Dictionary<string, IReadOnlyList<EliteSpecialization>> specializationsByProfession;
@@ -191,21 +190,21 @@ namespace Charrmander.Model
             }
         }
 
-        public ObservableCollection<Act> Lw2Acts { get; } = new();
+        public IReadOnlyList<Act> Lw2Acts { get; }
 
-        public ObservableCollection<Act> HoTActs { get; } = new();
+        public IReadOnlyList<Act> HoTActs { get; }
 
-        public ObservableCollection<Act> KotTActs { get; } = new();
+        public IReadOnlyList<Act> KotTActs { get; }
 
-        public ObservableCollection<Act> Lw3Acts { get; } = new();
+        public IReadOnlyList<Act> Lw3Acts { get; }
 
-        public ObservableCollection<Act> PoFActs { get; } = new();
+        public IReadOnlyList<Act> PoFActs { get; }
 
-        public ObservableCollection<Act> Lw4Acts { get; } = new();
+        public IReadOnlyList<Act> Lw4Acts { get; }
 
-        public ObservableCollection<Act> TisActs { get; } = new();
+        public IReadOnlyList<Act> TisActs { get; }
 
-        public ObservableCollection<Dungeon> Dungeons { get; } = new();
+        public IReadOnlyList<Dungeon> Dungeons { get; }
 
         /// <summary>
         /// The persisted sort order, sorted on by default at launch. The order
@@ -472,12 +471,12 @@ namespace Charrmander.Model
         /// A collection of all the crafting disciplines.
         /// See <see cref="CraftingDiscipline"/>.
         /// </summary>
-        public ObservableCollection<CraftingDiscipline> CraftingDisciplines { get; }
+        public IReadOnlyList<CraftingDiscipline> CraftingDisciplines { get; }
 
         /// <summary>
         /// A collection of the areas this character has information about.
         /// </summary>
-        public ObservableCollection<Area> Areas { get; }
+        public IList<Area> Areas { get; }
 
         /// <summary>
         /// The character's Fractal of the Mists tier.
@@ -585,7 +584,7 @@ namespace Charrmander.Model
             );
         }
 
-        private static IEnumerable<CharrElement> SerializeActs(ObservableCollection<Act> acts)
+        private static IEnumerable<CharrElement> SerializeActs(IReadOnlyList<Act> acts)
         {
             return from a in acts
                    select new CharrElement("Act",
@@ -614,7 +613,6 @@ namespace Charrmander.Model
             {
                 a.PropertyChanged -= _viewModel.MarkFileDirty;
             }
-            Areas.CollectionChanged -= Areas_CollectionChanged;
             foreach (var dungeon in Dungeons)
             {
                 dungeon.PropertyChanged -= _viewModel.MarkFileDirty;
@@ -650,30 +648,6 @@ namespace Charrmander.Model
             foreach (var es in EliteSpecializations)
             {
                 es.PropertyChanged -= _viewModel.MarkFileDirty;
-            }
-        }
-
-        /// <summary>
-        /// Handles adding and removal of PropertyChanged listeners for areas.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e">Contains the items added or removed.</param>
-        private void Areas_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems != null)
-            {
-                foreach (Area a in e.NewItems)
-                {
-                    a.PropertyChanged += _viewModel.MarkFileDirty;
-                }
-            }
-
-            if (e.OldItems != null)
-            {
-                foreach (Area a in e.OldItems)
-                {
-                    a.PropertyChanged -= _viewModel.MarkFileDirty;
-                }
             }
         }
     }
