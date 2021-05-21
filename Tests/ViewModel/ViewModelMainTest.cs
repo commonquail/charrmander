@@ -279,7 +279,7 @@ namespace Charrmander.ViewModel
             vm.HasCompletedTis.Should().Be(CompletionState.Begun);
 
             // "Areas" tab.
-            selectedCharacter.Areas.Should().Contain(a => a.Name == "Blazeridge Steppes");
+            selectedCharacter.AreaByName.Should().ContainKey("Blazeridge Steppes");
             var someCompletedArea = vm.AreaReferenceList.First(a => a.Name == "Blazeridge Steppes");
             someCompletedArea.State.Should().Be(CompletionState.Completed);
             vm.SelectedAreaCharacter.Should().BeNull();
@@ -405,7 +405,8 @@ namespace Charrmander.ViewModel
         {
             var vm = new ViewModelMain();
             vm.CommandNewCharacter.Execute(null);
-            vm.SelectedAreaReference = vm.AreaReferenceList.First();
+            vm.AreaReferenceList.Should().NotBeEmpty();
+            vm.SelectedAreaReference = vm.AreaReferenceList[0];
             vm.SelectedAreaCharacter.Should().NotBeNull();
             vm.SelectedAreaReference.State.Should().Be(CompletionState.NotBegun);
             vm.CommandCompleteArea.Execute(null);

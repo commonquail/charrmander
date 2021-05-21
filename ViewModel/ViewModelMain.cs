@@ -91,6 +91,8 @@ namespace Charrmander.ViewModel
                 .Select(Area.FromXML)
                 .ToList();
 
+            ReferenceAreaNames = AreaReferenceList.Select(a => a.Name).ToHashSet();
+
             var races = XDocument.Load(XmlReader.Create(
                 App.GetPackResourceStream("Resources/Races.xml").Stream)).Root!.Elements("Race");
 
@@ -235,7 +237,14 @@ namespace Charrmander.ViewModel
         /// The master list of areas, generated at runtime from an embedded XML file.
         /// Compare <see cref="Character.Areas"/> against this.
         /// </summary>
+        /// <seealso cref="ReferenceAreaNames"/>
         public IReadOnlyList<Area> AreaReferenceList { get; }
+
+        /// <summary>
+        /// The name of every recognized area.
+        /// </summary>
+        /// <see cref="AreaReferenceList"/>
+        private IReadOnlySet<string> ReferenceAreaNames { get; }
 
         /// <summary>
         /// The <see cref="Character"/> in <see cref="CharacterList"/> that is currently selected.
@@ -926,9 +935,9 @@ namespace Charrmander.ViewModel
                     };
                     a.PropertyChanged += MarkFileDirty;
 
-                    if (AreaReferenceList.Any(aa => aa.Name == a.Name))
+                    if (ReferenceAreaNames.Contains(a.Name))
                     {
-                        c.Areas.Add(a);
+                        c.AreaByName[a.Name] = a;
                     }
                 }
 
@@ -1375,38 +1384,32 @@ namespace Charrmander.ViewModel
         /// <param name="c">The character whose completion state to get</param>
         private static void UpdateAreaState(Area referenceArea, Character c)
         {
-            bool found = false;
-            foreach (var ca in c.Areas)
+            if (c.AreaByName.TryGetValue(referenceArea.Name, out Area? ca))
             {
-                if (referenceArea.Name == ca.Name)
+                if (referenceArea.Hearts == ca.Hearts &&
+                    referenceArea.Waypoints == ca.Waypoints &&
+                    referenceArea.PoIs == ca.PoIs &&
+                    referenceArea.Skills == ca.Skills &&
+                    referenceArea.Vistas == ca.Vistas)
                 {
-                    found = true;
-                    if (referenceArea.Hearts == ca.Hearts &&
-                        referenceArea.Waypoints == ca.Waypoints &&
-                        referenceArea.PoIs == ca.PoIs &&
-                        referenceArea.Skills == ca.Skills &&
-                        referenceArea.Vistas == ca.Vistas)
+                    if (referenceArea.Hearts != string.Empty)
                     {
-                        if (referenceArea.Hearts != string.Empty)
-                        {
-                            referenceArea.State = CompletionState.Completed;
-                        }
+                        referenceArea.State = CompletionState.Completed;
+                    }
+                }
+                else
+                {
+                    if (ca.Waypoints != "0" || ca.PoIs != "0" || ca.Vistas != "0")
+                    {
+                        referenceArea.State = CompletionState.Begun;
                     }
                     else
                     {
-                        if (ca.Waypoints != "0" || ca.PoIs != "0" || ca.Vistas != "0")
-                        {
-                            referenceArea.State = CompletionState.Begun;
-                        }
-                        else
-                        {
-                            referenceArea.State = CompletionState.NotBegun;
-                        }
+                        referenceArea.State = CompletionState.NotBegun;
                     }
-                    break;
                 }
             }
-            if (!found)
+            else
             {
                 referenceArea.State = CompletionState.NotBegun;
             }
@@ -1423,26 +1426,24 @@ namespace Charrmander.ViewModel
                 return;
             }
 
-            /// An area was selected. Find the matching area in
-            /// SelectedCharacter.Areas, or create a new one if it doesn't
-            /// exist yet.
+            /// An area was selected. Find the matching area the selected
+            /// character has already encountered, or create a new one if it
+            /// doesn't exist yet.
             if (SelectedAreaReference != null)
             {
-                foreach (Area a in SelectedCharacter.Areas)
+                if (SelectedCharacter.AreaByName.TryGetValue(
+                    SelectedAreaReference.Name,
+                    out Area? knownArea))
                 {
-                    if (a.Name == SelectedAreaReference.Name)
-                    {
-                        SelectedAreaCharacter = a;
-                        break;
-                    }
+                    SelectedAreaCharacter = knownArea;
                 }
                 if (SelectedAreaCharacter == null
                     || SelectedAreaCharacter.Name != SelectedAreaReference.Name)
                 {
-                    var a = new Area(SelectedAreaReference.Name);
-                    a.PropertyChanged += MarkFileDirty;
-                    SelectedCharacter.Areas.Add(a);
-                    SelectedAreaCharacter = a;
+                    var newArea = new Area(SelectedAreaReference.Name);
+                    newArea.PropertyChanged += MarkFileDirty;
+                    SelectedCharacter.AreaByName[newArea.Name] = newArea;
+                    SelectedAreaCharacter = newArea;
                 }
             }
 

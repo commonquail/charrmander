@@ -136,7 +136,7 @@ namespace Charrmander.Model
                 new CraftingDiscipline() { Name = "Weaponsmith" }
             };
 
-            Areas = new List<Area>();
+            AreaByName = new Dictionary<string, Area>();
 
             foreach (var d in CraftingDisciplines)
             {
@@ -476,7 +476,7 @@ namespace Charrmander.Model
         /// <summary>
         /// A collection of the areas this character has information about.
         /// </summary>
-        public IList<Area> Areas { get; }
+        public IDictionary<string, Area> AreaByName { get; }
 
         /// <summary>
         /// The character's Fractal of the Mists tier.
@@ -560,7 +560,7 @@ namespace Charrmander.Model
                 ),
                 new CharrElement("HasWorldCompletion", HasWorldCompletion),
                 new CharrElement("Areas",
-                    from a in Areas
+                    from a in AreaByName.Values
                     select new CharrElement("Area",
                         new CharrElement("Name", a.Name),
                         new CharrElement("Completion",
@@ -609,7 +609,7 @@ namespace Charrmander.Model
             {
                 d.PropertyChanged -= _viewModel.MarkFileDirty;
             }
-            foreach (var a in Areas)
+            foreach (var a in AreaByName.Values)
             {
                 a.PropertyChanged -= _viewModel.MarkFileDirty;
             }
