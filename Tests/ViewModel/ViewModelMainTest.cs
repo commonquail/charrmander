@@ -230,6 +230,8 @@ namespace Charrmander.ViewModel
             selectedCharacter.BiographyRaceFirst.Should().Be("The Shield of the Moon");
             selectedCharacter.BiographyRaceSecond.Should().Be("Where life goes, so too, should you.");
             selectedCharacter.BiographyRaceThird.Should().Be("Cycle of Dusk");
+            selectedCharacter.EliteSpecializations.Select(es => (es.Name, es.Unlocked)).Should()
+                .ContainInOrder(("Reaper", true), ("Scourge", false));
 
             // "Story" tab.
             selectedCharacter.Order.Should().Be("Order of Whispers");

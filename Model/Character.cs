@@ -67,6 +67,12 @@ namespace Charrmander.Model
                 .Stream))
             .Root!;
 
+        private static readonly XElement professions = XDocument.Load(
+            XmlReader.Create(
+                App.GetPackResourceStream("Resources/Professions.xml")
+                .Stream))
+            .Root!;
+
         /// <summary>
         /// Creates a new character for the specified view model.
         /// </summary>
@@ -83,6 +89,21 @@ namespace Charrmander.Model
                 { "RaceSecond", "" },
                 { "RaceThird",  "" }
             };
+
+            var specByProf = new Dictionary<string, IReadOnlyList<EliteSpecialization>>(9);
+            foreach (var profession in professions.Elements("Profession"))
+            {
+                var specializations = new List<EliteSpecialization>(2);
+                foreach (var specialization in profession.Elements("Specialization"))
+                {
+                    var spec = new EliteSpecialization(specialization.Value);
+                    spec.PropertyChanged += _viewModel.MarkFileDirty;
+                    specializations.Add(spec);
+                }
+                var profName = profession.Element("Name")!.Value;
+                specByProf.Add(profName, specializations);
+            }
+            specializationsByProfession = specByProf;
 
             PrepareStoryChapters(Lw2Acts, "Lw2");
             PrepareStoryChapters(HoTActs, "HoT");
@@ -143,6 +164,30 @@ namespace Charrmander.Model
                 var a = new Act(act.Element(ns + "Name")!.Value, chapters);
                 a.PropertyChanged += _viewModel.MarkFileDirty;
                 acts.Add(a);
+            }
+        }
+
+        private readonly Dictionary<string, IReadOnlyList<EliteSpecialization>> specializationsByProfession;
+
+        private IReadOnlyList<EliteSpecialization> eliteSpecializations = Array.Empty<EliteSpecialization>();
+        /// <summary>
+        /// All the elite specializations this character is eligible for,
+        /// per the current <see cref="Profession"/> value.
+        /// </summary>
+        /// <remarks>Changes in response to a profession change, with lookup
+        /// into <see cref="specializationsByProfession"/>.</remarks>
+        /// <see cref="Profession"/>
+        /// <see cref="specializationsByProfession"/>
+        public IReadOnlyList<EliteSpecialization> EliteSpecializations
+        {
+            get => eliteSpecializations;
+            private set
+            {
+                if (eliteSpecializations != value)
+                {
+                    eliteSpecializations = value;
+                    RaisePropertyChanged(nameof(EliteSpecializations));
+                }
             }
         }
 
@@ -225,6 +270,7 @@ namespace Charrmander.Model
                 {
                     _profession = value;
                     RaisePropertyChanged(nameof(Profession));
+                    EliteSpecializations = specializationsByProfession[_profession];
                 }
             }
         }
@@ -487,6 +533,10 @@ namespace Charrmander.Model
                     new CharrElement("RaceSecond", BiographyRaceSecond),
                     new CharrElement("RaceThird", BiographyRaceThird)
                 ),
+                new CharrElement("UnlockedEliteSpecializations",
+                    from s in EliteSpecializations
+                    where s.Unlocked
+                    select new CharrElement("Specialization", s.Name)),
                 new CharrElement("StoryChoices",
                     new CharrElement("Order", Order),
                     new CharrElement("RacialSympathy", RacialSympathy),
@@ -596,6 +646,10 @@ namespace Charrmander.Model
             foreach (var act in TisActs)
             {
                 act.PropertyChanged -= _viewModel.MarkFileDirty;
+            }
+            foreach (var es in EliteSpecializations)
+            {
+                es.PropertyChanged -= _viewModel.MarkFileDirty;
             }
         }
 

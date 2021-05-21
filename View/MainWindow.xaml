@@ -43,6 +43,7 @@
         <View:CompletionStateConverter x:Key="CompletionStateConverter"/>
         <View:KeyRewardBoolConverter x:Key="KeyRewardBoolConverter"/>
         <View:IntFromBlankTextConverter x:Key="IntFromBlankTextConverter"/>
+        <View:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
     </Window.Resources>
 
     <Grid>
@@ -282,6 +283,37 @@
                                 </DockPanel>
 
                             </StackPanel>
+                        </GroupBox>
+                        <GroupBox
+                            Header="Elite specializations unlocked"
+                            Visibility="{Binding
+                                SelectedCharacter.Profession,
+                                Converter={StaticResource StringToVisibilityConverter}}">
+                            <ItemsControl
+                                Margin="0 2"
+                                ItemsSource="{Binding SelectedCharacter.EliteSpecializations}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox
+                                            Height="26"
+                                            VerticalContentAlignment="Center"
+                                            IsChecked="{Binding Unlocked}"
+                                            >
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image
+                                                    Height="20"
+                                                    Width="20"
+                                                    ToolTip="{Binding Name}"
+                                                    Source="{Binding Name,
+                                                        Converter={StaticResource GameIconConverter},
+                                                        ConverterParameter=Professions}"
+                                                    />
+                                                <TextBlock Margin="3 0" Text="{Binding Name}" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </CheckBox>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </GroupBox>
                     </StackPanel>
                 </TabItem>

@@ -1,6 +1,8 @@
 using Charrmander.Model;
 using FluentAssertions;
+using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 using Xunit;
 
@@ -14,6 +16,7 @@ namespace Charrmander.View
         [ClassData(typeof(IntFromBlankTextConverterTestData))]
         [ClassData(typeof(KeyRewardBoolConverterTestData))]
         [ClassData(typeof(NamelessCharacterConverterTestData))]
+        [ClassData(typeof(StringToVisibilityConverterTestData))]
         public void converts_value(
             IValueConverter converter,
             object value,
@@ -98,6 +101,16 @@ namespace Charrmander.View
         {
             Add(Converter, "", null, "[Unnamed]");
             Add(Converter, "foo", null, "foo");
+        }
+    }
+
+    internal class StringToVisibilityConverterTestData
+        : ConverterSignature<StringToVisibilityConverter>
+    {
+        public StringToVisibilityConverterTestData()
+        {
+            Add(Converter, "", null, Visibility.Hidden);
+            Add(Converter, new Guid().ToString(), null, Visibility.Visible);
         }
     }
 }

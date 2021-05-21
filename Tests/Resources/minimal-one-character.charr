@@ -12,6 +12,9 @@
       <RaceSecond>Where life goes, so too, should you.</RaceSecond>
       <RaceThird>Cycle of Dusk</RaceThird>
     </Biographies>
+    <UnlockedEliteSpecializations>
+      <Specialization>Reaper</Specialization>
+    </UnlockedEliteSpecializations>
     <StoryChoices>
       <Order>Order of Whispers</Order>
       <RacialSympathy>Hylek</RacialSympathy>

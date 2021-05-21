@@ -876,6 +876,22 @@ namespace Charrmander.ViewModel
                 c.BiographyRaceSecond = biographies.CElement("RaceSecond").Value;
                 c.BiographyRaceThird = biographies.CElement("RaceThird").Value;
 
+                var unlockedSpecializations = charr
+                    .CElement("UnlockedEliteSpecializations")
+                    .CElements("Specialization");
+                foreach (var unlockedSpec in unlockedSpecializations)
+                {
+                    foreach (var specialization in c.EliteSpecializations)
+                    {
+                        // O(n*m) but 0 <= n <= m = 2 .
+                        if (unlockedSpec.Value == specialization.Name)
+                        {
+                            specialization.Unlocked = true;
+                            break; // goto unlockedSpec
+                        }
+                    }
+                }
+
                 var storyChoices = charr.CElement("StoryChoices");
                 c.Order = storyChoices.CElement("Order").Value;
                 c.RacialSympathy = storyChoices.CElement("RacialSympathy").Value;
