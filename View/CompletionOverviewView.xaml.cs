@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Data;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,16 +15,20 @@ namespace Charrmander.View
 
         private readonly CompletionStateConverter _completionStateConverter = new();
 
-        public CompletionOverviewView(DataTable table)
+        public CompletionOverviewView(DataTable table, IReadOnlySet<string> names)
         {
             InitializeComponent();
 
             _completionStateStyle.Setters.Add(new Setter(TextBlock.TextAlignmentProperty, TextAlignment.Center));
             DataContext = this;
             Table = table;
+
+            StyleSelector = new WorldCompletionAreaStyleSelector(names);
         }
 
         public DataTable Table { get; }
+
+        public WorldCompletionAreaStyleSelector StyleSelector { get; }
 
         private void DataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {

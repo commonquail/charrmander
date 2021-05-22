@@ -612,6 +612,12 @@
                             <DataGrid.RowStyle>
                                 <Style TargetType="{x:Type DataGridRow}">
                                     <Setter Property="ToolTip" Value="{Binding LevelRange}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ParticipatesInWorldCompletion}" Value="True">
+                                            <!-- Wiki "pve" table row color. -->
+                                            <Setter Property="Background" Value="#FFF8E8"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
                                 </Style>
                             </DataGrid.RowStyle>
 
@@ -624,11 +630,16 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn
                                     Binding="{Binding State, Converter={StaticResource CompletionStateConverter}}">
-                                    <DataGridTextColumn.CellStyle>
+                                    <DataGridTextColumn.ElementStyle>
                                         <Style>
                                             <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ParticipatesInWorldCompletion}" Value="True">
+                                                    <Setter Property="TextBlock.ToolTip" Value="Required for world completion"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
                                         </Style>
-                                    </DataGridTextColumn.CellStyle>
+                                    </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
                                 <DataGridTextColumn
                                     Header="Area Name"

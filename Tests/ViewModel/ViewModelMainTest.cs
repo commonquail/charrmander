@@ -39,6 +39,18 @@ namespace Charrmander.ViewModel
         }
 
         [Fact]
+        public void has_32_areas_participating_in_world_completion()
+        {
+            //    1 Chanty of Secrets
+            // + 25 explorable zones
+            // = 26
+            // +  6 cities
+            // = 32
+            var vm = new ViewModelMain();
+            vm.AreaReferenceList.Count(a => a.ParticipatesInWorldCompletion).Should().Be(32);
+        }
+
+        [Fact]
         public void create_first_character_selects_that_character()
         {
             var vm = new ViewModelMain();

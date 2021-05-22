@@ -48,6 +48,7 @@
       <Skills>0</Skills>
       <Vistas>5</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Blazeridge Steppes</Name>
@@ -62,6 +63,7 @@
       <Skills>5</Skills>
       <Vistas>5</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Bloodstone Fen</Name>
@@ -89,6 +91,7 @@
       <Skills>6</Skills>
       <Vistas>7</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Brisban Wildlands</Name>
@@ -103,6 +106,7 @@
       <Skills>8</Skills>
       <Vistas>7</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Caledon Forest</Name>
@@ -117,6 +121,7 @@
       <Skills>7</Skills>
       <Vistas>8</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Chantry of Secrets</Name>
@@ -127,6 +132,7 @@
       <Skills>0</Skills>
       <Vistas>0</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Crystal Oasis</Name>
@@ -153,6 +159,7 @@
       <Skills>17</Skills>
       <Vistas>5</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Desert Highlands</Name>
@@ -180,6 +187,7 @@
       <Skills>8</Skills>
       <Vistas>10</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Divinity's Reach</Name>
@@ -190,6 +198,7 @@
       <Skills>0</Skills>
       <Vistas>6</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Domain of Istan</Name>
@@ -282,6 +291,7 @@
       <Skills>6</Skills>
       <Vistas>8</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Drizzlewood Coast</Name>
@@ -348,6 +358,7 @@
       <Skills>5</Skills>
       <Vistas>6</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Fireheart Rise</Name>
@@ -362,6 +373,7 @@
       <Skills>7</Skills>
       <Vistas>8</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Frostgorge Sound</Name>
@@ -375,6 +387,7 @@
       <Skills>7</Skills>
       <Vistas>8</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Gendarran Fields</Name>
@@ -389,6 +402,7 @@
       <Skills>7</Skills>
       <Vistas>8</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Grothmar Valley</Name>
@@ -416,6 +430,7 @@
       <Skills>6</Skills>
       <Vistas>8</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Hoelbrak</Name>
@@ -426,6 +441,7 @@
       <Skills>0</Skills>
       <Vistas>5</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Iron Marches</Name>
@@ -440,6 +456,7 @@
       <Skills>6</Skills>
       <Vistas>8</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Jahai Bluffs</Name>
@@ -467,6 +484,7 @@
       <Skills>5</Skills>
       <Vistas>9</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Lake Doric</Name>
@@ -490,6 +508,7 @@
       <Skills>0</Skills>
       <Vistas>11</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Lornar's Pass</Name>
@@ -504,6 +523,7 @@
       <Skills>9</Skills>
       <Vistas>10</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Malchor's Leap</Name>
@@ -517,6 +537,7 @@
       <Skills>15</Skills>
       <Vistas>5</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Metrica Province</Name>
@@ -531,6 +552,7 @@
       <Skills>8</Skills>
       <Vistas>9</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Mount Maelstrom</Name>
@@ -545,6 +567,7 @@
       <Skills>7</Skills>
       <Vistas>7</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Plains of Ashford</Name>
@@ -559,6 +582,7 @@
       <Skills>6</Skills>
       <Vistas>10</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Queensdale</Name>
@@ -573,6 +597,7 @@
       <Skills>7</Skills>
       <Vistas>9</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Rata Sum</Name>
@@ -583,6 +608,7 @@
       <Skills>0</Skills>
       <Vistas>5</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Sandswept Isles</Name>
@@ -623,6 +649,7 @@
       <Skills>6</Skills>
       <Vistas>6</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Southsun Cove</Name>
@@ -650,6 +677,7 @@
       <Skills>6</Skills>
       <Vistas>5</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Straits of Devastation</Name>
@@ -664,6 +692,7 @@
       <Skills>12</Skills>
       <Vistas>6</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Tangled Depths</Name>
@@ -700,6 +729,7 @@
       <Skills>0</Skills>
       <Vistas>6</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>The Silverwastes</Name>
@@ -740,6 +770,7 @@
       <Skills>5</Skills>
       <Vistas>6</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
     <Name>Verdant Brink</Name>
@@ -767,5 +798,6 @@
       <Skills>8</Skills>
       <Vistas>10</Vistas>
     </Completion>
+    <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
 </Areas>

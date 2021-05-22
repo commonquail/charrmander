@@ -12,6 +12,7 @@
             AutoGenerateColumns="True"
             IsReadOnly="True"
             AutoGeneratingColumn="DataGrid_AutoGeneratingColumn"
+            RowStyleSelector="{Binding StyleSelector}"
             CanUserResizeRows="False"
             />
 </Window>

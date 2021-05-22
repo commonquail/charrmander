@@ -93,6 +93,12 @@ namespace Charrmander.ViewModel
 
             ReferenceAreaNames = AreaReferenceList.Select(a => a.Name).ToHashSet();
 
+            static bool IsRequiredForWorldCompletion(Area a) => a.ParticipatesInWorldCompletion;
+            WorldCompletionAreaNames = AreaReferenceList
+                .Where(IsRequiredForWorldCompletion)
+                .Select(a => a.Name)
+                .ToHashSet();
+
             var races = XDocument.Load(XmlReader.Create(
                 App.GetPackResourceStream("Resources/Races.xml").Stream)).Root!.Elements("Race");
 
@@ -245,6 +251,8 @@ namespace Charrmander.ViewModel
         /// </summary>
         /// <see cref="AreaReferenceList"/>
         private IReadOnlySet<string> ReferenceAreaNames { get; }
+
+        internal IReadOnlySet<string> WorldCompletionAreaNames { get; }
 
         /// <summary>
         /// The <see cref="Character"/> in <see cref="CharacterList"/> that is currently selected.
@@ -1259,7 +1267,7 @@ namespace Charrmander.ViewModel
                 table.Columns.Add(new DataColumn(c.Name, t));
             }
 
-            _completionOverview = new CompletionOverviewView(table);
+            _completionOverview = new CompletionOverviewView(table, WorldCompletionAreaNames);
             _completionOverview.Show();
 
             var areas = from a in AreaReferenceList
