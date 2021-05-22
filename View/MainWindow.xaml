@@ -135,9 +135,6 @@
                                                 <DataTrigger Binding="{Binding HasWorldCompletion}" Value="False">
                                                     <Setter Property="Visibility" Value="Hidden"/>
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding HasWorldCompletion}" Value="True">
-                                                    <Setter Property="Visibility" Value="Visible"/>
-                                                </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
                                     </Image.Style>
@@ -707,10 +704,13 @@
                                 <Label Content="{Binding Vistas}"/>
                             </StackPanel>
 
-                            <DockPanel DataContext="{Binding SelectedCharacter}">
-                                <TextBlock Text="World Completion:" VerticalAlignment="Center" Margin="2"/>
-                                <CheckBox VerticalAlignment="Center" IsChecked="{Binding HasWorldCompletion, UpdateSourceTrigger=PropertyChanged}"/>
-                            </DockPanel>
+                            <StackPanel DataContext="{Binding SelectedCharacter}">
+                                <CheckBox
+                                    IsChecked="{Binding HasWorldCompletion, UpdateSourceTrigger=PropertyChanged}"
+                                    Content="World completion"
+                                    Margin="2"
+                                    />
+                            </StackPanel>
 
                         </StackPanel>
 
