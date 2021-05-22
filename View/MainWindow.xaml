@@ -10,7 +10,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         d:DataContext="{d:DesignInstance Type=viewmodel:ViewModelMain, IsDesignTimeCreatable=False}"
         Title="{Binding WindowTitle}"
-        Width="575"
+        Width="590"
         SizeToContent="Height"
         MinHeight="410"
         MaxHeight="720"
