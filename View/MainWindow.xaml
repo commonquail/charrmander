@@ -12,7 +12,7 @@
         Width="620"
         SizeToContent="Height"
         MinHeight="410"
-        MaxHeight="720"
+        MaxHeight="746"
         Icon="/Icons/Game/MainTitle.png" AllowDrop="True" Drop="Window_Drop">
 
     <Window.InputBindings>
@@ -594,6 +594,7 @@
                             CanUserResizeRows="False"
                             CanUserResizeColumns="False"
                             SelectionMode="Single"
+                            VerticalScrollBarVisibility="Visible"
                             >
 
                             <DataGrid.HorizontalGridLinesBrush>
