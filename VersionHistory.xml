@@ -13,6 +13,7 @@
         <Note>Fix heart and skill completion objectives never marking areas as visited.</Note>
         <Note>Make world completion check box easier to click.</Note>
         <Note>Highlight world completion areas.</Note>
+        <Note>Add a check box on the "Areas" tab to display only areas required for world completion.</Note>
       </Notes>
     </Release>
   </Unreleased>

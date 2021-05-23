@@ -492,6 +492,37 @@ namespace Charrmander.ViewModel
                 .NotBeInAscendingOrder(c => c.Name, "sanity: name, sort order have different ordering");
         }
 
+        [Fact]
+        public void sorted_area_list_is_in_ascended_order_by_name()
+        {
+            var vm = new ViewModelMain();
+
+            var sortedAreas = vm.SortedAreas.Cast<Area>().ToList();
+
+            sortedAreas.Should().BeInAscendingOrder(c => c.Name);
+        }
+
+        [Fact]
+        public void sorted_area_list_can_filter_by_required_for_world_completion()
+        {
+            var vm = new ViewModelMain();
+
+            var defaultAreaList = vm.SortedAreas.Cast<Area>().ToList();
+
+            vm.ShowOnlyRequiredForWorldCompletion = true;
+            var worldCompletionAreaList = vm.SortedAreas.Cast<Area>().ToList();
+
+            worldCompletionAreaList.Should()
+                .NotBeEmpty()
+                .And.BeSubsetOf(defaultAreaList)
+                .And.HaveCountLessThan(defaultAreaList.Count);
+
+            vm.ShowOnlyRequiredForWorldCompletion = false;
+            var allAreaList = vm.SortedAreas.Cast<Area>().ToList();
+
+            allAreaList.Should().BeEquivalentTo(defaultAreaList);
+        }
+
         private static IEnumerable<Chapter> ChaptersOfAct(Act a) => a.Chapters;
 
         private static void RegisterPackUriScheme()

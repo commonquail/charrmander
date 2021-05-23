@@ -3,14 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:View="clr-namespace:Charrmander.View"
         xmlns:Model="clr-namespace:Charrmander.Model"
-        xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         xmlns:viewmodel="clr-namespace:Charrmander.ViewModel"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         d:DataContext="{d:DesignInstance Type=viewmodel:ViewModelMain, IsDesignTimeCreatable=False}"
         Title="{Binding WindowTitle}"
-        Width="590"
+        Width="620"
         SizeToContent="Height"
         MinHeight="410"
         MaxHeight="720"
@@ -582,21 +581,13 @@
                     <DockPanel>
 
                         <DockPanel.Resources>
-                            <CollectionViewSource
-                                x:Key="SortedAreas"
-                                Source="{Binding AreaReferenceList}">
-                                <CollectionViewSource.SortDescriptions>
-                                    <scm:SortDescription PropertyName="Name" Direction="Ascending"/>
-                                </CollectionViewSource.SortDescriptions>
-                            </CollectionViewSource>
-
                             <Style x:Key="NumberCell">
                                 <Setter Property="TextBlock.TextAlignment" Value="Right"/>
                             </Style>
                         </DockPanel.Resources>
 
                         <DataGrid
-                            ItemsSource="{Binding Source={StaticResource SortedAreas}}"
+                            ItemsSource="{Binding SortedAreas}"
                             SelectedItem="{Binding SelectedAreaReference}"
                             AutoGenerateColumns="False"
                             IsReadOnly="True"
@@ -633,11 +624,6 @@
                                     <DataGridTextColumn.ElementStyle>
                                         <Style>
                                             <Setter Property="TextBlock.TextAlignment" Value="Center"/>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding ParticipatesInWorldCompletion}" Value="True">
-                                                    <Setter Property="TextBlock.ToolTip" Value="Required for world completion"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
@@ -718,10 +704,18 @@
                             <StackPanel DataContext="{Binding SelectedCharacter}">
                                 <CheckBox
                                     IsChecked="{Binding HasWorldCompletion, UpdateSourceTrigger=PropertyChanged}"
-                                    Content="World completion"
+                                    Content="Has world completion"
                                     Margin="2"
                                     />
                             </StackPanel>
+
+                            <Separator/>
+
+                            <CheckBox
+                                IsChecked="{Binding ShowOnlyRequiredForWorldCompletion}"
+                                Margin="2"
+                                Content="Show only required&#10;for world completion"
+                                />
 
                         </StackPanel>
 

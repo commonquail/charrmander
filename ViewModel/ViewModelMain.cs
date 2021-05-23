@@ -99,6 +99,12 @@ namespace Charrmander.ViewModel
                 .Select(a => a.Name)
                 .ToHashSet();
 
+            SortedAreas = CollectionViewSource.GetDefaultView(AreaReferenceList);
+            SortedAreas.SortDescriptions.Add(
+                new SortDescription(nameof(Area.Name), ListSortDirection.Ascending));
+            SortedAreas.Filter = (item) => !ShowOnlyRequiredForWorldCompletion
+                || ((item is Area a) && IsRequiredForWorldCompletion(a));
+
             var races = XDocument.Load(XmlReader.Create(
                 App.GetPackResourceStream("Resources/Races.xml").Stream)).Root!.Elements("Race");
 
@@ -243,8 +249,14 @@ namespace Charrmander.ViewModel
         /// The master list of areas, generated at runtime from an embedded XML file.
         /// Compare <see cref="Character.Areas"/> against this.
         /// </summary>
+        /// <seealso cref="SortedAreas"/>
         /// <seealso cref="ReferenceAreaNames"/>
-        public IReadOnlyList<Area> AreaReferenceList { get; }
+        internal IReadOnlyList<Area> AreaReferenceList { get; }
+
+        /// <summary>
+        /// A sorted view of <see cref="AreaReferenceList"/>.
+        /// </summary>
+        public ICollectionView SortedAreas { get; }
 
         /// <summary>
         /// The name of every recognized area.
@@ -253,6 +265,19 @@ namespace Charrmander.ViewModel
         private IReadOnlySet<string> ReferenceAreaNames { get; }
 
         internal IReadOnlySet<string> WorldCompletionAreaNames { get; }
+
+        private bool _showOnlyRequiredForWorldCompletion;
+        public bool ShowOnlyRequiredForWorldCompletion
+        {
+            get => _showOnlyRequiredForWorldCompletion;
+            set
+            {
+                if (_showOnlyRequiredForWorldCompletion == value) return;
+                _showOnlyRequiredForWorldCompletion = value;
+                RaisePropertyChanged(nameof(ShowOnlyRequiredForWorldCompletion));
+                SortedAreas.Refresh();
+            }
+        }
 
         /// <summary>
         /// The <see cref="Character"/> in <see cref="CharacterList"/> that is currently selected.
