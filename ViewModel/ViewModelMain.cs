@@ -88,7 +88,7 @@ namespace Charrmander.ViewModel
                 App.GetPackResourceStream("Resources/Areas.xml").Stream));
 
             AreaReferenceList = doc.Root!.Elements(Area.XmlNamespace + "Area")
-                .Select(Area.FromXML)
+                .Select(Area.ReferenceAreaFromXML)
                 .ToList();
 
             ReferenceAreaNames = AreaReferenceList.Select(a => a.Name).ToHashSet();

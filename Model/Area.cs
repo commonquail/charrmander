@@ -42,7 +42,7 @@ namespace Charrmander.Model
         /// <param name="area">An <c>XElement</c> instance describing the
         /// properties of the area to be created.</param>
         /// <returns>A new instance of <c>Area</c>.</returns>
-        public static Area FromXML(XElement area)
+        public static Area ReferenceAreaFromXML(XElement area)
         {
             var cpl = area.Element(XmlNamespace + "Completion")!;
             var a = new Area(area.Element(XmlNamespace + "Name")!.Value)
