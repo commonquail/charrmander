@@ -2,24 +2,33 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.22.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.22.0.zip</DownloadUrl>
+      <Version>1.23.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.23.0.zip</DownloadUrl>
       <Notes>
-        <Note>Fix initial sorting of area lists; apparently this never worked.</Note>
-        <Note>In the completion overview, list characters in the same order as in the main window.</Note>
-        <Note>Give area completion state its own column so it can be sorted on and so area names look less messy.</Note>
-        <Note>Lower the max window height so desktops with DPI scaling can better fit the window. Since "The Icebrood Saga" finished, the old max height was insufficient to avoid scrolling anyway.</Note>
-        <Note>Track unlocked elite specializations on the "Personal" tab after selecting a profession.</Note>
-        <Note>Fix heart and skill completion objectives never marking areas as visited.</Note>
-        <Note>Make world completion check box easier to click.</Note>
-        <Note>Highlight world completion areas.</Note>
-        <Note>Add a check box on the "Areas" tab to display only areas required for world completion.</Note>
-        <Note>Automatically check world completion check box when completing the last world completion area. Subsequently un-completing an area will not remove the world completion status. The status can still be set manually.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.22.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.22.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Fix initial sorting of area lists; apparently this never worked.</Note>
+          <Note>In the completion overview, list characters in the same order as in the main window.</Note>
+          <Note>Give area completion state its own column so it can be sorted on and so area names look less messy.</Note>
+          <Note>Lower the max window height so desktops with DPI scaling can better fit the window. Since "The Icebrood Saga" finished, the old max height was insufficient to avoid scrolling anyway.</Note>
+          <Note>Track unlocked elite specializations on the "Personal" tab after selecting a profession.</Note>
+          <Note>Fix heart and skill completion objectives never marking areas as visited.</Note>
+          <Note>Make world completion check box easier to click.</Note>
+          <Note>Highlight world completion areas.</Note>
+          <Note>Add a check box on the "Areas" tab to display only areas required for world completion.</Note>
+          <Note>Automatically check world completion check box when completing the last world completion area. Subsequently un-completing an area will not remove the world completion status. The status can still be set manually.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.21.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.21.0.zip</DownloadUrl>
@@ -30,8 +39,6 @@
           <Note>Continue "The Icebrood Saga" with "Champions, Ch. 4 - Judgment".</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.20.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.20.0.zip</DownloadUrl>
