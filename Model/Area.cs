@@ -17,6 +17,8 @@ namespace Charrmander.Model
         private string _skills = string.Empty;
         private string _vistas = string.Empty;
 
+        private bool _participatesInWorldCompletion;
+
         private CompletionState _areaState = CompletionState.NotBegun;
 
         public static XNamespace XmlNamespace = "https://areas.charr";
@@ -53,6 +55,12 @@ namespace Charrmander.Model
                 Skills = cpl.Element(XmlNamespace + "Skills")!.Value,
                 Vistas = cpl.Element(XmlNamespace + "Vistas")!.Value
             };
+
+            var participatesInWorldCompletion =
+                area.Element(XmlNamespace + "ParticipatesInWorldCompletion")?.Value;
+            a.ParticipatesInWorldCompletion = bool.TryParse(
+                participatesInWorldCompletion,
+                out bool participates) && participates;
 
             var levelRange = area.Element(XmlNamespace + "LevelRange");
             if (levelRange != null)
@@ -179,6 +187,28 @@ namespace Charrmander.Model
         {
             get { return GetCompletionItem(_vistas); }
             set { SetCompletionItem(ref _vistas, value, "Vistas"); }
+        }
+
+        /// <summary>
+        /// If true, this area must be completed for a character to get world
+        /// completion. If false, world completion is unaffected by this area.
+        /// </summary>
+        /// <remarks>
+        /// Once a character has attained world completion, the future
+        /// completion state of any area ceases to affect world completion in
+        /// any way, irrespective of this property's value.
+        /// </remarks>
+        public bool ParticipatesInWorldCompletion
+        {
+            get => _participatesInWorldCompletion;
+            private set
+            {
+                if (_participatesInWorldCompletion != value)
+                {
+                    _participatesInWorldCompletion = value;
+                    RaisePropertyChanged(nameof(ParticipatesInWorldCompletion));
+                }
+            }
         }
 
         /// <summary>

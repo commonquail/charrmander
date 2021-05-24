@@ -39,6 +39,18 @@ namespace Charrmander.ViewModel
         }
 
         [Fact]
+        public void has_32_areas_participating_in_world_completion()
+        {
+            //    1 Chanty of Secrets
+            // + 25 explorable zones
+            // = 26
+            // +  6 cities
+            // = 32
+            var vm = new ViewModelMain();
+            vm.AreaReferenceList.Count(a => a.ParticipatesInWorldCompletion).Should().Be(32);
+        }
+
+        [Fact]
         public void create_first_character_selects_that_character()
         {
             var vm = new ViewModelMain();
@@ -480,7 +492,110 @@ namespace Charrmander.ViewModel
                 .NotBeInAscendingOrder(c => c.Name, "sanity: name, sort order have different ordering");
         }
 
+        [Fact]
+        public void sorted_area_list_is_in_ascended_order_by_name()
+        {
+            var vm = new ViewModelMain();
+
+            var sortedAreas = vm.SortedAreas.Cast<Area>().ToList();
+
+            sortedAreas.Should().BeInAscendingOrder(c => c.Name);
+        }
+
+        [Fact]
+        public void sorted_area_list_can_filter_by_required_for_world_completion()
+        {
+            var vm = new ViewModelMain();
+
+            var defaultAreaList = vm.SortedAreas.Cast<Area>().ToList();
+
+            vm.ShowOnlyRequiredForWorldCompletion = true;
+            var worldCompletionAreaList = vm.SortedAreas.Cast<Area>().ToList();
+
+            worldCompletionAreaList.Should()
+                .NotBeEmpty()
+                .And.BeSubsetOf(defaultAreaList)
+                .And.HaveCountLessThan(defaultAreaList.Count);
+
+            vm.ShowOnlyRequiredForWorldCompletion = false;
+            var allAreaList = vm.SortedAreas.Cast<Area>().ToList();
+
+            allAreaList.Should().BeEquivalentTo(defaultAreaList);
+        }
+
+        [Fact]
+        public void completing_non_world_completion_area_cannot_affect_world_completion()
+        {
+            var vm = new ViewModelMain();
+            vm.CommandNewCharacter.Execute(null);
+            var selectedCharacter = vm.SelectedCharacter!;
+
+            var someNonwWorldCompletionArea = vm.AreaReferenceList.First(a => a.Name == "Auric Basin");
+            CompleteArea(vm, someNonwWorldCompletionArea);
+            selectedCharacter.HasWorldCompletion.Should().BeFalse();
+        }
+
+        [Fact]
+        public void completing_single_world_completion_area_does_not_grant_world_completion()
+        {
+            var vm = new ViewModelMain();
+            vm.CommandNewCharacter.Execute(null);
+            var selectedCharacter = vm.SelectedCharacter!;
+
+            var someWorldCompletionArea = vm.AreaReferenceList.First(
+                a => a.Name == vm.WorldCompletionAreaNames.First());
+
+            CompleteArea(vm, someWorldCompletionArea);
+            selectedCharacter.HasWorldCompletion.Should().BeFalse();
+        }
+
+        [Fact]
+        public void completing_every_world_completion_area_grants_world_completion()
+        {
+            var vm = new ViewModelMain();
+            vm.CommandNewCharacter.Execute(null);
+            var selectedCharacter = vm.SelectedCharacter!;
+
+            selectedCharacter.HasWorldCompletion.Should().BeFalse();
+
+            foreach (var a in vm.AreaReferenceList)
+            {
+                if (vm.WorldCompletionAreaNames.Contains(a.Name))
+                    CompleteArea(vm, a);
+            }
+
+            selectedCharacter.HasWorldCompletion.Should().BeTrue();
+        }
+
+        [Fact]
+        public void uncompleting_any_area_does_not_revoke_world_completion()
+        {
+            var vm = new ViewModelMain();
+            vm.CommandNewCharacter.Execute(null);
+            var selectedCharacter = vm.SelectedCharacter!;
+
+            foreach (var a in vm.AreaReferenceList)
+            {
+                CompleteArea(vm, a);
+            }
+
+            selectedCharacter.HasWorldCompletion.Should().BeTrue();
+
+            foreach (var a in vm.AreaReferenceList)
+            {
+                a.PoIs = "0";
+            }
+
+            selectedCharacter.HasWorldCompletion.Should().BeTrue();
+        }
+
         private static IEnumerable<Chapter> ChaptersOfAct(Act a) => a.Chapters;
+
+        private static void CompleteArea(ViewModelMain vm, Area a)
+        {
+            vm.SelectedAreaReference = a;
+            vm.CommandCompleteArea.Execute(null);
+        }
 
         private static void RegisterPackUriScheme()
         {

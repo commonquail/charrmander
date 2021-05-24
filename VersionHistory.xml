@@ -12,6 +12,9 @@
         <Note>Track unlocked elite specializations on the "Personal" tab after selecting a profession.</Note>
         <Note>Fix heart and skill completion objectives never marking areas as visited.</Note>
         <Note>Make world completion check box easier to click.</Note>
+        <Note>Highlight world completion areas.</Note>
+        <Note>Add a check box on the "Areas" tab to display only areas required for world completion.</Note>
+        <Note>Automatically check world completion check box when completing the last world completion area. Subsequently un-completing an area will not remove the world completion status. The status can still be set manually.</Note>
       </Notes>
     </Release>
   </Unreleased>

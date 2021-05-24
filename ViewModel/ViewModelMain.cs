@@ -93,6 +93,18 @@ namespace Charrmander.ViewModel
 
             ReferenceAreaNames = AreaReferenceList.Select(a => a.Name).ToHashSet();
 
+            static bool IsRequiredForWorldCompletion(Area a) => a.ParticipatesInWorldCompletion;
+            WorldCompletionAreaNames = AreaReferenceList
+                .Where(IsRequiredForWorldCompletion)
+                .Select(a => a.Name)
+                .ToHashSet();
+
+            SortedAreas = CollectionViewSource.GetDefaultView(AreaReferenceList);
+            SortedAreas.SortDescriptions.Add(
+                new SortDescription(nameof(Area.Name), ListSortDirection.Ascending));
+            SortedAreas.Filter = (item) => !ShowOnlyRequiredForWorldCompletion
+                || ((item is Area a) && IsRequiredForWorldCompletion(a));
+
             var races = XDocument.Load(XmlReader.Create(
                 App.GetPackResourceStream("Resources/Races.xml").Stream)).Root!.Elements("Race");
 
@@ -237,14 +249,35 @@ namespace Charrmander.ViewModel
         /// The master list of areas, generated at runtime from an embedded XML file.
         /// Compare <see cref="Character.Areas"/> against this.
         /// </summary>
+        /// <seealso cref="SortedAreas"/>
         /// <seealso cref="ReferenceAreaNames"/>
-        public IReadOnlyList<Area> AreaReferenceList { get; }
+        internal IReadOnlyList<Area> AreaReferenceList { get; }
+
+        /// <summary>
+        /// A sorted view of <see cref="AreaReferenceList"/>.
+        /// </summary>
+        public ICollectionView SortedAreas { get; }
 
         /// <summary>
         /// The name of every recognized area.
         /// </summary>
         /// <see cref="AreaReferenceList"/>
         private IReadOnlySet<string> ReferenceAreaNames { get; }
+
+        internal IReadOnlySet<string> WorldCompletionAreaNames { get; }
+
+        private bool _showOnlyRequiredForWorldCompletion;
+        public bool ShowOnlyRequiredForWorldCompletion
+        {
+            get => _showOnlyRequiredForWorldCompletion;
+            set
+            {
+                if (_showOnlyRequiredForWorldCompletion == value) return;
+                _showOnlyRequiredForWorldCompletion = value;
+                RaisePropertyChanged(nameof(ShowOnlyRequiredForWorldCompletion));
+                SortedAreas.Refresh();
+            }
+        }
 
         /// <summary>
         /// The <see cref="Character"/> in <see cref="CharacterList"/> that is currently selected.
@@ -454,7 +487,7 @@ namespace Charrmander.ViewModel
                     SelectedAreaCharacter.Hearts = value;
                     RaisePropertyChanged(nameof(HeartIcon));
                     RaisePropertyChanged(nameof(Hearts));
-                    UpdateAreaState(SelectedAreaReference, SelectedCharacter);
+                    UpdateAreaState(SelectedAreaReference, SelectedCharacter, WorldCompletionAreaNames);
                 }
             }
         }
@@ -484,7 +517,7 @@ namespace Charrmander.ViewModel
                     SelectedAreaCharacter.Waypoints = value;
                     RaisePropertyChanged(nameof(Waypoints));
                     RaisePropertyChanged(nameof(WaypointIcon));
-                    UpdateAreaState(SelectedAreaReference, SelectedCharacter);
+                    UpdateAreaState(SelectedAreaReference, SelectedCharacter, WorldCompletionAreaNames);
                 }
             }
         }
@@ -514,7 +547,7 @@ namespace Charrmander.ViewModel
                     SelectedAreaCharacter.PoIs = value;
                     RaisePropertyChanged(nameof(PoIs));
                     RaisePropertyChanged(nameof(PoIIcon));
-                    UpdateAreaState(SelectedAreaReference, SelectedCharacter);
+                    UpdateAreaState(SelectedAreaReference, SelectedCharacter, WorldCompletionAreaNames);
                 }
             }
         }
@@ -544,7 +577,7 @@ namespace Charrmander.ViewModel
                     SelectedAreaCharacter.Skills = value;
                     RaisePropertyChanged(nameof(Skills));
                     RaisePropertyChanged(nameof(SkillIcon));
-                    UpdateAreaState(SelectedAreaReference, SelectedCharacter);
+                    UpdateAreaState(SelectedAreaReference, SelectedCharacter, WorldCompletionAreaNames);
                 }
             }
         }
@@ -574,7 +607,7 @@ namespace Charrmander.ViewModel
                     SelectedAreaCharacter.Vistas = value;
                     RaisePropertyChanged(nameof(Vistas));
                     RaisePropertyChanged(nameof(VistaIcon));
-                    UpdateAreaState(SelectedAreaReference, SelectedCharacter);
+                    UpdateAreaState(SelectedAreaReference, SelectedCharacter, WorldCompletionAreaNames);
                 }
             }
         }
@@ -933,7 +966,7 @@ namespace Charrmander.ViewModel
                         Skills = area.CElement("Completion").CElement("Skills").Value,
                         Vistas = area.CElement("Completion").CElement("Vistas").Value
                     };
-                    a.PropertyChanged += MarkFileDirty;
+                    a.PropertyChanged += AreaChangedMarkFileDirty;
 
                     if (ReferenceAreaNames.Contains(a.Name))
                     {
@@ -1259,7 +1292,7 @@ namespace Charrmander.ViewModel
                 table.Columns.Add(new DataColumn(c.Name, t));
             }
 
-            _completionOverview = new CompletionOverviewView(table);
+            _completionOverview = new CompletionOverviewView(table, WorldCompletionAreaNames);
             _completionOverview.Show();
 
             var areas = from a in AreaReferenceList
@@ -1279,7 +1312,7 @@ namespace Charrmander.ViewModel
                 row["Area"] = a.Name;
                 foreach (var character in namedCharacters)
                 {
-                    UpdateAreaState(a, character);
+                    UpdateAreaState(a, character, WorldCompletionAreaNames);
                     row[character.Name] = a.State;
                 }
                 table.Rows.Add(row);
@@ -1300,8 +1333,33 @@ namespace Charrmander.ViewModel
         }
 
         /// <summary>
+        /// A specialization of <see cref="MarkFileDirty"/> for <see cref="Area"/>.
+        /// </summary>
+        /// <remarks>
+        /// In order to update completion state in <see
+        /// cref="AreaReferenceList"/>, <see cref="Area.State"/> must <see
+        /// cref="RaisePropertyChanged"/>. However, that means we will also
+        /// notify when synchronizing that state to <see
+        /// cref="Character.AreaByName"/>, which happens whenever we change
+        /// area or character. Consequently, merely changing area or character
+        /// dirties the file. That's undesirable. Fortunately, only
+        /// <c>Character.AreaByName</c> (not <c>AreaReferenceList</c>) areas
+        /// use this <c>PropertyChanged</c> handler, so we can bail when we see
+        /// an area state change.
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AreaChangedMarkFileDirty(object? sender, PropertyChangedEventArgs e)
+        {
+            if (sender is Area && e.PropertyName == nameof(Area.State))
+            {
+                return;
+            }
+            MarkFileDirty(sender, e);
+        }
+
+        /// <summary>
         /// Signalled when a property of the current file was changed.
-        /// The parameters are not used.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1370,19 +1428,58 @@ namespace Charrmander.ViewModel
 
         /// <summary>
         /// Updates the <see cref="Area.State"/> of the specified area to match
-        /// the state of the corresponding area in
-        /// <see cref="SelectedCharacter.Areas"/>. This is necessary because it
-        /// does not hold that
-        /// <c>AreaReferenceList \ SelectedCharacter.Areas == Ø</c>
-        /// The state therefore has to be gotten from <c>AreaReferenceList</c>,
-        /// which is always current, and thus serializing the value doesn't
-        /// achieve anything.
+        /// the completion objectives of the corresponding area in
+        /// <see cref="SelectedCharacter.AreaByName"/>, and updates the state of
+        /// that area as well.
         /// </summary>
+        /// <remarks>
+        /// <list type="number">
+        /// <item>The window only ever displays <see cref="SortedAreas"/> in
+        /// the area list.</item>
+        /// <item>Upon selecting an area into <see
+        /// cref="SelectedAreaReference"/> we select the corresponding
+        /// persisted area from <see cref="SelectedAreaCharacter.AreaByName"/>
+        /// into <see cref="SelectedAreaCharacter"/>.</item>
+        /// <item>When the selected character or area changes, or the
+        /// completion objective progress recorded in e.g. <see
+        /// cref="Hearts"/>, we invoke this method to recompute the completion
+        /// state of the item in <c>SortedAreas</c>'s source, <see
+        /// cref="AreaReferenceList"/>. It's like a really shitty dependent
+        /// property.</item>
+        /// <item>If the newly computed state happens to be <see
+        /// cref="CompletionState.Completed"/> we also see if the character has
+        /// completed every <paramref name="worldCompletionAreaNames"/>. If
+        /// yes, we grant the character <see
+        /// cref="Character.HasWorldCompletion"/>.</item>
+        /// </list>
+        /// <para>
+        /// This means <paramref name="referenceArea"/> simultaneously
+        /// represents the area instance that knows the completion objective
+        /// targets as well as shadows the area instance that knows how close
+        /// to completion we are. This method is static in a naive attempt to
+        /// show that it should not mutate external state.
+        /// </para>
+        /// <para>
+        /// This backwards and somewhat fragile flow exists mainly for
+        /// historical reasons. However, an attempt to make the view consume
+        /// known areas (the equivalent <c>AreaByName</c> after filling that
+        /// with every <c>SortedAreas</c> item) -- which would have greatly
+        /// simplified the data flow -- caused the UI to slow to a crawl
+        /// whenever changing character; because the area list had to rebind to
+        /// new backing sources over and over.
+        /// </para>
+        /// </remarks>
         /// <seealso cref="Area.State"/>
         /// <param name="referenceArea">The area whose <c>State</c> to
         /// update.</param>
         /// <param name="c">The character whose completion state to get</param>
-        private static void UpdateAreaState(Area referenceArea, Character c)
+        /// <param name="worldCompletionAreaNames">The names of all world
+        /// completion areas <c>c</c> must have completed to be granted world
+        /// completion.</param>
+        private static void UpdateAreaState(
+            Area referenceArea,
+            Character c,
+            IReadOnlySet<string> worldCompletionAreaNames)
         {
             if (c.AreaByName.TryGetValue(referenceArea.Name, out Area? ca))
             {
@@ -1411,6 +1508,60 @@ namespace Charrmander.ViewModel
                     {
                         referenceArea.State = CompletionState.Begun;
                     }
+                }
+
+                // Propagate the reference state to the persisted area.
+                if ((ca.State = referenceArea.State) == CompletionState.Completed)
+                {
+                    // We've completed an area. If all world completion areas
+                    // are now completed and the character does not already
+                    // have world completion, we can safely grant them world
+                    // completion.
+                    //
+                    // If we un-completed an area in any way, we cannot ever
+                    // automatically remove world completion status. World
+                    // completion is a state, which, once attained, cannot be
+                    // revoked. However, sometimes completion objectives are
+                    // added to or removed from existing areas, which would
+                    // cause those areas to be un-completed. When that happens,
+                    // removing world completion is a mistake.
+                    //
+                    // In other words, world completion is not a function of
+                    // completed world completion areas.
+
+                    // If the character already has world completion, do
+                    // nothing.
+                    if (c.HasWorldCompletion) return;
+
+                    // For every world completion area, see if the character
+                    // knows and has completed that area. If any area is
+                    // missing or has a non-completed state, the character
+                    // cannot have qualified for world completion so bail out.
+                    // Otherwise, grant world completion.
+                    foreach (var worldCompletionAreaName in worldCompletionAreaNames)
+                    {
+                        if (!c.AreaByName.TryGetValue(
+                            worldCompletionAreaName,
+                            out Area? worldCompletionArea))
+                        {
+                            return;
+                        }
+
+                        if (worldCompletionArea.State != CompletionState.Completed)
+                            return;
+                    }
+
+                    // Still here; the character
+                    // 1) knows all world completion areas;
+                    // 2) has completed all of them; and
+                    // 3) ended up here immediately after completing some area.
+                    // Go ahead and grant world completion.
+                    //
+                    // It doesn't matter whether the recently completed area
+                    // was a world completion area. Completion doesn't happen
+                    // often so we rarely end up here, and we don't remove the
+                    // state automatically so we don't risk any flip-flopping.
+                    c.HasWorldCompletion = true;
                 }
             }
             else
@@ -1445,7 +1596,7 @@ namespace Charrmander.ViewModel
                     || SelectedAreaCharacter.Name != SelectedAreaReference.Name)
                 {
                     var newArea = new Area(SelectedAreaReference.Name);
-                    newArea.PropertyChanged += MarkFileDirty;
+                    newArea.PropertyChanged += AreaChangedMarkFileDirty;
                     SelectedCharacter.AreaByName[newArea.Name] = newArea;
                     SelectedAreaCharacter = newArea;
                 }
@@ -1455,7 +1606,7 @@ namespace Charrmander.ViewModel
             /// and area selected.
             foreach (var ra in AreaReferenceList)
             {
-                UpdateAreaState(ra, SelectedCharacter);
+                UpdateAreaState(ra, SelectedCharacter, WorldCompletionAreaNames);
             }
 
             RaisePropertyChanged(nameof(Hearts));
