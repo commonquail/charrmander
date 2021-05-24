@@ -1399,13 +1399,17 @@ namespace Charrmander.ViewModel
                 }
                 else
                 {
-                    if (ca.Waypoints != "0" || ca.PoIs != "0" || ca.Vistas != "0")
+                    if (ca.Hearts == "0"
+                        && ca.Waypoints == "0"
+                        && ca.PoIs == "0"
+                        && ca.Skills == "0"
+                        && ca.Vistas == "0")
                     {
-                        referenceArea.State = CompletionState.Begun;
+                        referenceArea.State = CompletionState.NotBegun;
                     }
                     else
                     {
-                        referenceArea.State = CompletionState.NotBegun;
+                        referenceArea.State = CompletionState.Begun;
                     }
                 }
             }
