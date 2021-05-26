@@ -106,6 +106,24 @@ namespace Charrmander.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to download {0}: {1}.
+        /// </summary>
+        internal static string msgDownloadUpdateFailedBody {
+            get {
+                return ResourceManager.GetString("msgDownloadUpdateFailedBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download Error.
+        /// </summary>
+        internal static string msgDownloadUpdateFailedTitle {
+            get {
+                return ResourceManager.GetString("msgDownloadUpdateFailedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The file you are trying to load could not be found..
         /// </summary>
         internal static string msgOpenFailedNoFileBody {

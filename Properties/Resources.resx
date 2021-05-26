@@ -132,6 +132,12 @@
   <data name="cfgXsdpath" xml:space="preserve">
     <value>Resources/charr.xsd</value>
   </data>
+  <data name="msgDownloadUpdateFailedBody" xml:space="preserve">
+    <value>Failed to download {0}: {1}</value>
+  </data>
+  <data name="msgDownloadUpdateFailedTitle" xml:space="preserve">
+    <value>Download Error</value>
+  </data>
   <data name="msgOpenFailedNoFileBody" xml:space="preserve">
     <value>The file you are trying to load could not be found.</value>
   </data>

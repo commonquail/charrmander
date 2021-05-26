@@ -148,10 +148,20 @@ namespace Charrmander.ViewModel
                 return;
             }
 
-            Process.Start(new ProcessStartInfo(url)
+            try
             {
-                UseShellExecute = true,
-            });
+                Process.Start(new ProcessStartInfo(url)
+                {
+                    UseShellExecute = true,
+                });
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(
+                    string.Format(Properties.Resources.msgDownloadUpdateFailedBody, url, e.Message),
+                    Properties.Resources.msgDownloadUpdateFailedTitle,
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         /// <summary>
