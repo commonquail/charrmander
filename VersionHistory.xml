@@ -6,6 +6,7 @@
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.23.0.zip</DownloadUrl>
       <Notes>
         <Note>Don't crash if update download fails.</Note>
+        <Note>Compute locked hero points per game region on the "Areas" tab.</Note>
       </Notes>
     </Release>
   </Unreleased>

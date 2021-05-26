@@ -100,10 +100,17 @@ namespace Charrmander.ViewModel
                 {
                     worldCompletionAreaNames.Add(a.Name);
                 }
+                CountAreaSkillPointsInto(SkillPointsTotal, a);
             }
             AreaReferenceList = areas;
             ReferenceAreaNames = areaNames;
             WorldCompletionAreaNames = worldCompletionAreaNames;
+            _skillPointsLocked = new()
+            {
+                Core = SkillPointsTotal.Core,
+                Hot = SkillPointsTotal.Hot,
+                Pof = SkillPointsTotal.Pof,
+            };
 
             static bool IsRequiredForWorldCompletion(Area a) => a.ParticipatesInWorldCompletion;
 
@@ -308,6 +315,7 @@ namespace Charrmander.ViewModel
                             SelectedAreaCharacter = null;
                         }
                         ChangedAreaOrCharacter();
+                        CountLockedSkillPointsOf(_selectedCharacter);
                     }
                     IsCharacterDetailEnabled = value != null;
                     RaisePropertyChanged(nameof(SelectedCharacter));
@@ -583,6 +591,7 @@ namespace Charrmander.ViewModel
                     && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Skills = value;
+                    CountLockedSkillPointsOf(SelectedCharacter);
                     RaisePropertyChanged(nameof(Skills));
                     RaisePropertyChanged(nameof(SkillIcon));
                     UpdateAreaState(SelectedAreaReference, SelectedCharacter, WorldCompletionAreaNames);
@@ -697,6 +706,68 @@ namespace Charrmander.ViewModel
                     return "VistaDone";
                 }
                 return "Vista";
+            }
+        }
+
+        public SkillPointsByGame SkillPointsTotal { get; } = new();
+
+        private SkillPointsByGame _skillPointsUnlocked = new();
+        public SkillPointsByGame SkillPointsUnlocked
+        {
+            get => _skillPointsUnlocked;
+            set
+            {
+                _skillPointsUnlocked = value;
+                RaisePropertyChanged(nameof(SkillPointsUnlocked));
+            }
+        }
+
+        private SkillPointsByGame _skillPointsLocked;
+        public SkillPointsByGame SkillPointsLocked
+        {
+            get => _skillPointsLocked;
+            set
+            {
+                _skillPointsLocked = value;
+                RaisePropertyChanged(nameof(SkillPointsLocked));
+            }
+        }
+
+        private void CountLockedSkillPointsOf(Character character)
+        {
+            var sp = new SkillPointsByGame();
+            foreach (var a in character.AreaByName.Values)
+            {
+                CountAreaSkillPointsInto(sp, a);
+            }
+
+            SkillPointsUnlocked = sp;
+            SkillPointsLocked.Core = SkillPointsTotal.Core - SkillPointsUnlocked.Core;
+            SkillPointsLocked.Hot = SkillPointsTotal.Hot - SkillPointsUnlocked.Hot;
+            SkillPointsLocked.Pof = SkillPointsTotal.Pof - SkillPointsUnlocked.Pof;
+        }
+
+        private static void CountAreaSkillPointsInto(SkillPointsByGame byGame, Area a)
+        {
+            var skillPoints = int.Parse(a.Skills);
+            switch (a.Name)
+            {
+                case "Auric Basin":
+                case "Dragon's Stand":
+                case "Tangled Depths":
+                case "Verdant Brink":
+                    byGame.Hot += skillPoints * 10;
+                    break;
+                case "Crystal Oasis":
+                case "Desert Highlands":
+                case "Elon Riverlands":
+                case "Straits of Devastation":
+                case "Vabbi":
+                    byGame.Pof += skillPoints * 10;
+                    break;
+                default:
+                    byGame.Core += skillPoints;
+                    break;
             }
         }
 

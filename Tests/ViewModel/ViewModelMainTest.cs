@@ -36,6 +36,16 @@ namespace Charrmander.ViewModel
             vm.PoIs.Should().BeEmpty();
             vm.Skills.Should().BeEmpty();
             vm.Vistas.Should().BeEmpty();
+
+            vm.SkillPointsTotal.Core.Should().BePositive();
+            vm.SkillPointsTotal.Hot.Should().BePositive();
+            vm.SkillPointsTotal.Pof.Should().BePositive();
+            vm.SkillPointsLocked.Core.Should().Be(vm.SkillPointsTotal.Core);
+            vm.SkillPointsLocked.Hot.Should().Be(vm.SkillPointsTotal.Hot);
+            vm.SkillPointsLocked.Pof.Should().Be(vm.SkillPointsTotal.Pof);
+            vm.SkillPointsUnlocked.Core.Should().Be(0);
+            vm.SkillPointsUnlocked.Hot.Should().Be(0);
+            vm.SkillPointsUnlocked.Pof.Should().Be(0);
         }
 
         [Fact]
@@ -478,6 +488,54 @@ namespace Charrmander.ViewModel
             vm.PoIIcon.Should().Be("PoI");
             vm.SkillIcon.Should().Be("Skill");
             vm.VistaIcon.Should().Be("Vista");
+        }
+
+        [Fact]
+        public void progress_skills_objective_counts_locked_skill_points()
+        {
+            var vm = new ViewModelMain();
+            vm.CommandNewCharacter.Execute(null);
+
+            vm.SelectedAreaReference = vm.AreaReferenceList.First(a => a.Name == "Diessa Plateau");
+            vm.Skills = "1";
+
+            vm.SkillPointsUnlocked.Core.Should().Be(1);
+            vm.SkillPointsLocked.Core.Should().Be(vm.SkillPointsTotal.Core - vm.SkillPointsUnlocked.Core);
+
+            vm.SelectedAreaReference = vm.AreaReferenceList.First(a => a.Name == "Auric Basin");
+            vm.Skills = "2";
+            vm.SkillPointsUnlocked.Hot.Should().Be(20);
+            vm.SkillPointsLocked.Hot.Should().Be(vm.SkillPointsTotal.Hot - vm.SkillPointsUnlocked.Hot);
+
+            vm.SelectedAreaReference = vm.AreaReferenceList.First(a => a.Name == "Crystal Oasis");
+            vm.Skills = "3";
+            vm.SkillPointsUnlocked.Pof.Should().Be(30);
+            vm.SkillPointsLocked.Pof.Should().Be(vm.SkillPointsTotal.Pof - vm.SkillPointsUnlocked.Pof);
+        }
+
+        [Fact]
+        public void change_character_counts_locked_skill_points()
+        {
+            var vm = new ViewModelMain();
+            vm.CommandNewCharacter.Execute(null);
+
+            vm.SelectedAreaReference = vm.AreaReferenceList.First(a => a.Name == "Auric Basin");
+            vm.Skills = "1";
+            vm.SkillPointsUnlocked.Hot.Should().Be(10);
+            vm.SkillPointsLocked.Hot.Should().Be(vm.SkillPointsTotal.Hot - vm.SkillPointsUnlocked.Hot);
+
+            vm.CommandNewCharacter.Execute(null);
+            vm.SelectedCharacter = vm.SortedCharacterList.View.Cast<Character>().Last();
+
+            vm.SkillPointsLocked.Hot.Should().Be(vm.SkillPointsTotal.Hot);
+
+            vm.SelectedAreaReference = vm.AreaReferenceList.First(a => a.Name == "Crystal Oasis");
+            vm.Skills = "2";
+            vm.SkillPointsUnlocked.Pof.Should().Be(20);
+            vm.SkillPointsLocked.Pof.Should().Be(vm.SkillPointsTotal.Pof - vm.SkillPointsUnlocked.Pof);
+
+            vm.SelectedCharacter = vm.SortedCharacterList.View.Cast<Character>().First();
+            vm.SkillPointsLocked.Pof.Should().Be(vm.SkillPointsTotal.Pof);
         }
 
         [Fact]

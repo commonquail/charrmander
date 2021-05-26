@@ -718,6 +718,35 @@
                                 Content="Show only required&#10;for world completion"
                                 />
 
+                            <Separator/>
+
+                            <GroupBox Header="Locked Hero Points">
+                                <StackPanel Margin="2">
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Core:" Width="35"/>
+                                        <TextBlock Text="{Binding SkillPointsLocked.Core}" TextAlignment="Right" Width="20"/>
+                                        <TextBlock Text="/" Width="25" TextAlignment="Center"/>
+                                        <TextBlock Text="{Binding SkillPointsTotal.Core}" TextAlignment="Right" Width="20"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="HoT:" Width="35"/>
+                                        <TextBlock Text="{Binding SkillPointsLocked.Hot}" TextAlignment="Right" Width="20"/>
+                                        <TextBlock Text="/" Width="25" TextAlignment="Center"/>
+                                        <TextBlock Text="{Binding SkillPointsTotal.Hot}" TextAlignment="Right" Width="20"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="PoF:" Width="35"/>
+                                        <TextBlock Text="{Binding SkillPointsLocked.Pof}" TextAlignment="Right" Width="20"/>
+                                        <TextBlock Text="/" Width="25" TextAlignment="Center"/>
+                                        <TextBlock Text="{Binding SkillPointsTotal.Pof}" TextAlignment="Right" Width="20"/>
+                                    </StackPanel>
+
+                                </StackPanel>
+                            </GroupBox>
+
                         </StackPanel>
 
                     </DockPanel>
