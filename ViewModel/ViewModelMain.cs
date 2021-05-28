@@ -1745,17 +1745,27 @@ namespace Charrmander.ViewModel
 
         private static CompletionState CalculateStoryChapterCompletion(IReadOnlyList<Act> acts)
         {
-            if (acts.SelectMany(a => a.Chapters).All(c => c.ChapterCompleted))
+            bool any = false;
+            bool all = true;
+
+            foreach (var a in acts)
             {
-                return CompletionState.Completed;
+                foreach (var c in a.Chapters)
+                {
+                    if (c.ChapterCompleted)
+                    {
+                        if (!all) return CompletionState.Begun;
+                        any = true;
+                    }
+                    else
+                    {
+                        if (any) return CompletionState.Begun;
+                        all = false;
+                    }
+                }
             }
 
-            if (acts.SelectMany(a => a.Chapters).Any(c => c.ChapterCompleted))
-            {
-                return CompletionState.Begun;
-            }
-
-            return CompletionState.NotBegun;
+            return all ? CompletionState.Completed : CompletionState.NotBegun;
         }
 
         private CompletionState _hasCompletedLw2;
