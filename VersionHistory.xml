@@ -2,15 +2,24 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.24.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.24.0.zip</DownloadUrl>
+      <Version>1.25.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.25.0.zip</DownloadUrl>
       <Notes>
-        <Note>Fix incorrect region grouping for locked hero point calculation.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.24.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.24.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Fix incorrect region grouping for locked hero point calculation.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.23.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.23.0.zip</DownloadUrl>
@@ -19,8 +28,6 @@
           <Note>Compute locked hero points per game region on the "Areas" tab.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.22.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.22.0.zip</DownloadUrl>
