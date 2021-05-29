@@ -87,17 +87,25 @@ namespace Charrmander.ViewModel
             var doc = XDocument.Load(XmlReader.Create(
                 App.GetPackResourceStream("Resources/Areas.xml").Stream));
 
-            AreaReferenceList = doc.Root!.Elements(Area.XmlNamespace + "Area")
-                .Select(Area.ReferenceAreaFromXML)
-                .ToList();
+            var areas = new List<Area>();
+            var areaNames = new HashSet<string>();
+            var worldCompletionAreaNames = new HashSet<string>();
 
-            ReferenceAreaNames = AreaReferenceList.Select(a => a.Name).ToHashSet();
+            foreach (var ax in doc.Root!.Elements(Area.XmlNamespace + "Area"))
+            {
+                var a = Area.ReferenceAreaFromXML(ax);
+                areas.Add(a);
+                areaNames.Add(a.Name);
+                if (IsRequiredForWorldCompletion(a))
+                {
+                    worldCompletionAreaNames.Add(a.Name);
+                }
+            }
+            AreaReferenceList = areas;
+            ReferenceAreaNames = areaNames;
+            WorldCompletionAreaNames = worldCompletionAreaNames;
 
             static bool IsRequiredForWorldCompletion(Area a) => a.ParticipatesInWorldCompletion;
-            WorldCompletionAreaNames = AreaReferenceList
-                .Where(IsRequiredForWorldCompletion)
-                .Select(a => a.Name)
-                .ToHashSet();
 
             SortedAreas = CollectionViewSource.GetDefaultView(AreaReferenceList);
             SortedAreas.SortDescriptions.Add(
