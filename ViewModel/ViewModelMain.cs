@@ -760,9 +760,9 @@ namespace Charrmander.ViewModel
                     break;
                 case "Crystal Oasis":
                 case "Desert Highlands":
+                case "Domain of Vabbi":
                 case "Elon Riverlands":
-                case "Straits of Devastation":
-                case "Vabbi":
+                case "The Desolation":
                     byGame.Pof += skillPoints * 10;
                     break;
                 default:
