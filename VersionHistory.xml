@@ -2,16 +2,25 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.23.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.23.0.zip</DownloadUrl>
+      <Version>1.24.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.24.0.zip</DownloadUrl>
       <Notes>
-        <Note>Don't crash if update download fails.</Note>
-        <Note>Compute locked hero points per game region on the "Areas" tab.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.23.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.23.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Don't crash if update download fails.</Note>
+          <Note>Compute locked hero points per game region on the "Areas" tab.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.22.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.22.0.zip</DownloadUrl>
@@ -28,8 +37,6 @@
           <Note>Automatically check world completion check box when completing the last world completion area. Subsequently un-completing an area will not remove the world completion status. The status can still be set manually.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.21.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.21.0.zip</DownloadUrl>
