@@ -321,6 +321,10 @@ namespace Charrmander.ViewModel
             vm.Skills.Should().Be(vm.SelectedAreaReference.Skills);
             vm.Vistas.Should().Be(vm.SelectedAreaReference.Vistas);
 
+            vm.SkillPointsLocked.Core.Should().Be(195);
+            vm.SkillPointsLocked.Hot.Should().Be(400);
+            vm.SkillPointsLocked.Pof.Should().Be(290);
+
             selectedCharacter.HasWorldCompletion.Should().BeTrue();
 
             // "Crafting" tab.
@@ -433,6 +437,21 @@ namespace Charrmander.ViewModel
             vm.SelectedAreaReference.State.Should().Be(CompletionState.NotBegun);
             vm.CommandCompleteArea.Execute(null);
             vm.SelectedAreaReference.State.Should().Be(CompletionState.Completed);
+        }
+
+        [Fact]
+        public void completing_area_counts_locked_skill_points()
+        {
+            var vm = new ViewModelMain();
+            vm.CommandNewCharacter.Execute(null);
+            vm.AreaReferenceList.Should().NotBeEmpty();
+            vm.SelectedAreaReference = vm.AreaReferenceList.First(a => a.Name == "Auric Basin");
+            vm.SelectedAreaCharacter.Should().NotBeNull();
+            vm.SelectedAreaReference.State.Should().Be(CompletionState.NotBegun);
+            vm.SkillPointsUnlocked.Hot.Should().Be(0);
+            vm.CommandCompleteArea.Execute(null);
+            vm.SelectedAreaReference.State.Should().Be(CompletionState.Completed);
+            vm.SkillPointsUnlocked.Hot.Should().Be(110);
         }
 
         [Fact]

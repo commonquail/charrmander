@@ -1325,6 +1325,7 @@ namespace Charrmander.ViewModel
                 selectedAreaCharacter.Skills = selectedAreaReference.Skills;
                 selectedAreaCharacter.Vistas = selectedAreaReference.Vistas;
             }
+            CountLockedSkillPointsOf(SelectedCharacter!);
 
             // Call this to signal an update of the relevant UI components.
             ChangedAreaOrCharacter();
