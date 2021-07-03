@@ -43,6 +43,7 @@ namespace Charrmander.ViewModel
             vm.SkillPointsLocked.Core.Should().Be(vm.SkillPointsTotal.Core);
             vm.SkillPointsLocked.Hot.Should().Be(vm.SkillPointsTotal.Hot);
             vm.SkillPointsLocked.Pof.Should().Be(vm.SkillPointsTotal.Pof);
+            vm.SkillPointsSpendable.Should().Be(0);
             vm.SkillPointsUnlocked.Core.Should().Be(0);
             vm.SkillPointsUnlocked.Hot.Should().Be(0);
             vm.SkillPointsUnlocked.Pof.Should().Be(0);
@@ -254,6 +255,9 @@ namespace Charrmander.ViewModel
             selectedCharacter.BiographyRaceThird.Should().Be("Cycle of Dusk");
             selectedCharacter.EliteSpecializations.Select(es => (es.Name, es.Unlocked)).Should()
                 .ContainInOrder(("Reaper", true), ("Scourge", false));
+
+            // -245 because we've unlocked one elite spec but only 5 skill points.
+            vm.SkillPointsSpendable.Should().Be(-245);
 
             // "Story" tab.
             selectedCharacter.Order.Should().Be("Order of Whispers");
@@ -510,7 +514,7 @@ namespace Charrmander.ViewModel
         }
 
         [Fact]
-        public void progress_skills_objective_counts_locked_skill_points()
+        public void progress_skills_objective_counts_locked_and_spendable_skill_points()
         {
             var vm = new ViewModelMain();
             vm.CommandNewCharacter.Execute(null);
@@ -520,20 +524,26 @@ namespace Charrmander.ViewModel
 
             vm.SkillPointsUnlocked.Core.Should().Be(1);
             vm.SkillPointsLocked.Core.Should().Be(vm.SkillPointsTotal.Core - vm.SkillPointsUnlocked.Core);
+            vm.SkillPointsSpendable.Should()
+                .Be(vm.SkillPointsUnlocked.Core);
 
             vm.SelectedAreaReference = vm.AreaReferenceList.First(a => a.Name == "Auric Basin");
             vm.Skills = "2";
             vm.SkillPointsUnlocked.Hot.Should().Be(20);
             vm.SkillPointsLocked.Hot.Should().Be(vm.SkillPointsTotal.Hot - vm.SkillPointsUnlocked.Hot);
+            vm.SkillPointsSpendable.Should()
+                .Be(vm.SkillPointsUnlocked.Hot + vm.SkillPointsUnlocked.Core);
 
             vm.SelectedAreaReference = vm.AreaReferenceList.First(a => a.Name == "Crystal Oasis");
             vm.Skills = "3";
             vm.SkillPointsUnlocked.Pof.Should().Be(30);
             vm.SkillPointsLocked.Pof.Should().Be(vm.SkillPointsTotal.Pof - vm.SkillPointsUnlocked.Pof);
+            vm.SkillPointsSpendable.Should()
+                .Be(vm.SkillPointsUnlocked.Pof + vm.SkillPointsUnlocked.Hot + vm.SkillPointsUnlocked.Core);
         }
 
         [Fact]
-        public void change_character_counts_locked_skill_points()
+        public void change_character_counts_locked_and_spendable_skill_points()
         {
             var vm = new ViewModelMain();
             vm.CommandNewCharacter.Execute(null);
@@ -542,19 +552,120 @@ namespace Charrmander.ViewModel
             vm.Skills = "1";
             vm.SkillPointsUnlocked.Hot.Should().Be(10);
             vm.SkillPointsLocked.Hot.Should().Be(vm.SkillPointsTotal.Hot - vm.SkillPointsUnlocked.Hot);
+            vm.SkillPointsSpendable.Should().Be(vm.SkillPointsUnlocked.Hot);
 
             vm.CommandNewCharacter.Execute(null);
             vm.SelectedCharacter = vm.SortedCharacterList.View.Cast<Character>().Last();
 
             vm.SkillPointsLocked.Hot.Should().Be(vm.SkillPointsTotal.Hot);
+            vm.SkillPointsSpendable.Should().Be(0);
 
             vm.SelectedAreaReference = vm.AreaReferenceList.First(a => a.Name == "Crystal Oasis");
             vm.Skills = "2";
             vm.SkillPointsUnlocked.Pof.Should().Be(20);
             vm.SkillPointsLocked.Pof.Should().Be(vm.SkillPointsTotal.Pof - vm.SkillPointsUnlocked.Pof);
+            vm.SkillPointsSpendable.Should().Be(vm.SkillPointsUnlocked.Pof);
 
             vm.SelectedCharacter = vm.SortedCharacterList.View.Cast<Character>().First();
             vm.SkillPointsLocked.Pof.Should().Be(vm.SkillPointsTotal.Pof);
+            vm.SkillPointsSpendable.Should().Be(vm.SkillPointsUnlocked.Hot);
+        }
+
+        [Fact]
+        public void change_profession_does_not_reset_unlocked_elite_specializations()
+        {
+            // This is a convenience that lets users switch professions
+            // (deliberately or accidentally) without immediately losing
+            // unlocked elite specs.
+
+            var vm = new ViewModelMain();
+            vm.CommandNewCharacter.Execute(null);
+
+            // 1. Assign some profession.
+            // 2. Unlock some elite spec.
+            // 3. Switch to another profession.
+            // 4. See that no elite spec is unlocked.
+            // 5. Unlock some elite spec.
+            // 6. Switch back to the first profession.
+            // 7. See that its previously unlocked elite spec remains unlocked.
+
+            var selectedCharacter = vm.SelectedCharacter!;
+            selectedCharacter.Profession = "Necromancer";
+
+            selectedCharacter.EliteSpecializations.First().Unlocked = true;
+
+            selectedCharacter.Profession = "Mesmer";
+            selectedCharacter.EliteSpecializations.Should().NotContain(es => es.Unlocked);
+            selectedCharacter.EliteSpecializations.First().Unlocked = true;
+
+            selectedCharacter.Profession = "Necromancer";
+            selectedCharacter.EliteSpecializations.First().Unlocked.Should().BeTrue();
+        }
+
+        [Fact]
+        public void unlock_elite_specialization_counts_spendable_skill_points()
+        {
+            var vm = new ViewModelMain();
+            vm.CommandNewCharacter.Execute(null);
+
+            var selectedCharacter = vm.SelectedCharacter!;
+            selectedCharacter.Profession = "Necromancer";
+            vm.SkillPointsSpendable.Should().Be(0);
+
+            // Spendable skill points are recalculated actively, not
+            // automatically, so this doesn't work.
+            selectedCharacter.EliteSpecializations.First().Unlocked = true;
+            vm.SkillPointsSpendable.Should().Be(0);
+
+            // This is what works. However, the property we desire is the causal
+            // relationship between unlocking elite specializations and
+            // spendable skill points.
+            vm.ComputeAvailableSkillPoints();
+            vm.SkillPointsSpendable.Should().Be(-250);
+
+            // And now the inverse property.
+            selectedCharacter.EliteSpecializations.First().Unlocked = false;
+            vm.SkillPointsSpendable.Should().Be(-250);
+
+            vm.ComputeAvailableSkillPoints();
+            vm.SkillPointsSpendable.Should().Be(0);
+        }
+
+        [Fact]
+        public void change_profession_counts_spendable_skill_points()
+        {
+            var vm = new ViewModelMain();
+            vm.CommandNewCharacter.Execute(null);
+
+            // 1. Assign some profession.
+            // 2. Unlock some elite spec.
+            // 3. See that spendable skill points changes.
+            // 4. Assign some other profession.
+            // 5. See that spendable skill points changes.
+            // 6. Unlock some elite spec.
+            // 7. See that spendable skill points changes again.
+            // 8. Switch back to the first profession.
+            // 9. See that spendable skill points changes back.
+
+            var selectedCharacter = vm.SelectedCharacter!;
+            selectedCharacter.Profession = "Necromancer";
+            vm.ComputeAvailableSkillPoints();
+            vm.SkillPointsSpendable.Should().Be(0);
+
+            selectedCharacter.EliteSpecializations.First().Unlocked = true;
+            vm.ComputeAvailableSkillPoints();
+            vm.SkillPointsSpendable.Should().Be(-250);
+
+            selectedCharacter.Profession = "Mesmer";
+            vm.ComputeAvailableSkillPoints();
+            vm.SkillPointsSpendable.Should().Be(0);
+            selectedCharacter.EliteSpecializations.First().Unlocked = true;
+            vm.ComputeAvailableSkillPoints();
+            vm.SkillPointsSpendable.Should().Be(-250);
+
+            selectedCharacter.Profession = "Necromancer";
+            vm.ComputeAvailableSkillPoints();
+            vm.SkillPointsSpendable.Should().Be(-250);
         }
 
         [Fact]

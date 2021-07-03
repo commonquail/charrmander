@@ -286,31 +286,46 @@
                                 SelectedCharacter.Profession,
                                 Converter={StaticResource StringToVisibilityConverter},
                                 FallbackValue=Hidden}">
-                            <ItemsControl
-                                Margin="0 2"
-                                ItemsSource="{Binding SelectedCharacter.EliteSpecializations}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <CheckBox
-                                            Height="26"
-                                            VerticalContentAlignment="Center"
-                                            IsChecked="{Binding Unlocked}"
-                                            >
-                                            <StackPanel Orientation="Horizontal">
-                                                <Image
-                                                    Height="20"
-                                                    Width="20"
-                                                    ToolTip="{Binding Name}"
-                                                    Source="{Binding Name,
-                                                        Converter={StaticResource GameIconConverter},
-                                                        ConverterParameter=Professions}"
+                            <StackPanel
+                                Orientation="Horizontal"
+                                >
+                                <ItemsControl
+                                    Width="150"
+                                    Margin="0 2"
+                                    ItemsSource="{Binding SelectedCharacter.EliteSpecializations}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox
+                                                Height="26"
+                                                VerticalContentAlignment="Center"
+                                                IsChecked="{Binding Unlocked}"
+                                                Checked="EliteSpecializationCheckBox_Checked"
+                                                Unchecked="EliteSpecializationCheckBox_Checked"
+                                                >
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image
+                                                        Height="20"
+                                                        Width="20"
+                                                        ToolTip="{Binding Name}"
+                                                        Source="{Binding Name,
+                                                            Converter={StaticResource GameIconConverter},
+                                                            ConverterParameter=Professions}"
                                                     />
-                                                <TextBlock Margin="3 0" Text="{Binding Name}" VerticalAlignment="Center"/>
-                                            </StackPanel>
-                                        </CheckBox>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
+                                                    <TextBlock Margin="3 0" Text="{Binding Name}" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Text="{Binding SkillPointsSpendable, StringFormat='{}Spendable hero points: {0}'}"
+                                    ToolTip="Plus 14 from Krait Obelisk Shard and WvW challenges"
+                                    TextAlignment="Right"
+                                    />
+
+                            </StackPanel>
                         </GroupBox>
                     </StackPanel>
                 </TabItem>
