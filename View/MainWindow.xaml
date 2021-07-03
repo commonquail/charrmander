@@ -284,7 +284,8 @@
                             Header="Elite specializations unlocked"
                             Visibility="{Binding
                                 SelectedCharacter.Profession,
-                                Converter={StaticResource StringToVisibilityConverter}}">
+                                Converter={StaticResource StringToVisibilityConverter},
+                                FallbackValue=Hidden}">
                             <ItemsControl
                                 Margin="0 2"
                                 ItemsSource="{Binding SelectedCharacter.EliteSpecializations}">
