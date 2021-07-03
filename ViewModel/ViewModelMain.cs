@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
+using System.Diagnostics.Contracts;
 
 namespace Charrmander.ViewModel
 {
@@ -591,7 +592,7 @@ namespace Charrmander.ViewModel
                     && !string.IsNullOrWhiteSpace(value))
                 {
                     SelectedAreaCharacter.Skills = value;
-                    CountLockedSkillPointsOf(SelectedCharacter);
+                    ComputeAvailableSkillPoints();
                     RaisePropertyChanged(nameof(Skills));
                     RaisePropertyChanged(nameof(SkillIcon));
                     UpdateAreaState(SelectedAreaReference, SelectedCharacter, WorldCompletionAreaNames);
@@ -722,6 +723,17 @@ namespace Charrmander.ViewModel
             }
         }
 
+        private int _skillPointsSpendable;
+        public int SkillPointsSpendable
+        {
+            get => _skillPointsSpendable;
+            set
+            {
+                _skillPointsSpendable = value;
+                RaisePropertyChanged(nameof(SkillPointsSpendable));
+            }
+        }
+
         private SkillPointsByGame _skillPointsLocked;
         public SkillPointsByGame SkillPointsLocked
         {
@@ -745,6 +757,12 @@ namespace Charrmander.ViewModel
             SkillPointsLocked.Core = SkillPointsTotal.Core - SkillPointsUnlocked.Core;
             SkillPointsLocked.Hot = SkillPointsTotal.Hot - SkillPointsUnlocked.Hot;
             SkillPointsLocked.Pof = SkillPointsTotal.Pof - SkillPointsUnlocked.Pof;
+
+            const int spCostPerSpecialization = 250;
+            var specializationsUnlocked = character.EliteSpecializations.Count(es => es.Unlocked);
+            var spSpent = spCostPerSpecialization * specializationsUnlocked;
+            var spTotalUnlocked = SkillPointsUnlocked.Core + SkillPointsUnlocked.Hot + SkillPointsUnlocked.Pof;
+            SkillPointsSpendable = spTotalUnlocked - spSpent;
         }
 
         private static void CountAreaSkillPointsInto(SkillPointsByGame byGame, Area a)
@@ -1325,7 +1343,7 @@ namespace Charrmander.ViewModel
                 selectedAreaCharacter.Skills = selectedAreaReference.Skills;
                 selectedAreaCharacter.Vistas = selectedAreaReference.Vistas;
             }
-            CountLockedSkillPointsOf(SelectedCharacter!);
+            ComputeAvailableSkillPoints();
 
             // Call this to signal an update of the relevant UI components.
             ChangedAreaOrCharacter();
@@ -1494,6 +1512,19 @@ namespace Charrmander.ViewModel
                 BiographyOptionsRaceSecond = raceOption["Second"];
                 BiographyOptionsRaceThird = raceOption["Third"];
             }
+
+            if (!string.IsNullOrEmpty(charProfession))
+            {
+                ComputeAvailableSkillPoints();
+            }
+        }
+
+        public void ComputeAvailableSkillPoints()
+        {
+            var selectedCharacter = SelectedCharacter;
+            // Called from context only available after selecting a character.
+            Contract.Assume(selectedCharacter != null);
+            CountLockedSkillPointsOf(selectedCharacter);
         }
 
         /// <summary>

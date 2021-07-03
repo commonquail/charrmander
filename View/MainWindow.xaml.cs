@@ -55,5 +55,10 @@ namespace Charrmander.View
         {
             (DataContext as ViewModelMain)?.TrimSelectedCharacterName();
         }
+
+        private void EliteSpecializationCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            (DataContext as ViewModelMain)?.ComputeAvailableSkillPoints();
+        }
     }
 }

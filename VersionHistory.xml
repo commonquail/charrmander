@@ -7,6 +7,7 @@
       <Notes>
         <Note>Fix instant-complete area not recomputing locked hero points.</Note>
         <Note>Fix elite specialization region being visible after starting Charrmander and before loading or creating the first character.</Note>
+        <Note>Show the amount of immediately spendable hero points from unlocked hero challenges next to elite specializations.</Note>
       </Notes>
     </Release>
   </Unreleased>
