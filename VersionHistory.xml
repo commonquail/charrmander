@@ -2,17 +2,26 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.25.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.25.0.zip</DownloadUrl>
+      <Version>1.26.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.26.0.zip</DownloadUrl>
       <Notes>
-        <Note>Fix instant-complete area not recomputing locked hero points.</Note>
-        <Note>Fix elite specialization region being visible after starting Charrmander and before loading or creating the first character.</Note>
-        <Note>Show the amount of immediately spendable hero points from unlocked hero challenges next to elite specializations.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.25.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.25.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Fix instant-complete area not recomputing locked hero points.</Note>
+          <Note>Fix elite specialization region being visible after starting Charrmander and before loading or creating the first character.</Note>
+          <Note>Show the amount of immediately spendable hero points from unlocked hero challenges next to elite specializations.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.24.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.24.0.zip</DownloadUrl>
@@ -20,8 +29,6 @@
           <Note>Fix incorrect region grouping for locked hero point calculation.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.23.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.23.0.zip</DownloadUrl>
