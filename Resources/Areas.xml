@@ -94,6 +94,16 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Name>Blue Alpine Borderlands</Name>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>6</Waypoints>
+      <PoIs>16</PoIs>
+      <Skills>3</Skills>
+      <Vistas>10</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Brisban Wildlands</Name>
     <LevelRange>
       <MinLevel>15</MinLevel>
@@ -133,6 +143,20 @@
       <Vistas>0</Vistas>
     </Completion>
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
+  </Area>
+  <Area>
+    <Name>Claw Island</Name>
+    <LevelRange>
+      <MinLevel>51</MinLevel>
+      <MaxLevel>60</MaxLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>0</Waypoints>
+      <PoIs>4</PoIs>
+      <Skills>0</Skills>
+      <Vistas>0</Vistas>
+    </Completion>
   </Area>
   <Area>
     <Name>Crystal Oasis</Name>
@@ -346,6 +370,16 @@
     </Completion>
   </Area>
   <Area>
+    <Name>Eternal Battlegrounds</Name>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>7</Waypoints>
+      <PoIs>28</PoIs>
+      <Skills>4</Skills>
+      <Vistas>10</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Fields of Ruin</Name>
     <LevelRange>
       <MinLevel>30</MinLevel>
@@ -403,6 +437,16 @@
       <Vistas>8</Vistas>
     </Completion>
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
+  </Area>
+  <Area>
+    <Name>Green Alpine Borderlands</Name>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>6</Waypoints>
+      <PoIs>16</PoIs>
+      <Skills>3</Skills>
+      <Vistas>10</Vistas>
+    </Completion>
   </Area>
   <Area>
     <Name>Grothmar Valley</Name>
@@ -609,6 +653,16 @@
       <Vistas>5</Vistas>
     </Completion>
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
+  </Area>
+  <Area>
+    <Name>Red Desert Borderlands</Name>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>13</Waypoints>
+      <PoIs>16</PoIs>
+      <Skills>3</Skills>
+      <Vistas>10</Vistas>
+    </Completion>
   </Area>
   <Area>
     <Name>Sandswept Isles</Name>
