@@ -321,7 +321,6 @@
                                 <TextBlock
                                     VerticalAlignment="Center"
                                     Text="{Binding SkillPointsSpendable, StringFormat='{}Spendable hero points: {0}'}"
-                                    ToolTip="Plus 1 from Krait Obelisk Shard"
                                     TextAlignment="Right"
                                     />
 

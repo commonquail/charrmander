@@ -488,6 +488,16 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Name>Home Instance</Name>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>0</Waypoints>
+      <PoIs>0</PoIs>
+      <Skills>1</Skills>
+      <Vistas>0</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Iron Marches</Name>
     <LevelRange>
       <MinLevel>50</MinLevel>

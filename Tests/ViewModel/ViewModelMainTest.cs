@@ -325,7 +325,7 @@ namespace Charrmander.ViewModel
             vm.Skills.Should().Be(vm.SelectedAreaReference.Skills);
             vm.Vistas.Should().Be(vm.SelectedAreaReference.Vistas);
 
-            vm.SkillPointsLocked.Core.Should().Be(208);
+            vm.SkillPointsLocked.Core.Should().Be(209);
             vm.SkillPointsLocked.Hot.Should().Be(400);
             vm.SkillPointsLocked.Pof.Should().Be(290);
 
