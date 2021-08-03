@@ -7,6 +7,7 @@
       <Notes>
         <Note>Restore all missing areas, removed in v1.2.0 on account of not mattering for world completion, since world completion areas can now be filtered specifically and numerous other non-world completion areas have been added since by, essentially, accident.</Note>
         <Note>Add Home Instance pseudo-area to represent the Krait Obelisk Shard hero challenge, whereby every hero challenge is accounted for, making the "spendable hero points" tooltip irrelevant.</Note>
+        <Note>Restructure the hero point section in the "Areas" tab and relocate the count of spendable hero points there.</Note>
       </Notes>
     </Release>
   </Unreleased>

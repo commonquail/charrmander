@@ -9,7 +9,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         d:DataContext="{d:DesignInstance Type=viewmodel:ViewModelMain, IsDesignTimeCreatable=False}"
         Title="{Binding WindowTitle}"
-        Width="620"
+        Width="640"
         SizeToContent="Height"
         MinHeight="410"
         MaxHeight="746"
@@ -286,45 +286,33 @@
                                 SelectedCharacter.Profession,
                                 Converter={StaticResource StringToVisibilityConverter},
                                 FallbackValue=Hidden}">
-                            <StackPanel
-                                Orientation="Horizontal"
-                                >
-                                <ItemsControl
-                                    Width="150"
-                                    Margin="0 2"
-                                    ItemsSource="{Binding SelectedCharacter.EliteSpecializations}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <CheckBox
-                                                Height="26"
-                                                VerticalContentAlignment="Center"
-                                                IsChecked="{Binding Unlocked}"
-                                                Checked="EliteSpecializationCheckBox_Checked"
-                                                Unchecked="EliteSpecializationCheckBox_Checked"
-                                                >
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Image
-                                                        Height="20"
-                                                        Width="20"
-                                                        ToolTip="{Binding Name}"
-                                                        Source="{Binding Name,
-                                                            Converter={StaticResource GameIconConverter},
-                                                            ConverterParameter=Professions}"
-                                                    />
-                                                    <TextBlock Margin="3 0" Text="{Binding Name}" VerticalAlignment="Center"/>
-                                                </StackPanel>
-                                            </CheckBox>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-
-                                <TextBlock
-                                    VerticalAlignment="Center"
-                                    Text="{Binding SkillPointsSpendable, StringFormat='{}Spendable hero points: {0}'}"
-                                    TextAlignment="Right"
-                                    />
-
-                            </StackPanel>
+                            <ItemsControl
+                                Margin="0 2"
+                                ItemsSource="{Binding SelectedCharacter.EliteSpecializations}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox
+                                            Height="26"
+                                            VerticalContentAlignment="Center"
+                                            IsChecked="{Binding Unlocked}"
+                                            Checked="EliteSpecializationCheckBox_Checked"
+                                            Unchecked="EliteSpecializationCheckBox_Checked"
+                                            >
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image
+                                                    Height="20"
+                                                    Width="20"
+                                                    ToolTip="{Binding Name}"
+                                                    Source="{Binding Name,
+                                                        Converter={StaticResource GameIconConverter},
+                                                        ConverterParameter=Professions}"
+                                                />
+                                                <TextBlock Margin="3 0" Text="{Binding Name}" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </CheckBox>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </GroupBox>
                     </StackPanel>
                 </TabItem>
@@ -735,32 +723,42 @@
 
                             <Separator/>
 
-                            <GroupBox Header="Locked Hero Points">
-                                <StackPanel Margin="2">
+                            <TextBlock
+                                Text="Hero Points"
+                                />
 
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Core:" Width="35"/>
-                                        <TextBlock Text="{Binding SkillPointsLocked.Core}" TextAlignment="Right" Width="20"/>
-                                        <TextBlock Text="/" Width="25" TextAlignment="Center"/>
-                                        <TextBlock Text="{Binding SkillPointsTotal.Core}" TextAlignment="Right" Width="20"/>
-                                    </StackPanel>
+                            <TextBlock
+                                Text="{Binding SkillPointsSpendable, StringFormat='{}&#x25CF; Spendable: {0}'}"
+                                />
 
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="HoT:" Width="35"/>
-                                        <TextBlock Text="{Binding SkillPointsLocked.Hot}" TextAlignment="Right" Width="20"/>
-                                        <TextBlock Text="/" Width="25" TextAlignment="Center"/>
-                                        <TextBlock Text="{Binding SkillPointsTotal.Hot}" TextAlignment="Right" Width="20"/>
-                                    </StackPanel>
+                            <TextBlock
+                                Text="&#x25CF; Locked"
+                                />
 
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="PoF:" Width="35"/>
-                                        <TextBlock Text="{Binding SkillPointsLocked.Pof}" TextAlignment="Right" Width="20"/>
-                                        <TextBlock Text="/" Width="25" TextAlignment="Center"/>
-                                        <TextBlock Text="{Binding SkillPointsTotal.Pof}" TextAlignment="Right" Width="20"/>
-                                    </StackPanel>
+                            <StackPanel Margin="11 0">
 
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Core:" Width="35"/>
+                                    <TextBlock Text="{Binding SkillPointsLocked.Core}" TextAlignment="Right" Width="20"/>
+                                    <TextBlock Text="/" Width="25" TextAlignment="Center"/>
+                                    <TextBlock Text="{Binding SkillPointsTotal.Core}" TextAlignment="Right" Width="20"/>
                                 </StackPanel>
-                            </GroupBox>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="HoT:" Width="35"/>
+                                    <TextBlock Text="{Binding SkillPointsLocked.Hot}" TextAlignment="Right" Width="20"/>
+                                    <TextBlock Text="/" Width="25" TextAlignment="Center"/>
+                                    <TextBlock Text="{Binding SkillPointsTotal.Hot}" TextAlignment="Right" Width="20"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="PoF:" Width="35"/>
+                                    <TextBlock Text="{Binding SkillPointsLocked.Pof}" TextAlignment="Right" Width="20"/>
+                                    <TextBlock Text="/" Width="25" TextAlignment="Center"/>
+                                    <TextBlock Text="{Binding SkillPointsTotal.Pof}" TextAlignment="Right" Width="20"/>
+                                </StackPanel>
+
+                            </StackPanel>
 
                         </StackPanel>
 
