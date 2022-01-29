@@ -592,14 +592,14 @@ namespace Charrmander.ViewModel
             var selectedCharacter = vm.SelectedCharacter!;
             selectedCharacter.Profession = "Necromancer";
 
-            selectedCharacter.EliteSpecializations.First().Unlocked = true;
+            selectedCharacter.EliteSpecializations[0].Unlocked = true;
 
             selectedCharacter.Profession = "Mesmer";
             selectedCharacter.EliteSpecializations.Should().NotContain(es => es.Unlocked);
-            selectedCharacter.EliteSpecializations.First().Unlocked = true;
+            selectedCharacter.EliteSpecializations[0].Unlocked = true;
 
             selectedCharacter.Profession = "Necromancer";
-            selectedCharacter.EliteSpecializations.First().Unlocked.Should().BeTrue();
+            selectedCharacter.EliteSpecializations[0].Unlocked.Should().BeTrue();
         }
 
         [Fact]
@@ -614,7 +614,7 @@ namespace Charrmander.ViewModel
 
             // Spendable skill points are recalculated actively, not
             // automatically, so this doesn't work.
-            selectedCharacter.EliteSpecializations.First().Unlocked = true;
+            selectedCharacter.EliteSpecializations[0].Unlocked = true;
             vm.SkillPointsSpendable.Should().Be(0);
 
             // This is what works. However, the property we desire is the causal
@@ -624,7 +624,7 @@ namespace Charrmander.ViewModel
             vm.SkillPointsSpendable.Should().Be(-250);
 
             // And now the inverse property.
-            selectedCharacter.EliteSpecializations.First().Unlocked = false;
+            selectedCharacter.EliteSpecializations[0].Unlocked = false;
             vm.SkillPointsSpendable.Should().Be(-250);
 
             vm.ComputeAvailableSkillPoints();
@@ -652,14 +652,14 @@ namespace Charrmander.ViewModel
             vm.ComputeAvailableSkillPoints();
             vm.SkillPointsSpendable.Should().Be(0);
 
-            selectedCharacter.EliteSpecializations.First().Unlocked = true;
+            selectedCharacter.EliteSpecializations[0].Unlocked = true;
             vm.ComputeAvailableSkillPoints();
             vm.SkillPointsSpendable.Should().Be(-250);
 
             selectedCharacter.Profession = "Mesmer";
             vm.ComputeAvailableSkillPoints();
             vm.SkillPointsSpendable.Should().Be(0);
-            selectedCharacter.EliteSpecializations.First().Unlocked = true;
+            selectedCharacter.EliteSpecializations[0].Unlocked = true;
             vm.ComputeAvailableSkillPoints();
             vm.SkillPointsSpendable.Should().Be(-250);
 
