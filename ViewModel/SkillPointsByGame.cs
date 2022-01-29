@@ -46,5 +46,19 @@ namespace Charrmander.ViewModel
                 }
             }
         }
+
+        private int _eod;
+        public int Eod
+        {
+            get => _eod;
+            set
+            {
+                if (_eod != value)
+                {
+                    _eod = value;
+                    RaisePropertyChanged(nameof(Eod));
+                }
+            }
+        }
     }
 }

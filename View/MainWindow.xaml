@@ -758,6 +758,13 @@
                                     <TextBlock Text="{Binding SkillPointsTotal.Pof}" TextAlignment="Right" Width="20"/>
                                 </StackPanel>
 
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="EoD:" Width="35"/>
+                                    <TextBlock Text="{Binding SkillPointsLocked.Eod}" TextAlignment="Right" Width="20"/>
+                                    <TextBlock Text="/" Width="25" TextAlignment="Center"/>
+                                    <TextBlock Text="{Binding SkillPointsTotal.Eod}" TextAlignment="Right" Width="20"/>
+                                </StackPanel>
+
                             </StackPanel>
 
                         </StackPanel>

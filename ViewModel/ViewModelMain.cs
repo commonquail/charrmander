@@ -111,6 +111,7 @@ namespace Charrmander.ViewModel
                 Core = SkillPointsTotal.Core,
                 Hot = SkillPointsTotal.Hot,
                 Pof = SkillPointsTotal.Pof,
+                Eod = SkillPointsTotal.Eod,
             };
 
             static bool IsRequiredForWorldCompletion(Area a) => a.ParticipatesInWorldCompletion;
@@ -757,11 +758,16 @@ namespace Charrmander.ViewModel
             SkillPointsLocked.Core = SkillPointsTotal.Core - SkillPointsUnlocked.Core;
             SkillPointsLocked.Hot = SkillPointsTotal.Hot - SkillPointsUnlocked.Hot;
             SkillPointsLocked.Pof = SkillPointsTotal.Pof - SkillPointsUnlocked.Pof;
+            SkillPointsLocked.Eod = SkillPointsTotal.Eod - SkillPointsUnlocked.Eod;
 
             const int spCostPerSpecialization = 250;
             var specializationsUnlocked = character.EliteSpecializations.Count(es => es.Unlocked);
             var spSpent = spCostPerSpecialization * specializationsUnlocked;
-            var spTotalUnlocked = SkillPointsUnlocked.Core + SkillPointsUnlocked.Hot + SkillPointsUnlocked.Pof;
+            var spTotalUnlocked =
+                SkillPointsUnlocked.Core
+                + SkillPointsUnlocked.Hot
+                + SkillPointsUnlocked.Pof
+                + SkillPointsUnlocked.Eod;
             SkillPointsSpendable = spTotalUnlocked - spSpent;
         }
 
@@ -782,6 +788,12 @@ namespace Charrmander.ViewModel
                 case "Elon Riverlands":
                 case "The Desolation":
                     byGame.Pof += skillPoints * 10;
+                    break;
+                case "Dragon's End":
+                case "The Echovald Wilds":
+                case "New Kaineng City":
+                case "Seitung Province":
+                    byGame.Eod += skillPoints * 10;
                     break;
                 default:
                     byGame.Core += skillPoints;

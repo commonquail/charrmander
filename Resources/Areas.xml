@@ -344,6 +344,19 @@
     </Completion>
   </Area>
   <Area>
+    <Name>The Echovald Wilds</Name>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>3</Hearts>
+      <Waypoints>6</Waypoints>
+      <PoIs>45</PoIs>
+      <Skills>6</Skills>
+      <Vistas>5</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Elon Riverlands</Name>
     <LevelRange>
       <MinLevel>80</MinLevel>
@@ -513,6 +526,19 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Name>Dragon's End</Name>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>5</Waypoints>
+      <PoIs>48</PoIs>
+      <Skills>6</Skills>
+      <Vistas>5</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Jahai Bluffs</Name>
     <LevelRange>
       <MinLevel>80</MinLevel>
@@ -624,6 +650,19 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Name>New Kaineng City</Name>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>3</Hearts>
+      <Waypoints>4</Waypoints>
+      <PoIs>38</PoIs>
+      <Skills>9</Skills>
+      <Vistas>5</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Plains of Ashford</Name>
     <LevelRange>
       <MinLevel>1</MinLevel>
@@ -685,6 +724,19 @@
       <PoIs>30</PoIs>
       <Skills>0</Skills>
       <Vistas>4</Vistas>
+    </Completion>
+  </Area>
+  <Area>
+    <Name>Seitung Province</Name>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>3</Hearts>
+      <Waypoints>4</Waypoints>
+      <PoIs>41</PoIs>
+      <Skills>9</Skills>
+      <Vistas>5</Vistas>
     </Completion>
   </Area>
   <Area>

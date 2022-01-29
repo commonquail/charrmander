@@ -40,13 +40,16 @@ namespace Charrmander.ViewModel
             vm.SkillPointsTotal.Core.Should().BePositive();
             vm.SkillPointsTotal.Hot.Should().BePositive();
             vm.SkillPointsTotal.Pof.Should().BePositive();
+            vm.SkillPointsTotal.Eod.Should().BePositive();
             vm.SkillPointsLocked.Core.Should().Be(vm.SkillPointsTotal.Core);
             vm.SkillPointsLocked.Hot.Should().Be(vm.SkillPointsTotal.Hot);
             vm.SkillPointsLocked.Pof.Should().Be(vm.SkillPointsTotal.Pof);
+            vm.SkillPointsLocked.Eod.Should().Be(vm.SkillPointsTotal.Eod);
             vm.SkillPointsSpendable.Should().Be(0);
             vm.SkillPointsUnlocked.Core.Should().Be(0);
             vm.SkillPointsUnlocked.Hot.Should().Be(0);
             vm.SkillPointsUnlocked.Pof.Should().Be(0);
+            vm.SkillPointsUnlocked.Eod.Should().Be(0);
         }
 
         [Fact]
@@ -328,6 +331,7 @@ namespace Charrmander.ViewModel
             vm.SkillPointsLocked.Core.Should().Be(209);
             vm.SkillPointsLocked.Hot.Should().Be(400);
             vm.SkillPointsLocked.Pof.Should().Be(290);
+            vm.SkillPointsLocked.Eod.Should().Be(300);
 
             selectedCharacter.HasWorldCompletion.Should().BeTrue();
 
@@ -540,6 +544,17 @@ namespace Charrmander.ViewModel
             vm.SkillPointsLocked.Pof.Should().Be(vm.SkillPointsTotal.Pof - vm.SkillPointsUnlocked.Pof);
             vm.SkillPointsSpendable.Should()
                 .Be(vm.SkillPointsUnlocked.Pof + vm.SkillPointsUnlocked.Hot + vm.SkillPointsUnlocked.Core);
+
+            vm.SelectedAreaReference = vm.AreaReferenceList.First(a => a.Name == "The Echovald Wilds");
+            vm.Skills = "4";
+            vm.SkillPointsUnlocked.Eod.Should().Be(40);
+            vm.SkillPointsLocked.Eod.Should().Be(vm.SkillPointsTotal.Eod - vm.SkillPointsUnlocked.Eod);
+            vm.SkillPointsSpendable.Should()
+                .Be(
+                    vm.SkillPointsUnlocked.Eod
+                    + vm.SkillPointsUnlocked.Pof
+                    + vm.SkillPointsUnlocked.Hot
+                    + vm.SkillPointsUnlocked.Core);
         }
 
         [Fact]
