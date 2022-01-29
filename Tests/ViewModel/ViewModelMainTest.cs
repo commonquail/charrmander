@@ -306,6 +306,7 @@ namespace Charrmander.ViewModel
             vm.HasCompletedPoF.Should().Be(CompletionState.Begun);
             vm.HasCompletedLw4.Should().Be(CompletionState.Begun);
             vm.HasCompletedTis.Should().Be(CompletionState.Begun);
+            vm.HasCompletedEoD.Should().Be(CompletionState.NotBegun);
 
             // "Areas" tab.
             selectedCharacter.AreaByName.Should().ContainKey("Blazeridge Steppes");

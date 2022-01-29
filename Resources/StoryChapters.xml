@@ -397,4 +397,50 @@
       </Act>
     </Acts>
   </Tis>
+  <EoD>
+    <Storyline>End of Dragons</Storyline>
+    <Acts>
+      <Act>
+        <Name>Act 1</Name>
+        <Chapters>
+          <Chapter>Convergence</Chapter>
+          <Chapter>Old Friends</Chapter>
+          <Chapter>Outreach</Chapter>
+          <Chapter>Your Kind of People</Chapter>
+          <Chapter>Can't Trust a Pirate</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Act 2</Name>
+        <Chapters>
+          <Chapter>The Scenic Route</Chapter>
+          <Chapter>The Future in Jade</Chapter>
+          <Chapter>Deepest Secrets</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Act 3</Name>
+        <Chapters>
+          <Chapter>Fallout</Chapter>
+          <Chapter>To Catch a Spider</Chapter>
+          <Chapter>Empty</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Act 4</Name>
+        <Chapters>
+          <Chapter>In the Name of the Law</Chapter>
+          <Chapter>Weight of the World</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Act 5</Name>
+        <Chapters>
+          <Chapter>Extraction Point</Chapter>
+          <Chapter>The Only One</Chapter>
+          <Chapter>The Cycle, Reborn</Chapter>
+        </Chapters>
+      </Act>
+    </Acts>
+  </EoD>
 </StoryChapters>

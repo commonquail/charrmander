@@ -1090,6 +1090,7 @@ namespace Charrmander.ViewModel
                 LoadStorylineWithActs(charr, "PoF", c.PoFActs);
                 LoadStorylineWithActs(charr, "Lw4", c.Lw4Acts);
                 LoadStorylineWithActs(charr, "Tis", c.TisActs);
+                LoadStorylineWithActs(charr, "EoD", c.EoDActs);
 
                 foreach (var cd in c.Dungeons)
                 {
@@ -1755,6 +1756,7 @@ namespace Charrmander.ViewModel
             RaisePropertyChanged(nameof(HasCompletedPoF));
             RaisePropertyChanged(nameof(HasCompletedLw4));
             RaisePropertyChanged(nameof(HasCompletedTis));
+            RaisePropertyChanged(nameof(HasCompletedEoD));
         }
 
         /// <summary>
@@ -1854,6 +1856,7 @@ namespace Charrmander.ViewModel
             HasCompletedKotT = CalculateStoryChapterCompletion(selectedCharacter.KotTActs);
             HasCompletedHoT = CalculateStoryChapterCompletion(selectedCharacter.HoTActs);
             HasCompletedLw2 = CalculateStoryChapterCompletion(selectedCharacter.Lw2Acts);
+            HasCompletedEoD = CalculateStoryChapterCompletion(selectedCharacter.EoDActs);
         }
 
         internal void TrimSelectedCharacterName()
@@ -1996,6 +1999,20 @@ namespace Charrmander.ViewModel
             }
         }
 
+        private CompletionState _hasCompletedEoD;
+
+        public CompletionState HasCompletedEoD
+        {
+            get { return _hasCompletedEoD; }
+            private set
+            {
+                if (value != _hasCompletedEoD)
+                {
+                    _hasCompletedEoD = value;
+                    RaisePropertyChanged(nameof(HasCompletedEoD));
+                }
+            }
+        }
         private bool _hasKeyLw2;
 
         public bool HasKeyLw2

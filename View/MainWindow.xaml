@@ -576,6 +576,27 @@
                                     ItemTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
+                            <Expander>
+                                <Expander.Header>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding
+                                                    Source="{StaticResource ExtendedStoryXml}"
+                                                    XPath="sc:EoD/sc:Storyline" />
+                                                <Binding
+                                                    RelativeSource="{RelativeSource AncestorType=Window}"
+                                                    Path="DataContext.HasCompletedEoD"
+                                                    Converter="{StaticResource CompletionStateConverter}"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </Expander.Header>
+                                <ItemsControl
+                                    ItemsSource="{Binding EoDActs}"
+                                    ItemTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                            </Expander>
+
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>

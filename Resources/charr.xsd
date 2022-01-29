@@ -60,6 +60,7 @@
             <xs:element name="PoF" minOccurs="0" type="StorylineType"/>
             <xs:element name="Lw4" minOccurs="0" type="StorylineType"/>
             <xs:element name="Tis" minOccurs="0" type="StorylineType"/>
+            <xs:element name="EoD" minOccurs="0" type="StorylineType"/>
           </xs:all>
         </xs:complexType>
       </xs:element>
