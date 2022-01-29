@@ -28,7 +28,7 @@
       <xs:element name="Acts">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="Act">
+            <xs:element maxOccurs="unbounded" name="Act">
               <xs:complexType>
                 <xs:sequence>
                   <xs:element name="Name" type="xs:string" />
