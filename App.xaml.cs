@@ -29,7 +29,7 @@ namespace Charrmander
             var window = new MainWindow();
             var viewModel = new ViewModelMain();
             void menuExitHandler(object? sender, EventArgs e) => window.Close();
-            void xButtonHandler(object o, CancelEventArgs ce)
+            void xButtonHandler(object? o, CancelEventArgs ce)
             {
                 if (viewModel.AbortClosing()) { ce.Cancel = true; }
                 else

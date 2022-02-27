@@ -2033,7 +2033,7 @@ namespace Charrmander.ViewModel
         /// </summary>
         /// <param name="subKeyName">The per-user file association sub-key whose "default" value to set</param>
         /// <param name="defaultValue">The "default" value of <c>subKeyName</c></param>
-        [SupportedOSPlatform("windows10")]
+        [SupportedOSPlatform("windows10.0.17763")]
         private static void CurrentUserFileAssoc(string subKeyName, string defaultValue)
         {
             // Location of per-user file association: https://stackoverflow.com/a/69863/482758
@@ -2055,7 +2055,7 @@ namespace Charrmander.ViewModel
         }
     }
 
-    [SupportedOSPlatform("windows10")]
+    [SupportedOSPlatform("windows10.0")]
     internal static class NativeMethods
     {
         [System.Runtime.InteropServices.DllImport("shell32.dll")]
