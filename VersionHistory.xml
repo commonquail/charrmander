@@ -2,15 +2,24 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.27.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.27.0.zip</DownloadUrl>
+      <Version>1.28.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.28.0.zip</DownloadUrl>
       <Notes>
-        <Note>End of Dragons: add new specializations.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.27.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.27.0.zip</DownloadUrl>
+        <Notes>
+          <Note>End of Dragons: add new specializations.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.26.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.26.0.zip</DownloadUrl>
@@ -20,8 +29,6 @@
           <Note>Restructure the hero point section in the "Areas" tab and relocate the count of spendable hero points there.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.25.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.25.0.zip</DownloadUrl>
