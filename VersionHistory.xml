@@ -2,15 +2,24 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.28.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.28.0.zip</DownloadUrl>
+      <Version>1.29.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.29.0.zip</DownloadUrl>
       <Notes>
-        <Note>Use new Wiki profession icons. The new icons are derived from game art and are subject to ArenaNet's licensing. They look like wine gums and clash with other Charrmander aesthetics but this is preferable to the old style where half the new specialization icons are impossible to make out.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.28.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.28.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Use new Wiki profession icons. The new icons are derived from game art and are subject to ArenaNet's licensing. They look like wine gums and clash with other Charrmander aesthetics but this is preferable to the old style where half the new specialization icons are impossible to make out.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.27.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.27.0.zip</DownloadUrl>
@@ -18,8 +27,6 @@
           <Note>End of Dragons: add new specializations.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.26.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.26.0.zip</DownloadUrl>
