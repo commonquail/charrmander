@@ -6,7 +6,6 @@
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.28.0.zip</DownloadUrl>
       <Notes>
         <Note>Use new Wiki profession icons. The new icons are derived from game art and are subject to ArenaNet's licensing. They look like wine gums and clash with other Charrmander aesthetics but this is preferable to the old style where half the new specialization icons are impossible to make out.</Note>
-        <Note>Use new Wiki map icons. The Wiki has new map icons for the same reasons it has new profession icons. Unlike the new profession icons, unfortunately the map icons are a bit of a mess. We use the new map icons for Charrmander to be internally consistent but they don't look good.</Note>
       </Notes>
     </Release>
   </Unreleased>
