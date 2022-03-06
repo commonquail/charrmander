@@ -2,16 +2,25 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.30.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.30.0.zip</DownloadUrl>
+      <Version>1.31.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.31.0.zip</DownloadUrl>
       <Notes>
-        <Note>End of Dragons: add new areas.</Note>
-        <Note>End of Dragons: add new story chapters.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.30.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.30.0.zip</DownloadUrl>
+        <Notes>
+          <Note>End of Dragons: add new areas.</Note>
+          <Note>End of Dragons: add new story chapters.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.29.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.29.0.zip</DownloadUrl>
@@ -19,8 +28,6 @@
           <Note>Charrmander now requires the .NET 6 Desktop Runtime for x64. Get it from https://dotnet.microsoft.com/download/dotnet/6.0/runtime.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.28.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.28.0.zip</DownloadUrl>
