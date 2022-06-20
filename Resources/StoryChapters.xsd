@@ -11,6 +11,7 @@
   <xs:element name="StoryChapters">
     <xs:complexType>
       <xs:sequence>
+        <xs:element name="Lw1" type="StorylineType"/>
         <xs:element name="Lw2" type="StorylineType"/>
         <xs:element name="HoT" type="StorylineType"/>
         <xs:element name="KotT" type="StorylineType"/>

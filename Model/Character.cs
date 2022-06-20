@@ -103,6 +103,7 @@ namespace Charrmander.Model
             }
             specializationsByProfession = specByProf;
 
+            Lw1Acts = PrepareStoryChapters("Lw1");
             Lw2Acts = PrepareStoryChapters("Lw2");
             HoTActs = PrepareStoryChapters("HoT");
             KotTActs = PrepareStoryChapters("KotT");
@@ -190,6 +191,8 @@ namespace Charrmander.Model
                 }
             }
         }
+
+        public IReadOnlyList<Act> Lw1Acts { get; }
 
         public IReadOnlyList<Act> Lw2Acts { get; }
 
@@ -547,6 +550,7 @@ namespace Charrmander.Model
                     new CharrElement("PlanOfAttack", PlanOfAttack)
                 ),
                 new CharrElement("StoryChapters",
+                    new CharrElement("Lw1", SerializeActs(Lw1Acts)),
                     new CharrElement("Lw2", SerializeActs(Lw2Acts)),
                     new CharrElement("HoT", SerializeActs(HoTActs)),
                     new CharrElement("KotT", SerializeActs(KotTActs)),
@@ -620,6 +624,10 @@ namespace Charrmander.Model
             foreach (var dungeon in Dungeons)
             {
                 dungeon.PropertyChanged -= _viewModel.MarkFileDirty;
+            }
+            foreach (var act in Lw1Acts)
+            {
+                act.PropertyChanged -= _viewModel.MarkFileDirty;
             }
             foreach (var act in Lw2Acts)
             {

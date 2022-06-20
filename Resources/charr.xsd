@@ -53,6 +53,7 @@
       <xs:element name="StoryChapters" minOccurs="0">
         <xs:complexType>
           <xs:all>
+            <xs:element name="Lw1" minOccurs="0" type="StorylineType"/>
             <xs:element name="Lw2" minOccurs="0" type="StorylineType"/>
             <xs:element name="HoT" minOccurs="0" type="StorylineType"/>
             <xs:element name="KotT" minOccurs="0" type="StorylineType"/>

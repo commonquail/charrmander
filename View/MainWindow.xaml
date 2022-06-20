@@ -425,6 +425,27 @@
                                 <Expander.Header>
                                     <TextBlock>
                                         <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding
+                                                    Source="{StaticResource ExtendedStoryXml}"
+                                                    XPath="sc:Lw1/sc:Storyline" />
+                                                <Binding
+                                                    RelativeSource="{RelativeSource AncestorType=Window}"
+                                                    Path="DataContext.HasCompletedLw1"
+                                                    Converter="{StaticResource CompletionStateConverter}"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </Expander.Header>
+                                <ItemsControl
+                                    ItemsSource="{Binding Lw1Acts}"
+                                    ItemTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                            </Expander>
+
+                            <Expander>
+                                <Expander.Header>
+                                    <TextBlock>
+                                        <TextBlock.Text>
                                             <MultiBinding StringFormat="{}{0} {1} {2}">
                                                 <Binding
                                                     Source="{StaticResource ExtendedStoryXml}"

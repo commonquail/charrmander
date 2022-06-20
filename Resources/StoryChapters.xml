@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <StoryChapters xmlns="https://storychapters.charr">
+  <Lw1>
+    <Storyline>Living World Season 1</Storyline>
+      <Acts>
+        <Act>
+          <Name>Flame and Frost</Name>
+          <Chapters>
+            <Chapter>New Friends, New Enemies</Chapter>
+            <Chapter>The Battle for Cragstead</Chapter>
+            <Chapter>Alliance Investigation</Chapter>
+            <Chapter>Molten Furnace</Chapter>
+            <Chapter>A Quiet Celebration</Chapter>
+          </Chapters>
+        </Act>
+        <Act>
+          <Name>Sky Pirates of Tyria</Name>
+          <Chapters>
+            <Chapter>Ceremony and Acrimony</Chapter>
+            <Chapter>Hard Boiled</Chapter>
+            <Chapter>No More Secrets</Chapter>
+            <Chapter>Aether Investigation</Chapter>
+            <Chapter>The Aetherblade Retreat</Chapter>
+            <Chapter>Case Closed</Chapter>
+          </Chapters>
+        </Act>
+      </Acts>
+  </Lw1>
   <Lw2>
     <Storyline>Living World Season 2</Storyline>
     <Acts>

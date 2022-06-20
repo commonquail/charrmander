@@ -1083,6 +1083,7 @@ namespace Charrmander.ViewModel
                     }
                 }
 
+                LoadStorylineWithActs(charr, "Lw1", c.Lw1Acts);
                 LoadStorylineWithActs(charr, "Lw2", c.Lw2Acts);
                 LoadStorylineWithActs(charr, "HoT", c.HoTActs);
                 LoadStorylineWithActs(charr, "KotT", c.KotTActs);
@@ -1749,6 +1750,7 @@ namespace Charrmander.ViewModel
             // Forcefully update the story chapter summary.
             // Here, in chronological order of release to match typical eye
             // movement.
+            RaisePropertyChanged(nameof(HasCompletedLw1));
             RaisePropertyChanged(nameof(HasCompletedLw2));
             RaisePropertyChanged(nameof(HasCompletedHoT));
             RaisePropertyChanged(nameof(HasCompletedKotT));
@@ -1849,6 +1851,7 @@ namespace Charrmander.ViewModel
             // Assumption: characters are more likely to record new completions
             // of newer content, e.g. because they've already completed all old
             // content.
+            HasCompletedEoD = CalculateStoryChapterCompletion(selectedCharacter.EoDActs);
             HasCompletedTis = CalculateStoryChapterCompletion(selectedCharacter.TisActs);
             HasCompletedLw4 = CalculateStoryChapterCompletion(selectedCharacter.Lw4Acts);
             HasCompletedPoF = CalculateStoryChapterCompletion(selectedCharacter.PoFActs);
@@ -1856,7 +1859,7 @@ namespace Charrmander.ViewModel
             HasCompletedKotT = CalculateStoryChapterCompletion(selectedCharacter.KotTActs);
             HasCompletedHoT = CalculateStoryChapterCompletion(selectedCharacter.HoTActs);
             HasCompletedLw2 = CalculateStoryChapterCompletion(selectedCharacter.Lw2Acts);
-            HasCompletedEoD = CalculateStoryChapterCompletion(selectedCharacter.EoDActs);
+            HasCompletedLw1 = CalculateStoryChapterCompletion(selectedCharacter.Lw1Acts);
         }
 
         internal void TrimSelectedCharacterName()
@@ -1892,6 +1895,21 @@ namespace Charrmander.ViewModel
             }
 
             return all ? CompletionState.Completed : CompletionState.NotBegun;
+        }
+
+        private CompletionState _hasCompletedLw1;
+
+        public CompletionState HasCompletedLw1
+        {
+            get { return _hasCompletedLw1; }
+            private set
+            {
+                if (value != _hasCompletedLw1)
+                {
+                    _hasCompletedLw1 = value;
+                    RaisePropertyChanged(nameof(HasCompletedLw1));
+                }
+            }
         }
 
         private CompletionState _hasCompletedLw2;
