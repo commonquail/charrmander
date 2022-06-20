@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Areas xmlns="https://areas.charr">
   <Area>
+    <Name>Arborstone</Name>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>2</Waypoints>
+      <PoIs>13</PoIs>
+      <Skills>1</Skills>
+      <Vistas>0</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Auric Basin</Name>
     <LevelRange>
       <MinLevel>80</MinLevel>
