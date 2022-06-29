@@ -2,16 +2,25 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.31.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.31.0.zip</DownloadUrl>
+      <Version>1.32.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.32.0.zip</DownloadUrl>
       <Notes>
-        <Note>Add Arborstone map objectives.</Note>
-        <Note>Add Living World season 1.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.31.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.31.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Add Arborstone map objectives.</Note>
+          <Note>Add Living World season 1.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.30.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.30.0.zip</DownloadUrl>
@@ -20,8 +29,6 @@
           <Note>End of Dragons: add new story chapters.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.29.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.29.0.zip</DownloadUrl>
