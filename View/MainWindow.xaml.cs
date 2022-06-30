@@ -60,5 +60,13 @@ namespace Charrmander.View
         {
             (DataContext as ViewModelMain)?.ComputeAvailableSkillPoints();
         }
+
+        private void AreaFilter_Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioButton r && DataContext is ViewModelMain vm)
+            {
+                vm.FilterAreas(r.Name);
+            }
+        }
     }
 }

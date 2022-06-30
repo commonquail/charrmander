@@ -120,8 +120,6 @@ namespace Charrmander.ViewModel
             {
                 CustomSort = new AreaNameComparer(),
             };
-            SortedAreas.Filter = (item) => !ShowOnlyRequiredForWorldCompletion
-                || ((item is Area a) && IsRequiredForWorldCompletion(a));
 
             var races = XDocument.Load(XmlReader.Create(
                 App.GetPackResourceStream("Resources/Races.xml").Stream)).Root!.Elements("Race");
@@ -284,16 +282,32 @@ namespace Charrmander.ViewModel
 
         internal IReadOnlySet<string> WorldCompletionAreaNames { get; }
 
-        private bool _showOnlyRequiredForWorldCompletion;
-        public bool ShowOnlyRequiredForWorldCompletion
+        private AreaFilter _areaFilter;
+        public AreaFilter AreaFilter
         {
-            get => _showOnlyRequiredForWorldCompletion;
+            get => _areaFilter;
             set
             {
-                if (_showOnlyRequiredForWorldCompletion == value) return;
-                _showOnlyRequiredForWorldCompletion = value;
-                RaisePropertyChanged(nameof(ShowOnlyRequiredForWorldCompletion));
-                SortedAreas.Refresh();
+                if (_areaFilter == value) return;
+                _areaFilter = value;
+                RaisePropertyChanged(nameof(AreaFilter));
+                Predicate<object>? predicate = value switch
+                {
+                    AreaFilter.All => null,
+                    AreaFilter.WorldCompletion => item => ((Area)item).ParticipatesInWorldCompletion,
+                    _ => item => ((Area)item).Release == value,
+                };
+                void filter() => SortedAreas.Filter = predicate;
+#if DEBUG
+                filter();
+#else
+                // Non-null in test but seemingly a no-op implementation. Does this even matter?
+                // I don't know and don't much care, none of the solutions for testing with the
+                // dispatcher are easy to implement or very good. We're not supposed to do slow
+                // work on the UI thread but this is a DataGrid with an ICollectionView that
+                // notifies on every change anyway.
+                Dispatcher.CurrentDispatcher.BeginInvoke(t);
+#endif
             }
         }
 
@@ -1540,6 +1554,11 @@ namespace Charrmander.ViewModel
             // Called from context only available after selecting a character.
             Contract.Assume(selectedCharacter != null);
             CountLockedSkillPointsOf(selectedCharacter);
+        }
+
+        public void FilterAreas(string filterName)
+        {
+            AreaFilter = Enum.Parse<AreaFilter>(filterName);
         }
 
         /// <summary>

@@ -713,7 +713,7 @@ namespace Charrmander.ViewModel
 
             var defaultAreaList = vm.SortedAreas.Cast<Area>().ToList();
 
-            vm.ShowOnlyRequiredForWorldCompletion = true;
+            vm.AreaFilter = AreaFilter.WorldCompletion;
             var worldCompletionAreaList = vm.SortedAreas.Cast<Area>().ToList();
 
             worldCompletionAreaList.Should()
@@ -721,7 +721,7 @@ namespace Charrmander.ViewModel
                 .And.BeSubsetOf(defaultAreaList)
                 .And.HaveCountLessThan(defaultAreaList.Count);
 
-            vm.ShowOnlyRequiredForWorldCompletion = false;
+            vm.AreaFilter = AreaFilter.All;
             var allAreaList = vm.SortedAreas.Cast<Area>().ToList();
 
             allAreaList.Should().BeEquivalentTo(defaultAreaList);

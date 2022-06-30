@@ -14,6 +14,7 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Name" type="xs:string" />
+              <xs:element name="Release" type="xs:string"/>
               <xs:element minOccurs="0" name="LevelRange">
                 <xs:complexType>
                   <xs:sequence>

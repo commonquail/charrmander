@@ -706,6 +706,10 @@
                                     <Setter Property="DataContext" Value="{Binding SelectedAreaReference}"/>
                                     <Setter Property="Grid.Column" Value="2"/>
                                 </Style>
+                                <Style TargetType="{x:Type RadioButton}">
+                                    <Setter Property="GroupName" Value="AreaFilter"/>
+                                    <EventSetter Event="Checked" Handler="AreaFilter_Checked"/>
+                                </Style>
                             </StackPanel.Resources>
 
                             <TextBlock Margin="23,0">
@@ -757,11 +761,16 @@
 
                             <Separator/>
 
-                            <CheckBox
-                                IsChecked="{Binding ShowOnlyRequiredForWorldCompletion}"
-                                Margin="2"
-                                Content="Show only required&#10;for world completion"
-                                />
+                            <TextBlock Text="Show only&#8230;"/>
+                            <RadioButton x:Name="All" Content="All" IsChecked="True"/>
+                            <RadioButton x:Name="WorldCompletion" Content="World completion"/>
+                            <RadioButton x:Name="Core" Content="Core"/>
+                            <RadioButton x:Name="HoT" Content="Heart of Thorns"/>
+                            <RadioButton x:Name="Lw3" Content="Living World Season 3"/>
+                            <RadioButton x:Name="PoF" Content="Path of Fire"/>
+                            <RadioButton x:Name="Lw4" Content="Living World Season 4"/>
+                            <RadioButton x:Name="Tis" Content="The Icebrood Saga"/>
+                            <RadioButton x:Name="EoD" Content="End of Dragons"/>
 
                             <Separator/>
 

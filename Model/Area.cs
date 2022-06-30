@@ -1,4 +1,5 @@
 using Charrmander.Util;
+using System;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
@@ -61,6 +62,19 @@ namespace Charrmander.Model
             a.ParticipatesInWorldCompletion = bool.TryParse(
                 participatesInWorldCompletion,
                 out bool participates) && participates;
+
+            var releaseName = area.Element(XmlNamespace + "Release")?.Value;
+            a.Release = releaseName switch
+            {
+                "Core" => AreaFilter.Core,
+                "EoD" => AreaFilter.EoD,
+                "HoT" => AreaFilter.HoT,
+                "PoF" => AreaFilter.PoF,
+                "Lw3" => AreaFilter.Lw3,
+                "Lw4" => AreaFilter.Lw4,
+                "Tis" => AreaFilter.Tis,
+                _ => throw new NotImplementedException($"Release={releaseName}"),
+            };
 
             var levelRange = area.Element(XmlNamespace + "LevelRange");
             if (levelRange != null)
@@ -207,6 +221,20 @@ namespace Charrmander.Model
                 {
                     _participatesInWorldCompletion = value;
                     RaisePropertyChanged(nameof(ParticipatesInWorldCompletion));
+                }
+            }
+        }
+
+        private AreaFilter _release;
+        public AreaFilter Release
+        {
+            get => _release;
+            private set
+            {
+                if (_release != value)
+                {
+                    _release = value;
+                    RaisePropertyChanged(nameof(Release));
                 }
             }
         }
