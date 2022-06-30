@@ -116,9 +116,10 @@ namespace Charrmander.ViewModel
 
             static bool IsRequiredForWorldCompletion(Area a) => a.ParticipatesInWorldCompletion;
 
-            SortedAreas = CollectionViewSource.GetDefaultView(AreaReferenceList);
-            SortedAreas.SortDescriptions.Add(
-                new SortDescription(nameof(Area.Name), ListSortDirection.Ascending));
+            SortedAreas = new ListCollectionView(areas)
+            {
+                CustomSort = new AreaNameComparer(),
+            };
             SortedAreas.Filter = (item) => !ShowOnlyRequiredForWorldCompletion
                 || ((item is Area a) && IsRequiredForWorldCompletion(a));
 
