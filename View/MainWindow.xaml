@@ -676,7 +676,7 @@
                                 <DataGridTextColumn
                                     Header="Area Name"
                                     Binding="{Binding Name}"
-                                    MinWidth="130"
+                                    MinWidth="150"
                                     SortDirection="Ascending"
                                     >
                                     <DataGridTextColumn.CellStyle>
