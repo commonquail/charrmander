@@ -5,12 +5,22 @@
       <Version>1.38.0.0</Version>
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.38.0.zip</DownloadUrl>
       <Notes>
-        <Note>Fix missing map Gyala Delve.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.37.1.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.37.1.zip</DownloadUrl>
+        <Notes>
+          <Note>Fix forgetful version check.</Note>
+          <Note>Fix missing map Gyala Delve.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.37.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.37.0.zip</DownloadUrl>
@@ -18,8 +28,6 @@
           <Note>Continue End of Dragons story.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.36.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.36.0.zip</DownloadUrl>
