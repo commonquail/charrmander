@@ -2,15 +2,24 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.37.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.37.0.zip</DownloadUrl>
+      <Version>1.38.0.0</Version>
+      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.38.0.zip</DownloadUrl>
       <Notes>
-        <Note>Continue End of Dragons story.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.37.0.0</Version>
+        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.37.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Continue End of Dragons story.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.36.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.36.0.zip</DownloadUrl>
@@ -18,8 +27,6 @@
           <Note>Continue Living World season 1 with "Battle for Lion's Arch".</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.35.0.0</Version>
         <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.35.0.zip</DownloadUrl>
