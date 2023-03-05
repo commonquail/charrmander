@@ -5,7 +5,7 @@
       <Version>1.38.0.0</Version>
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.38.0.zip</DownloadUrl>
       <Notes>
-        <Note></Note>
+        <Note>Fix missing map Gyala Delve.</Note>
       </Notes>
     </Release>
   </Unreleased>
