@@ -871,11 +871,11 @@ namespace Charrmander.ViewModel
                 _ => RegisterExtension());
 
         /// <summary>
-        /// Command to mark the selected area as completed.
+        /// Command to mark the selected area or objective as completed.
         /// </summary>
         public ICommand CommandCompleteArea =>
             _cmdCompleteArea ??= new RelayCommand(
-                _ => MarkAreaCompleted(),
+                type => MarkAreaCompleted(type),
                 _ => CanMarkAreaCompleted());
 
         /// <summary>
@@ -1356,23 +1356,29 @@ namespace Charrmander.ViewModel
         }
 
         /// <summary>
-        /// Updates all completion items of the selected area to be equal to
-        /// values of the reference area. In short, an area is marked as
-        /// completed.
+        /// Updates all map objectives, or the named objective type, of
+        /// the selected area to be equal to values of the reference area.
         /// </summary>
-        private void MarkAreaCompleted()
+        /// <param name="type">The optional objective type name</param>
+        private void MarkAreaCompleted(object? type)
         {
             var selectedAreaCharacter = SelectedAreaCharacter;
             var selectedAreaReference = SelectedAreaReference;
             if (selectedAreaCharacter != null && selectedAreaReference != null)
             {
-                selectedAreaCharacter.Hearts = selectedAreaReference.Hearts;
-                selectedAreaCharacter.Waypoints = selectedAreaReference.Waypoints;
-                selectedAreaCharacter.PoIs = selectedAreaReference.PoIs;
-                selectedAreaCharacter.Skills = selectedAreaReference.Skills;
-                selectedAreaCharacter.Vistas = selectedAreaReference.Vistas;
+                if (type is null or "Hearts")
+                    selectedAreaCharacter.Hearts = selectedAreaReference.Hearts;
+                if (type is null or "Waypoints")
+                    selectedAreaCharacter.Waypoints = selectedAreaReference.Waypoints;
+                if (type is null or "PoIs")
+                    selectedAreaCharacter.PoIs = selectedAreaReference.PoIs;
+                if (type is null or "Skills")
+                    selectedAreaCharacter.Skills = selectedAreaReference.Skills;
+                if (type is null or "Vistas")
+                    selectedAreaCharacter.Vistas = selectedAreaReference.Vistas;
             }
-            ComputeAvailableSkillPoints();
+            if (type is null or "Skills")
+                ComputeAvailableSkillPoints();
 
             // Call this to signal an update of the relevant UI components.
             ChangedAreaOrCharacter();

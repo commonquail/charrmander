@@ -700,6 +700,12 @@
                                     <Setter Property="Margin" Value="2,4"/>
                                     <Setter Property="Minimum" Value="0"/>
                                 </Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                                <Style TargetType="{x:Type Hyperlink}">
+                                    <Setter Property="Command" Value="{Binding CommandCompleteArea}"/>
+                                </Style>
                                 <Style TargetType="{x:Type Label}">
                                     <Setter Property="ContentStringFormat" Value="{}/{0,3}"/>
                                     <Setter Property="VerticalAlignment" Value="Center"/>
@@ -713,42 +719,62 @@
                             </StackPanel.Resources>
 
                             <TextBlock Margin="23,0">
-                                <Hyperlink Command="{Binding CommandCompleteArea}">Fill All</Hyperlink>
+                                <Hyperlink>Fill All</Hyperlink>
                             </TextBlock>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding HeartIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
                                 <View:IntegerUpDown Value="{Binding Hearts, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntFromBlankTextConverter}}"/>
-                                <Label Content="{Binding Hearts}"/>
+                                <TextBlock>
+                                    <Hyperlink CommandParameter="Hearts">
+                                        <Label Content="{Binding Hearts}"/>
+                                    </Hyperlink>
+                                </TextBlock>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding WaypointIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
                                 <View:IntegerUpDown Value="{Binding Waypoints, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntFromBlankTextConverter}}"/>
-                                <Label Content="{Binding Waypoints}"/>
+                                <TextBlock>
+                                    <Hyperlink CommandParameter="Waypoints">
+                                        <Label Content="{Binding Waypoints}"/>
+                                    </Hyperlink>
+                                </TextBlock>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding PoIIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
                                 <View:IntegerUpDown Value="{Binding PoIs, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntFromBlankTextConverter}}"/>
-                                <Label Content="{Binding PoIs}"/>
+                                <TextBlock>
+                                    <Hyperlink CommandParameter="PoIs">
+                                        <Label Content="{Binding PoIs}"/>
+                                    </Hyperlink>
+                                </TextBlock>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding SkillIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
                                 <View:IntegerUpDown Value="{Binding Skills, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntFromBlankTextConverter}}"/>
-                                <Label Content="{Binding Skills}"/>
+                                <TextBlock VerticalAlignment="Center">
+                                    <Hyperlink CommandParameter="Skills">
+                                        <Label Content="{Binding Skills}"/>
+                                    </Hyperlink>
+                                </TextBlock>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding VistaIcon,
                                     Converter={StaticResource GameIconConverter}, ConverterParameter=Areas}"/>
                                 <View:IntegerUpDown Value="{Binding Vistas, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntFromBlankTextConverter}}"/>
-                                <Label Content="{Binding Vistas}"/>
+                                <TextBlock>
+                                    <Hyperlink CommandParameter="Vistas">
+                                        <Label Content="{Binding Vistas}"/>
+                                    </Hyperlink>
+                                </TextBlock>
                             </StackPanel>
 
                             <StackPanel DataContext="{Binding SelectedCharacter}">
