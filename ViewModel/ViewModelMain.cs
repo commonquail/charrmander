@@ -804,10 +804,11 @@ namespace Charrmander.ViewModel
                 case "The Desolation":
                     byGame.Pof += skillPoints * 10;
                     break;
+                case "Arborstone":
                 case "Dragon's End":
-                case "The Echovald Wilds":
                 case "New Kaineng City":
                 case "Seitung Province":
+                case "The Echovald Wilds":
                     byGame.Eod += skillPoints * 10;
                     break;
                 default:
