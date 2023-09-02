@@ -67,6 +67,7 @@ namespace Charrmander.Model
             a.Release = releaseName switch
             {
                 "Core" => AreaFilter.Core,
+                "SotO" => AreaFilter.SotO,
                 "EoD" => AreaFilter.EoD,
                 "HoT" => AreaFilter.HoT,
                 "PoF" => AreaFilter.PoF,

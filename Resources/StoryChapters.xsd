@@ -20,6 +20,7 @@
         <xs:element name="Lw4" type="StorylineType"/>
         <xs:element name="Tis" type="StorylineType"/>
         <xs:element name="EoD" type="StorylineType"/>
+        <xs:element name="SotO" type="StorylineType"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>

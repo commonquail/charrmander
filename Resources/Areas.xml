@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Areas xmlns="https://areas.charr">
   <Area>
+    <Name>Amnytas</Name>
+    <Release>SotO</Release>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>6</Waypoints>
+      <PoIs>50</PoIs>
+      <Skills>0</Skills>
+      <Vistas>8</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Arborstone</Name>
     <Release>EoD</Release>
     <LevelRange>
@@ -838,6 +852,20 @@
     </Completion>
   </Area>
   <Area>
+    <Name>Skywatch Archipelago</Name>
+    <Release>SotO</Release>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>7</Waypoints>
+      <PoIs>50</PoIs>
+      <Skills>0</Skills>
+      <Vistas>8</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Snowden Drifts</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -951,6 +979,20 @@
       <PoIs>18</PoIs>
       <Skills>6</Skills>
       <Vistas>7</Vistas>
+    </Completion>
+  </Area>
+  <Area>
+    <Name>The Wizard's Tower</Name>
+    <Release>SotO</Release>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>1</Waypoints>
+      <PoIs>24</PoIs>
+      <Skills>0</Skills>
+      <Vistas>3</Vistas>
     </Completion>
   </Area>
   <Area>

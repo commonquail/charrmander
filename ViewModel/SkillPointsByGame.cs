@@ -60,5 +60,19 @@ namespace Charrmander.ViewModel
                 }
             }
         }
+
+        private int _soto;
+        public int Soto
+        {
+            get => _soto;
+            set
+            {
+                if (_soto != value)
+                {
+                    _soto = value;
+                    RaisePropertyChanged(nameof(Soto));
+                }
+            }
+        }
     }
 }

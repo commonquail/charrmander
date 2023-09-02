@@ -11,5 +11,6 @@ namespace Charrmander.Model
         Lw4,
         Tis,
         EoD,
+        SotO,
     }
 }

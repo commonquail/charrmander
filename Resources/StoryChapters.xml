@@ -507,4 +507,35 @@
       </Act>
     </Acts>
   </EoD>
+  <SotO>
+    <Storyline>Secrets of the Obscure</Storyline>
+    <Acts>
+      <Act>
+        <Name>Act 1</Name>
+        <Chapters>
+          <Chapter>Prologue: Uncertain Times</Chapter>
+          <Chapter>Commander without a Cause</Chapter>
+          <Chapter>Hell Breaks Loose</Chapter>
+          <Chapter>Mother of Stars</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Act 2</Name>
+        <Chapters>
+          <Chapter>Voices beyond the Veil</Chapter>
+          <Chapter>The Missing Facet</Chapter>
+          <Chapter>Tower of Secrets</Chapter>
+          <Chapter>Mabon's Fate</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Act 3</Name>
+        <Chapters>
+          <Chapter>Into the Obscure</Chapter>
+          <Chapter>The World Spire</Chapter>
+          <Chapter>Treachery</Chapter>
+        </Chapters>
+      </Act>
+    </Acts>
+  </SotO>
 </StoryChapters>

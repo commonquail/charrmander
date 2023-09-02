@@ -5,6 +5,7 @@
       <Version>1.40.0.0</Version>
       <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.40.0.zip</DownloadUrl>
       <Notes>
+        <Note>Begin "Secrets of the Obscure".</Note>
         <Note>Fix Arborstone hero challenge grouping.</Note>
       </Notes>
     </Release>
