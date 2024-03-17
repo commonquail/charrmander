@@ -622,6 +622,20 @@
     </Completion>
   </Area>
   <Area>
+    <Name>Inner Nayos</Name>
+    <Release>SotO</Release>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>2</Waypoints>
+      <PoIs>41</PoIs>
+      <Skills>0</Skills>
+      <Vistas>6</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Jahai Bluffs</Name>
     <Release>Lw4</Release>
     <LevelRange>

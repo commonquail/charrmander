@@ -536,6 +536,22 @@
           <Chapter>Treachery</Chapter>
         </Chapters>
       </Act>
+      <Act>
+        <Name>Through the Veil</Name>
+        <Chapters>
+          <Chapter>Duress</Chapter>
+          <Chapter>The Survivors</Chapter>
+          <Chapter>Heitor's Gate</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>The Realm of Dreams</Name>
+        <Chapters>
+          <Chapter>The War Council</Chapter>
+          <Chapter>Forced Hand</Chapter>
+          <Chapter>Eventide's March</Chapter>
+        </Chapters>
+      </Act>
     </Acts>
   </SotO>
 </StoryChapters>
