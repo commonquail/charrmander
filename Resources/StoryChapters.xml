@@ -562,4 +562,30 @@
       </Act>
     </Acts>
   </SotO>
+  <Jw>
+    <Storyline>Janthir Wilds</Storyline>
+    <Acts>
+      <Act>
+        <Name>Act 1</Name>
+        <Chapters>
+          <Chapter>Prologue: The Tyrian Alliance</Chapter>
+          <Chapter>Unknown Territory</Chapter>
+          <Chapter>Diplomacy and Discovery</Chapter>
+          <Chapter>Home Sweet Home</Chapter>
+          <Chapter>Missing in Action</Chapter>
+          <Chapter>Strangers among Lands</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Act 2</Name>
+        <Chapters>
+          <Chapter>Storm Clouds over Janthir</Chapter>
+          <Chapter>Twice Stricken</Chapter>
+          <Chapter>Finding Balance</Chapter>
+          <Chapter>Against the Wall</Chapter>
+          <Chapter>Sorrow in These Halls</Chapter>
+        </Chapters>
+      </Act>
+    </Acts>
+  </Jw>
 </StoryChapters>

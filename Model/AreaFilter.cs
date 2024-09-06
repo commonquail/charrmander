@@ -12,5 +12,6 @@ namespace Charrmander.Model
         Tis,
         EoD,
         SotO,
+        Jw,
     }
 }

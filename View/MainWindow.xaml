@@ -639,6 +639,27 @@
                                     ItemTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
+                            <Expander>
+                                <Expander.Header>
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding
+                                                    Source="{StaticResource ExtendedStoryXml}"
+                                                    XPath="sc:Jw/sc:Storyline" />
+                                                <Binding
+                                                    RelativeSource="{RelativeSource AncestorType=Window}"
+                                                    Path="DataContext.HasCompletedJw"
+                                                    Converter="{StaticResource CompletionStateConverter}"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </Expander.Header>
+                                <ItemsControl
+                                    ItemsSource="{Binding JwActs}"
+                                    ItemTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
+                            </Expander>
+
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
@@ -819,6 +840,7 @@
                             <RadioButton x:Name="Tis" Content="The Icebrood Saga"/>
                             <RadioButton x:Name="EoD" Content="End of Dragons"/>
                             <RadioButton x:Name="SotO" Content="Secrets of the Obscure"/>
+                            <RadioButton x:Name="Jw" Content="Janthir Wilds"/>
 
                             <Separator/>
 
@@ -869,6 +891,13 @@
                                     <TextBlock Text="{Binding SkillPointsLocked.Soto}" TextAlignment="Right" Width="20"/>
                                     <TextBlock Text="/" Width="25" TextAlignment="Center"/>
                                     <TextBlock Text="{Binding SkillPointsTotal.Soto}" TextAlignment="Right" Width="20"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="JW:" Width="35"/>
+                                    <TextBlock Text="{Binding SkillPointsLocked.Jw}" TextAlignment="Right" Width="20"/>
+                                    <TextBlock Text="/" Width="25" TextAlignment="Center"/>
+                                    <TextBlock Text="{Binding SkillPointsTotal.Jw}" TextAlignment="Right" Width="20"/>
                                 </StackPanel>
 
                             </StackPanel>

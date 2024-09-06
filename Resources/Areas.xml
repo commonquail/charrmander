@@ -569,6 +569,20 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Name>Hearth's Glow</Name>
+    <Release>Jw</Release>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>1</Waypoints>
+      <PoIs>4</PoIs>
+      <Skills>0</Skills>
+      <Vistas>0</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Hoelbrak</Name>
     <Release>Core</Release>
     <Completion>
@@ -650,6 +664,20 @@
     </Completion>
   </Area>
   <Area>
+    <Name>Janthir Syntri</Name>
+    <Release>Jw</Release>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>3</Hearts>
+      <Waypoints>4</Waypoints>
+      <PoIs>50</PoIs>
+      <Skills>0</Skills>
+      <Vistas>8</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Kessex Hills</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -706,6 +734,20 @@
       <Vistas>10</Vistas>
     </Completion>
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
+  </Area>
+  <Area>
+    <Name>Lowland Shore</Name>
+    <Release>Jw</Release>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>3</Hearts>
+      <Waypoints>6</Waypoints>
+      <PoIs>56</PoIs>
+      <Skills>0</Skills>
+      <Vistas>8</Vistas>
+    </Completion>
   </Area>
   <Area>
     <Name>Malchor's Leap</Name>

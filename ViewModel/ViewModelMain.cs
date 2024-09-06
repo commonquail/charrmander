@@ -113,6 +113,7 @@ namespace Charrmander.ViewModel
                 Pof = SkillPointsTotal.Pof,
                 Eod = SkillPointsTotal.Eod,
                 Soto = SkillPointsTotal.Soto,
+                Jw = SkillPointsTotal.Jw,
             };
 
             static bool IsRequiredForWorldCompletion(Area a) => a.ParticipatesInWorldCompletion;
@@ -776,6 +777,7 @@ namespace Charrmander.ViewModel
             SkillPointsLocked.Pof = SkillPointsTotal.Pof - SkillPointsUnlocked.Pof;
             SkillPointsLocked.Eod = SkillPointsTotal.Eod - SkillPointsUnlocked.Eod;
             SkillPointsLocked.Soto = SkillPointsTotal.Soto - SkillPointsUnlocked.Soto;
+            SkillPointsLocked.Jw = SkillPointsTotal.Jw - SkillPointsUnlocked.Jw;
 
             const int spCostPerSpecialization = 250;
             var specializationsUnlocked = character.EliteSpecializations.Count(es => es.Unlocked);
@@ -785,7 +787,8 @@ namespace Charrmander.ViewModel
                 + SkillPointsUnlocked.Hot
                 + SkillPointsUnlocked.Pof
                 + SkillPointsUnlocked.Eod
-                + SkillPointsUnlocked.Soto;
+                + SkillPointsUnlocked.Soto
+                + SkillPointsUnlocked.Jw;
             SkillPointsSpendable = spTotalUnlocked - spSpent;
         }
 
@@ -818,6 +821,11 @@ namespace Charrmander.ViewModel
                 case "Skywatch Archipelago":
                 case "The Wizard's Tower":
                     byGame.Soto += skillPoints * 10;
+                    break;
+                case "Lowland Shore":
+                case "Janthir Syntri":
+                case "Hearth's Glow":
+                    byGame.Jw += skillPoints * 10;
                     break;
                 default:
                     byGame.Core += skillPoints;
@@ -1117,6 +1125,7 @@ namespace Charrmander.ViewModel
                 LoadStorylineWithActs(charr, "Tis", c.TisActs);
                 LoadStorylineWithActs(charr, "EoD", c.EoDActs);
                 LoadStorylineWithActs(charr, "SotO", c.SotOActs);
+                LoadStorylineWithActs(charr, "Jw", c.JwActs);
 
                 foreach (var cd in c.Dungeons)
                 {
@@ -1796,6 +1805,7 @@ namespace Charrmander.ViewModel
             RaisePropertyChanged(nameof(HasCompletedTis));
             RaisePropertyChanged(nameof(HasCompletedEoD));
             RaisePropertyChanged(nameof(HasCompletedSotO));
+            RaisePropertyChanged(nameof(HasCompletedJw));
         }
 
         /// <summary>
@@ -1888,6 +1898,7 @@ namespace Charrmander.ViewModel
             // Assumption: characters are more likely to record new completions
             // of newer content, e.g. because they've already completed all old
             // content.
+            HasCompletedJw = CalculateStoryChapterCompletion(selectedCharacter.JwActs);
             HasCompletedSotO = CalculateStoryChapterCompletion(selectedCharacter.SotOActs);
             HasCompletedEoD = CalculateStoryChapterCompletion(selectedCharacter.EoDActs);
             HasCompletedTis = CalculateStoryChapterCompletion(selectedCharacter.TisActs);
@@ -2081,6 +2092,21 @@ namespace Charrmander.ViewModel
                 {
                     _hasCompletedSotO = value;
                     RaisePropertyChanged(nameof(HasCompletedSotO));
+                }
+            }
+        }
+
+        private CompletionState _hasCompletedJw;
+
+        public CompletionState HasCompletedJw
+        {
+            get { return _hasCompletedJw; }
+            private set
+            {
+                if (value != _hasCompletedJw)
+                {
+                    _hasCompletedJw = value;
+                    RaisePropertyChanged(nameof(HasCompletedJw));
                 }
             }
         }

@@ -67,13 +67,14 @@ namespace Charrmander.Model
             a.Release = releaseName switch
             {
                 "Core" => AreaFilter.Core,
-                "SotO" => AreaFilter.SotO,
-                "EoD" => AreaFilter.EoD,
                 "HoT" => AreaFilter.HoT,
                 "PoF" => AreaFilter.PoF,
                 "Lw3" => AreaFilter.Lw3,
                 "Lw4" => AreaFilter.Lw4,
                 "Tis" => AreaFilter.Tis,
+                "EoD" => AreaFilter.EoD,
+                "SotO" => AreaFilter.SotO,
+                "Jw" => AreaFilter.Jw,
                 _ => throw new NotImplementedException($"Release={releaseName}"),
             };
 

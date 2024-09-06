@@ -113,6 +113,7 @@ namespace Charrmander.Model
             TisActs = PrepareStoryChapters("Tis");
             EoDActs = PrepareStoryChapters("EoD");
             SotOActs = PrepareStoryChapters("SotO");
+            JwActs = PrepareStoryChapters("Jw");
 
             Dungeons = XDocument.Load(XmlReader.Create(
                 App.GetPackResourceStream("Resources/Dungeons.xml").Stream))
@@ -212,6 +213,8 @@ namespace Charrmander.Model
         public IReadOnlyList<Act> EoDActs { get; }
 
         public IReadOnlyList<Act> SotOActs { get; }
+
+        public IReadOnlyList<Act> JwActs { get; }
 
         public IReadOnlyList<Dungeon> Dungeons { get; }
 
@@ -562,7 +565,8 @@ namespace Charrmander.Model
                     new CharrElement("Lw4", SerializeActs(Lw4Acts)),
                     new CharrElement("Tis", SerializeActs(TisActs)),
                     new CharrElement("EoD", SerializeActs(EoDActs)),
-                    new CharrElement("SotO", SerializeActs(SotOActs))
+                    new CharrElement("SotO", SerializeActs(SotOActs)),
+                    new CharrElement("Jw", SerializeActs(JwActs))
                 ),
                 new CharrElement("CraftingDisciplines",
                     from d in CraftingDisciplines
@@ -666,6 +670,10 @@ namespace Charrmander.Model
                 act.PropertyChanged -= _viewModel.MarkFileDirty;
             }
             foreach (var act in SotOActs)
+            {
+                act.PropertyChanged -= _viewModel.MarkFileDirty;
+            }
+            foreach (var act in JwActs)
             {
                 act.PropertyChanged -= _viewModel.MarkFileDirty;
             }
