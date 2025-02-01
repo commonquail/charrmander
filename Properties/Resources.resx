@@ -127,7 +127,7 @@
     <value>GW2 Character List</value>
   </data>
   <data name="cfgUpdateCheckUri" xml:space="preserve">
-    <value>https://bitbucket.org/jokum/charrmander/raw/master/VersionHistory.xml</value>
+    <value>https://github.com/commonquail/charrmander/raw/refs/heads/master/VersionHistory.xml</value>
   </data>
   <data name="cfgXsdpath" xml:space="preserve">
     <value>Resources/charr.xsd</value>
