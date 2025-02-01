@@ -3,9 +3,9 @@
   <Unreleased>
     <Release>
       <Version>1.44.0.0</Version>
-      <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.44.0.zip</DownloadUrl>
+      <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.44.0/charrmander-1.44.0.zip</DownloadUrl>
       <Notes>
-        <Note></Note>
+        <Note>Host on GitHub.com. From April 2025, Bitbucket.org will no longer provide the "downloads" feature that distribution relied on in the past. A few historical versions have been rehosted but most have no future relevance and have been abandoned.</Note>
       </Notes>
     </Release>
   </Unreleased>
@@ -13,7 +13,7 @@
     <Latest>
       <Release>
         <Version>1.43.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.43.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.43.0.zip</DownloadUrl>
         <Notes>
           <Note>Begin "Janthir Wilds".</Note>
         </Notes>
@@ -22,21 +22,21 @@
     <History>
       <Release>
         <Version>1.42.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.42.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.42.0.zip</DownloadUrl>
         <Notes>
           <Note>Complete "Secrets of the Obscure" story.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.41.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.41.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.41.0.zip</DownloadUrl>
         <Notes>
           <Note>Continue "Secrets of the Obscure" story.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.40.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.40.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.40.0.zip</DownloadUrl>
         <Notes>
           <Note>Begin "Secrets of the Obscure".</Note>
           <Note>Fix Arborstone hero challenge grouping.</Note>
@@ -44,21 +44,21 @@
       </Release>
       <Release>
         <Version>1.39.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.39.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.39.0.zip</DownloadUrl>
         <Notes>
           <Note>Complete specific area objective by clicking the label of the respective objective goal.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.38.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.38.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.38.0.zip</DownloadUrl>
         <Notes>
           <Note>Continue End of Dragons story.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.37.1.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.37.1.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.37.1.zip</DownloadUrl>
         <Notes>
           <Note>Fix forgetful version check.</Note>
           <Note>Fix missing map Gyala Delve.</Note>
@@ -66,49 +66,49 @@
       </Release>
       <Release>
         <Version>1.37.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.37.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.37.0.zip</DownloadUrl>
         <Notes>
           <Note>Continue End of Dragons story.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.36.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.36.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.36.0.zip</DownloadUrl>
         <Notes>
           <Note>Continue Living World season 1 with "Battle for Lion's Arch".</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.35.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.35.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.35.0.zip</DownloadUrl>
         <Notes>
           <Note>Charrmander 1.29.0 claimed to require the .NET 6 Desktop Runtime for x64 but in fact remained on .NET 5. Now it really does require .NET 6. Get it from https://dotnet.microsoft.com/download/dotnet/6.0/runtime.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.34.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.34.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.34.0.zip</DownloadUrl>
         <Notes>
           <Note>Continue Living World season 1 with "Tower of Nightmares".</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.33.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.33.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.33.0.zip</DownloadUrl>
         <Notes>
           <Note>Continue Living World season 1 with "Clockwork Chaos".</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.32.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.32.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.32.0.zip</DownloadUrl>
         <Notes>
           <Note>Support area filtering by release in addition to world completion.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.31.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.31.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.31.0.zip</DownloadUrl>
         <Notes>
           <Note>Add Arborstone map objectives.</Note>
           <Note>Add Living World season 1.</Note>
@@ -116,7 +116,7 @@
       </Release>
       <Release>
         <Version>1.30.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.30.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.30.0.zip</DownloadUrl>
         <Notes>
           <Note>End of Dragons: add new areas.</Note>
           <Note>End of Dragons: add new story chapters.</Note>
@@ -124,28 +124,28 @@
       </Release>
       <Release>
         <Version>1.29.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.29.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.29.0.zip</DownloadUrl>
         <Notes>
           <Note>Charrmander now requires the .NET 6 Desktop Runtime for x64. Get it from https://dotnet.microsoft.com/download/dotnet/6.0/runtime.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.28.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.28.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.28.0.zip</DownloadUrl>
         <Notes>
           <Note>Use new Wiki profession icons. The new icons are derived from game art and are subject to ArenaNet's licensing. They look like wine gums and clash with other Charrmander aesthetics but this is preferable to the old style where half the new specialization icons are impossible to make out.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.27.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.27.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.27.0.zip</DownloadUrl>
         <Notes>
           <Note>End of Dragons: add new specializations.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.26.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.26.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.26.0.zip</DownloadUrl>
         <Notes>
           <Note>Restore all missing areas, removed in v1.2.0 on account of not mattering for world completion, since world completion areas can now be filtered specifically and numerous other non-world completion areas have been added since by, essentially, accident.</Note>
           <Note>Add Home Instance pseudo-area to represent the Krait Obelisk Shard hero challenge, whereby every hero challenge is accounted for, making the "spendable hero points" tooltip irrelevant.</Note>
@@ -154,7 +154,7 @@
       </Release>
       <Release>
         <Version>1.25.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.25.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.25.0.zip</DownloadUrl>
         <Notes>
           <Note>Fix instant-complete area not recomputing locked hero points.</Note>
           <Note>Fix elite specialization region being visible after starting Charrmander and before loading or creating the first character.</Note>
@@ -163,14 +163,14 @@
       </Release>
       <Release>
         <Version>1.24.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.24.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.24.0.zip</DownloadUrl>
         <Notes>
           <Note>Fix incorrect region grouping for locked hero point calculation.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.23.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.23.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.23.0.zip</DownloadUrl>
         <Notes>
           <Note>Don't crash if update download fails.</Note>
           <Note>Compute locked hero points per game region on the "Areas" tab.</Note>
@@ -178,7 +178,7 @@
       </Release>
       <Release>
         <Version>1.22.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.22.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.22.0.zip</DownloadUrl>
         <Notes>
           <Note>Fix initial sorting of area lists; apparently this never worked.</Note>
           <Note>In the completion overview, list characters in the same order as in the main window.</Note>
@@ -194,7 +194,7 @@
       </Release>
       <Release>
         <Version>1.21.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.21.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.21.0.zip</DownloadUrl>
         <Notes>
           <Note>Charrmander now requires the .NET 5 Desktop Runtime for x64. Get it from https://dotnet.microsoft.com/download/dotnet/5.0/runtime.</Note>
           <Note>Number up-down boxes have been rebuilt from scratch, halving the resulting executable file size. Functionality should be comparable but report oddities.</Note>
@@ -204,7 +204,7 @@
       </Release>
       <Release>
         <Version>1.20.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.20.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.20.0.zip</DownloadUrl>
         <Notes>
           <Note>Allow typing spaces into character names with multiple components. Erroneous leading and trailing spaces will still be stripped.</Note>
           <Note>Integrate Windows "Jump List" support. If the Charrmander.exe file 1) is in the taskbar, and 2) has been associated with .charr files via the Tools menu item, every .charr file opened with that Charrmander.exe file will appear in that taskbar entry's "Recent" file group available via right-clicking. This will work as long as Charrmander.exe remains in the same location. If Charrmander.exe is subsequently moved, the file type association must be repeated and the jump list will reset.</Note>
@@ -215,70 +215,70 @@
       </Release>
       <Release>
         <Version>1.19.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.19.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.19.0.zip</DownloadUrl>
         <Notes>
           <Note>Continue "The Icebrood Saga" with "Champions, Ch. 3 - Balance".</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.18.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.18.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.18.0.zip</DownloadUrl>
         <Notes>
           <Note>Continue "The Icebrood Saga" with "Champions, Ch. 2 - Power".</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.17.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.17.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.17.0.zip</DownloadUrl>
         <Notes>
           <Note>Continue "The Icebrood Saga" with "Champions, Ch. 1 - Truce".</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.16.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.16.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.16.0.zip</DownloadUrl>
         <Notes>
           <Note>Continue "The Icebrood Saga" with "Jormag Rising".</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.15.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.15.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.15.0.zip</DownloadUrl>
         <Notes>
           <Note>Continue "The Icebrood Saga" with "No Quarter".</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.14.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.14.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.14.0.zip</DownloadUrl>
         <Notes>
           <Note>Continue "The Icebrood Saga" with "Visions of the Past".</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.13.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.13.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.13.0.zip</DownloadUrl>
         <Notes>
           <Note>Permanently re-order the character list by assigning each character a "sort order" that weighs it relative to all others. Sort order is specified in the "Personal" tab and takes integer values from 1 to 99, inclusive. Multiple characters may have the same sort order but then their relative order is unspecified.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.12.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.12.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.12.0.zip</DownloadUrl>
         <Notes>
           <Note>Continue "The Icebrood Saga" with "Shadow in the Ice".</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.11.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.11.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.11.0.zip</DownloadUrl>
         <Notes>
           <Note>Continue "The Icebrood Saga" with "Whisper in the Dark".</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.10.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.10.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.10.0.zip</DownloadUrl>
         <Notes>
           <Note>Begin "The Icebrood Saga".</Note>
           <Note>Always display current version in status bar.</Note>
@@ -286,35 +286,35 @@
       </Release>
       <Release>
         <Version>1.9.2.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.9.2.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.9.2.zip</DownloadUrl>
         <Notes>
           <Note>Fix story chapter name typos.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.9.1.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.9.1.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.9.1.zip</DownloadUrl>
         <Notes>
           <Note>Fix story chapter completion summary not updating when switching character.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.9.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.9.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.9.0.zip</DownloadUrl>
         <Notes>
           <Note>Manually track completion of non-core story chapters, e.g. for BLC key farming or Knight of the Thorn.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.8.1.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.8.1.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.8.1.zip</DownloadUrl>
         <Notes>
           <Note>Fix wrong build in 1.8.0.0.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.8.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.8.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.8.0.zip</DownloadUrl>
         <Notes>
           <Note>Build only for 64-bit. Breaking change implicitly pre-empted by 1.5.0.0.</Note>
           <Note>Bump Chef max level to 500.</Note>
@@ -322,14 +322,14 @@
       </Release>
       <Release>
         <Version>1.7.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.7.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.7.0.zip</DownloadUrl>
         <Notes>
           <Note>Update for LW4E6: "War Eternal"</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.6.1.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.6.1.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.6.1.zip</DownloadUrl>
         <Notes>
           <Note>Provide detailed information when failing to parse save-files.</Note>
           <Note>Fix save-file corruption after adding Scribe.</Note>
@@ -337,7 +337,7 @@
       </Release>
       <Release>
         <Version>1.6.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.6.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.6.0.zip</DownloadUrl>
         <Notes>
           <Note>Add Scribe crafting discipline.</Note>
           <Note>Replace legacy skill icon with core hero point icon.</Note>
@@ -348,7 +348,7 @@
       </Release>
       <Release>
         <Version>1.5.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.5.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.5.0.zip</DownloadUrl>
         <Notes>
           <Note>Manually maintained "World Completion" check box in Areas tab will display an icon in the character list when checked.</Note>
           <Note>Update all maps since Living World season 2.</Note>
@@ -358,21 +358,21 @@
       </Release>
       <Release>
         <Version>1.4.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.4.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.4.0.zip</DownloadUrl>
         <Notes>
           <Note>Revenant support.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.3.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.3.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.3.0.zip</DownloadUrl>
         <Notes>
           <Note>Wayfarer Foothills has 15 hearts.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.2.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.2.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.2.0.zip</DownloadUrl>
         <Notes>
           <Note>Plains of Ashford has 18 hearts and waypoints.</Note>
           <Note>Caledon Forest has 19 hearts.</Note>
@@ -383,14 +383,14 @@
       </Release>
       <Release>
         <Version>1.1.1.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.1.1.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.1.1.zip</DownloadUrl>
         <Notes>
           <Note>Update-check URL has been moved.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.1.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.1.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.1.0.zip</DownloadUrl>
         <Notes>
           <Note>Black Citadel has 12 waypoints.</Note>
           <Note>Southsun Cove has 6 PoIs.</Note>
@@ -401,7 +401,7 @@
       </Release>
       <Release>
         <Version>1.0.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-1.0.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-1.0.0.zip</DownloadUrl>
         <Notes>
           <Note>Make Fractal tier account wide as per recent patch.</Note>
           <Note>Ask for confirmation when closing with X button instead of Exit menu entry.</Note>
@@ -411,7 +411,7 @@
       </Release>
       <Release>
         <Version>0.1.17.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.17.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.17.zip</DownloadUrl>
         <Notes>
           <Note>Increase level cap for crafts Armorsmith, Leatherworker, and Tailor to 500.</Note>
           <Note>Remove two waypoints in Kessex Hills.</Note>
@@ -419,35 +419,35 @@
       </Release>
       <Release>
         <Version>0.1.16.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.16.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.16.zip</DownloadUrl>
         <Notes>
           <Note>Two new PoIs added to Kessex Hills.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>0.1.15.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.15.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.15.zip</DownloadUrl>
         <Notes>
           <Note>Allow clearing of character notes.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>0.1.14.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.14.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.14.zip</DownloadUrl>
         <Notes>
           <Note>Increase level cap for crafts Huntsman, Weaponsmith, and Artificer to 500.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>0.1.13.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.13.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.13.zip</DownloadUrl>
         <Notes>
           <Note>Added new PoI to Divinity's Reach.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>0.1.12.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.12.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.12.zip</DownloadUrl>
         <Notes>
           <Note>Added missing area Claw Island.</Note>
           <Note>Kessex Hills has 14 hearts, not 17.</Note>
@@ -456,14 +456,14 @@
       </Release>
       <Release>
         <Version>0.1.11.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.11.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.11.zip</DownloadUrl>
         <Notes>
           <Note>Fields of Ruin now has correct level range 30-40.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>0.1.10.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.10.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.10.zip</DownloadUrl>
         <Notes>
           <Note>No longer mark loaded file as changed when loading certain legacy files.</Note>
           <Note>Update waypoint count for Brisban Wildlands, Cursed Shore, Plains of Ashford, and Straits of Devastation.</Note>
@@ -471,14 +471,14 @@
       </Release>
       <Release>
         <Version>0.1.9.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.9.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.9.zip</DownloadUrl>
         <Notes>
           <Note>Add story choice tracking (order, lesser race, etc.).</Note>
         </Notes>
       </Release>
       <Release>
         <Version>0.1.8.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.8.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.8.zip</DownloadUrl>
         <Notes>
           <Note>Removed external DLL dependency introduced in 0.1.7. Charrmander.exe now runs by itself again.</Note>
           <Note>FotM tier input will not be empty when loading a character with no FotM tier data.</Note>
@@ -486,7 +486,7 @@
       </Release>
       <Release>
         <Version>0.1.7.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.7.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.7.zip</DownloadUrl>
         <Notes>
           <Note>Dungeon story mode and FotM tier tracking.</Note>
           <Note>Properly handles new version history file.</Note>
@@ -496,7 +496,7 @@
       </Release>
       <Release>
         <Version>0.1.6.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.6.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.6.zip</DownloadUrl>
         <Notes>
           <Note>Character and area reference lists include level and level range and are sortable. Shift+click to sort on multiple columns.</Note>
           <Note>WvW and city areas have their level range changed from 1-80 to 0-80.</Note>
@@ -504,7 +504,7 @@
       </Release>
       <Release>
         <Version>0.1.5.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.5.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.5.zip</DownloadUrl>
         <Notes>
           <Note>Added area completion overview for all named characters.</Note>
           <Note>Added character level.</Note>
@@ -513,7 +513,7 @@
       </Release>
       <Release>
         <Version>0.1.4.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.4.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.4.zip</DownloadUrl>
         <Notes>
           <Note>Version history log still might cut off on the right.</Note>
           <Note>Snowden Drifts and Dredgehaunt Cliffs had typos.</Note>
@@ -521,7 +521,7 @@
       </Release>
       <Release>
         <Version>0.1.3.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.3.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.3.zip</DownloadUrl>
         <Notes>
           <Note>Option to mark an area as completed, filling all items automatically. Also in context menu.</Note>
           <Note>Indicate area completion status with icons in reference list.</Note>
@@ -532,7 +532,7 @@
       </Release>
       <Release>
         <Version>0.1.2.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.2.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.2.zip</DownloadUrl>
         <Notes>
           <Note>Lion's Arch listed 223 points of interest. It has 23.</Note>
           <Note>Crafting discipline icons show the discipline name in a tooltip.</Note>
@@ -544,14 +544,14 @@
       </Release>
       <Release>
         <Version>0.1.1.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.1.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.1.zip</DownloadUrl>
         <Notes>
           <Note>Added character creation biography choices.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>0.1.0.0</Version>
-        <DownloadUrl>https://bitbucket.org/jokum/charrmander/downloads/charrmander-0.1.0.zip</DownloadUrl>
+        <DownloadUrl>https://invalid/charrmander-0.1.0.zip</DownloadUrl>
         <Notes>
           <Note>First release.</Note>
           <Note>Individual area completion tracking per character.</Note>
