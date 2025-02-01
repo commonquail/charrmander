@@ -30,5 +30,5 @@ See `LICENCE.md`.
 
 [GW2]: https://www.guildwars2.com/
 [patch-12-12-14]: http://wiki.guildwars2.com/wiki/Game_updates/2012-12-14
-[dotnet]: https://dotnet.microsoft.com/download/dotnet/5.0/runtime
+[dotnet]: https://dotnet.microsoft.com/download/dotnet/6.0/runtime
 [download]: https://github.com/commonquail/charrmander/releases/
