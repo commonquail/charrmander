@@ -6,7 +6,7 @@ Components that aren't covered by the above are released under the [MIT/Expat li
 
 The MIT License (MIT)
 
-Copyright (c) 2012-2022 Mikkel Kjeldsen
+Copyright (c) 2012-2025 Mikkel Kjeldsen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

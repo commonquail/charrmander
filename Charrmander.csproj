@@ -8,7 +8,7 @@
     <Platforms>x64</Platforms>
     <PackageId>Charrmander</PackageId>
     <Version>1.9.2.0</Version>
-    <Copyright>2012-2022</Copyright>
+    <Copyright>2012-2025</Copyright>
     <Authors>Mikkel Kjeldsen</Authors>
     <PackageProjectUrl>https://bitbucket.org/jokum/charrmander/</PackageProjectUrl>
     <ApplicationIcon>MainExecutable.ico</ApplicationIcon>
