@@ -13,7 +13,7 @@
     <Latest>
       <Release>
         <Version>1.43.0.0</Version>
-        <DownloadUrl>https://invalid/charrmander-1.43.0.zip</DownloadUrl>
+        <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.43.0/charrmander-1.43.0.zip</DownloadUrl>
         <Notes>
           <Note>Begin "Janthir Wilds".</Note>
         </Notes>
@@ -22,21 +22,21 @@
     <History>
       <Release>
         <Version>1.42.0.0</Version>
-        <DownloadUrl>https://invalid/charrmander-1.42.0.zip</DownloadUrl>
+        <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.42.0/charrmander-1.42.0.zip</DownloadUrl>
         <Notes>
           <Note>Complete "Secrets of the Obscure" story.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.41.0.0</Version>
-        <DownloadUrl>https://invalid/charrmander-1.41.0.zip</DownloadUrl>
+        <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.41.0/charrmander-1.41.0.zip</DownloadUrl>
         <Notes>
           <Note>Continue "Secrets of the Obscure" story.</Note>
         </Notes>
       </Release>
       <Release>
         <Version>1.40.0.0</Version>
-        <DownloadUrl>https://invalid/charrmander-1.40.0.zip</DownloadUrl>
+        <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.40.0/charrmander-1.40.0.zip</DownloadUrl>
         <Notes>
           <Note>Begin "Secrets of the Obscure".</Note>
           <Note>Fix Arborstone hero challenge grouping.</Note>
