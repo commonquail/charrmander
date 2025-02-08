@@ -781,6 +781,20 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Name>Mistburned Barrens</Name>
+    <Release>Jw</Release>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>1</Hearts>
+      <Waypoints>1</Waypoints>
+      <PoIs>18</PoIs>
+      <Skills>0</Skills>
+      <Vistas>3</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Mount Maelstrom</Name>
     <Release>Core</Release>
     <LevelRange>

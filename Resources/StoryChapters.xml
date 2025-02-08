@@ -594,6 +594,14 @@
           <Chapter>Balrior Peak</Chapter>
         </Chapters>
       </Act>
+      <Act>
+        <Name>Act 4</Name>
+        <Chapters>
+          <Chapter>Into the Valley of Shadow</Chapter>
+          <Chapter>A Legacy Damned</Chapter>
+          <Chapter>Penance for the Past</Chapter>
+        </Chapters>
+      </Act>
     </Acts>
   </Jw>
 </StoryChapters>
