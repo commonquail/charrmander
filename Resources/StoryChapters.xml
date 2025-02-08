@@ -586,6 +586,14 @@
           <Chapter>Sorrow in These Halls</Chapter>
         </Chapters>
       </Act>
+      <Act>
+        <Name>Act 3</Name>
+        <Chapters>
+          <Chapter>Trial and Error</Chapter>
+          <Chapter>Battle's Eve</Chapter>
+          <Chapter>Balrior Peak</Chapter>
+        </Chapters>
+      </Act>
     </Acts>
   </Jw>
 </StoryChapters>
