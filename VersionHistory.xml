@@ -2,16 +2,25 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.44.0.0</Version>
-      <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.44.0/charrmander-1.44.0.zip</DownloadUrl>
+      <Version>1.45.0.0</Version>
+      <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.45.0/charrmander-1.45.0.zip</DownloadUrl>
       <Notes>
-        <Note>Host on GitHub.com. From April 2025, Bitbucket.org will no longer provide the "downloads" feature that distribution relied on in the past. A few historical versions have been rehosted but most have no future relevance and have been abandoned.</Note>
-        <Note>Continue "Janthir Wilds" story.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.44.0.0</Version>
+        <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.44.0/charrmander-1.44.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Host on GitHub.com. From April 2025, Bitbucket.org will no longer provide the "downloads" feature that distribution relied on in the past. A few historical versions have been rehosted but most have no future relevance and have been abandoned.</Note>
+          <Note>Continue "Janthir Wilds" story.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.43.0.0</Version>
         <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.43.0/charrmander-1.43.0.zip</DownloadUrl>
@@ -19,8 +28,6 @@
           <Note>Begin "Janthir Wilds".</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.42.0.0</Version>
         <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.42.0/charrmander-1.42.0.zip</DownloadUrl>
