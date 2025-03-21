@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '6.0'
+      - name: dotnet restore
+        run: ./scripts/dotnet-restore.ps1
+      - name: dotnet build
+        run: ./scripts/dotnet-build-debug.ps1
+      - name: dotnet test
+        run: ./scripts/dotnet-test.ps1
