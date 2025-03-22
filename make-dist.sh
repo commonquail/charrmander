@@ -32,7 +32,7 @@ archive()
 {
     7z a \
         "charrmander-$(git describe --abbrev=0).zip" \
-        "./bin/x64/Release/net6.0-windows10.0.17763.0/win-x64/publish/Charrmander.exe"
+        "./dist/Charrmander.exe"
 }
 
 main
