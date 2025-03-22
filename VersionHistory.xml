@@ -6,6 +6,7 @@
       <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.45.0/charrmander-1.45.0.zip</DownloadUrl>
       <Notes>
         <Note>Continue "Janthir Wilds" story.</Note>
+        <Note>Fit up to 41 characters before enabling overflow scrolling.</Note>
       </Notes>
     </Release>
   </Unreleased>
