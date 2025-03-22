@@ -6,6 +6,7 @@
     <LangVersion>10.0</LangVersion>
     <UseWPF>true</UseWPF>
     <Platforms>x64</Platforms>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PackageId>Charrmander</PackageId>
     <Version>1.9.2.0</Version>
     <Copyright>2012-2025</Copyright>
