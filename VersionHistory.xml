@@ -2,15 +2,24 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.46.0.0</Version>
-      <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.46.0/charrmander-1.46.0.zip</DownloadUrl>
+      <Version>1.47.0.0</Version>
+      <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.47.0/charrmander-1.47.0.zip</DownloadUrl>
       <Notes>
-        <Note>Complete "Janthir Wilds" story.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.46.0.0</Version>
+        <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.46.0/charrmander-1.46.0.zip</DownloadUrl>
+        <Notes>
+          <Note>Complete "Janthir Wilds" story.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.45.0.0</Version>
         <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.45.0/charrmander-1.45.0.zip</DownloadUrl>
@@ -19,8 +28,6 @@
           <Note>Fit up to 41 characters before enabling overflow scrolling.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.44.0.0</Version>
         <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.44.0/charrmander-1.44.0.zip</DownloadUrl>
