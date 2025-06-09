@@ -43,6 +43,20 @@
     </Completion>
   </Area>
   <Area>
+    <Name>Bava Nisos</Name>
+    <Release>Jw</Release>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>0</Hearts>
+      <Waypoints>2</Waypoints>
+      <PoIs>10</PoIs>
+      <Skills>0</Skills>
+      <Vistas>3</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Bitterfrost Frontier</Name>
     <Release>Lw3</Release>
     <LevelRange>
