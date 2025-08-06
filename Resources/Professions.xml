@@ -5,53 +5,62 @@
     <Specialization>Tempest</Specialization>
     <Specialization>Weaver</Specialization>
     <Specialization>Catalyst</Specialization>
+    <Specialization>Evoker</Specialization>
   </Profession>
   <Profession>
     <Name>Engineer</Name>
     <Specialization>Scrapper</Specialization>
     <Specialization>Holosmith</Specialization>
     <Specialization>Mechanist</Specialization>
+    <Specialization>Amalgam</Specialization>
   </Profession>
   <Profession>
     <Name>Guardian</Name>
     <Specialization>Dragonhunter</Specialization>
     <Specialization>Firebrand</Specialization>
     <Specialization>Willbender</Specialization>
+    <Specialization>Luminary</Specialization>
   </Profession>
   <Profession>
     <Name>Mesmer</Name>
     <Specialization>Chronomancer</Specialization>
     <Specialization>Mirage</Specialization>
     <Specialization>Virtuoso</Specialization>
+    <Specialization>Troubadour</Specialization>
   </Profession>
   <Profession>
     <Name>Necromancer</Name>
     <Specialization>Reaper</Specialization>
     <Specialization>Scourge</Specialization>
     <Specialization>Harbinger</Specialization>
+    <Specialization>Ritualist</Specialization>
   </Profession>
   <Profession>
     <Name>Ranger</Name>
     <Specialization>Druid</Specialization>
     <Specialization>Soulbeast</Specialization>
     <Specialization>Untamed</Specialization>
+    <Specialization>Galeshot</Specialization>
   </Profession>
   <Profession>
     <Name>Revenant</Name>
     <Specialization>Herald</Specialization>
     <Specialization>Renegade</Specialization>
     <Specialization>Vindicator</Specialization>
+    <Specialization>Conduit</Specialization>
   </Profession>
   <Profession>
     <Name>Thief</Name>
     <Specialization>Daredevil</Specialization>
     <Specialization>Deadeye</Specialization>
     <Specialization>Specter</Specialization>
+    <Specialization>Antiquary</Specialization>
   </Profession>
   <Profession>
     <Name>Warrior</Name>
     <Specialization>Berserker</Specialization>
     <Specialization>Spellbreaker</Specialization>
     <Specialization>Bladesworn</Specialization>
+    <Specialization>Paragon</Specialization>
   </Profession>
 </Professions>
