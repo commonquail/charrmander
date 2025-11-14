@@ -612,4 +612,23 @@
       </Act>
     </Acts>
   </Jw>
+  <VoT>
+    <Storyline>Visions of Eternity</Storyline>
+    <Acts>
+      <Act>
+        <Name>Act 1</Name>
+        <Chapters>
+          <Chapter>Prologue: On the Sly</Chapter>
+          <Chapter>Unscheduled Departures</Chapter>
+          <Chapter>Solid Ground</Chapter>
+          <Chapter>Eyes, Ears, and Arms</Chapter>
+          <Chapter>Truths Unearthed</Chapter>
+          <Chapter>Beneath the Canopy</Chapter>
+          <Chapter>Ruins of the Old World</Chapter>
+          <Chapter>Fumbling in the Dark</Chapter>
+          <Chapter>Path of Divinity</Chapter>
+        </Chapters>
+      </Act>
+    </Acts>
+  </VoT>
 </StoryChapters>

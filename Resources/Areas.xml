@@ -922,6 +922,20 @@
     </Completion>
   </Area>
   <Area>
+    <Name>Shipwreck Strand</Name>
+    <Release>VoT</Release>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>3</Hearts>
+      <Waypoints>3</Waypoints>
+      <PoIs>41</PoIs>
+      <Skills>15</Skills>
+      <Vistas>6</Vistas>
+    </Completion>
+  </Area>
+  <Area>
     <Name>Siren's Landing</Name>
     <Release>Lw3</Release>
     <LevelRange>
@@ -994,6 +1008,20 @@
       <Vistas>5</Vistas>
     </Completion>
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
+  </Area>
+  <Area>
+    <Name>Starlit Weald</Name>
+    <Release>VoT</Release>
+    <LevelRange>
+      <MinLevel>80</MinLevel>
+    </LevelRange>
+    <Completion>
+      <Hearts>3</Hearts>
+      <Waypoints>3</Waypoints>
+      <PoIs>43</PoIs>
+      <Skills>15</Skills>
+      <Vistas>5</Vistas>
+    </Completion>
   </Area>
   <Area>
     <Name>Straits of Devastation</Name>
