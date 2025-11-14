@@ -75,6 +75,7 @@ namespace Charrmander.Model
                 "EoD" => AreaFilter.EoD,
                 "SotO" => AreaFilter.SotO,
                 "Jw" => AreaFilter.Jw,
+                "VoT" => AreaFilter.VoT,
                 _ => throw new NotImplementedException($"Release={releaseName}"),
             };
 
