@@ -2,8 +2,8 @@
 <VersionHistory xmlns="http://versionhistory.org">
   <Unreleased>
     <Release>
-      <Version>1.49.0.0</Version>
-      <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.49.0/charrmander-1.49.0.zip</DownloadUrl>
+      <Version>1.50.0.0</Version>
+      <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.50.0/charrmander-1.50.0.zip</DownloadUrl>
       <Notes>
         <Note></Note>
       </Notes>
@@ -12,6 +12,15 @@
   <Public>
     <Latest>
       <Release>
+        <Version>1.49.0.0</Version>
+        <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.49.0/charrmander-1.49.0.zip</DownloadUrl>
+        <Notes>
+          <Note>GitHub's "immutable releases" broke 1.48. Release 1.49 is identical.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
+      <Release>
         <Version>1.48.0.0</Version>
         <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.48.0/charrmander-1.48.0.zip</DownloadUrl>
         <Notes>
@@ -19,8 +28,6 @@
           <Note>Fix VoT missing Act 2.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.47.0.0</Version>
         <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.47.0/charrmander-1.47.0.zip</DownloadUrl>
