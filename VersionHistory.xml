@@ -6,6 +6,7 @@
       <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.48.0/charrmander-1.48.0.zip</DownloadUrl>
       <Notes>
         <Note>Fix VoT hero challenge label.</Note>
+        <Note>Fix VoT missing Act 2.</Note>
       </Notes>
     </Release>
   </Unreleased>

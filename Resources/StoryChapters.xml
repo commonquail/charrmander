@@ -623,6 +623,11 @@
           <Chapter>Solid Ground</Chapter>
           <Chapter>Eyes, Ears, and Arms</Chapter>
           <Chapter>Truths Unearthed</Chapter>
+        </Chapters>
+      </Act>
+      <Act>
+        <Name>Act 2</Name>
+        <Chapters>
           <Chapter>Beneath the Canopy</Chapter>
           <Chapter>Ruins of the Old World</Chapter>
           <Chapter>Fumbling in the Dark</Chapter>
