@@ -1202,7 +1202,22 @@ namespace Charrmander.ViewModel
                 {
                     chapterName = chapterName[0..^1];
                 }
-                chapterByNameByActName[actName][chapterName].ChapterCompleted = completed;
+
+                if (actName.Equals("act 1")
+                        && (chapterName.Equals("beneath the canopy")
+                            || chapterName.Equals("ruins of the old world")
+                            || chapterName.Equals("fumbling in the dark")
+                            || chapterName.Equals("path of divinity")))
+                {
+                    actName = "act 2";
+                }
+
+                if (chapterByNameByActName.TryGetValue(actName, out var chapterByName))
+                {
+                    if (chapterByName.TryGetValue(chapterName, out var chapter)) {
+                        chapter.ChapterCompleted = completed;
+                    }
+                }
             }
         }
 
