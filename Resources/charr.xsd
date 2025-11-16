@@ -64,7 +64,8 @@
             <xs:element name="EoD" minOccurs="0" type="StorylineType"/>
             <xs:element name="SotO" minOccurs="0" type="StorylineType"/>
             <xs:element name="Jw" minOccurs="0" type="StorylineType"/>
-            <xs:element name="VoT" minOccurs="0" type="StorylineType"/>
+            <xs:element name="VoE" minOccurs="0" type="StorylineType"/>
+            <xs:element name="VoT" minOccurs="0" type="StorylineType"/> <!-- VoE typo kept for forwards compatibility -->
           </xs:all>
         </xs:complexType>
       </xs:element>

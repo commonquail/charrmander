@@ -923,7 +923,7 @@
   </Area>
   <Area>
     <Name>Shipwreck Strand</Name>
-    <Release>VoT</Release>
+    <Release>VoE</Release>
     <LevelRange>
       <MinLevel>80</MinLevel>
     </LevelRange>
@@ -1011,7 +1011,7 @@
   </Area>
   <Area>
     <Name>Starlit Weald</Name>
-    <Release>VoT</Release>
+    <Release>VoE</Release>
     <LevelRange>
       <MinLevel>80</MinLevel>
     </LevelRange>

@@ -114,7 +114,7 @@ namespace Charrmander.ViewModel
                 Eod = SkillPointsTotal.Eod,
                 Soto = SkillPointsTotal.Soto,
                 Jw = SkillPointsTotal.Jw,
-                Vot = SkillPointsTotal.Vot,
+                Voe = SkillPointsTotal.Voe,
             };
 
             static bool IsRequiredForWorldCompletion(Area a) => a.ParticipatesInWorldCompletion;
@@ -779,7 +779,7 @@ namespace Charrmander.ViewModel
             SkillPointsLocked.Eod = SkillPointsTotal.Eod - SkillPointsUnlocked.Eod;
             SkillPointsLocked.Soto = SkillPointsTotal.Soto - SkillPointsUnlocked.Soto;
             SkillPointsLocked.Jw = SkillPointsTotal.Jw - SkillPointsUnlocked.Jw;
-            SkillPointsLocked.Vot = SkillPointsTotal.Vot - SkillPointsUnlocked.Vot;
+            SkillPointsLocked.Voe = SkillPointsTotal.Voe - SkillPointsUnlocked.Voe;
 
             const int spCostPerSpecialization = 250;
             var specializationsUnlocked = character.EliteSpecializations.Count(es => es.Unlocked);
@@ -791,7 +791,7 @@ namespace Charrmander.ViewModel
                 + SkillPointsUnlocked.Eod
                 + SkillPointsUnlocked.Soto
                 + SkillPointsUnlocked.Jw
-                + SkillPointsUnlocked.Vot;
+                + SkillPointsUnlocked.Voe;
             SkillPointsSpendable = spTotalUnlocked - spSpent;
         }
 
@@ -832,7 +832,7 @@ namespace Charrmander.ViewModel
                     break;
                 case "Shipwreck Strand":
                 case "Starlit Weald":
-                    byGame.Vot += skillPoints * 10;
+                    byGame.Voe += skillPoints * 10;
                     break;
                 default:
                     byGame.Core += skillPoints;
@@ -1133,7 +1133,8 @@ namespace Charrmander.ViewModel
                 LoadStorylineWithActs(charr, "EoD", c.EoDActs);
                 LoadStorylineWithActs(charr, "SotO", c.SotOActs);
                 LoadStorylineWithActs(charr, "Jw", c.JwActs);
-                LoadStorylineWithActs(charr, "VoT", c.VoTActs);
+                LoadStorylineWithActs(charr, "VoT", c.VoEActs); // VoE typo kept for forwards compatibility
+                LoadStorylineWithActs(charr, "VoE", c.VoEActs);
 
                 foreach (var cd in c.Dungeons)
                 {
@@ -1829,7 +1830,7 @@ namespace Charrmander.ViewModel
             RaisePropertyChanged(nameof(HasCompletedEoD));
             RaisePropertyChanged(nameof(HasCompletedSotO));
             RaisePropertyChanged(nameof(HasCompletedJw));
-            RaisePropertyChanged(nameof(HasCompletedVoT));
+            RaisePropertyChanged(nameof(HasCompletedVoE));
         }
 
         /// <summary>
@@ -1933,7 +1934,7 @@ namespace Charrmander.ViewModel
             HasCompletedHoT = CalculateStoryChapterCompletion(selectedCharacter.HoTActs);
             HasCompletedLw2 = CalculateStoryChapterCompletion(selectedCharacter.Lw2Acts);
             HasCompletedLw1 = CalculateStoryChapterCompletion(selectedCharacter.Lw1Acts);
-            HasCompletedVoT = CalculateStoryChapterCompletion(selectedCharacter.VoTActs);
+            HasCompletedVoE = CalculateStoryChapterCompletion(selectedCharacter.VoEActs);
         }
 
         internal void TrimSelectedCharacterName()
@@ -2136,17 +2137,17 @@ namespace Charrmander.ViewModel
             }
         }
 
-        private CompletionState _hasCompletedVoT;
+        private CompletionState _hasCompletedVoE;
 
-        public CompletionState HasCompletedVoT
+        public CompletionState HasCompletedVoE
         {
-            get { return _hasCompletedVoT; }
+            get { return _hasCompletedVoE; }
             private set
             {
-                if (value != _hasCompletedVoT)
+                if (value != _hasCompletedVoE)
                 {
-                    _hasCompletedVoT = value;
-                    RaisePropertyChanged(nameof(HasCompletedVoT));
+                    _hasCompletedVoE = value;
+                    RaisePropertyChanged(nameof(HasCompletedVoE));
                 }
             }
         }
