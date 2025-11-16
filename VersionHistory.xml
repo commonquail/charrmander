@@ -5,13 +5,22 @@
       <Version>1.50.0.0</Version>
       <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.50.0/charrmander-1.50.0.zip</DownloadUrl>
       <Notes>
-        <Note>Fix VoE hero point tracking.</Note>
-        <Note>Fix pervasive VoE acronym typo.</Note>
+        <Note></Note>
       </Notes>
     </Release>
   </Unreleased>
   <Public>
     <Latest>
+      <Release>
+        <Version>1.49.2.0</Version>
+        <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.49.2/charrmander-1.49.2.zip</DownloadUrl>
+        <Notes>
+          <Note>Fix VoE hero point tracking.</Note>
+          <Note>Fix pervasive VoE acronym typo.</Note>
+        </Notes>
+      </Release>
+    </Latest>
+    <History>
       <Release>
         <Version>1.49.1.0</Version>
         <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.49.1/charrmander-1.49.1.zip</DownloadUrl>
@@ -19,8 +28,6 @@
           <Note>Fix load error between 1.48.0 and 1.49.0.</Note>
         </Notes>
       </Release>
-    </Latest>
-    <History>
       <Release>
         <Version>1.49.0.0</Version>
         <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.49.0/charrmander-1.49.0.zip</DownloadUrl>
