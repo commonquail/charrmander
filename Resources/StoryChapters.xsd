@@ -22,7 +22,7 @@
         <xs:element name="EoD" type="StorylineType"/>
         <xs:element name="SotO" type="StorylineType"/>
         <xs:element name="Jw" type="StorylineType"/>
-        <xs:element name="VoT" type="StorylineType"/>
+        <xs:element name="VoE" type="StorylineType"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -667,17 +667,17 @@
                                             <MultiBinding StringFormat="{}{0} {1}">
                                                 <Binding
                                                     Source="{StaticResource ExtendedStoryXml}"
-                                                    XPath="sc:VoT/sc:Storyline" />
+                                                    XPath="sc:VoE/sc:Storyline" />
                                                 <Binding
                                                     RelativeSource="{RelativeSource AncestorType=Window}"
-                                                    Path="DataContext.HasCompletedVoT"
+                                                    Path="DataContext.HasCompletedVoE"
                                                     Converter="{StaticResource CompletionStateConverter}"/>
                                             </MultiBinding>
                                         </TextBlock.Text>
                                     </TextBlock>
                                 </Expander.Header>
                                 <ItemsControl
-                                    ItemsSource="{Binding VoTActs}"
+                                    ItemsSource="{Binding VoEActs}"
                                     ItemTemplate="{StaticResource StoryChapterCompletionTemplate}"/>
                             </Expander>
 
@@ -862,7 +862,7 @@
                             <RadioButton x:Name="EoD" Content="End of Dragons"/>
                             <RadioButton x:Name="SotO" Content="Secrets of the Obscure"/>
                             <RadioButton x:Name="Jw" Content="Janthir Wilds"/>
-                            <RadioButton x:Name="VoT" Content="Visions of Eternity"/>
+                            <RadioButton x:Name="VoE" Content="Visions of Eternity"/>
 
                             <Separator/>
 
@@ -923,10 +923,10 @@
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="VoT:" Width="35"/>
-                                    <TextBlock Text="{Binding SkillPointsLocked.VoT}" TextAlignment="Right" Width="20"/>
+                                    <TextBlock Text="VoE:" Width="35"/>
+                                    <TextBlock Text="{Binding SkillPointsLocked.Voe}" TextAlignment="Right" Width="20"/>
                                     <TextBlock Text="/" Width="25" TextAlignment="Center"/>
-                                    <TextBlock Text="{Binding SkillPointsTotal.VoT}" TextAlignment="Right" Width="20"/>
+                                    <TextBlock Text="{Binding SkillPointsTotal.Voe}" TextAlignment="Right" Width="20"/>
                                 </StackPanel>
 
                             </StackPanel>

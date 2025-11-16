@@ -335,7 +335,7 @@ namespace Charrmander.ViewModel
             vm.SkillPointsLocked.Eod.Should().Be(310);
             vm.SkillPointsLocked.Soto.Should().Be(0);
             vm.SkillPointsLocked.Jw.Should().Be(0);
-            vm.SkillPointsLocked.Vot.Should().Be(300);
+            vm.SkillPointsLocked.Voe.Should().Be(300);
 
             selectedCharacter.HasWorldCompletion.Should().BeTrue();
 

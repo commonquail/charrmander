@@ -5,7 +5,8 @@
       <Version>1.50.0.0</Version>
       <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.50.0/charrmander-1.50.0.zip</DownloadUrl>
       <Notes>
-        <Note></Note>
+        <Note>Fix VoE hero point tracking.</Note>
+        <Note>Fix pervasive VoE acronym typo.</Note>
       </Notes>
     </Release>
   </Unreleased>
@@ -31,8 +32,8 @@
         <Version>1.48.0.0</Version>
         <DownloadUrl>https://github.com/commonquail/charrmander/releases/download/1.48.0/charrmander-1.48.0.zip</DownloadUrl>
         <Notes>
-          <Note>Fix VoT hero challenge label.</Note>
-          <Note>Fix VoT missing Act 2.</Note>
+          <Note>Fix VoE hero challenge label.</Note>
+          <Note>Fix VoE missing Act 2.</Note>
         </Notes>
       </Release>
       <Release>

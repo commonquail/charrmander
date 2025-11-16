@@ -13,6 +13,6 @@ namespace Charrmander.Model
         EoD,
         SotO,
         Jw,
-        VoT,
+        VoE,
     }
 }
