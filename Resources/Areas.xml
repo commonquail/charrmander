@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Areas xmlns="https://areas.charr">
   <Area>
+    <Id>1517</Id>
     <Name>Amnytas</Name>
     <Release>SotO</Release>
     <LevelRange>
@@ -15,6 +16,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1428</Id>
     <Name>Arborstone</Name>
     <Release>EoD</Release>
     <LevelRange>
@@ -29,6 +31,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1043</Id>
     <Name>Auric Basin</Name>
     <Release>HoT</Release>
     <LevelRange>
@@ -43,6 +46,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1574</Id>
     <Name>Bava Nisos</Name>
     <Release>Jw</Release>
     <LevelRange>
@@ -57,6 +61,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1178</Id>
     <Name>Bitterfrost Frontier</Name>
     <Release>Lw3</Release>
     <LevelRange>
@@ -71,6 +76,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1343</Id>
     <Name>Bjora Marches</Name>
     <Release>Tis</Release>
     <LevelRange>
@@ -85,6 +91,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>218</Id>
     <Name>Black Citadel</Name>
     <Release>Core</Release>
     <Completion>
@@ -97,6 +104,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>20</Id>
     <Name>Blazeridge Steppes</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -113,6 +121,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>1165</Id>
     <Name>Bloodstone Fen</Name>
     <Release>Lw3</Release>
     <LevelRange>
@@ -127,6 +136,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>73</Id>
     <Name>Bloodtide Coast</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -143,6 +153,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>96</Id>
     <Name>Blue Alpine Borderlands</Name>
     <Release>Core</Release>
     <Completion>
@@ -154,6 +165,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>54</Id>
     <Name>Brisban Wildlands</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -170,6 +182,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>34</Id>
     <Name>Caledon Forest</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -186,6 +199,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>336</Id>
     <Name>Chantry of Secrets</Name>
     <Release>Core</Release>
     <Completion>
@@ -198,6 +212,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>698</Id>
     <Name>Claw Island</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -213,6 +228,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1210</Id>
     <Name>Crystal Oasis</Name>
     <Release>PoF</Release>
     <LevelRange>
@@ -227,6 +243,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>62</Id>
     <Name>Cursed Shore</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -242,6 +259,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>1211</Id>
     <Name>Desert Highlands</Name>
     <Release>PoF</Release>
     <LevelRange>
@@ -256,6 +274,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>32</Id>
     <Name>Diessa Plateau</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -272,6 +291,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>18</Id>
     <Name>Divinity's Reach</Name>
     <Release>Core</Release>
     <Completion>
@@ -284,6 +304,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>1263</Id>
     <Name>Domain of Istan</Name>
     <Release>Lw4</Release>
     <LevelRange>
@@ -298,6 +319,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1288</Id>
     <Name>Domain of Kourna</Name>
     <Release>Lw4</Release>
     <LevelRange>
@@ -312,6 +334,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1248</Id>
     <Name>Domain of Vabbi</Name>
     <Release>PoF</Release>
     <LevelRange>
@@ -326,6 +349,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1195</Id>
     <Name>Draconis Mons</Name>
     <Release>Lw3</Release>
     <LevelRange>
@@ -340,6 +364,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1041</Id>
     <Name>Dragon's Stand</Name>
     <Release>HoT</Release>
     <LevelRange>
@@ -354,6 +379,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1317</Id>
     <Name>Dragonfall</Name>
     <Release>Lw4</Release>
     <LevelRange>
@@ -368,6 +394,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>26</Id>
     <Name>Dredgehaunt Cliffs</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -384,6 +411,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>1371</Id>
     <Name>Drizzlewood Coast</Name>
     <Release>Tis</Release>
     <LevelRange>
@@ -398,6 +426,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>988</Id>
     <Name>Dry Top</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -412,6 +441,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1452</Id>
     <Name>The Echovald Wilds</Name>
     <Release>EoD</Release>
     <LevelRange>
@@ -426,6 +456,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1228</Id>
     <Name>Elon Riverlands</Name>
     <Release>PoF</Release>
     <LevelRange>
@@ -440,6 +471,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1175</Id>
     <Name>Ember Bay</Name>
     <Release>Lw3</Release>
     <LevelRange>
@@ -454,6 +486,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>38</Id>
     <Name>Eternal Battlegrounds</Name>
     <Release>Core</Release>
     <Completion>
@@ -465,6 +498,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>21</Id>
     <Name>Fields of Ruin</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -481,6 +515,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>22</Id>
     <Name>Fireheart Rise</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -497,6 +532,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>30</Id>
     <Name>Frostgorge Sound</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -512,6 +548,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>24</Id>
     <Name>Gendarran Fields</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -528,6 +565,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>95</Id>
     <Name>Green Alpine Borderlands</Name>
     <Release>Core</Release>
     <Completion>
@@ -539,6 +577,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1330</Id>
     <Name>Grothmar Valley</Name>
     <Release>Tis</Release>
     <LevelRange>
@@ -553,6 +592,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1490</Id>
     <Name>Gyala Delve</Name>
     <Release>EoD</Release>
     <LevelRange>
@@ -567,6 +607,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>17</Id>
     <Name>Harathi Hinterlands</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -583,6 +624,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>1558</Id>
     <Name>Hearth's Glow</Name>
     <Release>Jw</Release>
     <LevelRange>
@@ -597,6 +639,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>326</Id>
     <Name>Hoelbrak</Name>
     <Release>Core</Release>
     <Completion>
@@ -620,6 +663,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>25</Id>
     <Name>Iron Marches</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -636,6 +680,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>1422</Id>
     <Name>Dragon's End</Name>
     <Release>EoD</Release>
     <LevelRange>
@@ -650,6 +695,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1526</Id>
     <Name>Inner Nayos</Name>
     <Release>SotO</Release>
     <LevelRange>
@@ -664,6 +710,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1301</Id>
     <Name>Jahai Bluffs</Name>
     <Release>Lw4</Release>
     <LevelRange>
@@ -678,6 +725,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1554</Id>
     <Name>Janthir Syntri</Name>
     <Release>Jw</Release>
     <LevelRange>
@@ -692,6 +740,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>23</Id>
     <Name>Kessex Hills</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -708,6 +757,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>1185</Id>
     <Name>Lake Doric</Name>
     <Release>Lw3</Release>
     <LevelRange>
@@ -722,6 +772,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>50</Id>
     <Name>Lion's Arch</Name>
     <Release>Core</Release>
     <Completion>
@@ -734,6 +785,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>27</Id>
     <Name>Lornar's Pass</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -750,6 +802,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>1550</Id>
     <Name>Lowland Shore</Name>
     <Release>Jw</Release>
     <LevelRange>
@@ -764,6 +817,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>65</Id>
     <Name>Malchor's Leap</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -779,6 +833,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>35</Id>
     <Name>Metrica Province</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -795,6 +850,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>1575</Id>
     <Name>Mistburned Barrens</Name>
     <Release>Jw</Release>
     <LevelRange>
@@ -809,6 +865,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>39</Id>
     <Name>Mount Maelstrom</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -825,6 +882,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>1438</Id>
     <Name>New Kaineng City</Name>
     <Release>EoD</Release>
     <LevelRange>
@@ -839,6 +897,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>19</Id>
     <Name>Plains of Ashford</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -855,6 +914,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>15</Id>
     <Name>Queensdale</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -871,6 +931,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>139</Id>
     <Name>Rata Sum</Name>
     <Release>Core</Release>
     <Completion>
@@ -883,6 +944,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>1099</Id>
     <Name>Red Desert Borderlands</Name>
     <Release>Core</Release>
     <Completion>
@@ -894,6 +956,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1271</Id>
     <Name>Sandswept Isles</Name>
     <Release>Lw4</Release>
     <LevelRange>
@@ -908,6 +971,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1442</Id>
     <Name>Seitung Province</Name>
     <Release>EoD</Release>
     <LevelRange>
@@ -922,6 +986,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1595</Id>
     <Name>Shipwreck Strand</Name>
     <Release>VoE</Release>
     <LevelRange>
@@ -936,6 +1001,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1203</Id>
     <Name>Siren's Landing</Name>
     <Release>Lw3</Release>
     <LevelRange>
@@ -950,6 +1016,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1510</Id>
     <Name>Skywatch Archipelago</Name>
     <Release>SotO</Release>
     <LevelRange>
@@ -964,6 +1031,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>31</Id>
     <Name>Snowden Drifts</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -980,6 +1048,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>873</Id>
     <Name>Southsun Cove</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -994,6 +1063,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>53</Id>
     <Name>Sparkfly Fen</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -1010,6 +1080,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>1593</Id>
     <Name>Starlit Weald</Name>
     <Release>VoE</Release>
     <LevelRange>
@@ -1024,6 +1095,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>51</Id>
     <Name>Straits of Devastation</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -1040,6 +1112,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>1045</Id>
     <Name>Tangled Depths</Name>
     <Release>HoT</Release>
     <LevelRange>
@@ -1054,6 +1127,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1226</Id>
     <Name>The Desolation</Name>
     <Release>PoF</Release>
     <LevelRange>
@@ -1068,6 +1142,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>91</Id>
     <Name>The Grove</Name>
     <Release>Core</Release>
     <Completion>
@@ -1080,6 +1155,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>1015</Id>
     <Name>The Silverwastes</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -1094,6 +1170,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1509</Id>
     <Name>The Wizard's Tower</Name>
     <Release>SotO</Release>
     <LevelRange>
@@ -1108,6 +1185,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>1310</Id>
     <Name>Thunderhead Peaks</Name>
     <Release>Lw4</Release>
     <LevelRange>
@@ -1122,6 +1200,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>29</Id>
     <Name>Timberline Falls</Name>
     <Release>Core</Release>
     <LevelRange>
@@ -1138,6 +1217,7 @@
     <ParticipatesInWorldCompletion>true</ParticipatesInWorldCompletion>
   </Area>
   <Area>
+    <Id>1052</Id>
     <Name>Verdant Brink</Name>
     <Release>HoT</Release>
     <LevelRange>
@@ -1152,6 +1232,7 @@
     </Completion>
   </Area>
   <Area>
+    <Id>28</Id>
     <Name>Wayfarer Foothills</Name>
     <Release>Core</Release>
     <LevelRange>

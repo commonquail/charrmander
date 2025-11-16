@@ -13,6 +13,7 @@
         <xs:element maxOccurs="unbounded" name="Area">
           <xs:complexType>
             <xs:sequence>
+              <xs:element name="Id" type="xs:int" minOccurs="0" />
               <xs:element name="Name" type="xs:string" />
               <xs:element name="Release" type="xs:string"/>
               <xs:element minOccurs="0" name="LevelRange">
